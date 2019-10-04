@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2cd6dd6e-dd2a-4b49-b5dd-c4c7c35f62d1" name="Default Changelist" comment="" />
+    <list default="true" id="2cd6dd6e-dd2a-4b49-b5dd-c4c7c35f62d1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +16,18 @@
       <executable />
     </execution>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpServers">
+    <servers>
+      <server host="localhost" id="fbb47bb8-8b55-4b2e-a0d0-22f0f0ebe69b" name="PHP SERVER 7" port="8888" />
+    </servers>
+  </component>
   <component name="ProjectId" id="1RkiusRVZqCxlSuDSRBaX0xEpGY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/css" />
   </component>
@@ -35,6 +48,14 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="Run" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="PHP SERVER 7" start_url="/nothernstar/index.php">
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="PHP SERVER 7">
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -45,11 +66,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1570217719158</updated>
-      <workItem from="1570217720631" duration="136000" />
+      <workItem from="1570217720631" duration="600000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
