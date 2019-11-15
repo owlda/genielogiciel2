@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cd6dd6e-dd2a-4b49-b5dd-c4c7c35f62d1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/forms.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ContinuerAvecFacebook.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ContinuerAvecGoogle.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,8 +82,16 @@
       <option name="presentableId" value="Default" />
       <updated>1570217719158</updated>
       <workItem from="1570217720631" duration="600000" />
-      <workItem from="1573847362989" duration="9567000" />
+      <workItem from="1573847362989" duration="9821000" />
     </task>
+    <task id="LOCAL-00001" summary="Formulaires de connexion et de création de comptes">
+      <created>1573858812097</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1573858812097</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,5 +109,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Formulaires de connexion et de création de comptes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Formulaires de connexion et de création de comptes" />
   </component>
 </project>

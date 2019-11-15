@@ -1,0 +1,14 @@
+#formConnexion, #formCreationCompte {
+    text-align: center;
+    border: 1px solid black;
+    margin: 30px auto;
+    padding: 20px;
+    width: 450px;
+}
+
+#txtCourrielCnx, #txtMotPasseCnx, #txtPrenomNouv, #txtNomNouv,
+#txtCourrielNouv, #txtMotPasseNouv, #txtMotPasseNouvConf, #txtAdresse,
+#txtVille, #txtPays, #txtCodePostal {
+    width: 320px;
+    padding: 5px;
+}
