@@ -1,0 +1,38 @@
+#allFilms {
+    text-align: center;
+    margin-top: 2rem;
+}
+p {
+    text-align: center;
+    margin-top: 2rem;
+}
+footer {
+    position: relative;
+    height: 100px;
+    bottom: 0;
+    width: 100%;
+}
+article {
+    width: 60%;
+    text-align: center;
+    margin-left: 20%;
+    margin-top: 2%;
+}
+h4 {
+    text-align: center;
+    margin-top: 2rem;
+}
+body{
+     background-color: white;
+    color: #23272b;
+ }
+.container-films{
+    display: flex;
+    flex-flow: wrap;
+}
+#promo{
+    margin-left: 5%;
+}
+.table-films {
+    margin-left: 5%;
+}
