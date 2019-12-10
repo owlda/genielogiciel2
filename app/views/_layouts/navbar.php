@@ -50,8 +50,8 @@
 
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="/testmvc/public/">Films</a>
-    <a href="/testmvc/public/pages/about">About</a>
+    <a href="/testmvc/public/">HOME</a>
+    <a href="/testmvc/public/pages/about">ABOUT</a>
 </div>
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;NAVBAR</span>
 
