@@ -50,13 +50,10 @@
 
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="/sandbox/public/">Films</a>
-    <a href="/sandbox/public/pages/about">About</a>
-    <a href="/sandbox/public/connect/login">Connect</a>
-    <a href="/sandbox/public/connect/signup">Signup</a>
-    <a href="/sandbox/public/pages/editfilms">Console</a>
+    <a href="/testmvc/public/">Films</a>
+    <a href="/testmvc/public/pages/about">About</a>
 </div>
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;Films Ici Montréal</span>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;NAVBAR</span>
 
 <script>
     function openNav() {

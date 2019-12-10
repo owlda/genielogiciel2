@@ -19,18 +19,6 @@ class Pages extends Controller {
 
         $this->view('pages/about');
     }
-    public function test(){
 
-        $this->view('pages/test');
-    }
-    public function add(){
-
-        $this->view('pages/add');
-    }
-
-    public function editfilms(){
-
-        $this->view('pages/editfilms');
-    }
 
 }
