@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2cd6dd6e-dd2a-4b49-b5dd-c4c7c35f62d1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2cd6dd6e-dd2a-4b49-b5dd-c4c7c35f62d1" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="test-branch" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -172,10 +170,10 @@
     </state>
     <state x="548" y="332" key="com.intellij.ide.util.TipDialog/0.0.1680.1010/1680.0.1440.860@0.0.1680.1010" timestamp="1576117534093" />
     <state x="548" y="332" key="com.intellij.ide.util.TipDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1576178216673" />
-    <state x="621" y="220" key="git4idea.branch.GitSmartOperationDialog" timestamp="1576184847442">
+    <state x="621" y="220" key="git4idea.branch.GitSmartOperationDialog" timestamp="1576186211621">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="621" y="220" key="git4idea.branch.GitSmartOperationDialog/0.0.1680.1010/-1680.0.1680.1010@0.0.1680.1010" timestamp="1576184847442" />
+    <state x="621" y="220" key="git4idea.branch.GitSmartOperationDialog/0.0.1680.1010/-1680.0.1680.1010@0.0.1680.1010" timestamp="1576186211621" />
     <state x="566" y="308" key="git4idea.merge.GitPullDialog" timestamp="1576183774811">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
