@@ -1,4 +1,4 @@
-#formConnexion, #formCreationCompte {
+#formConnexion, #formCreationCompte, #formMotPasseOublie {
     text-align: center;
     border: 1px solid black;
     margin: 30px auto;
@@ -6,9 +6,14 @@
     width: 450px;
 }
 
-#txtCourrielCnx, #txtMotPasseCnx, #txtPrenomNouv, #txtNomNouv,
+#divCreationCompte, #divMotPasseOublie {
+    display: none;
+}
+
+
+#courrielCnx, #motPasseCnx, #txtPrenomNouv, #txtNomNouv,
 #txtCourrielNouv, #txtMotPasseNouv, #txtMotPasseNouvConf, #txtAdresse,
-#txtVille, #txtPays, #txtCodePostal {
+#txtVille, #txtPays, #txtCodePostal, #txtCourrielMotPasseOublie {
     width: 320px;
     padding: 5px;
 }
