@@ -1,4 +1,3 @@
-
 function rendreVisible(elem) {
     document.getElementById(elem).style.display = 'block';
 }
@@ -36,14 +35,14 @@ function reinitialiserForm(elem) {
 }
 
 function validerFormConnexion() {
-    var courrielCnx = document.forms["formConnexion"]["courrielCnx"].value;
-    if (courrielCnx.toString().trim() == "") {
+    let courrielCnx = document.forms["formConnexion"]["courrielCnx"].value;
+    if (courrielCnx.toString().trim() === "") {
         alert("Veuillez saisir votre adresse courriel");
         return false;
     }
 
-    var motPasseCnx = document.forms["formConnexion"]["motPasseCnx"].value;
-    if (motPasseCnx.toString().trim() == "") {
+    let motPasseCnx = document.forms["formConnexion"]["motPasseCnx"].value;
+    if (motPasseCnx.toString().trim() === "") {
         alert("Veuillez saisir votre mot de passe");
         return false;
     }

@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2cd6dd6e-dd2a-4b49-b5dd-c4c7c35f62d1" name="Default Changelist" comment="Formulaires de Connexion, Création de compte et Mot de passe oublié - Single page avec includes">
-      <change afterPath="$PROJECT_DIR$/formConnexion.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/formCreationCompte.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/formMotPasseOublie.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/formulaires.js" afterDir="false" />
+    <list default="true" id="2cd6dd6e-dd2a-4b49-b5dd-c4c7c35f62d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/forms.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/forms.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/formulaires.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/formulaires.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +95,7 @@
       <workItem from="1576104928952" duration="2153000" />
       <workItem from="1576117536465" duration="5040000" />
       <workItem from="1576178217451" duration="13000" />
-      <workItem from="1576182118620" duration="1292000" />
+      <workItem from="1576182118620" duration="2183000" />
     </task>
     <task id="LOCAL-00001" summary="Formulaires de connexion et de création de comptes">
       <created>1573858812097</created>
@@ -116,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573858951406</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Formulaires de Connexion, Création de compte et Mot de passe oublié - Single page avec includes">
+      <created>1576183491235</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1576183491235</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,20 +148,28 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="520" y="235" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1575436632165" />
-    <state x="4" y="11" width="1656" height="804" key="CommitChangelistDialog2" timestamp="1576183399188">
+    <state x="4" y="11" width="1656" height="804" key="CommitChangelistDialog2" timestamp="1576183488284">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="4" y="11" width="1656" height="804" key="CommitChangelistDialog2/0.0.1680.1010/-1680.0.1680.1010@0.0.1680.1010" timestamp="1576183399188" />
+    <state x="4" y="11" width="1656" height="804" key="CommitChangelistDialog2/0.0.1680.1010/-1680.0.1680.1010@0.0.1680.1010" timestamp="1576183488284" />
     <state x="674" y="436" key="NewPhpFileDialog" timestamp="1576106245868">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="674" y="436" key="NewPhpFileDialog/0.0.1680.1010/-1680.0.1680.1010@0.0.1680.1010" timestamp="1575063699480" />
     <state x="674" y="436" key="NewPhpFileDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1576106245868" />
+    <state x="432" y="240" key="Vcs.Push.Dialog.v2" timestamp="1576183550920">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="432" y="240" key="Vcs.Push.Dialog.v2/0.0.1680.1010/-1680.0.1680.1010@0.0.1680.1010" timestamp="1576183550920" />
     <state x="548" y="332" key="com.intellij.ide.util.TipDialog" timestamp="1576178216673">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="548" y="332" key="com.intellij.ide.util.TipDialog/0.0.1680.1010/1680.0.1440.860@0.0.1680.1010" timestamp="1576117534093" />
     <state x="548" y="332" key="com.intellij.ide.util.TipDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1576178216673" />
+    <state x="566" y="308" key="git4idea.merge.GitPullDialog" timestamp="1576183774811">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="566" y="308" key="git4idea.merge.GitPullDialog/0.0.1680.1010/-1680.0.1680.1010@0.0.1680.1010" timestamp="1576183774811" />
     <state x="503" y="217" width="672" height="678" key="search.everywhere.popup" timestamp="1576106301112">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
