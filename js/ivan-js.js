@@ -1,8 +1,9 @@
 $(document).ready(function () {
 
+    new nicEditor({fullPanel : true}).panelInstance('NicEdit');
+
     $('#sd').click(function () {
         Create_Form_Ivan();
-        new nicEditor({fullPanel : true}).panelInstance('NicEdit');
     });
 
     //TODO Получить переменную с редактора

@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
-    <script src="./lib/jquery-3.4.1.min.js"></script>
+    <script src="libs/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/ivan-js.js"></script>
-    <script src="lib/nicEdit-latest.js"></script>
+    <script src="libs/nicEdit-latest.js"></script>
     <?php
         require_once 'voc/lb_en.php';
     ?>
     <script>
-        var obj = <?php echo json_encode($tmp,JSON_UNESCAPED_UNICODE); ?>
+        var obj = <?php echo json_encode($voc,JSON_UNESCAPED_UNICODE); ?>
     </script>
 </head>
 <body>
@@ -40,7 +40,7 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label data-error="wrong" data-success="right" for="InputEmail"><?= $tmp['email'] ?></label>
+                        <label data-error="wrong" data-success="right" for="InputEmail"><?= $voc['email'] ?></label>
                         <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp">
                         <div id="error_email" class="text-danger"></div>
                     </div>
@@ -99,7 +99,7 @@
 
 </html>
 
-<script src="./lib/jquery-3.4.1.min.js"></script>
+<script src="libs/jquery-3.4.1.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
