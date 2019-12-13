@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2cd6dd6e-dd2a-4b49-b5dd-c4c7c35f62d1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="2cd6dd6e-dd2a-4b49-b5dd-c4c7c35f62d1" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,7 +12,19 @@
       <executable />
     </execution>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="test-branch" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpServers">
@@ -26,27 +34,22 @@
   </component>
   <component name="ProjectId" id="1RkiusRVZqCxlSuDSRBaX0xEpGY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/images" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\voyagesmerveille\images" />
       <recent name="D:\php7\EasyPHP-Devserver-17\eds-www\nothernstar\css" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="Run" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="PHP SERVER 7" start_url="/nothernstar/index.php">
@@ -55,6 +58,18 @@
     <configuration default="true" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" server_name="PHP SERVER 7">
       <method v="2" />
     </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -67,7 +82,47 @@
       <option name="presentableId" value="Default" />
       <updated>1570217719158</updated>
       <workItem from="1570217720631" duration="600000" />
+      <workItem from="1573847362989" duration="9928000" />
+      <workItem from="1575059532380" duration="41000" />
+      <workItem from="1575059730230" duration="443000" />
+      <workItem from="1575060722229" duration="3730000" />
+      <workItem from="1575436040985" duration="593000" />
+      <workItem from="1575436692801" duration="26000" />
+      <workItem from="1575927316381" duration="926000" />
+      <workItem from="1576104928952" duration="2153000" />
+      <workItem from="1576117536465" duration="5040000" />
+      <workItem from="1576178217451" duration="13000" />
+      <workItem from="1576182118620" duration="2567000" />
     </task>
+    <task id="LOCAL-00001" summary="Formulaires de connexion et de création de comptes">
+      <created>1573858812097</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1573858812097</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Formulaires de connexion et de création de comptes 2">
+      <created>1573858951406</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1573858951406</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Formulaires de Connexion, Création de compte et Mot de passe oublié - Single page avec includes">
+      <created>1576183491235</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1576183491235</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Formulaires de Connexion, Création de compte et Mot de passe oublié - Single page avec includes">
+      <created>1576184406566</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1576184406566</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -78,10 +133,54 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Formulaires de connexion et de création de comptes" />
+    <MESSAGE value="Formulaires de connexion et de création de comptes 2" />
+    <MESSAGE value="Formulaires de Connexion, Création de compte et Mot de passe oublié - Single page avec includes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Formulaires de Connexion, Création de compte et Mot de passe oublié - Single page avec includes" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="520" y="235" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575436632165">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="520" y="235" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1575436632165" />
+    <state x="4" y="11" width="1656" height="804" key="CommitChangelistDialog2" timestamp="1576184404643">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="4" y="11" width="1656" height="804" key="CommitChangelistDialog2/0.0.1680.1010/-1680.0.1680.1010@0.0.1680.1010" timestamp="1576184404643" />
+    <state x="674" y="436" key="NewPhpFileDialog" timestamp="1576106245868">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="674" y="436" key="NewPhpFileDialog/0.0.1680.1010/-1680.0.1680.1010@0.0.1680.1010" timestamp="1575063699480" />
+    <state x="674" y="436" key="NewPhpFileDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1576106245868" />
+    <state x="432" y="240" key="Vcs.Push.Dialog.v2" timestamp="1576184419192">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="432" y="240" key="Vcs.Push.Dialog.v2/0.0.1680.1010/-1680.0.1680.1010@0.0.1680.1010" timestamp="1576184419192" />
+    <state x="548" y="332" key="com.intellij.ide.util.TipDialog" timestamp="1576178216673">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="548" y="332" key="com.intellij.ide.util.TipDialog/0.0.1680.1010/1680.0.1440.860@0.0.1680.1010" timestamp="1576117534093" />
+    <state x="548" y="332" key="com.intellij.ide.util.TipDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1576178216673" />
+    <state x="621" y="220" key="git4idea.branch.GitSmartOperationDialog" timestamp="1576186211621">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="621" y="220" key="git4idea.branch.GitSmartOperationDialog/0.0.1680.1010/-1680.0.1680.1010@0.0.1680.1010" timestamp="1576186211621" />
+    <state x="566" y="308" key="git4idea.merge.GitPullDialog" timestamp="1576183774811">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="566" y="308" key="git4idea.merge.GitPullDialog/0.0.1680.1010/-1680.0.1680.1010@0.0.1680.1010" timestamp="1576183774811" />
+    <state x="503" y="217" width="672" height="678" key="search.everywhere.popup" timestamp="1576106301112">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="503" y="217" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1576106301112" />
   </component>
 </project>
