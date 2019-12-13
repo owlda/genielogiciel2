@@ -5,25 +5,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Circuit</title>
-    <link rel="stylesheet" href="assets/css/hover-min.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assetsIvan/css/hover-min.css">
+    <link rel="stylesheet" href="assetsIvan/css/animate.css">
+    <link rel="stylesheet" href="assetsIvan/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
-    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
-    <link rel="stylesheet" href="assets/css/Article-Clean.css">
-    <link rel="stylesheet" href="assets/css/Article-Dual-Column.css">
-    <link rel="stylesheet" href="assets/css/Article-List.css">
-    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
-    <link rel="stylesheet" href="assets/css/Footer-Clean.css">
-    <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assetsIvan/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assetsIvan/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="assetsIvan/css/Article-Clean.css">
+    <link rel="stylesheet" href="assetsIvan/css/Article-Dual-Column.css">
+    <link rel="stylesheet" href="assetsIvan/css/Article-List.css">
+    <link rel="stylesheet" href="assetsIvan/css/Footer-Basic.css">
+    <link rel="stylesheet" href="assetsIvan/css/Footer-Clean.css">
+    <link rel="stylesheet" href="assetsIvan/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="assetsIvan/css/styles.css">
 
 </head>
 
 <body>
 <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
-    <div class="container"><img src="assets/img/travel-icon.png" style="width: 30px;height: 30px;margin-right: 5px;"><a class="navbar-brand" href="#"><strong>Northern Star Travel</strong></a><a href="#"><i class="icon ion-android-call" style="margin-right: 10px;"></i>1-800-885-8555</a>
+    <div class="container"><img src="assetsIvan/img/travel-icon.png" style="width: 30px;height: 30px;margin-right: 5px;"><a class="navbar-brand" href="#"><strong>Northern Star Travel</strong></a><a href="#"><i class="icon ion-android-call" style="margin-right: 10px;"></i>1-800-885-8555</a>
         <select
             style="margin: 5px;">
             <option value="12" selected="">FR</option>
@@ -95,7 +95,7 @@
             <div class="col" style="flex-grow: 1;">
                 <div class="carousel slide" data-ride="carousel" id="carousel-1">
                     <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active"><img class="w-100 d-block" src="assets/img/desk.jpg" alt="Slide Image" loading="auto"></div>
+                        <div class="carousel-item active"><img class="w-100 d-block" src="assetsIvan/img/desk.jpg" alt="Slide Image" loading="auto"></div>
                         <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                         <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
                     </div>
@@ -120,7 +120,7 @@
             <div class="card" style="padding: 10px;">
                 <div class="list-group-item text-white bg-info">
                     <p>Paragraph fdsf fsdf sdfsdf sdf sdfsdf sdfsdf sdf sdf fdsf sdfsd &nbsp;fsdf&nbsp;</p>
-                </div><img class="card-img w-100 d-block" src="assets/img/building.jpg">
+                </div><img class="card-img w-100 d-block" src="assetsIvan/img/building.jpg">
                 <div class="list-group-item text-white bg-dark" style="text-align: center;display: inline;">
                     <h2 class="text-center my-1 text-nowrap" style="display: inline;margin-bottom: 10px;">50 000$</h2><button class="btn btn-primary hvr-ripple-in" style="display: inline;margin-bottom: 10px;margin-left: 35px;">Acheter</button></div>
                 <div class="card-body">
@@ -131,7 +131,7 @@
             <div class="card" style="padding: 10px;">
                 <div class="list-group-item text-white bg-info">
                     <p>Paragraph fdsf fsdf sdfsdf sdf sdfsdf sdfsdf sdf sdf fdsf sdfsd &nbsp;fsdf&nbsp;</p>
-                </div><img class="card-img w-100 d-block" src="assets/img/building.jpg">
+                </div><img class="card-img w-100 d-block" src="assetsIvan/img/building.jpg">
                 <div class="list-group-item text-white bg-dark" style="text-align: center;display: inline;">
                     <h2 class="text-center my-1 text-nowrap" style="display: inline;margin-bottom: 10px;">50 000$</h2><button class="btn btn-primary hvr-ripple-in" style="display: inline;margin-bottom: 10px;margin-left: 35px;">Acheter</button></div>
                 <div class="card-body">
@@ -142,7 +142,7 @@
             <div class="card" style="padding: 10px;">
                 <div class="list-group-item text-white bg-info">
                     <p>Paragraph fdsf fsdf sdfsdf sdf sdfsdf sdfsdf sdf sdf fdsf sdfsd &nbsp;fsdf&nbsp;</p>
-                </div><img class="card-img w-100 d-block" src="assets/img/building.jpg">
+                </div><img class="card-img w-100 d-block" src="assetsIvan/img/building.jpg">
                 <div class="list-group-item text-white bg-dark" style="text-align: center;display: inline;">
                     <h2 class="text-center my-1 text-nowrap" style="display: inline;margin-bottom: 10px;">50 000$</h2><button class="btn btn-primary hvr-ripple-in" style="display: inline;margin-bottom: 10px;margin-left: 35px;">Acheter</button></div>
                 <div class="card-body">
@@ -188,8 +188,8 @@
         </div>
     </footer>
 </div>
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assetsIvan/js/jquery.min.js"></script>
+<script src="assetsIvan/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
