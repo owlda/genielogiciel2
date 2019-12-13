@@ -14,19 +14,8 @@
 </head>
 
 <body>
-<nav class="navbar navbar-light navbar-expand-md navigation-clean-button bg-warning">
-    <div class="container"><a class="navbar-brand" href="#">Voyages Merveille</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse"
-             id="navcol-1">
-            <ul class="nav navbar-nav mr-auto">
-                <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Circuits</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#">La carte</a></li>
-                <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Profile</a>
-                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
-                </li>
-            </ul><span class="navbar-text actions"> <a class="login" href="#">Connexion</a><a class="btn btn-light action-button" role="button" href="#">Devenir un membre</a></span></div>
-    </div>
-</nav>
+<?php include __DIR__.'/tmp/template/menu.tpl '?>
+
 <div class="container">
     <div class="carousel slide" data-ride="carousel" id="carousel-2">
         <div class="carousel-inner" role="listbox">
@@ -62,37 +51,9 @@
         </div>
     </div>
 </div>
-<footer></footer>
-<div class="footer-dark">
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-md-3 item">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#">Web design</a></li>
-                        <li><a href="#">Development</a></li>
-                        <li><a href="#">Hosting</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-6 col-md-3 item">
-                    <h3>About</h3>
-                    <ul>
-                        <li><a href="#">Company</a></li>
-                        <li><a href="#">Team</a></li>
-                        <li><a href="#">Careers</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-6 item text">
-                    <h3>Northern Star</h3>
-                    <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
-                </div>
-                <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
-            </div>
-            <p class="copyright">Northern Star Travel © 2019</p>
-        </div>
-    </footer>
-</div>
+
+<?php include __DIR__.'/tmp/template/footer.tpl '?>
+
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
