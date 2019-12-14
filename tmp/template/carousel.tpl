@@ -1,4 +1,4 @@
-<div class="container" style="padding:20px">
+<div class="container" style="padding:20px; margin-bottom: 20px;">
     <div class="row">
         <div class="col-md-12">
             <div class="input-group" id="adv-search">
@@ -49,14 +49,14 @@
         </div>
     </div>
 </div>
-<div class="container animated zoomInRight">
+<div class="container animated zoomInRight" style="padding:20px; margin-bottom: 20px;">
     <div class="row">
         <div class="col" style="flex-grow: 1;">
             <div class="carousel slide" data-ride="carousel" id="carousel-1">
                 <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active"><img class="w-100 d-block" src="assetsIvan/img/desk.jpg" alt="Slide Image" loading="auto"></div>
-                    <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
-                    <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"></div>
+                    <div class="carousel-item active"><img class="w-100 d-block" src="assets/img/beach.jpg" alt="Slide Image" loading="auto"></div>
+                    <div class="carousel-item"><img class="w-100 d-block" src="assets/img/loft.jpg" alt="Slide Image"></div>
+                    <div class="carousel-item"><img class="w-100 d-block" src="assets/img/building.jpg" alt="Slide Image"></div>
                 </div>
                 <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button"
                                                                                                                                                                                                      data-slide="next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
@@ -68,9 +68,9 @@
             </div>
         </div>
         <div class="col" style="flex-grow: 1;">
-            <h1>Heading</h1>
-            <p>Paragraph fdsf sdf sdfsdfsdf fsdfsdf dsfsdf sdfsdf sdf sdf sdfsdfsdfsdfsd fsdf sdf sdf&nbsp;<br>graph fdsf sdf sdfsdfsdf fsdfsdf dsfsdf sdfsdf sdf sdf sdfsdfsdfsdfsd fsdf sdf sdf&nbsp;<br>graph fdsf sdf sdfsdfsdf fsdfsdf dsfsdf sdfsdf
-                sdf sdf sdfsdfsdfsdfsd fsdf sdf sdf<br><br></p>
+            <h1>Paris</h1>
+            <p>PLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br></p>
+            <button class="btn btn-primary" type="button">Ajouter au panier</button>
         </div>
     </div>
 </div>
