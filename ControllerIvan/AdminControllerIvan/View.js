@@ -4,10 +4,19 @@ var Vue=function(reponse){
         case "addcircuit" :
             AddCircuit_View(reponse);
             break;
+        case "register_theme" :
+            Enregistre_View(reponse);
+            break;
     }
 };
 
 
 function AddCircuit_View(reponse){
     $("#form-circuit").html(reponse.form);
+};
+
+function Enregistre_View(reponse){
+    alert("Thème a été ajouté...");
+    $("#ViewNewTheme").css("display", "none");
+    $("#SelectTheme").html(reponse.list_theme);
 };

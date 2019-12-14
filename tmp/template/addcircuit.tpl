@@ -18,7 +18,7 @@
     </div>
     <div class="form-group">
         <label style="display: block">{$theme}</label>
-        <select class="form-control" style="width:30%;display: inline">
+        <select class="form-control"  id="SelectTheme" style="width:30%;display: inline;">
             {foreach from=$arr_theme_circuit key=k item=v}
                 <option value="{$k}">{$v}</option>
             {/foreach}
@@ -27,7 +27,7 @@
     </div>
     <div class="form-group animated zoomInRight" id="ViewNewTheme" style="width: 30%;margin-left: 10%;display: none;">
         <label for="exampleInputEmail1">Nouveau thème</label>
-        <input type="text" class="form-control" >
+        <input type="text" class="form-control" id="NewTheme">
         <br>
         <input type="button" value="{$btn_submit}" id="btn_add_theme" class="btn btn-success" onclick="BtnAddTheme()">
         <input type="button" value="Annuler" id="btn_not_theme" class="btn btn-secondary" onclick="BtnNotTheme()">

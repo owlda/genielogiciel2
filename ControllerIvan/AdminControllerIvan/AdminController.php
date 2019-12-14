@@ -6,11 +6,31 @@ $reponse = array();
 
 switch($_POST['action']){
     case "addcircuit" :
-        AddCircuit($smarty,$voc);
+        FormAddCircuit($smarty,$voc);
+        break;
+    case 'btn_register_theme':
+        EnregistrerTheme($smarty,$db);
         break;
 }
 
-function AddCircuit($smarty,$voc){
+//TODO Enregistrer nouveau theme
+function EnregistrerTheme($smarty,$db){
+    global $reponse;
+
+    $reponse['action'] = "register_theme";
+
+    $table = 'typecircuit';
+    $record['theme'] = $_POST['new_theme'];
+    $db->autoExecute($table, $record, 'INSERT');
+
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $rs = $db->getAssoc('SELECT * FROM typecircuit');
+    $smarty->assign('arr_list_theme', $rs);
+    $reponse['list_theme'] = $smarty->fetch("select_themes.tpl");
+}
+
+//TODO Ajouter Form un circuit
+function FormAddCircuit($smarty, $voc){
     global $reponse;
     $reponse['action'] = 'addcircuit';
 
