@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__.'/../../config_ivan/conf-ivan.php';
-require_once __DIR__.'/../../voc/lb_en.php';
+require_once __DIR__.'/../../voc/lb_fr.php';
 
 $reponse = array();
 
@@ -24,8 +24,8 @@ function AddCircuit($smarty,$voc){
     //Array
     $arr_theme_circuit = $voc["theme_circuit"];
     $smarty->assign('arr_theme_circuit', $arr_theme_circuit);
-    $arr_ville_depart = $voc["ville_depart"];
-    $smarty->assign('arr_ville_depart', $arr_ville_depart);
+/*    $arr_ville_depart = $voc["ville_depart"];
+    $smarty->assign('arr_ville_depart', $arr_ville_depart);*/
 
     $reponse['form'] = $smarty->fetch("addcircuit.tpl");
 }

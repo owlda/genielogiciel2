@@ -2,6 +2,8 @@ $(document).ready(function () {
 
     new nicEditor({fullPanel : true}).panelInstance('NicEdit');
 
+
+
     $('#sd').click(function () {
         Create_Form_Ivan();
     });
@@ -15,6 +17,16 @@ $(document).ready(function () {
     });
 
 });
+
+function BtnViewNewTheme() {
+
+    $('#ViewNewTheme').css('display', 'block');
+}
+
+function BtnNotTheme() {
+
+    $('#ViewNewTheme').css('display', 'none');
+}
 
 function Create_Form_Ivan() {
 

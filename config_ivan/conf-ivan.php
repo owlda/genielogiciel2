@@ -1,4 +1,14 @@
 <?php
+//TODO Initializer ADOdb
+include __DIR__.'/../adodb5/adodb.inc.php';
+$db = NewADOConnection('mysqli');
+//Si vous utiliser un port pour connecter
+$db->port = 3307;
+$server = "localhost";
+$user = "root";
+$password = "";
+$database = "northernstartravel";
+$db->connect($server, $user, $password, $database);
 
 //TODO Initialization Smarty
 require __DIR__.'/../libs/Smarty/libs/Smarty.class.php';

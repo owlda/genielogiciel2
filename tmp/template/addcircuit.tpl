@@ -23,15 +23,18 @@
                 <option value="{$k}">{$v}</option>
             {/foreach}
         </select>
-        <button class="btn btn-primary" style="display: inline">{$btn_add_theme}</button>
+        <input type="button" value="{$btn_add_theme}" class="btn btn-primary" style="display: inline" onclick="BtnViewNewTheme()">
     </div>
-    <div class="form-group">
-        <label style="display: block">{$ville_depart}</label>
-        <select class="form-control" style="width:30%;">
-            {foreach from=$arr_ville_depart key=k item=v}
-                <option value=""{$k}>{$v}</option>
-            {/foreach}
-        </select>
+    <div class="form-group animated zoomInRight" id="ViewNewTheme" style="width: 30%;margin-left: 10%;display: none;">
+        <label for="exampleInputEmail1">Nouveau thème</label>
+        <input type="text" class="form-control" >
+        <br>
+        <input type="button" value="{$btn_submit}" id="btn_add_theme" class="btn btn-success" onclick="BtnAddTheme()">
+        <input type="button" value="Annuler" id="btn_not_theme" class="btn btn-secondary" onclick="BtnNotTheme()">
+    </div>
+    <div class="form-group animated zoomInRight" style="width: 35%">
+        <label for="exampleInputEmail1">{$ville_depart}</label>
+        <input type="text" class="form-control">
     </div>
     <button type="submit" id="btn_add_circuit" class="btn btn-primary">{$btn_submit}</button>
 </form>

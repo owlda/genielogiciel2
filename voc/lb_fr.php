@@ -1,5 +1,9 @@
 <?php
 $voc = array();
+//Array
+$voc["theme_circuit"] = array();
+$db->setFetchMode(ADODB_FETCH_ASSOC);
+$voc["theme_circuit"] = $db->getAssoc('SELECT * FROM typecircuit');
 
 //TODO vocabulary AddCircuit
 $voc["label_add_circuit"] = "Ajouter un circuit";
@@ -10,11 +14,6 @@ $voc["label_theme_circuit"] = "Thème:";
 $voc["btn_add_theme"] = "Ajouter un thème";
 $voc["label_ville_depart"] = "Ville de départ";
 $voc["btn_submit"] = "Enregistrer";
-//Array
-$voc["theme_circuit"] = array();
-$voc["theme_circuit"]['50'] = "Historique";
-$voc["theme_circuit"]['40'] = "Gastronomique";
-$voc["theme_circuit"]['2'] = "Ethnographique";
 
 $voc["ville_depart"] = array();
 $voc["ville_depart"]['50'] = "Montréal";

@@ -30,7 +30,7 @@
 <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
     <div class="container"><img src="../assetsIvan/img/travel-icon.png" style="width: 30px;height: 30px;margin-right: 5px;"><a class="navbar-brand" href="#"><strong>Northern Star Travel</strong></a><a href="#"><i class="icon ion-android-call" style="margin-right: 10px;"></i>1-800-885-8555</a>
         <select
-            style="margin: 5px;">
+                style="margin: 5px;">
             <option value="12" selected="">FR</option>
             <option value="13">EN</option>
             <option value="14">ES</option>
@@ -45,11 +45,6 @@
 </nav>
 <main>
     <div class="container" id="form-circuit">
-
-
-        <?php /*require '../tmp/template/addcircuit.tpl' */?>
-        <!--<button id="sd" type='button' class='btn btn-primary'>Ajouter circuit</button>-->
-
     </div>
 
 </main>
