@@ -1,15 +1,16 @@
+<a href="../pages/list_circuit.php" target="_blank">Liste des circuit</a>
 <h1>{$h1_circuit}</h1>
 <button id="verification-NicEdit">Verification Editor</button>
-<form class="animated zoomInRight" >
+<form class="animated zoomInRight" id="AddFormCircuit">
 
     <div class="form-group animated zoomInRight">
         <label for="exampleInputEmail1">{$title}</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" id="input_title" name="input_title">
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Date:</label>
         <div class="col-10">
-            <input class="form-control" style="width: 200px" type="date" data-date-format="DD MMMM YYYY" id="date-input">
+            <input class="form-control" style="width: 250px" type="datetime-local" data-date-format="DD MMMM YYYY" id="input_date" name="input_date">
         </div>
     </div>
     <div>
@@ -18,7 +19,7 @@
     </div>
     <div class="form-group">
         <label style="display: block">{$theme}</label>
-        <select class="form-control"  id="SelectTheme" style="width:30%;display: inline;">
+        <select class="form-control"  id="SelectTheme" name="SelectTheme" style="width:30%;display: inline;">
             {foreach from=$arr_theme_circuit key=k item=v}
                 <option value="{$k}">{$v}</option>
             {/foreach}
@@ -33,10 +34,10 @@
         <input type="button" value="Annuler" id="btn_not_theme" class="btn btn-secondary" onclick="BtnNotTheme()">
     </div>
     <div class="form-group animated zoomInRight" style="width: 35%">
-        <label for="exampleInputEmail1">{$ville_depart}</label>
-        <input type="text" class="form-control">
+        <label>{$ville_depart}</label>
+        <input type="text" class="form-control" id="input_ville_depart" name="input_ville_depart">
     </div>
-    <button type="submit" id="btn_add_circuit" class="btn btn-primary">{$btn_submit}</button>
+    <input type="button" id="btn_add_circuit" class="btn btn-primary" value="{$btn_submit}" onclick="BtnAddCircuit()">
 </form>
 
 <script src="../libs/nicEdit-latest.js"></script>

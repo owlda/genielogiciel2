@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-12-14 23:56:19
+/* Smarty version 3.1.33, created on 2019-12-15 13:57:16
   from 'C:\xampp\htdocs\files\Web3\genielogiciel2\tmp\template\addcircuit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5df56893ef9d39_46644853',
+  'unifunc' => 'content_5df62dac844680_11427245',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e9e633924ae36960e42e9f1af742db632d833eb3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\files\\Web3\\genielogiciel2\\tmp\\template\\addcircuit.tpl',
-      1 => 1576364176,
+      1 => 1576414632,
       2 => 'file',
     ),
   ),
@@ -20,21 +20,22 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5df56893ef9d39_46644853 (Smarty_Internal_Template $_smarty_tpl) {
-?><h1><?php echo $_smarty_tpl->tpl_vars['h1_circuit']->value;?>
+function content_5df62dac844680_11427245 (Smarty_Internal_Template $_smarty_tpl) {
+?><a href="../pages/list_circuit.php" target="_blank">Liste des circuit</a>
+<h1><?php echo $_smarty_tpl->tpl_vars['h1_circuit']->value;?>
 </h1>
 <button id="verification-NicEdit">Verification Editor</button>
-<form class="animated zoomInRight" >
+<form class="animated zoomInRight" id="AddFormCircuit">
 
     <div class="form-group animated zoomInRight">
         <label for="exampleInputEmail1"><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
 </label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" id="input_title" name="input_title">
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Date:</label>
         <div class="col-10">
-            <input class="form-control" style="width: 200px" type="date" data-date-format="DD MMMM YYYY" id="date-input">
+            <input class="form-control" style="width: 250px" type="datetime-local" data-date-format="DD MMMM YYYY" id="input_date" name="input_date">
         </div>
     </div>
     <div>
@@ -44,7 +45,7 @@ function content_5df56893ef9d39_46644853 (Smarty_Internal_Template $_smarty_tpl)
     <div class="form-group">
         <label style="display: block"><?php echo $_smarty_tpl->tpl_vars['theme']->value;?>
 </label>
-        <select class="form-control"  id="SelectTheme" style="width:30%;display: inline;">
+        <select class="form-control"  id="SelectTheme" name="SelectTheme" style="width:30%;display: inline;">
             <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['arr_theme_circuit']->value, 'v', false, 'k');
 if ($_from !== null) {
@@ -70,12 +71,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         <input type="button" value="Annuler" id="btn_not_theme" class="btn btn-secondary" onclick="BtnNotTheme()">
     </div>
     <div class="form-group animated zoomInRight" style="width: 35%">
-        <label for="exampleInputEmail1"><?php echo $_smarty_tpl->tpl_vars['ville_depart']->value;?>
+        <label><?php echo $_smarty_tpl->tpl_vars['ville_depart']->value;?>
 </label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" id="input_ville_depart" name="input_ville_depart">
     </div>
-    <button type="submit" id="btn_add_circuit" class="btn btn-primary"><?php echo $_smarty_tpl->tpl_vars['btn_submit']->value;?>
-</button>
+    <input type="button" id="btn_add_circuit" class="btn btn-primary" value="<?php echo $_smarty_tpl->tpl_vars['btn_submit']->value;?>
+" onclick="BtnAddCircuit()">
 </form>
 
 <?php echo '<script'; ?>
