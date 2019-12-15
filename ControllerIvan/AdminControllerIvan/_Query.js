@@ -6,6 +6,34 @@ function GetUrlController() {
     return dir + '/ControllerIvan/AdminControllerIvan/AdminController.php';
 }
 
+//TODO Load form for edit un circuit
+function LoadModifierCircuit() {
+    var FormModCircuit = new FormData();
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    FormModCircuit.append('action','modcircuit');
+    FormModCircuit.append('idCircuit',url.searchParams.get("id"));
+    var controller = GetUrlController();
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormModCircuit,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+}
+
+//TODO Load form for add un circuit
 function LoadAddCircuit(){
     var FormAddCircuit = new FormData();
     FormAddCircuit.append('action','addcircuit');
@@ -29,18 +57,13 @@ function LoadAddCircuit(){
     });
 }
 
+//TODO Enregistrer un theme
 function BtnAddTheme(){
-
     var FormAddTheme = new FormData();
     FormAddTheme.append('action','btn_register_theme');
     let new_theme = $('#NewTheme').val();
     FormAddTheme.append('new_theme',new_theme);
-
-    var loc = window.location.pathname;
-    var dir = loc.substring(0, loc.lastIndexOf('/'));
-    var dir = dir.substring(0, dir.length-1);
-    var dir = dir.substring(0, dir.lastIndexOf('/'));
-    var controller = dir + '/ControllerIvan/AdminControllerIvan/AdminController.php';
+    var controller = GetUrlController();
 
     $.ajax({
         type : 'POST',
@@ -62,6 +85,7 @@ function BtnAddTheme(){
 
 }
 
+//TODO Enregistrer un circuit
 function BtnAddCircuit(){
 
     var FormAddCircuit = new FormData(AddFormCircuit);
@@ -96,6 +120,7 @@ function BtnAddCircuit(){
 
 }
 
+//TODO Lister des circuit
 function ListerCircuit(){
     var FormAddCircuit = new FormData();
     FormAddCircuit.append('action','list_circuit');

@@ -22,8 +22,8 @@
                 {*<td>{$value.idCircuit}</td>*}
                 <td>{$value.titre}</td>
                 <td>{$value.prix}</td>
-                <td><strong>{$value.idStatutCircuit}</strong></td>
-                <td>{$value.idTheme}</td>
+                <td><strong>{$value.NomStatutCircuit}</strong></td>
+                <td>{$value.NomTheme}</td>
                 <td>{$value.dateDepart}</td>
                 <td>{$value.dateFin}</td>
                 <td>{$value.duree}</td>
