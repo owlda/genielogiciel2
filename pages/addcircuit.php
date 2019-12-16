@@ -23,6 +23,9 @@
     <script src="../ControllerIvan/AdminControllerIvan/View.js"></script>
     <script src="../libs/jquery-3.4.1.min.js"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
+
 
 </head>
 
@@ -46,6 +49,7 @@
 <main>
     <div class="container" id="form-circuit">
     </div>
+
 </main>
 <div class="footer-clean animated zoomInRight">
     <footer>

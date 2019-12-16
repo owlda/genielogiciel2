@@ -88,7 +88,9 @@ function FormModCircuit($smarty,$db, $voc){
         $date_html = explode(" ", $rs1[0]['dateDepart']);
         $db_dateDepart = $date_html[0]."T".explode(":", $date_html[1])[0].":".explode(":", $date_html[1])[1];
         $smarty->assign('db_dateDepart', $db_dateDepart);
-        $smarty->assign('db_dateFin', $rs1[0]['dateFin']);
+        $date_html = explode(" ", $rs1[0]['dateFin']);
+        $dateFin = $date_html[0]."T".explode(":", $date_html[1])[0].":".explode(":", $date_html[1])[1];
+        $smarty->assign('db_dateFin', $dateFin);
         $smarty->assign('db_idStatutCircuit', $rs1[0]['idStatutCircuit']);
 
         $reponse['arr_theme_circuit'] = $smarty->fetch("editcircuit.tpl");

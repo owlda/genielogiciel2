@@ -11,8 +11,6 @@
 <div class="container">
     <form action="upload.php" class="dropzone" id="dropzoneFrom">
     </form>
-
-    </form>
     <br />
     <br />
     <div align="center">
@@ -29,7 +27,6 @@
 <script>
 
     $(document).ready(function(){
-
         Dropzone.options.dropzoneFrom = {
             autoProcessQueue: false,
             acceptedFiles:".png,.jpg,.gif,.bmp,.jpeg",
@@ -49,9 +46,7 @@
                 });
             },
         };
-
         list_image();
-
         function list_image()
         {
             $.ajax({

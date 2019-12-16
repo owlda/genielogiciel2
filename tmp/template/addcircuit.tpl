@@ -2,13 +2,12 @@
 <h1>{$h1_circuit}</h1>
 <button id="verification-NicEdit">Verification Editor</button>
 <form class="animated zoomInRight" id="AddFormCircuit">
-
     <div class="form-group animated zoomInRight">
-        <label for="exampleInputEmail1">{$title}</label>
+        <label>{$title}</label>
         <input type="text" class="form-control" id="input_title" name="input_title">
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Date:</label>
+        <label for="exampleInputEmail1">Date de départ:</label>
         <div class="col-10">
             <input class="form-control" style="width: 250px" type="datetime-local" data-date-format="DD MMMM YYYY" id="input_date" name="input_date">
         </div>

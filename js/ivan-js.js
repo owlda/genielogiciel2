@@ -2,15 +2,12 @@ $(document).ready(function () {
 
     new nicEditor({fullPanel : true}).panelInstance('NicEdit');
 
-
-
     $('#sd').click(function () {
         Create_Form_Ivan();
     });
 
-    //TODO Получить переменную с редактора
+    //TODO Получить переменную с редактора по клику на элемент
     $('#verification-NicEdit').click(function () {
-
         var nicE = new nicEditors.findEditor('NicEdit');
         question = nicE.getContent();
         alert(question);
@@ -19,17 +16,14 @@ $(document).ready(function () {
 });
 
 function BtnViewNewTheme() {
-
     $('#ViewNewTheme').css('display', 'block');
 }
 
 function BtnNotTheme() {
-
     $('#ViewNewTheme').css('display', 'none');
 }
 
 function Create_Form_Ivan() {
-
     $('#form-circuit').text("");
 
     //TODO Создание формы для добавления circuit

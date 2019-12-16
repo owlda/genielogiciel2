@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-12-15 13:57:16
+/* Smarty version 3.1.33, created on 2019-12-16 22:47:31
   from 'C:\xampp\htdocs\files\Web3\genielogiciel2\tmp\template\addcircuit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5df62dac844680_11427245',
+  'unifunc' => 'content_5df7fb730bd2d0_92930090',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e9e633924ae36960e42e9f1af742db632d833eb3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\files\\Web3\\genielogiciel2\\tmp\\template\\addcircuit.tpl',
-      1 => 1576414632,
+      1 => 1576532808,
       2 => 'file',
     ),
   ),
@@ -20,20 +20,19 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5df62dac844680_11427245 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5df7fb730bd2d0_92930090 (Smarty_Internal_Template $_smarty_tpl) {
 ?><a href="../pages/list_circuit.php" target="_blank">Liste des circuit</a>
 <h1><?php echo $_smarty_tpl->tpl_vars['h1_circuit']->value;?>
 </h1>
 <button id="verification-NicEdit">Verification Editor</button>
 <form class="animated zoomInRight" id="AddFormCircuit">
-
     <div class="form-group animated zoomInRight">
-        <label for="exampleInputEmail1"><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
+        <label><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
 </label>
         <input type="text" class="form-control" id="input_title" name="input_title">
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Date:</label>
+        <label for="exampleInputEmail1">Date de départ:</label>
         <div class="col-10">
             <input class="form-control" style="width: 250px" type="datetime-local" data-date-format="DD MMMM YYYY" id="input_date" name="input_date">
         </div>
