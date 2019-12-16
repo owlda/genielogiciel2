@@ -25,7 +25,7 @@
 </head>
 
 <body onload="initialiserMenu()">
-<?php include __DIR__ . '/tmp/template/menu.tpl ' ?>
+<?php include __DIR__ . '/tmp/template/menu_forms.tpl ' ?>
 
 <div class="container">
     <div class="carousel slide" data-ride="carousel" id="carousel-2">
