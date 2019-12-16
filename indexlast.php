@@ -8,10 +8,10 @@
     <script src="js/ivan-js.js"></script>
     <script src="libs/nicEdit-latest.js"></script>
     <?php
-        require_once 'voc/lb_en.php';
+    require_once 'voc/lb_en.php';
     ?>
     <script>
-        var obj = <?php echo json_encode($voc,JSON_UNESCAPED_UNICODE); ?>
+        var obj = <?php echo json_encode($voc, JSON_UNESCAPED_UNICODE); ?>
     </script>
 </head>
 <body>
@@ -21,9 +21,6 @@
 <button id="verification-NicEdit">Verification</button>
 
 <div id="form-circuit" style="width: 50%;margin-left: 20%"></div>
-
-
-
 
 
 <!--Modal Login -->
@@ -64,7 +61,9 @@
 </div>
 <!--Modal Login -->
 
-<div class="modal fade" id="modal_calendar" tabindex="-1" role="dialog" aria-labelledby="Modal-Login" aria-hidden="true">
+
+<div class="modal fade" id="modal_calendar" tabindex="-1" role="dialog" aria-labelledby="Modal-Login"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -78,7 +77,7 @@
                 <form action="">
                     с <input type="text" value="dd-mm-yy" onfocus="this.select();lcs(this)"
                              onclick="event.cancelBubble=true;this.select();lcs(this)">
-                    по <input type="text"  value="dd-mm-yy" onfocus="this.select();lcs(this)"
+                    по <input type="text" value="dd-mm-yy" onfocus="this.select();lcs(this)"
                               onclick="event.cancelBubble=true;this.select();lcs(this)">
                     </p>
                 </form>
@@ -92,8 +91,8 @@
             </div>
         </div>
     </div>
-
 </div>
+
 
 </body>
 

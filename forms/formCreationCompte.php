@@ -1,4 +1,6 @@
 <form id="formCreationCompte" name="formCreationCompte">
+    <button type="button" class="close" data-dismiss="modal"
+            onclick="fermerForms()">&times;</button>
     <h4>Créez votre compte</h4><br>
 
     <label for="txtPrenomNouv">Prénom</label><br>
