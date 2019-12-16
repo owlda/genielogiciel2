@@ -60,7 +60,6 @@ function FormAddCircuit($smarty, $voc){
 
 //TODO Load form for edit un circuit param - ?id=
 function FormModCircuit($smarty,$db, $voc){
-
     global $reponse;
     $reponse['action'] = 'modcircuit';
 
@@ -91,7 +90,6 @@ function FormModCircuit($smarty,$db, $voc){
         $smarty->assign('db_dateDepart', $db_dateDepart);
         $smarty->assign('db_dateFin', $rs1[0]['dateFin']);
         $smarty->assign('db_idStatutCircuit', $rs1[0]['idStatutCircuit']);
-
 
         $reponse['arr_theme_circuit'] = $smarty->fetch("editcircuit.tpl");
 
