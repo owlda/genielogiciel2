@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-12-16 22:41:19
+/* Smarty version 3.1.33, created on 2019-12-17 18:18:32
   from 'C:\xampp\htdocs\files\Web3\genielogiciel2\tmp\template\editcircuit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5df7f9ffdfbcf2_69755226',
+  'unifunc' => 'content_5df90de860dd41_31428117',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4013bbefb7679fc7c94e21810813c64d4c363f97' => 
     array (
       0 => 'C:\\xampp\\htdocs\\files\\Web3\\genielogiciel2\\tmp\\template\\editcircuit.tpl',
-      1 => 1576532476,
+      1 => 1576603104,
       2 => 'file',
     ),
   ),
@@ -20,22 +20,43 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5df7f9ffdfbcf2_69755226 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5df90de860dd41_31428117 (Smarty_Internal_Template $_smarty_tpl) {
 ?><a href="../pages/list_circuit.php" target="_blank">Liste des circuit</a>
 <h1><?php echo $_smarty_tpl->tpl_vars['h1_circuit']->value;?>
 </h1>
 <button id="verification-NicEdit">Verification Editor</button>
 <form class="animated zoomInRight" id="AddFormCircuit">
+    <div class="form-group">
+        <label style="display: block">Status:</label>
+        <select class="form-control"  id="SelectTheme" name="SelectTheme" style="width:30%;display: inline;">
+            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['arr_status_circuit']->value, 'v', false, 'k');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['k']->value => $_smarty_tpl->tpl_vars['v']->value) {
+?>
+                <option value="<?php echo $_smarty_tpl->tpl_vars['k']->value;?>
+"
+                        <?php if ($_smarty_tpl->tpl_vars['k']->value == $_smarty_tpl->tpl_vars['db_idStatutCircuit']->value) {?> selected="selected" <?php }?>>
+                    <?php echo $_smarty_tpl->tpl_vars['v']->value;?>
+
+                </option>
+            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+        </select>
+    </div>
+    <div class="form-group animated zoomInRight">
+        <label>Prix:</label>
+        <input type="text" class="form-control" id="input_title" name="input_title" style="width: 100px" value="<?php echo $_smarty_tpl->tpl_vars['db_prix']->value;?>
+">
+    </div>
+
     <div class="form-group animated zoomInRight">
         <label><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
 </label>
         <input type="text" class="form-control" id="input_title" name="input_title" value="<?php echo $_smarty_tpl->tpl_vars['db_titre']->value;?>
 ">
-    </div>
-    <div class="form-group animated zoomInRight">
-        <label for="exampleInputEmail1">Test date</label>
-        <input type="text" value="<?php echo $_smarty_tpl->tpl_vars['db_dateDepart']->value;?>
-"  class="form-control" id="input_title" name="input_title">
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Date de début:</label>

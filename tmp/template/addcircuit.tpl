@@ -38,6 +38,5 @@
     </div>
     <input type="button" id="btn_add_circuit" class="btn btn-primary" value="{$btn_submit}" onclick="BtnAddCircuit()">
 </form>
-
 <script src="../libs/nicEdit-latest.js"></script>
 <script src="../js/ivan-js.js"></script>

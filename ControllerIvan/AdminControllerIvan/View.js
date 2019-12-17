@@ -19,7 +19,6 @@ var Vue=function(reponse){
     }
 };
 
-
 function AddCircuit_View(reponse){
     $("#form-circuit").html(reponse.arr_theme_circuit);
 };
@@ -39,5 +38,5 @@ function DetailCircuit_View(reponse) {
 }
 
 function ModCircuit_View(reponse) {
-    $("#form-circuit").html(reponse.arr_theme_circuit);
+    $("#form-circuit").html(reponse.form_edit_circuit);
 }

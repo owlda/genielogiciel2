@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-12-16 22:47:31
+/* Smarty version 3.1.33, created on 2019-12-16 22:51:43
   from 'C:\xampp\htdocs\files\Web3\genielogiciel2\tmp\template\addcircuit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5df7fb730bd2d0_92930090',
+  'unifunc' => 'content_5df7fc6f15a317_19739921',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e9e633924ae36960e42e9f1af742db632d833eb3' => 
     array (
       0 => 'C:\\xampp\\htdocs\\files\\Web3\\genielogiciel2\\tmp\\template\\addcircuit.tpl',
-      1 => 1576532808,
+      1 => 1576533098,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5df7fb730bd2d0_92930090 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5df7fc6f15a317_19739921 (Smarty_Internal_Template $_smarty_tpl) {
 ?><a href="../pages/list_circuit.php" target="_blank">Liste des circuit</a>
 <h1><?php echo $_smarty_tpl->tpl_vars['h1_circuit']->value;?>
 </h1>
@@ -77,7 +77,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <input type="button" id="btn_add_circuit" class="btn btn-primary" value="<?php echo $_smarty_tpl->tpl_vars['btn_submit']->value;?>
 " onclick="BtnAddCircuit()">
 </form>
-
 <?php echo '<script'; ?>
  src="../libs/nicEdit-latest.js"><?php echo '</script'; ?>
 >

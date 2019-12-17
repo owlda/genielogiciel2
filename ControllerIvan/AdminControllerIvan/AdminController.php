@@ -1,5 +1,7 @@
 <?php
+//Config Ivan
 require_once __DIR__.'/../../config_ivan/conf-ivan.php';
+//Initialize vocabulary
 require_once __DIR__.'/../../voc/lb_fr.php';
 
 $reponse = array();
@@ -23,8 +25,6 @@ switch($_POST['action']){
     case 'modcircuit':
         FormModCircuit($smarty,$db, $voc);
         break;
-
-
 }
 
 //TODO Enregistrer nouveau theme
@@ -53,7 +53,7 @@ function FormAddCircuit($smarty, $voc){
     $smarty->assign('ville_depart', $voc["label_ville_depart"]);
 
     //Array
-    $arr_theme_circuit = $voc["theme_circuit"];
+    $arr_theme_circuit = $voc["arr_theme_circuit"];
     $smarty->assign('arr_theme_circuit', $arr_theme_circuit);
     $reponse['arr_theme_circuit'] = $smarty->fetch("addcircuit.tpl");
 }
@@ -64,6 +64,14 @@ function FormModCircuit($smarty,$db, $voc){
     $reponse['action'] = 'modcircuit';
 
     if ($_POST['idCircuit'] != "null"){
+        /* Array */
+        $arr_theme_circuit = $voc["arr_theme_circuit"];
+        $smarty->assign('arr_theme_circuit', $arr_theme_circuit);
+        $arr_status_circuit = $voc["arr_status_circuit"];
+        $smarty->assign('arr_status_circuit', $arr_status_circuit);
+        /* ---- */
+
+
         $smarty->assign('title', $voc["label_titre_circuit"]);
         $smarty->assign('theme', $voc["label_theme_circuit"]);
         $smarty->assign('btn_submit', $voc["btn_submit"]);
@@ -71,10 +79,7 @@ function FormModCircuit($smarty,$db, $voc){
         $smarty->assign('btn_add_theme', $voc["btn_add_theme"]);
         $smarty->assign('ville_depart', $voc["label_ville_depart"]);
 
-        //Array
-        $arr_theme_circuit = $voc["theme_circuit"];
-        $smarty->assign('arr_theme_circuit', $arr_theme_circuit);
-
+        //Get circuit by idCircuit
         $rs1 = GetAllCircuit($_POST['idCircuit'], $db);
 
         $smarty->assign('db_idCircuit', $rs1[0]['idCircuit']);
@@ -93,7 +98,8 @@ function FormModCircuit($smarty,$db, $voc){
         $smarty->assign('db_dateFin', $dateFin);
         $smarty->assign('db_idStatutCircuit', $rs1[0]['idStatutCircuit']);
 
-        $reponse['arr_theme_circuit'] = $smarty->fetch("editcircuit.tpl");
+        //Transfer form tpl for edit circuit
+        $reponse['form_edit_circuit'] = $smarty->fetch("editcircuit.tpl");
 
 
     } else {
