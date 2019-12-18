@@ -1,5 +1,6 @@
 <?php
-$folder_name = 'upload/';
+//@mkdir('../pages/upload/'.$num_circuit); need to test
+$folder_name = '../pages/upload/';
 
 if(!empty($_FILES))
 {
@@ -16,7 +17,7 @@ if(isset($_POST["name"]))
 
 $result = array();
 
-$files = scandir('upload');
+$files = scandir('../pages/upload');
 
 $output = '<div class="row">';
 
