@@ -1,6 +1,9 @@
 var Vue=function(reponse){
 
     switch(reponse.action){
+        case "addDenis" :
+            AddCircuit_ViewDenis(reponse);
+            break;
         case "addcircuit" :
             AddCircuit_View(reponse);
             break;
@@ -16,11 +19,16 @@ var Vue=function(reponse){
         case "modcircuit" :
             ModCircuit_View(reponse);
             break;
+
     }
 };
 
 
 function AddCircuit_View(reponse){
+    $("#form-circuit").html(reponse.arr_theme_circuit);
+};
+
+function AddCircuit_ViewDenis(reponse){
     $("#form-circuit").html(reponse.arr_theme_circuit);
 };
 

@@ -2,7 +2,7 @@
 <html>
     <?php include __DIR__ . '/tmp/template/headerDenis.tpl ' ?>
 <body>
-    <?php include __DIR__.'/tmp/template/menu.tpl '?>
+    <?php include __DIR__.'/tmp/template/menu-ren.tpl '?>
 <div class="container">
     <?php include __DIR__.'/tmp/template/carousel.tpl '?>
 </div>
