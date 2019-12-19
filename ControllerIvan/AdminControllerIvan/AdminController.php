@@ -58,7 +58,7 @@ function FormAddCircuit($smarty, $voc){
     //Array
     $arr_theme_circuit = $voc["arr_theme_circuit"];
     $smarty->assign('arr_theme_circuit', $arr_theme_circuit);
-    $reponse['arr_theme_circuit'] = $smarty->fetch("form_add_circuit.tpl");
+    $reponse['form_add_circuit'] = $smarty->fetch("form_add_circuit.tpl");
 }
 
 //TODO Load form for edit un circuit param - ?id=
@@ -82,7 +82,7 @@ function FormModCircuit($smarty,$db, $voc){
         $smarty->assign('ville_depart', $voc["label_ville_depart"]);
 
         //Get circuit by idCircuit
-        $rs1 = GetAllCircuit($_POST['idCircuit'], $db);
+        $rs1 = GetCircuitById($_POST['idCircuit'], $db);
 
         $smarty->assign('db_idCircuit', $rs1[0]['idCircuit']);
         $smarty->assign('db_titre', $rs1[0]['titre']);
@@ -98,8 +98,8 @@ function FormModCircuit($smarty,$db, $voc){
         $smarty->assign('db_dateFin', $dateFin);
         $smarty->assign('db_idStatutCircuit', $rs1[0]['idStatutCircuit']);
 
-        //Transfer form tpl for edit circuit
-        $reponse['form_edit_circuit'] = $smarty->fetch("edit_circuit.tpl");
+        //Transfer form tpl to edit circuit
+        $reponse['form_edit_circuit'] = $smarty->fetch("form_edit_circuit.tpl");
 
 
     } else {
@@ -149,7 +149,6 @@ function ListerCircuit($smarty,$db){
         $rs[$key]['NomStatutCircuit'] = $supres[$rs[$key]['idStatutCircuit']];
     }
 
-
     $smarty->assign('arr_list_circuit', $rs);
     $reponse['list_circuit'] = $smarty->fetch("list_circuit.tpl");
 
@@ -165,8 +164,7 @@ function DetailCircuit($smarty,$db){
     $resultat = preg_match($regex, (int)$idCircuit);
     if($resultat === 1)
     {
-        $rs1 = GetAllCircuit($idCircuit, $db);
-
+        $rs1 = GetCircuitById($idCircuit, $db);
         $smarty->assign('idCircuit', $rs1[0]['idCircuit']);
         $smarty->assign('titre', $rs1[0]['titre']);
         $smarty->assign('description', $rs1[0]['description']);
@@ -178,6 +176,10 @@ function DetailCircuit($smarty,$db){
         $smarty->assign('dateDepart', $rs1[0]['dateDepart']);
         $smarty->assign('dateFin', $rs1[0]['dateFin']);
         $smarty->assign('idStatutCircuit', $rs1[0]['idStatutCircuit']);
+
+        $arr_etape = GetAllEtapeFromCircuit($idCircuit, $db);
+        $smarty->assign('arr_etape', $arr_etape);
+        $smarty->assign('Nb_etape', sizeof($arr_etape));
 
         //Transfer data to *.tpl
         $smarty->fetch("modal_del_circuit.tpl");
@@ -194,10 +196,44 @@ function DetailCircuit($smarty,$db){
 //TODO Form Add etape
 function FormAddEtape($smarty,$db, $voc){
 
+    global $reponse;
+    $reponse['action'] = 'addetape';
+
+    $idCircuit = $_POST["idCircuit"];
+    $regex = "/^[1-9]+$/";
+    $resultat = preg_match($regex, (int)$idCircuit);
+
+    if($resultat === 1)
+    {
+        /* Array */
+        $smarty->assign('arr_pays', $voc["arr_pays"]);
+
+        $rs1 = GetCircuitById($idCircuit, $db);
+        $smarty->assign('idCircuit', $rs1[0]['idCircuit']);
+        $smarty->assign('titre', $rs1[0]['titre']);
+        $smarty->assign('description', $rs1[0]['description']);
+        $smarty->assign('duree', $rs1[0]['duree']);
+        $smarty->assign('pointDepart', $rs1[0]['pointDepart']);
+        $smarty->assign('prix', $rs1[0]['prix']);
+        $smarty->assign('idTheme', $rs1[0]['idTheme']);
+        $smarty->assign('NomTheme', $rs1[0]['NomTheme']);
+        $smarty->assign('dateDepart', $rs1[0]['dateDepart']);
+        $smarty->assign('dateFin', $rs1[0]['dateFin']);
+        $smarty->assign('idStatutCircuit', $rs1[0]['idStatutCircuit']);
+
+        //Transfer data to *.tpl
+        $reponse['form_add_etape'] = $smarty->fetch("form_add_etape.tpl");
+
+    }
+    else
+    {
+
+
+    }
 }
 
 //TODO Get All Circuit from DB
-function GetAllCircuit($idCircuit, $db){
+function GetCircuitById($idCircuit, $db){
 
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $SQL = 'SELECT * FROM circuit WHERE idCircuit = '.$idCircuit;
@@ -221,6 +257,22 @@ function DateDBtoInputDate($DateDB){
     $date_html = explode(" ", $DateDB);
     $DateDB = $date_html[0]."T".explode(":", $date_html[1])[0].":".explode(":", $date_html[1])[1];
     return $DateDB;
+}
+
+//TODO Get All Circuit from DB
+function GetAllEtapeFromCircuit($idCircuit, $db){
+
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $SQL = 'SELECT * FROM etape WHERE idCircuit = '.$idCircuit;
+    $rs = $db->getAll($SQL);
+
+    foreach($rs as $key=>$value){
+        $db->setFetchMode(ADODB_FETCH_ASSOC);
+        $SQL1 = 'SELECT * FROM pays WHERE idPays ='. $rs[$key]['idPays'];
+        $supres = $db->getAssoc($SQL1);
+        $rs[$key]['NomPays'] = $supres[$rs[$key]['idPays']];
+    }
+    return $rs;
 }
 
 

@@ -16,11 +16,18 @@ var Vue=function(reponse){
         case "modcircuit" :
             ModCircuit_View(reponse);
             break;
+        case "addetape" :
+            AddEtape_View(reponse);
+            break;
     }
 };
 
 function AddCircuit_View(reponse){
-    $("#form-circuit").html(reponse.arr_theme_circuit);
+    $("#form-circuit").html(reponse.form_add_circuit);
+};
+
+function AddEtape_View(reponse){
+    $("#form-etape").html(reponse.form_add_etape);
 };
 
 function EnregistreTheme_View(reponse){

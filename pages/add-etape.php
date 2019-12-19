@@ -15,10 +15,10 @@
     <script src="../libs/jquery-3.4.1.min.js"></script>
 </head>
 
-<body>
+<body onload="LoadAddEtape()">
 <?php include __DIR__.'/../tmp/template/menu-renIvan.tpl'?>
 <main>
-    <div class="container" id="form-etape"><?php include '../tmp/template/form_add_etape.tpl' ?></div>
+    <div class="container" id="form-etape"></div>
 </main>
 <div class="footer-clean animated zoomInRight">
     <?php include __DIR__.'/../tmp/template/footer.tpl '?>

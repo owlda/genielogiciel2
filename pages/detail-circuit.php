@@ -24,8 +24,10 @@
         <section id="ajouter-circuit" class="animated zoomInRight"></section>
         <!--Ajouter un etape-->
         <section id="ajouter-etape" class="animated zoomInRight"></section>
+
+
         <!--Ajouter un jour-->
-        <section id="ajouter-jour">
+        <!--<section id="ajouter-jour">
             <button class="btn btn-success" type="button" style="margin: 5px;">Ajouter un jour</button>
             <div class="border border-primary rounded-lg" style="margin-left: 30px;width: 70%;">
                 <div style="padding: 5px;">
@@ -39,7 +41,7 @@
                     <div></div>
                 </div>
             </div>
-        </section>
+        </section>-->
     </div>
 </main>
 </body>
