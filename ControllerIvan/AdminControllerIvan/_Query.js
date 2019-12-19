@@ -57,6 +57,29 @@ function LoadAddCircuit(){
     });
 }
 
+function LoadAddCircuitDenis(){
+    var FormAddCircuit = new FormData();
+    FormAddCircuit.append('action','addDenis');
+    var controller = GetUrlController();
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddCircuit,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+}
+
 //TODO Enregistrer un theme
 function BtnAddTheme(){
     var FormAddTheme = new FormData();

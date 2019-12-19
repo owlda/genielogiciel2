@@ -5,6 +5,9 @@ require_once __DIR__.'/../../voc/lb_fr.php';
 $reponse = array();
 
 switch($_POST['action']){
+    case "addDenis" :
+        FormAddCircuitDenis($smarty,$voc);
+        break;
     case "addcircuit" :
         FormAddCircuit($smarty,$voc);
         break;
@@ -57,6 +60,25 @@ function FormAddCircuit($smarty, $voc){
     $smarty->assign('arr_theme_circuit', $arr_theme_circuit);
     $reponse['arr_theme_circuit'] = $smarty->fetch("addcircuit.tpl");
 }
+
+// TODO Forl load add un circuit Denis
+function FormAddCircuitDenis($smarty, $voc){
+    global $reponse;
+    $reponse['action'] = 'addDenis';
+
+    $smarty->assign('title', $voc["label_titre_circuit"]);
+    $smarty->assign('theme', $voc["label_theme_circuit"]);
+    $smarty->assign('btn_submit', $voc["btn_submit"]);
+    $smarty->assign('h1_circuit', $voc["label_add_circuit"]);
+    $smarty->assign('btn_add_theme', $voc["btn_add_theme"]);
+    $smarty->assign('ville_depart', $voc["label_ville_depart"]);
+
+    //Array
+    $arr_theme_circuit = $voc["theme_circuit"];
+    $smarty->assign('arr_theme_circuit', $arr_theme_circuit);
+    $reponse['arr_theme_circuit'] = $smarty->fetch("addcircuitDenis.tpl");
+}
+
 
 //TODO Load form for edit un circuit param - ?id=
 function FormModCircuit($smarty,$db, $voc){
