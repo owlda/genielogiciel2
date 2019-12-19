@@ -25,6 +25,9 @@ switch($_POST['action']){
     case 'modcircuit':
         FormModCircuit($smarty,$db, $voc);
         break;
+    case 'addetape':
+        FormAddEtape($smarty,$db, $voc);
+        break;
 }
 
 //TODO Enregistrer nouveau theme
@@ -55,7 +58,7 @@ function FormAddCircuit($smarty, $voc){
     //Array
     $arr_theme_circuit = $voc["arr_theme_circuit"];
     $smarty->assign('arr_theme_circuit', $arr_theme_circuit);
-    $reponse['arr_theme_circuit'] = $smarty->fetch("addcircuit.tpl");
+    $reponse['arr_theme_circuit'] = $smarty->fetch("form_add_circuit.tpl");
 }
 
 //TODO Load form for edit un circuit param - ?id=
@@ -70,7 +73,6 @@ function FormModCircuit($smarty,$db, $voc){
         $arr_status_circuit = $voc["arr_status_circuit"];
         $smarty->assign('arr_status_circuit', $arr_status_circuit);
         /* ---- */
-
 
         $smarty->assign('title', $voc["label_titre_circuit"]);
         $smarty->assign('theme', $voc["label_theme_circuit"]);
@@ -90,16 +92,14 @@ function FormModCircuit($smarty,$db, $voc){
         $smarty->assign('db_prix', $rs1[0]['prix']);
         $smarty->assign('db_idTheme', $rs1[0]['idTheme']);
         $smarty->assign('db_NomTheme', $rs1[0]['NomTheme']);
-        $date_html = explode(" ", $rs1[0]['dateDepart']);
-        $db_dateDepart = $date_html[0]."T".explode(":", $date_html[1])[0].":".explode(":", $date_html[1])[1];
+        $db_dateDepart = DateDBtoInputDate($rs1[0]['dateDepart']);
+        $dateFin = DateDBtoInputDate($rs1[0]['dateFin']);
         $smarty->assign('db_dateDepart', $db_dateDepart);
-        $date_html = explode(" ", $rs1[0]['dateFin']);
-        $dateFin = $date_html[0]."T".explode(":", $date_html[1])[0].":".explode(":", $date_html[1])[1];
         $smarty->assign('db_dateFin', $dateFin);
         $smarty->assign('db_idStatutCircuit', $rs1[0]['idStatutCircuit']);
 
         //Transfer form tpl for edit circuit
-        $reponse['form_edit_circuit'] = $smarty->fetch("editcircuit.tpl");
+        $reponse['form_edit_circuit'] = $smarty->fetch("edit_circuit.tpl");
 
 
     } else {
@@ -179,13 +179,21 @@ function DetailCircuit($smarty,$db){
         $smarty->assign('dateFin', $rs1[0]['dateFin']);
         $smarty->assign('idStatutCircuit', $rs1[0]['idStatutCircuit']);
 
+        //Transfer data to *.tpl
+        $smarty->fetch("modal_del_circuit.tpl");
         $reponse['detail_circuit'] = $smarty->fetch("detail_circuit.tpl");
+        $reponse['detail_etape'] = $smarty->fetch("detail_etape.tpl");
 
     }
     else
     {
 
     }
+}
+
+//TODO Form Add etape
+function FormAddEtape($smarty,$db, $voc){
+
 }
 
 //TODO Get All Circuit from DB
@@ -207,6 +215,14 @@ function GetAllCircuit($idCircuit, $db){
 
     return $rs;
 }
+
+//TODO Convert datetime DB to date input form
+function DateDBtoInputDate($DateDB){
+    $date_html = explode(" ", $DateDB);
+    $DateDB = $date_html[0]."T".explode(":", $date_html[1])[0].":".explode(":", $date_html[1])[1];
+    return $DateDB;
+}
+
 
 echo json_encode($reponse);
 

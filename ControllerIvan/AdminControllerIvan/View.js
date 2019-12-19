@@ -34,7 +34,8 @@ function ListerCircuit_View(reponse){
 };
 
 function DetailCircuit_View(reponse) {
-    $("#ajouter_circuit").html(reponse.detail_circuit);
+    $("#ajouter-circuit").html(reponse.detail_circuit);
+    $("#ajouter-etape").html(reponse.detail_etape);
 }
 
 function ModCircuit_View(reponse) {

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-12-16 22:51:43
-  from 'C:\xampp\htdocs\files\Web3\genielogiciel2\tmp\template\addcircuit.tpl' */
+/* Smarty version 3.1.33, created on 2019-12-19 15:37:10
+  from 'C:\xampp\htdocs\files\Web3\genielogiciel2\tmp\template\form_add_circuit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5df7fc6f15a317_19739921',
+  'unifunc' => 'content_5dfb8b16ee99d0_13867810',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e9e633924ae36960e42e9f1af742db632d833eb3' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\files\\Web3\\genielogiciel2\\tmp\\template\\addcircuit.tpl',
-      1 => 1576533098,
+      0 => 'C:\\xampp\\htdocs\\files\\Web3\\genielogiciel2\\tmp\\template\\form_add_circuit.tpl',
+      1 => 1576760322,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5df7fc6f15a317_19739921 (Smarty_Internal_Template $_smarty_tpl) {
-?><a href="../pages/list_circuit.php" target="_blank">Liste des circuit</a>
+function content_5dfb8b16ee99d0_13867810 (Smarty_Internal_Template $_smarty_tpl) {
+?><div style="padding: 20px">
+<a href="../pages/list-circuit.php" target="_blank">Liste des circuit</a>
 <h1><?php echo $_smarty_tpl->tpl_vars['h1_circuit']->value;?>
 </h1>
 <button id="verification-NicEdit">Verification Editor</button>
@@ -82,5 +83,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 >
 <?php echo '<script'; ?>
  src="../js/ivan-js.js"><?php echo '</script'; ?>
-><?php }
+>
+</div><?php }
 }
