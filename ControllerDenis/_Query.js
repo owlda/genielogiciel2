@@ -3,40 +3,12 @@ function GetUrlController() {
     var dir = loc.substring(0, loc.lastIndexOf('/'));
     var dir = dir.substring(0, dir.length-1);
     var dir = dir.substring(0, dir.lastIndexOf('/'));
-    return dir + '/ControllerIvan/AdminControllerIvan/AdminController.php';
+    return dir + '/ControllerDenis/DenisController.php';
 }
 
-//TODO Load form for edit un circuit
-function LoadModifierCircuit() {
-    var FormModCircuit = new FormData();
-    var url_string = window.location.href;
-    var url = new URL(url_string);
-    FormModCircuit.append('action','modcircuit');
-    FormModCircuit.append('idCircuit',url.searchParams.get("id"));
-    var controller = GetUrlController();
-    $.ajax({
-        type : 'POST',
-        url : controller,
-        data : FormModCircuit,
-        dataType : 'json',
-        async : false,
-        cache : false,
-        contentType : false,
-        processData : false,
-        success : function (reponse){
-            Vue(reponse);
-        },
-        error: function (xhr, error) {
-            console.log(error);
-            console.log(xhr);
-        }
-    });
-}
-
-//TODO Load form for add un circuit
-function LoadAddCircuit(){
+function LoadAddCircuitDenis(){
     var FormAddCircuit = new FormData();
-    FormAddCircuit.append('action','addcircuit');
+    FormAddCircuit.append('action','addDenis');
     var controller = GetUrlController();
     $.ajax({
         type : 'POST',
@@ -48,7 +20,7 @@ function LoadAddCircuit(){
         contentType : false,
         processData : false,
         success : function (reponse){
-            Vue(reponse);
+            View(reponse);
         },
         error: function (xhr, error) {
             console.log(error);
@@ -56,8 +28,6 @@ function LoadAddCircuit(){
         }
     });
 }
-
-
 
 //TODO Enregistrer un theme
 function BtnAddTheme(){
@@ -106,58 +76,6 @@ function BtnAddCircuit(){
         type : 'POST',
         url : controller,
         data : FormAddCircuit,
-        dataType : 'json',
-        async : false,
-        cache : false,
-        contentType : false,
-        processData : false,
-        success : function (reponse){
-            Vue(reponse);
-        },
-        error: function (xhr, error) {
-            console.log(error);
-            console.log(xhr);
-        }
-    });
-
-}
-
-//TODO Lister des circuit
-function ListerCircuit(){
-    var FormAddCircuit = new FormData();
-    FormAddCircuit.append('action','list_circuit');
-    var controller = GetUrlController();
-    $.ajax({
-        type : 'POST',
-        url : controller,
-        data : FormAddCircuit,
-        dataType : 'json',
-        async : false,
-        cache : false,
-        contentType : false,
-        processData : false,
-        success : function (reponse){
-            Vue(reponse);
-        },
-        error: function (xhr, error) {
-            console.log(error);
-            console.log(xhr);
-        }
-    });
-}
-
-function DetailCircuit() {
-
-    var FormCircuit = new FormData();
-    var url_string = window.location.href;
-    var url = new URL(url_string);
-    FormCircuit.append('action','detail_circuit');
-    FormCircuit.append('idCircuit',url.searchParams.get("id"));
-    var controller = GetUrlController();
-    $.ajax({
-        type : 'POST',
-        url : controller,
-        data : FormCircuit,
         dataType : 'json',
         async : false,
         cache : false,

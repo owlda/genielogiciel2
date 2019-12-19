@@ -1,30 +1,13 @@
 <?php
-require_once __DIR__.'/../../config_ivan/conf-ivan.php';
-require_once __DIR__.'/../../voc/lb_fr.php';
+require_once __DIR__.'/../config_ivan/conf-ivan.php';
+require_once __DIR__.'/../voc/lb_fr.php';
 
 $reponse = array();
 
 switch($_POST['action']){
-    case "addcircuit" :
-        FormAddCircuit($smarty,$voc);
+    case "addDenis" :
+        FormAddCircuitDenis($smarty,$voc);
         break;
-    case 'btn_register_theme':
-        EnregistrerTheme($smarty,$db);
-        break;
-    case 'btn_register_circuit':
-        EnregistrerCircuit($smarty,$db);
-        break;
-    case 'list_circuit':
-        ListerCircuit($smarty,$db);
-        break;
-    case 'detail_circuit':
-        DetailCircuit($smarty,$db);
-        break;
-    case 'modcircuit':
-        FormModCircuit($smarty,$db, $voc);
-        break;
-
-
 }
 
 //TODO Enregistrer nouveau theme
@@ -40,10 +23,10 @@ function EnregistrerTheme($smarty,$db){
     $reponse['list_theme'] = $smarty->fetch("select_themes.tpl");
 }
 
-//TODO Form for add un circuit
-function FormAddCircuit($smarty, $voc){
+// TODO Forl load add un circuit Denis
+function FormAddCircuitDenis($smarty, $voc){
     global $reponse;
-    $reponse['action'] = 'addcircuit';
+    $reponse['action'] = 'addDenis';
 
     $smarty->assign('title', $voc["label_titre_circuit"]);
     $smarty->assign('theme', $voc["label_theme_circuit"]);
@@ -55,8 +38,9 @@ function FormAddCircuit($smarty, $voc){
     //Array
     $arr_theme_circuit = $voc["theme_circuit"];
     $smarty->assign('arr_theme_circuit', $arr_theme_circuit);
-    $reponse['arr_theme_circuit'] = $smarty->fetch("addcircuit.tpl");
+    $reponse['arr_theme_circuit'] = $smarty->fetch("addcircuitDenis.tpl");
 }
+
 
 //TODO Load form for edit un circuit param - ?id=
 function FormModCircuit($smarty,$db, $voc){

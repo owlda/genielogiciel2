@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="../assetsIvan/css/Footer-Clean.css">
     <link rel="stylesheet" href="../assetsIvan/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="../assetsIvan/css/styles.css">
-    <script src="../ControllerIvan/AdminControllerIvan/_Query.js"></script>
-    <script src="../ControllerIvan/AdminControllerIvan/View.js"></script>
+    <script src="../ControllerDenis/_Query.js"></script>
+    <script src="../ControllerDenis/View.js"></script>
     <script src="../libs/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>

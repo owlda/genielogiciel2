@@ -1,9 +1,6 @@
 var Vue=function(reponse){
 
     switch(reponse.action){
-        case "addDenis" :
-            AddCircuit_ViewDenis(reponse);
-            break;
         case "addcircuit" :
             AddCircuit_View(reponse);
             break;
@@ -27,11 +24,6 @@ var Vue=function(reponse){
 function AddCircuit_View(reponse){
     $("#form-circuit").html(reponse.arr_theme_circuit);
 };
-
-function AddCircuit_ViewDenis(reponse){
-    $("#form-circuit").html(reponse.arr_theme_circuit);
-};
-
 function EnregistreTheme_View(reponse){
     alert("Thème a été ajouté...");
     $("#ViewNewTheme").css("display", "none");
