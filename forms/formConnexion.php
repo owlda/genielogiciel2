@@ -38,7 +38,7 @@
     <a href="#" onclick="afficherFormMotPasse()">
         Mot de passe oubliée ?</a><br><br>
 
-    <button type="button" class="btn btn-primary">Connexion</button>
+    <button type="button" class="btn btn-primary" onclick="connecter()">Connexion</button>
     &nbsp &nbsp &nbsp &nbsp ou &nbsp &nbsp &nbsp &nbsp
 <a href="#" onclick="afficherFormCreerCompte()">créer un compte</a>
 </form>

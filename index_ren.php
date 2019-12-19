@@ -16,7 +16,7 @@
 
 <?php include __DIR__ . '/tmp/template/headerDenis.tpl ' ?>
 <body onload="initialiserMenu()">
-<?php include __DIR__ . '/tmp/template/menu_forms.tpl ' ?>
+<?php include __DIR__ . '/tmp/template/menu-ren.tpl ' ?>
 
 <div class="container">
     <?php include __DIR__ . '/tmp/template/carousel.tpl ' ?>
