@@ -17,8 +17,12 @@ var membreVue = function(reponse){
             else
             {
                 // si le requete marche et le mot de passe est correct on dirige vers le site du client
-                window.location.href = '../index_ren.php';
+                window.location.href = '../index_client_vahe.php';
             }
+            break;
+        case 'i_connecter':
+            //alert(reponse.temp);
+            $("#menu").html(reponse.temp);
             break;
     }
 }

@@ -8,9 +8,8 @@
                 <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Profile</a>
                     <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">Mon espace</a><a class="dropdown-item" role="presentation" href="#">Panier</a><a class="dropdown-item" role="presentation" href="#">Notifications</a></div>
                 </li>
-
             </ul>
-            <span class="navbar-text actions"> <a class="login" href="forms/formindex.php">Connexion</a><a class="btn btn-light action-button" role="button" href="forms/formindex">Devenir un membre</a></span>
+            <span class="navbar-text actions"><a class="login" href="/cart.php"><i class="fas fa-shopping-cart"></i><a class="login" href="#">{$courriel}</a><a class="btn btn-light action-button" role="button" href="index_ren.php" onclick="deconnect();">Deconnexion</a></span>
             <select
                     style="margin: 5px;">
                 <option value="12" selected="">FR</option>
