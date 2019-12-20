@@ -6,29 +6,30 @@
         <thead>
         <tr>
             <th scope="col">ID</th>
+            <th scope="col">Photo</th>
             <th scope="col">Titre</th>
             <th scope="col">Prix</th>
             <th scope="col">Status</th>
             <th scope="col">Thème</th>
             <th scope="col">Date de départ</th>
             <th scope="col">Date de fin</th>
-            <th scope="col">Durée</th>
+            <th scope="col">Rabais</th>
             <th scope="col">...</th>
         </tr>
         </thead>
         <tbody>
-        {foreach $arr_list_circuit as $key => $value}
+        {foreach $arr_list_circuit as $key}
             <tr>
-                <th scope="row">{$key}</th>
-                {*<td>{$value.idCircuit}</td>*}
-                <td>{$value.titre}</td>
-                <td>{$value.prix}</td>
-                <td><strong>{$value.NomStatutCircuit}</strong></td>
-                <td>{$value.NomTheme}</td>
-                <td>{$value.dateDepart}</td>
-                <td>{$value.dateFin}</td>
-                <td>{$value.duree}</td>
-                <td><a href="../pages/detail-circuit.php?id={$key}">Détaillé</a></td>
+                <th scope="row">{$key.idCircuit}</th>
+                <td>{include file='carousel-circuit.tpl'}</td>
+                <td>{$key.titre}</td>
+                <td>{$key.prix}$</td>
+                <td><strong>{$key.NomStatutCircuit}</strong></td>
+                <td>{$key.NomTheme}</td>
+                <td>{$key.dateDepart}</td>
+                <td>{$key.dateFin}</td>
+                <td>{$key.duree}</td>
+                <td><a href="../pages/detail-circuit.php?id={$key.idCircuit}">Détaillé</a></td>
             </tr>
         {/foreach}
         </tbody>

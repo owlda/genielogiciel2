@@ -13,7 +13,9 @@
         </div>
         <div class="row">
             <div class="col-4">
-                <div class="card" style="padding: 10px;"><img class="card-img-top w-100 d-block" src="building.jpg"></div>
+                <div class="card" style="padding: 10px;">
+                    {include file='carousel-circuit.tpl'}
+                </div>
             </div>
             <div class="col-8">
                 <p>Paragraph fds fsdf fdsf fdsf sdf fdsf sdf sdfs d</p>

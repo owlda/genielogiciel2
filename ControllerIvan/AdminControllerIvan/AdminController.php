@@ -135,18 +135,17 @@ function ListerCircuit($smarty,$db){
 
     $reponse['action'] = "list_circuit";
     $db->setFetchMode(ADODB_FETCH_ASSOC);
-
-    $rs = $db->getAssoc('SELECT * FROM circuit');
+    $rs = $db->getAll('SELECT * FROM circuit');
 
     //TODO Get Nom Theme et Nom Status for un circuit
     foreach( $rs as $key=>$value){
         $db->setFetchMode(ADODB_FETCH_ASSOC);
         $SQL1 = 'SELECT * FROM typecircuit WHERE id ='. $rs[$key]['idTheme'];
-        $supres = $db->getAssoc($SQL1);
-        $rs[$key]['NomTheme'] = $supres[$rs[$key]['idTheme']];
+        $supres = $db->getAll($SQL1);
+        $rs[$key]['NomTheme'] = $supres[0]['theme'];
         $SQL2 = 'SELECT * FROM statutcircuit WHERE idStatutCircuit ='. $rs[$key]['idStatutCircuit'];
-        $supres = $db->getAssoc($SQL2);
-        $rs[$key]['NomStatutCircuit'] = $supres[$rs[$key]['idStatutCircuit']];
+        $supres = $db->getAll($SQL2);
+        $rs[$key]['NomStatutCircuit'] = $supres[0]['statut'];
     }
 
     $smarty->assign('arr_list_circuit', $rs);
