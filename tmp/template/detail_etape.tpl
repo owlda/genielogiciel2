@@ -8,6 +8,7 @@
             <div class="btn-group" role="group">
                 <button class="btn btn-warning" type="button">Modifier</button>
                 <button class="btn btn-danger" type="button">Supprimer</button>
+                <button class="btn btn-success" type="button">Ajouter un jour</button>
             </div>
             <div class="btn-group" role="group"></div>
         </div>
