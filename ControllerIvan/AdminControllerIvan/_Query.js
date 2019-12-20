@@ -82,7 +82,6 @@ function BtnAddTheme(){
             console.log(xhr);
         }
     });
-
 }
 
 //TODO Enregistrer un pays
@@ -148,11 +147,14 @@ function BtnAddCircuit(){
 
 }
 
-//TODO Enregistrer un circuit
+//TODO Enregistrer un etape
 function BtnAddEtape(){
 
     var FormAddEtape = new FormData(AddFormEtape);
     FormAddEtape.append('action','btn_register_etape');
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    FormAddEtape.append('idCircuit',url.searchParams.get("id"));
     var nicE = new nicEditors.findEditor('NicEdit');
     FormAddEtape.append('description',nicE.getContent());
     FormAddEtape.append('id_pays', $('#SelectPays').val());
@@ -273,6 +275,31 @@ function BtnRegistreRabais(idCircuit){
         type : 'POST',
         url : controller,
         data : FormAddRabais,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+}
+
+function BtnDelRabais(idCircuit) {
+    var FormDelRabais = new FormData();
+    FormDelRabais.append('action','btn_del_rabais');
+    FormDelRabais.append('idCircuit',idCircuit);
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormDelRabais,
         dataType : 'json',
         async : false,
         cache : false,

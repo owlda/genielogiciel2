@@ -25,8 +25,16 @@ var Vue=function(reponse){
         case "register_pays" :
             EnregisterPays_View(reponse);
             break;
+        case "del_rabais" :
+            DelRabais_View();
+            break;
     }
 };
+
+function DelRabais_View() {
+    location.reload();
+}
+
 
 function AddCircuit_View(reponse){
     $("#form-circuit").html(reponse.form_add_circuit);
@@ -46,8 +54,6 @@ function EnregisterPays_View(reponse) {
     alert("Pays a été ajouté...");
     $("#ViewNewPays").css("display", "none");
     $("#SelectPays").html(reponse.list_pays);
-
-
 }
 
 function ListerCircuit_View(reponse){

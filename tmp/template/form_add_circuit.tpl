@@ -1,16 +1,21 @@
 <div style="padding: 20px">
 <a href="../pages/list-circuit.php">Liste des circuit</a>
 <h1>{$h1_circuit}</h1>
-<button id="verification-NicEdit">Verification Editor</button>
+    <div style="width: 50%;height: 50%">{include file='carousel-circuit.tpl'}</div>
+{*<button id="verification-NicEdit">Verification Editor</button>*}
 <form class="animated zoomInRight" id="AddFormCircuit">
     <div class="form-group animated zoomInRight">
         <label>{$title}</label>
         <input type="text" class="form-control" id="input_title" name="input_title">
     </div>
+    <div class="form-group animated zoomInRight">
+        <label>Prix:</label>
+        <input type="text" class="form-control" id="prix" name="prix" style="width: 100px" value="{$db_prix}">
+    </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Date de départ:</label>
         <div class="col-10">
-            <input class="form-control" style="width: 250px" type="datetime-local" data-date-format="DD MMMM YYYY" id="input_date" name="input_date">
+            <input class="form-control" style="width: 250px" type="datetime-local" id="input_date" name="input_date">
         </div>
     </div>
     <div>
