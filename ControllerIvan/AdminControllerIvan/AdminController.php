@@ -34,6 +34,22 @@ switch($_POST['action']){
     case 'btn_register_pays':
         EnregistrerPays($smarty,$db);
         break;
+    case 'btn_register_etape':
+        EnregistrerEtape($smarty,$db);
+        break;
+    case 'btn_del_rabais':
+        BtnDelRabais($db);
+        break;
+}
+
+//TODO Supprimer un rabais
+function BtnDelRabais($db){
+    global $reponse;
+    $reponse['action'] = "del_rabais";
+
+    $sql = "DELETE FROM rabais WHERE idCircuit = " . $_POST['idCircuit'];
+    $db->execute($sql);
+
 }
 
 //TODO Enregistrer nouveau theme
@@ -125,9 +141,6 @@ function FormModCircuit($smarty,$db, $voc){
         exit();
     }
 
-
-    //$rs =
-
 }
 
 //TODO Enregistrer un circuit
@@ -138,11 +151,27 @@ function EnregistrerCircuit($smarty,$db){
     $record['description'] = $_POST['description'];
     $record['duree'] = 0;
     $record['pointDepart'] = $_POST['input_ville_depart'];
-    $record['prix'] = 0;
+    $record['prix'] = $_POST['prix'];
     $record['idTheme'] = (int)$_POST['SelectTheme'];
     $record['dateDepart'] = '2020-12-12 15:15:15';
     $record['dateFin'] = '2020-12-12 15:15:15';
     $record['idStatutCircuit'] = 0;
+
+    $db->autoExecute($table, $record, 'INSERT');
+}
+
+//TODO Enregistrer un etape
+function EnregistrerEtape($smarty,$db){
+    $table = 'etape';
+    $record['numeroEtap'] = 0;
+    $record['titre'] = $_POST['input_title'];
+    $record['description'] = $_POST['description'];
+    $record['duree'] = 0;
+    $record['prix'] = 0;
+    $record['idPays'] = (int)$_POST['SelectPays'];
+    $record['dateDebut'] = $_POST['input_date'];
+    $record['dateFin'] = $_POST['input_date'];
+    $record['idCircuit'] = $_POST['idCircuit'];
 
     $db->autoExecute($table, $record, 'INSERT');
 }

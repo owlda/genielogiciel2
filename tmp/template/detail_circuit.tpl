@@ -1,3 +1,4 @@
+<a href="../pages/list-circuit.php">Liste des circuit</a>
 <h1>{$titre}</h1>
 <div class="btn-toolbar">
     <div class="btn-group" role="group">
