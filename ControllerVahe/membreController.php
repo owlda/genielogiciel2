@@ -1,5 +1,6 @@
 <?php
-/*require_once __DIR__.'/../config_ivan/conf-ivan.php';*/
+session_start();
+require_once('../config_ivan/conf-ivan.php');
 
 require_once("../includesVahe/modele.inc.php");
 
@@ -13,8 +14,15 @@ switch ($action){
     case 'devenirmembre':
         enregistrerMembre();
         break;
+    case 'i_connecter':
+        i_connecter($smarty);
+        break;
     case 'connecter':
-        connecter();
+        connecter($smarty);
+        break;
+    case 'deconnect':
+        deconnect();
+        break;
     default: break;
 }
 
@@ -68,7 +76,7 @@ function enregistrerMembre()
 }
 
 // cette fonction fait la login du client
-function connecter()
+function connecter($smarty)
 {
     global $reponse;
     $reponse['action'] = 'connecter';
@@ -78,7 +86,7 @@ function connecter()
     $motdepass_form = $_POST['motPasseCnx'];
 
     // le requete pour recevoir le mot de passe et le ID du client
-    $requete = "SELECT idMembre, motdepass FROM membre WHERE courriel = $courriel_form";
+    $requete = "SELECT idMembre, courriel, motdepass FROM membre WHERE courriel = $courriel_form";
     try{
         $unModele=new membreModele($requete,array());
         $stmt=$unModele->executer();
@@ -94,9 +102,13 @@ function connecter()
             // si le courriel existe dans la base de données, on vérifie le mot de pass
             if($motdepass_form == $ligne['motdepass']){
                 // si le mot de pass est correct, on ouvre une session
-                session_start();
+
                 $_SESSION['id'] = $ligne['idMembre'];
                 $_SESSION['sessionstatus'] = true;
+                $_SESSION['courriel'] = $ligne['courriel'];
+/*
+                $smarty->assign('courriel', $_SESSION['courriel']);
+                $smarty->fetch('../tmp/template/menu_client.tpl');*/
 
             }
             else{
@@ -109,8 +121,25 @@ function connecter()
     }catch(Exception $e){
     }finally{
         unset($unModele);
+
     }
 
+}
+
+// pour loader la page du client après la connexion
+function i_connecter($smarty)
+{
+    global $reponse;
+    $reponse['action'] = 'i_connecter';
+    $smarty->assign('courriel', $_SESSION['courriel']);
+    $reponse['temp'] = $smarty->fetch('menu_client.tpl');
+
+}
+
+// deconnect le client et destroy la session
+function deconnect()
+{
+    session_destroy();
 }
 
 echo json_encode($reponse);
