@@ -16,9 +16,11 @@ var Vue=function(reponse){
         case "modcircuit" :
             ModCircuit_View(reponse);
             break;
-
         case "addetape" :
             AddEtape_View(reponse);
+            break;
+        case "register_rabais" :
+            RegisterRabais_View(reponse);
             break;
     }
 };
@@ -47,4 +49,8 @@ function DetailCircuit_View(reponse) {
 
 function ModCircuit_View(reponse) {
     $("#form-circuit").html(reponse.form_edit_circuit);
+}
+
+function RegisterRabais_View() {
+    location.reload();
 }

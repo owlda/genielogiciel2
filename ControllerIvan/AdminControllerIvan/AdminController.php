@@ -28,6 +28,9 @@ switch($_POST['action']){
     case 'addetape':
         FormAddEtape($smarty,$db, $voc);
         break;
+    case 'btn_register_rabais':
+        EnregestrerRabais($db);
+        break;
 }
 
 //TODO Enregistrer nouveau theme
@@ -280,6 +283,19 @@ function GetAllEtapeFromCircuit($idCircuit, $db){
         $rs[$key]['NomPays'] = $supres[$rs[$key]['idPays']];
     }
     return $rs;
+}
+
+function EnregestrerRabais($db){
+
+    global $reponse;
+    $reponse['action'] = 'register_rabais';
+    $table = 'rabais';
+    $record['pourcentage'] = $_POST['pourcentage'];
+    $record['datedebut'] = $_POST['dateDebut'];
+    $record['datefin'] = $_POST['dateFin'];
+    $record['idCircuit'] = $_POST['idCircuit'];
+    $db->autoExecute($table, $record, 'INSERT');
+
 }
 
 

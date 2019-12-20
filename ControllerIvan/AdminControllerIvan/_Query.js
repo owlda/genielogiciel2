@@ -200,3 +200,34 @@ function LoadAddEtape(){
         }
     });
 }
+
+//TODO Enregistrer un rabais
+function BtnRegistreRabais(idCircuit){
+
+    var FormAddRabais = new FormData(FormAddRabais);
+    FormAddRabais.append('action','btn_register_rabais');
+    FormAddRabais.append('idCircuit',idCircuit);
+    FormAddRabais.append('pourcentage',$('#input_pourcentage').val());
+    FormAddRabais.append('dateDebut',$('#input_date_start').val());
+    FormAddRabais.append('dateFin',$('#input_date_end').val());
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddRabais,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+
+}

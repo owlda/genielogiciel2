@@ -3,7 +3,9 @@ function ShowModalDeleteCircuit(){
     $('.modal-backdrop').css('position', 'static');
 }
 
-function BtnAddRabais(){
+function BtnAddRabais(idCircuit){
     $('#modal_rabais').modal('show');
     $('.modal-backdrop').css('position', 'static');
+    let str = 'BtnRegistreRabais(' + idCircuit + ')'
+    $('#register_rabais').attr('onclick', str);
 }

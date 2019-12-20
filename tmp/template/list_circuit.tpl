@@ -21,19 +21,18 @@
         {foreach $arr_list_circuit as $key}
             <tr>
                 <th scope="row">{$key.idCircuit}</th>
-                <td>{include file='carousel-circuit.tpl'}</td>
+                <td><div style="width: 100px;height: 100px">{include file='carousel-circuit.tpl'}</div></td>
                 <td>{$key.titre}</td>
                 <td>{$key.prix}$</td>
                 <td>
                     {if $key.Rabais < 0 }
-                        <input type="button" value="+ Rabais" class="btn btn-primary" style="display: inline" onclick="BtnAddRabais()">
+                        <input type="button" value="+ Rabais" class="btn btn-primary" style="display: inline" onclick="BtnAddRabais({$key.idCircuit})">
                         {else}
-                        <span style="font-size: xx-large">{$key.Rabais}%</span>
-                        <input type="button" value="Supprimer" class="btn btn-danger" onclick="BtnAddRabais()">
-                        {$key.DateDebut}<br>
-                        {$key.DateFin}<br>
-
-
+                        <span style="font-size: xx-large">{$key.Rabais}%</span><br>
+                        <input type="button" value="Supprimer" class="btn btn-danger" onclick="BtnDelRabais({$key.idCircuit})"><br>
+                        <span class="small">{$key.DateDebut}</span><br>
+                        <span>*****</span><br>
+                        <span class="small">{$key.DateFin}</span><br>
                     {/if}
                 </td>
                 <td><strong>{$key.NomStatutCircuit}</strong></td>
