@@ -10,7 +10,7 @@
     </div>
     <div class="form-group animated zoomInRight">
         <label>Prix:</label>
-        <input type="text" class="form-control" id="prix" name="prix" style="width: 100px" value="{$db_prix}">
+        <input type="text" class="form-control" id="prix" name="prix" style="width: 100px" value="0">
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Date de départ:</label>
