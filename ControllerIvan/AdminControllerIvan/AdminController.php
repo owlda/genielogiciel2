@@ -28,6 +28,12 @@ switch($_POST['action']){
     case 'addetape':
         FormAddEtape($smarty,$db, $voc);
         break;
+    case 'btn_register_rabais':
+        EnregestrerRabais($db);
+        break;
+    case 'btn_register_pays':
+        EnregistrerPays($smarty,$db);
+        break;
 }
 
 //TODO Enregistrer nouveau theme
@@ -41,6 +47,19 @@ function EnregistrerTheme($smarty,$db){
     $rs = $db->getAssoc('SELECT * FROM typecircuit');
     $smarty->assign('arr_list_theme', $rs);
     $reponse['list_theme'] = $smarty->fetch("select_themes.tpl");
+}
+
+//TODO Enregistrer nouveau pays
+function EnregistrerPays($smarty,$db){
+    global $reponse;
+    $reponse['action'] = "register_pays";
+    $table = 'pays';
+    $record['nom'] = $_POST['new_pays'];
+    $db->autoExecute($table, $record, 'INSERT');
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $rs = $db->getAssoc('SELECT * FROM pays');
+    $smarty->assign('arr_list_pays', $rs);
+    $reponse['list_pays'] = $smarty->fetch("select_pays.tpl");
 }
 
 //TODO Form for add un circuit
@@ -126,7 +145,6 @@ function EnregistrerCircuit($smarty,$db){
     $record['idStatutCircuit'] = 0;
 
     $db->autoExecute($table, $record, 'INSERT');
-
 }
 
 //TODO Lister des circuit
@@ -135,18 +153,26 @@ function ListerCircuit($smarty,$db){
 
     $reponse['action'] = "list_circuit";
     $db->setFetchMode(ADODB_FETCH_ASSOC);
-
-    $rs = $db->getAssoc('SELECT * FROM circuit');
+    $rs = $db->getAll('SELECT * FROM circuit');
 
     //TODO Get Nom Theme et Nom Status for un circuit
     foreach( $rs as $key=>$value){
         $db->setFetchMode(ADODB_FETCH_ASSOC);
         $SQL1 = 'SELECT * FROM typecircuit WHERE id ='. $rs[$key]['idTheme'];
-        $supres = $db->getAssoc($SQL1);
-        $rs[$key]['NomTheme'] = $supres[$rs[$key]['idTheme']];
+        $supres = $db->getAll($SQL1);
+        $rs[$key]['NomTheme'] = $supres[0]['theme'];
         $SQL2 = 'SELECT * FROM statutcircuit WHERE idStatutCircuit ='. $rs[$key]['idStatutCircuit'];
-        $supres = $db->getAssoc($SQL2);
-        $rs[$key]['NomStatutCircuit'] = $supres[$rs[$key]['idStatutCircuit']];
+        $supres = $db->getAll($SQL2);
+        $rs[$key]['NomStatutCircuit'] = $supres[0]['statut'];
+        $SQL3 = 'SELECT * FROM rabais WHERE idCircuit ='. $rs[$key]['idCircuit'];
+        $supres = $db->getAll($SQL3);
+        if ($supres == false){
+            $rs[$key]['Rabais'] = -1;
+        } else {
+            $rs[$key]['Rabais'] = $supres[0]['pourcentage'];
+            $rs[$key]['DateDebut'] = $supres[0]['datedebut'];
+            $rs[$key]['DateFin'] = $supres[0]['datefin'];
+        }
     }
 
     $smarty->assign('arr_list_circuit', $rs);
@@ -273,6 +299,19 @@ function GetAllEtapeFromCircuit($idCircuit, $db){
         $rs[$key]['NomPays'] = $supres[$rs[$key]['idPays']];
     }
     return $rs;
+}
+
+function EnregestrerRabais($db){
+
+    global $reponse;
+    $reponse['action'] = 'register_rabais';
+    $table = 'rabais';
+    $record['pourcentage'] = $_POST['pourcentage'];
+    $record['datedebut'] = $_POST['dateDebut'];
+    $record['datefin'] = $_POST['dateFin'];
+    $record['idCircuit'] = $_POST['idCircuit'];
+    $db->autoExecute($table, $record, 'INSERT');
+
 }
 
 

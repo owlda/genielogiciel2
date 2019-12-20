@@ -2,7 +2,7 @@
 <a href="../pages/list-circuit.php">Liste des circuit</a>
 <h1>Ajouter un étape</h1>
 <button id="verification-NicEdit">Verification Editor</button>
-<form class="animated zoomInRight" id="AddFormCircuit">
+<form class="animated zoomInRight" id="AddFormEtape">
 
     <div class="form-group animated zoomInRight">
         <label>Titre</label>
