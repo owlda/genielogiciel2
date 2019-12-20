@@ -28,10 +28,12 @@
                 <td>{$key.NomTheme}</td>
                 <td>{$key.dateDepart}</td>
                 <td>{$key.dateFin}</td>
-                <td>{$key.duree}</td>
+                <td><input type="button" value="+ Rabais" class="btn btn-primary" style="display: inline" onclick="BtnAddRabais()"></td>
                 <td><a href="../pages/detail-circuit.php?id={$key.idCircuit}">Détaillé</a></td>
             </tr>
         {/foreach}
         </tbody>
     </table>
 </div>
+
+{include file="modal_add_rabais.tpl"}
