@@ -1,3 +1,8 @@
+<?php
+//require_once "forms/config.php"; // Ok avec l'appel du fichier "http://localhost/genielogiciel2/index_forms.php"
+//$loginURL = $gClient->createAuthUrl();
+//?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -13,13 +18,13 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 
     <link rel="stylesheet" href="css/forms.css">
-    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
-    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
-    <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
 
     <script src="scripts/formulaires.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-    <script src="https://apis.google.com/js/api:client.js"></script>
+    <script src="https://apis.google.com/js/api:client.js?hl=fr"></script>
     <!--    <meta name="google-signin-client_id"-->
     <!--          content="266969397484-tlf4h2dn463kvmhn9lpovtgm93re0i63.apps.googleusercontent.com">-->
 </head>
@@ -108,6 +113,11 @@
 
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+<!--   Pour « Facebook Login »   -->
+<!--<script async defer src="https://connect.facebook.net/fr_CA/sdk.js"></script>-->
+
+
 </body>
 
 </html>
