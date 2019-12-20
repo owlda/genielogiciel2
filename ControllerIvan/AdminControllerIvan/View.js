@@ -16,6 +16,7 @@ var Vue=function(reponse){
         case "modcircuit" :
             ModCircuit_View(reponse);
             break;
+
         case "addetape" :
             AddEtape_View(reponse);
             break;
@@ -29,7 +30,6 @@ function AddCircuit_View(reponse){
 function AddEtape_View(reponse){
     $("#form-etape").html(reponse.form_add_etape);
 };
-
 function EnregistreTheme_View(reponse){
     alert("Thème a été ajouté...");
     $("#ViewNewTheme").css("display", "none");
