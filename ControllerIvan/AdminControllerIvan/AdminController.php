@@ -31,6 +31,9 @@ switch($_POST['action']){
     case 'btn_register_rabais':
         EnregestrerRabais($db);
         break;
+    case 'btn_register_pays':
+        EnregistrerPays($smarty,$db);
+        break;
 }
 
 //TODO Enregistrer nouveau theme
@@ -44,6 +47,19 @@ function EnregistrerTheme($smarty,$db){
     $rs = $db->getAssoc('SELECT * FROM typecircuit');
     $smarty->assign('arr_list_theme', $rs);
     $reponse['list_theme'] = $smarty->fetch("select_themes.tpl");
+}
+
+//TODO Enregistrer nouveau pays
+function EnregistrerPays($smarty,$db){
+    global $reponse;
+    $reponse['action'] = "register_pays";
+    $table = 'pays';
+    $record['nom'] = $_POST['new_pays'];
+    $db->autoExecute($table, $record, 'INSERT');
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $rs = $db->getAssoc('SELECT * FROM pays');
+    $smarty->assign('arr_list_pays', $rs);
+    $reponse['list_pays'] = $smarty->fetch("select_pays.tpl");
 }
 
 //TODO Form for add un circuit

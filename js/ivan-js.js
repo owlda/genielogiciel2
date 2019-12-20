@@ -27,6 +27,10 @@ function BtnViewNewPays() {
     $('#ViewNewPays').css('display', 'block');
 }
 
+function BtnNotPays() {
+    $('#ViewNewPays').css('display', 'none');
+}
+
 function Create_Form_Ivan() {
     $('#form-circuit').text("");
 

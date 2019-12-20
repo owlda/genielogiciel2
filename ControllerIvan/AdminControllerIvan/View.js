@@ -22,6 +22,9 @@ var Vue=function(reponse){
         case "register_rabais" :
             RegisterRabais_View(reponse);
             break;
+        case "register_pays" :
+            EnregisterPays_View(reponse);
+            break;
     }
 };
 
@@ -37,6 +40,15 @@ function EnregistreTheme_View(reponse){
     $("#ViewNewTheme").css("display", "none");
     $("#SelectTheme").html(reponse.list_theme);
 };
+
+function EnregisterPays_View(reponse) {
+
+    alert("Pays a été ajouté...");
+    $("#ViewNewPays").css("display", "none");
+    $("#SelectPays").html(reponse.list_pays);
+
+
+}
 
 function ListerCircuit_View(reponse){
     $("#list-circuit").html(reponse.list_circuit);

@@ -57,8 +57,6 @@ function LoadAddCircuit(){
     });
 }
 
-
-
 //TODO Enregistrer un theme
 function BtnAddTheme(){
     var FormAddTheme = new FormData();
@@ -71,6 +69,34 @@ function BtnAddTheme(){
         type : 'POST',
         url : controller,
         data : FormAddTheme,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+
+}
+
+//TODO Enregistrer un pays
+function BtnAddPays(){
+    var FormAddPays = new FormData();
+    FormAddPays.append('action','btn_register_pays');
+    let new_pays = $('#NewPays').val();
+    FormAddPays.append('new_pays', new_pays);
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddPays,
         dataType : 'json',
         async : false,
         cache : false,
