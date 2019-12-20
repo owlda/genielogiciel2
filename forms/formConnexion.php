@@ -27,7 +27,6 @@
     <div id="status">
     </div>
 
-
     <div id="gSignInWrapper">
         <span class="label"> </span>
         <div id="customBtn" class="customGPlusSignIn">
