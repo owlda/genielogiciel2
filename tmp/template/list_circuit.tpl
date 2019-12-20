@@ -26,7 +26,7 @@
                 <td>{$key.prix}$</td>
                 <td>
                     {if $key.Rabais < 0 }
-                        <input type="button" value="+ Rabais" class="btn btn-primary" style="display: inline" onclick="BtnAddRabais({$key.idCircuit})">
+                        <input type="button" value="&#10133; Rabais" class="btn btn-primary" style="display: inline" onclick="BtnAddRabais({$key.idCircuit})">
                         {else}
                         <span style="font-size: xx-large">{$key.Rabais}%</span><br>
                         <input type="button" value="Supprimer" class="btn btn-danger" onclick="BtnDelRabais({$key.idCircuit})"><br>
