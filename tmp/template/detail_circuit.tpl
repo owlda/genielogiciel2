@@ -9,7 +9,8 @@
 <div><span><span class="font-weight-bold">Thème: </span><span>{$NomTheme}</span> &nbsp; &nbsp; <span class="font-weight-bold">Ville de départ: </span><span>{$pointDepart}</span></div>
 <div class="row">
     <div class="col">
-        <div class="card" style="padding: 10px;"><img class="card-img-top w-100 d-block" src="building.jpg">
+        <div class="card" style="padding: 10px;">
+            {include file='carousel-circuit.tpl'}
             <div class="list-group-item text-white bg-dark" style="text-align: center;display: inline;">
                 <h2 class="text-center my-1" style="display: inline;margin-bottom: 10px;">{$prix}$</h2>
             </div>

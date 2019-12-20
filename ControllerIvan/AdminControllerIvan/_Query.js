@@ -57,8 +57,6 @@ function LoadAddCircuit(){
     });
 }
 
-
-
 //TODO Enregistrer un theme
 function BtnAddTheme(){
     var FormAddTheme = new FormData();
@@ -71,6 +69,34 @@ function BtnAddTheme(){
         type : 'POST',
         url : controller,
         data : FormAddTheme,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+
+}
+
+//TODO Enregistrer un pays
+function BtnAddPays(){
+    var FormAddPays = new FormData();
+    FormAddPays.append('action','btn_register_pays');
+    let new_pays = $('#NewPays').val();
+    FormAddPays.append('new_pays', new_pays);
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddPays,
         dataType : 'json',
         async : false,
         cache : false,
@@ -199,4 +225,35 @@ function LoadAddEtape(){
             console.log(xhr);
         }
     });
+}
+
+//TODO Enregistrer un rabais
+function BtnRegistreRabais(idCircuit){
+
+    var FormAddRabais = new FormData(FormAddRabais);
+    FormAddRabais.append('action','btn_register_rabais');
+    FormAddRabais.append('idCircuit',idCircuit);
+    FormAddRabais.append('pourcentage',$('#input_pourcentage').val());
+    FormAddRabais.append('dateDebut',$('#input_date_start').val());
+    FormAddRabais.append('dateFin',$('#input_date_end').val());
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddRabais,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+
 }

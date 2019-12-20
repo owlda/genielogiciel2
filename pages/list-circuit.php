@@ -13,6 +13,7 @@
     <script src="../ControllerIvan/AdminControllerIvan/_Query.js"></script>
     <script src="../ControllerIvan/AdminControllerIvan/View.js"></script>
     <script src="../libs/jquery-3.4.1.min.js"></script>
+    <script src="../js/ivan-modals.js"></script>
 </head>
 
 <body onload="ListerCircuit();">
