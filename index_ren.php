@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="css/forms.css">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="scripts/formulaires.js"></script>
 </head>
 
 <?php include __DIR__ . '/tmp/template/headerDenis.tpl ';
@@ -48,9 +51,6 @@
     </div>
 </div>
 <?php include __DIR__ . '/tmp/template/footer.tpl ' ?>
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="scripts/formulaires.js"></script>
 </body>
 </html>
 <?php

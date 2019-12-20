@@ -86,9 +86,9 @@ function connecter($smarty)
     $motdepass_form = $_POST['motPasseCnx'];
 
     // le requete pour recevoir le mot de passe et le ID du client
-    $requete = "SELECT idMembre, courriel, motdepass FROM membre WHERE courriel = $courriel_form";
+    $requete = "SELECT idMembre, courriel, motdepass FROM membre WHERE courriel = ?";
     try{
-        $unModele=new membreModele($requete,array());
+        $unModele=new membreModele($requete,array($courriel_form));
         $stmt=$unModele->executer();
         $ligne = $stmt->fetch(PDO::FETCH_ASSOC);
 
