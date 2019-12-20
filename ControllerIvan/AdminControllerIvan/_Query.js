@@ -148,6 +148,37 @@ function BtnAddCircuit(){
 
 }
 
+//TODO Enregistrer un circuit
+function BtnAddEtape(){
+
+    var FormAddEtape = new FormData(AddFormEtape);
+    FormAddEtape.append('action','btn_register_etape');
+    var nicE = new nicEditors.findEditor('NicEdit');
+    FormAddEtape.append('description',nicE.getContent());
+    FormAddEtape.append('id_pays', $('#SelectPays').val());
+
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddEtape,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+
+}
+
 //TODO Lister des circuit
 function ListerCircuit(){
     var FormAddCircuit = new FormData();

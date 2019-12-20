@@ -34,6 +34,9 @@ switch($_POST['action']){
     case 'btn_register_pays':
         EnregistrerPays($smarty,$db);
         break;
+    case 'btn_register_etape':
+        EnregistrerEtape($smarty,$db);
+        break;
 }
 
 //TODO Enregistrer nouveau theme

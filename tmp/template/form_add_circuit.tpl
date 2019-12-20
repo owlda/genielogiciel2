@@ -37,7 +37,7 @@
         <label>{$ville_depart}</label>
         <input type="text" class="form-control" id="input_ville_depart" name="input_ville_depart">
     </div>
-    <input type="button" id="btn_add_circuit" class="btn btn-primary" value="{$btn_submit}" onclick="BtnAddCircuit()">
+    <input type="button" id="btn_add_circuit" class="btn btn-success" value="{$btn_submit}" onclick="BtnAddCircuit()">
 </form>
 <script src="../libs/nicEdit-latest.js"></script>
 <script src="../js/ivan-js.js"></script>
