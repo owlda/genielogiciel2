@@ -14,11 +14,9 @@
     <link rel="stylesheet" href="css/forms.css">
     <script src="ControllerVahe/requetsMembre.js"></script>
     <script src="ControllerVahe/ViewVahe.js"></script>
-    <script language="javascript" src="scripts_vahe/jquery-3.3.1.min.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
-
-<?php include __DIR__ . '/tmp/template/headerDenis.tpl ' ?>
 <body onload="initclientmenue()">
 <?php
     session_start();

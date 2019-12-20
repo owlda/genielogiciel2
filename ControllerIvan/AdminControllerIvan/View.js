@@ -1,9 +1,6 @@
 var Vue=function(reponse){
 
     switch(reponse.action){
-        case "addDenis" :
-            AddCircuit_ViewDenis(reponse);
-            break;
         case "addcircuit" :
             AddCircuit_View(reponse);
             break;
@@ -20,18 +17,19 @@ var Vue=function(reponse){
             ModCircuit_View(reponse);
             break;
 
+        case "addetape" :
+            AddEtape_View(reponse);
+            break;
     }
 };
 
-
 function AddCircuit_View(reponse){
-    $("#form-circuit").html(reponse.arr_theme_circuit);
+    $("#form-circuit").html(reponse.form_add_circuit);
 };
 
-function AddCircuit_ViewDenis(reponse){
-    $("#form-circuit").html(reponse.arr_theme_circuit);
+function AddEtape_View(reponse){
+    $("#form-etape").html(reponse.form_add_etape);
 };
-
 function EnregistreTheme_View(reponse){
     alert("Thème a été ajouté...");
     $("#ViewNewTheme").css("display", "none");
@@ -43,9 +41,10 @@ function ListerCircuit_View(reponse){
 };
 
 function DetailCircuit_View(reponse) {
-    $("#ajouter_circuit").html(reponse.detail_circuit);
+    $("#ajouter-circuit").html(reponse.detail_circuit);
+    $("#ajouter-etape").html(reponse.detail_etape);
 }
 
 function ModCircuit_View(reponse) {
-    $("#form-circuit").html(reponse.arr_theme_circuit);
+    $("#form-circuit").html(reponse.form_edit_circuit);
 }

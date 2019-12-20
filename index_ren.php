@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -48,14 +47,10 @@
         </div>
     </div>
 </div>
-
 <?php include __DIR__ . '/tmp/template/footer.tpl ' ?>
-
-
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="scripts/formulaires.js"></script>
-
 </body>
 </html>
 <?php

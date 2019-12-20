@@ -23,6 +23,10 @@ function BtnNotTheme() {
     $('#ViewNewTheme').css('display', 'none');
 }
 
+function BtnViewNewPays() {
+    $('#ViewNewPays').css('display', 'block');
+}
+
 function Create_Form_Ivan() {
     $('#form-circuit').text("");
 

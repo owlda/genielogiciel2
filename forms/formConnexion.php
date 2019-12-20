@@ -4,7 +4,8 @@
     </button>
     <h4>Connectez-vous</h4><br>
     <a href="#">
-        <img src="./images/ContinuerAvecFacebook.png"
+        <img src="../images/ContinuerAvecFacebook.png"
+
              alt="Continuer avec Facebook"></a><br><br>
 
 <!--    <div class="g-signin2" data-width="300" data-height="50"-->
@@ -45,7 +46,4 @@
 
 <script src="https://apis.google.com/js/platform.js?onload=renderButton"
         async defer></script>
-
-
-
 <?php
