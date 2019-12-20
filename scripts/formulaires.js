@@ -21,10 +21,9 @@ function afficherFormMotPasse() {
     resetForm("formCreationCompte");
     rendreVisible("divMotPasseOublie");
 }
-
-
 function fermerForms() {
     rendreInvisible("divConnexion");
+
     resetForm("formConnexion");
     rendreInvisible("divMotPasseOublie");
     resetForm("formMotPasseOublie");
@@ -32,10 +31,6 @@ function fermerForms() {
     resetForm("formCreationCompte");
     afficherFormConnexion();
 }
-
-
-
-
 function rendreVisible(elem) {
     document.getElementById(elem).style.display = 'block';
 }

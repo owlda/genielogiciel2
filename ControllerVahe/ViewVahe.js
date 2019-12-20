@@ -4,6 +4,11 @@ var membreVue = function(reponse){
         case 'devenirmembre':
             if(reponse.msg === 'NOK')
                 alert("Les mot de passe ne correspondent pas");
+            if(reponse.msg == 'OK')
+            {
+                alert('sakjdhajfhk');
+                window.location.href = '../index_ren.php';
+            }
             break;
         case 'connecter':
             if(reponse.msg=='BADPASS')
