@@ -23,6 +23,7 @@ function afficherFormMotPasse() {
     rendreVisible("divMotPasseOublie");
 }
 
+function fermerForms() {
     // rendreInvisible("divConnexion");
     resetForm("formConnexion");
     // rendreInvisible("divMotPasseOublie");
