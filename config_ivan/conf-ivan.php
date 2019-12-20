@@ -3,7 +3,7 @@
 include __DIR__.'/../adodb5/adodb.inc.php';
 $db = NewADOConnection('mysqli');
 //Si vous utiliser un port pour connecter
-$db->port = 3307;
+$db->port = 3306;
 $server = "localhost";
 $user = "root";
 $password = "";
