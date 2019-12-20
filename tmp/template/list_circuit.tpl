@@ -9,11 +9,11 @@
             <th scope="col">Photo</th>
             <th scope="col">Titre</th>
             <th scope="col">Prix</th>
+            <th scope="col">Rabais</th>
             <th scope="col">Status</th>
             <th scope="col">Thème</th>
             <th scope="col">Date de départ</th>
             <th scope="col">Date de fin</th>
-            <th scope="col">Rabais</th>
             <th scope="col">...</th>
         </tr>
         </thead>
@@ -24,11 +24,22 @@
                 <td>{include file='carousel-circuit.tpl'}</td>
                 <td>{$key.titre}</td>
                 <td>{$key.prix}$</td>
+                <td>
+                    {if $key.Rabais < 0 }
+                        <input type="button" value="+ Rabais" class="btn btn-primary" style="display: inline" onclick="BtnAddRabais()">
+                        {else}
+                        <span style="font-size: xx-large">{$key.Rabais}%</span>
+                        <input type="button" value="Supprimer" class="btn btn-danger" onclick="BtnAddRabais()">
+                        {$key.DateDebut}<br>
+                        {$key.DateFin}<br>
+
+
+                    {/if}
+                </td>
                 <td><strong>{$key.NomStatutCircuit}</strong></td>
                 <td>{$key.NomTheme}</td>
                 <td>{$key.dateDepart}</td>
                 <td>{$key.dateFin}</td>
-                <td><input type="button" value="+ Rabais" class="btn btn-primary" style="display: inline" onclick="BtnAddRabais()"></td>
                 <td><a href="../pages/detail-circuit.php?id={$key.idCircuit}">Détaillé</a></td>
             </tr>
         {/foreach}

@@ -126,7 +126,6 @@ function EnregistrerCircuit($smarty,$db){
     $record['idStatutCircuit'] = 0;
 
     $db->autoExecute($table, $record, 'INSERT');
-
 }
 
 //TODO Lister des circuit
@@ -146,6 +145,15 @@ function ListerCircuit($smarty,$db){
         $SQL2 = 'SELECT * FROM statutcircuit WHERE idStatutCircuit ='. $rs[$key]['idStatutCircuit'];
         $supres = $db->getAll($SQL2);
         $rs[$key]['NomStatutCircuit'] = $supres[0]['statut'];
+        $SQL3 = 'SELECT * FROM rabais WHERE idCircuit ='. $rs[$key]['idCircuit'];
+        $supres = $db->getAll($SQL3);
+        if ($supres == false){
+            $rs[$key]['Rabais'] = -1;
+        } else {
+            $rs[$key]['Rabais'] = $supres[0]['pourcentage'];
+            $rs[$key]['DateDebut'] = $supres[0]['datedebut'];
+            $rs[$key]['DateFin'] = $supres[0]['datefin'];
+        }
     }
 
     $smarty->assign('arr_list_circuit', $rs);
