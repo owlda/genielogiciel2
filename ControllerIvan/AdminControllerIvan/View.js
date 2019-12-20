@@ -17,12 +17,18 @@ var Vue=function(reponse){
             ModCircuit_View(reponse);
             break;
 
+        case "addetape" :
+            AddEtape_View(reponse);
+            break;
     }
 };
 
-
 function AddCircuit_View(reponse){
-    $("#form-circuit").html(reponse.arr_theme_circuit);
+    $("#form-circuit").html(reponse.form_add_circuit);
+};
+
+function AddEtape_View(reponse){
+    $("#form-etape").html(reponse.form_add_etape);
 };
 function EnregistreTheme_View(reponse){
     alert("Thème a été ajouté...");
@@ -35,9 +41,10 @@ function ListerCircuit_View(reponse){
 };
 
 function DetailCircuit_View(reponse) {
-    $("#ajouter_circuit").html(reponse.detail_circuit);
+    $("#ajouter-circuit").html(reponse.detail_circuit);
+    $("#ajouter-etape").html(reponse.detail_etape);
 }
 
 function ModCircuit_View(reponse) {
-    $("#form-circuit").html(reponse.arr_theme_circuit);
+    $("#form-circuit").html(reponse.form_edit_circuit);
 }

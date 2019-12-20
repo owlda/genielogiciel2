@@ -146,6 +146,7 @@ function ListerCircuit(){
     });
 }
 
+//TODO Detail un circuit
 function DetailCircuit() {
 
     var FormCircuit = new FormData();
@@ -171,5 +172,31 @@ function DetailCircuit() {
             console.log(xhr);
         }
     });
+}
 
+//TODO Load form for add un circuit
+function LoadAddEtape(){
+    var FormAddEtape = new FormData();
+    FormAddEtape.append('action','addetape');
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    FormAddEtape.append('idCircuit',url.searchParams.get("id"));
+    var controller = GetUrlController();
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddEtape,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
 }

@@ -1,8 +1,8 @@
-<h3>{$titre}</h3>
+<h1>{$titre}</h1>
 <div class="btn-toolbar">
     <div class="btn-group" role="group">
-        <input value="Modifier" class="btn btn-warning" type="button" onclick="location.href='editcircuit.php?id={$idCircuit}'">
-        <input value="Supprimer" class="btn btn-danger" type="button">
+        <input value="Modifier" class="btn btn-warning" type="button" onclick="location.href='edit-circuit.php?id={$idCircuit}'">
+        <input value="Supprimer" class="btn btn-danger" type="button" id="btn_del_circuit" onclick="ShowModalDeleteCircuit();">
     </div>
 </div>
 <div><span class="font-weight-bold">Date de début: </span><span class="small">{$dateDepart}</span> &nbsp; &nbsp; <span class="font-weight-bold">Date de fin: <span class="small">{$dateFin}</span></span></div>
@@ -19,3 +19,6 @@
         <p>{$description}</p>
     </div>
 </div>
+
+{include file='modal_del_circuit.tpl'}
+

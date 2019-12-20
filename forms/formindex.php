@@ -6,6 +6,15 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/forms.css">
 
+    <script src="../scripts/formulaires.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
@@ -24,6 +33,12 @@
 
  <div>
  <!--    <a href="#" onclick="afficherFormConnexion()">Connexion</a>-->
+    <a href=""
+    data-toggle="modal"
+</div>
+
+<div>
+<!--    <a href="#" onclick="afficherFormConnexion()">Connexion</a>-->
     <a href=""
     data-toggle="modal"
 </div>

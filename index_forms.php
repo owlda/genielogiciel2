@@ -20,8 +20,10 @@
     <script src="scripts/formulaires.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
     <script src="https://apis.google.com/js/api:client.js"></script>
-    <!--    <meta name="google-signin-client_id"-->
-    <!--          content="266969397484-tlf4h2dn463kvmhn9lpovtgm93re0i63.apps.googleusercontent.com">-->
+
+<!--    <meta name="google-signin-client_id"-->
+<!--          content="266969397484-tlf4h2dn463kvmhn9lpovtgm93re0i63.apps.googleusercontent.com">-->
+
 </head>
 
 <body onload="initialiserMenu()">

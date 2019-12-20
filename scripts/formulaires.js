@@ -17,12 +17,12 @@ function afficherFormCreerCompte() {
 function afficherFormMotPasse() {
     rendreInvisible("divConnexion");
     resetForm("formConnexion");
+
     rendreVisible("divCreationCompte");
     resetForm("formCreationCompte");
     rendreVisible("divMotPasseOublie");
 }
 
-function fermerForms() {
     // rendreInvisible("divConnexion");
     resetForm("formConnexion");
     // rendreInvisible("divMotPasseOublie");
@@ -30,6 +30,7 @@ function fermerForms() {
     // rendreInvisible("divCreationCompte");
     resetForm("formCreationCompte");
     // afficherFormConnexion();
+
 }
 
 function rendreVisible(elem) {

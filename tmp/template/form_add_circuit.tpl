@@ -1,4 +1,5 @@
-<a href="../pages/list_circuit.php" target="_blank">Liste des circuit</a>
+<div style="padding: 20px">
+<a href="../pages/list-circuit.php">Liste des circuit</a>
 <h1>{$h1_circuit}</h1>
 <button id="verification-NicEdit">Verification Editor</button>
 <form class="animated zoomInRight" id="AddFormCircuit">
@@ -38,6 +39,6 @@
     </div>
     <input type="button" id="btn_add_circuit" class="btn btn-primary" value="{$btn_submit}" onclick="BtnAddCircuit()">
 </form>
-
 <script src="../libs/nicEdit-latest.js"></script>
 <script src="../js/ivan-js.js"></script>
+</div>
