@@ -1,16 +1,33 @@
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/fr_CA/sdk.js#xfbml=1&version=v5.0&appId=541764139741720&autoLogAppEvents=1">
+</script>
+
 <form id="formConnexion" name="formConnexion">
     <button type="button" class="close" data-dismiss="modal"
             onclick="fermerForms()">&times;
     </button>
-    <h4>Connectez-vous</h4><br>
-    <a href="#">
-        <img src="../images/ContinuerAvecFacebook.png"></a><br><br>
+
 
 <!--    <div class="g-signin2" data-width="300" data-height="50"-->
 <!--         data-longtitle="false" data-theme="dark"></div>-->
 
     <!-- In the callback, you would hide the gSignInWrapper element on a
   successful sign in -->
+
+    <div class="fb-login-button" data-width="320" data-size="large" data-button-type="continue_with"
+         data-auto-logout-link="true" data-use-continue-as="true">
+    </div>
+    <br><br>
+
+    <!--      The JS SDK Login Button   -->
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+    </fb:login-button>
+
+    <div id="status">
+    </div>
+
+
     <div id="gSignInWrapper">
         <span class="label"> </span>
         <div id="customBtn" class="customGPlusSignIn">

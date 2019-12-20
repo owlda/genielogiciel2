@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="col-8">
-                <p>Paragraph fds fsdf fdsf fdsf sdf fdsf sdf sdfs d</p>
+                <p>{$etape.description}</p>
             </div>
         </div>
     {/foreach}
