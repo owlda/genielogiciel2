@@ -16,9 +16,14 @@ var Vue=function(reponse){
         case "modcircuit" :
             ModCircuit_View(reponse);
             break;
-
         case "addetape" :
             AddEtape_View(reponse);
+            break;
+        case "register_rabais" :
+            RegisterRabais_View(reponse);
+            break;
+        case "register_pays" :
+            EnregisterPays_View(reponse);
             break;
     }
 };
@@ -36,6 +41,15 @@ function EnregistreTheme_View(reponse){
     $("#SelectTheme").html(reponse.list_theme);
 };
 
+function EnregisterPays_View(reponse) {
+
+    alert("Pays a été ajouté...");
+    $("#ViewNewPays").css("display", "none");
+    $("#SelectPays").html(reponse.list_pays);
+
+
+}
+
 function ListerCircuit_View(reponse){
     $("#list-circuit").html(reponse.list_circuit);
 };
@@ -47,4 +61,8 @@ function DetailCircuit_View(reponse) {
 
 function ModCircuit_View(reponse) {
     $("#form-circuit").html(reponse.form_edit_circuit);
+}
+
+function RegisterRabais_View() {
+    location.reload();
 }
