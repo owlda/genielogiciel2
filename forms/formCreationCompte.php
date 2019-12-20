@@ -1,4 +1,6 @@
 <form id="formCreationCompte" name="formCreationCompte">
+    <button type="button" class="close" data-dismiss="modal"
+            onclick="fermerForms()">&times;</button>
     <h4>Créez votre compte</h4><br>
 
     <label for="txtPrenomNouv">Prénom</label><br>
@@ -9,6 +11,9 @@
 
     <label for="txtCourrielNouv">Adresse de courriel</label><br>
     <input type="text" id="txtCourrielNouv" name="txtCourrielNouv"><br><br>
+
+    <label for="txtTelephoneNouv">Téléphone</label><br>
+    <input type="text" id="txtTelephoneNouv" name="txtTelephone"><br><br>
 
     <label for="txtMotPasseNouv">Mot de passe</label><br>
     <input type="password" id="txtMotPasseNouv" name="txtMotPasseNouv"><br><br>
@@ -28,10 +33,9 @@
     <label for="txtCodePostal">Code postal</label><br>
     <input type="text" id="txtCodePostal" name="txtCodePostal"><br><br>
 
-    <button type="button" class="btn btn-primary">Créer compte</button>
+    <button type="button" class="btn btn-primary" onclick="requetEnregistrerMembre()">Créer compte</button>
     &nbsp ou &nbsp
     <a href="#" onclick="afficherFormConnexion()">utiliser un compte existant</a>
 </form>
-
 
 <?php

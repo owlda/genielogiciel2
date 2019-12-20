@@ -6,9 +6,8 @@ $(document).ready(function () {
         Create_Form_Ivan();
     });
 
-    //TODO Получить переменную с редактора
+    //TODO Получить переменную с редактора по клику на элемент
     $('#verification-NicEdit').click(function () {
-
         var nicE = new nicEditors.findEditor('NicEdit');
         question = nicE.getContent();
         alert(question);
@@ -16,8 +15,23 @@ $(document).ready(function () {
 
 });
 
-function Create_Form_Ivan() {
+function BtnViewNewTheme() {
+    $('#ViewNewTheme').css('display', 'block');
+}
 
+function BtnNotTheme() {
+    $('#ViewNewTheme').css('display', 'none');
+}
+
+function BtnViewNewPays() {
+    $('#ViewNewPays').css('display', 'block');
+}
+
+function BtnNotPays() {
+    $('#ViewNewPays').css('display', 'none');
+}
+
+function Create_Form_Ivan() {
     $('#form-circuit').text("");
 
     //TODO Создание формы для добавления circuit

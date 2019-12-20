@@ -1,5 +1,17 @@
 <?php
 $voc = array();
+//Array from BD
+$voc["arr_theme_circuit"] = array();
+$db->setFetchMode(ADODB_FETCH_ASSOC);
+$voc["arr_theme_circuit"] = $db->getAssoc('SELECT * FROM typecircuit');
+
+$voc["arr_status_circuit"] = array();
+$db->setFetchMode(ADODB_FETCH_ASSOC);
+$voc["arr_status_circuit"] = $db->getAssoc('SELECT * FROM statutcircuit');
+
+$voc["arr_pays"] = array();
+$db->setFetchMode(ADODB_FETCH_ASSOC);
+$voc["arr_pays"] = $db->getAssoc('SELECT * FROM pays');
 
 //TODO vocabulary AddCircuit
 $voc["label_add_circuit"] = "Ajouter un circuit";
@@ -10,16 +22,6 @@ $voc["label_theme_circuit"] = "Thème:";
 $voc["btn_add_theme"] = "Ajouter un thème";
 $voc["label_ville_depart"] = "Ville de départ";
 $voc["btn_submit"] = "Enregistrer";
-//Array
-$voc["theme_circuit"] = array();
-$voc["theme_circuit"]['50'] = "Historique";
-$voc["theme_circuit"]['40'] = "Gastronomique";
-$voc["theme_circuit"]['2'] = "Ethnographique";
-
-$voc["ville_depart"] = array();
-$voc["ville_depart"]['50'] = "Montréal";
-$voc["ville_depart"]['40'] = "Toronto";
-$voc["ville_depart"]['2'] = "New York";
 
 $voc['email'] = "Corriel:";
 
