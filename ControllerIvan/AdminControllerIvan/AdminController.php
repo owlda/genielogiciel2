@@ -46,10 +46,8 @@ switch($_POST['action']){
 function BtnDelRabais($db){
     global $reponse;
     $reponse['action'] = "del_rabais";
-
     $sql = "DELETE FROM rabais WHERE idCircuit = " . $_POST['idCircuit'];
     $db->execute($sql);
-
 }
 
 //TODO Enregistrer nouveau theme
