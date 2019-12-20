@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-12-15 22:42:13
+/* Smarty version 3.1.33, created on 2019-12-19 15:43:42
   from 'C:\xampp\htdocs\files\Web3\genielogiciel2\tmp\template\list_circuit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5df6a8b56ab946_27537433',
+  'unifunc' => 'content_5dfb8c9e0ff7a4_07704492',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e6b663dcb540cff80d3910fdbd3a4f7ff54e621e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\files\\Web3\\genielogiciel2\\tmp\\template\\list_circuit.tpl',
-      1 => 1576446130,
+      1 => 1576766570,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5df6a8b56ab946_27537433 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5dfb8c9e0ff7a4_07704492 (Smarty_Internal_Template $_smarty_tpl) {
 ?><h1>Liste des circuits</h1>
+<input value="Ajouter un circuit" class="btn btn-success" type="button" onclick="location.href='add-circuit.php'">
 <div class="container-fluid" style="width: 95%;padding: 2%;">
     <div class="row" id="card-container"></div>
     <table class="table">
@@ -61,8 +62,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_var
 </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['value']->value['duree'];?>
 </td>
-                <td><a href="../pages/detailcircuit.html?id=<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
-" onclick="DetaleCircuit()">Détaillé</a></td>
+                <td><a href="../pages/detail-circuit.php?id=<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+">Détaillé</a></td>
             </tr>
         <?php
 }

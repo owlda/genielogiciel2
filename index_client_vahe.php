@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -11,13 +12,24 @@
     <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="css/forms.css">
+    <script src="ControllerVahe/requetsMembre.js"></script>
+    <script src="ControllerVahe/ViewVahe.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
+<body onload="initclientmenue()">
+<?php
+    session_start();
+    if(isset($_SESSION['sessionstatus'])){
+        if ($_SESSION['sessionstatus'] == true) {
+            echo('<div id="menu"></div>');
+            //include __DIR__ . '/tmp/template/menu_client.tpl ';
 
-<?php include __DIR__ . '/tmp/template/headerDenis.tpl ';
-
+        }
+    }else {
+        include __DIR__ . '/tmp/template/menu-ren.tpl ';
+    }
 ?>
-<body onload="initialiserMenu()">
-<?php include __DIR__ . '/tmp/template/menu-ren.tpl ' ?>
 
 <div class="container">
     <?php include __DIR__ . '/tmp/template/carousel.tpl ' ?>
@@ -47,10 +59,15 @@
         </div>
     </div>
 </div>
+
 <?php include __DIR__ . '/tmp/template/footer.tpl ' ?>
-<script src="assets/js/jquery.min.js"></script>
+
+
+<!--<script src="assets/js/jquery.min.js"></script>-->
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="scripts/formulaires.js"></script>
+
 </body>
 </html>
 <?php
+
