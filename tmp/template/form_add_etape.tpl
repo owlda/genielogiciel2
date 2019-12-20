@@ -1,7 +1,8 @@
 <div style="padding: 20px">
 <a href="../pages/list-circuit.php">Liste des circuit</a>
 <h1>Ajouter un étape</h1>
-<button id="verification-NicEdit">Verification Editor</button>
+    <div style="width: 50%;height: 50%">{include file='carousel-circuit.tpl'}</div>
+{*<button id="verification-NicEdit">Verification Editor</button>*}
 <form class="animated zoomInRight" id="AddFormEtape">
 
     <div class="form-group animated zoomInRight">
@@ -29,10 +30,10 @@
         <input type="button" value="Annuler" id="btn_not_pays" class="btn btn-secondary" onclick="BtnNotPays()">
     </div>
 
-    <div class="form-group animated zoomInRight">
+{*    <div class="form-group animated zoomInRight">
         <label>Prix:</label>
         <input type="text" class="form-control" id="input_title" name="input_title" style="width: 100px" >
-    </div>
+    </div>*}
 
     <div class="form-group">
         <label>Date de début:</label>

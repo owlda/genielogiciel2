@@ -1,7 +1,8 @@
 <div style="padding: 20px">
 <a href="../pages/list-circuit.php">Liste des circuit</a>
 <h1>{$h1_circuit}</h1>
-<button id="verification-NicEdit">Verification Editor</button>
+    <div style="width: 50%;height: 50%">{include file='carousel-circuit.tpl'}</div>
+{*<button id="verification-NicEdit">Verification Editor</button>*}
 <form class="animated zoomInRight" id="AddFormCircuit">
     <div class="form-group">
         <label style="display: block">Status:</label>
@@ -16,7 +17,7 @@
     </div>
     <div class="form-group animated zoomInRight">
         <label>Prix:</label>
-        <input type="text" class="form-control" id="input_title" name="input_title" style="width: 100px" value="{$db_prix}">
+        <input type="text" class="form-control" id="input_prix" name="input_prix" style="width: 100px" value="{$db_prix}">
     </div>
 
     <div class="form-group animated zoomInRight">
