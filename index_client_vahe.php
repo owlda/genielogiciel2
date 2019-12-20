@@ -14,8 +14,12 @@
     <link rel="stylesheet" href="css/forms.css">
     <script src="ControllerVahe/requetsMembre.js"></script>
     <script src="ControllerVahe/ViewVahe.js"></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <!--<script src="assets/js/jquery.min.js"></script>-->
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="scripts/formulaires.js"></script>
 </head>
 <body onload="initclientmenue()">
 <?php
@@ -63,9 +67,7 @@
 <?php include __DIR__ . '/tmp/template/footer.tpl ' ?>
 
 
-<!--<script src="assets/js/jquery.min.js"></script>-->
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="scripts/formulaires.js"></script>
+
 
 </body>
 </html>

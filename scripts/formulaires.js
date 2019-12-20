@@ -17,21 +17,24 @@ function afficherFormCreerCompte() {
 function afficherFormMotPasse() {
     rendreInvisible("divConnexion");
     resetForm("formConnexion");
-
     rendreVisible("divCreationCompte");
     resetForm("formCreationCompte");
     rendreVisible("divMotPasseOublie");
 }
 
-    // rendreInvisible("divConnexion");
-    resetForm("formConnexion");
-    // rendreInvisible("divMotPasseOublie");
-    resetForm("formMotPasseOublie");
-    // rendreInvisible("divCreationCompte");
-    resetForm("formCreationCompte");
-    // afficherFormConnexion();
 
+function fermerForms() {
+    rendreInvisible("divConnexion");
+    resetForm("formConnexion");
+    rendreInvisible("divMotPasseOublie");
+    resetForm("formMotPasseOublie");
+    rendreInvisible("divCreationCompte");
+    resetForm("formCreationCompte");
+    afficherFormConnexion();
 }
+
+
+
 
 function rendreVisible(elem) {
     document.getElementById(elem).style.display = 'block';

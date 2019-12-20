@@ -4,9 +4,7 @@
     </button>
     <h4>Connectez-vous</h4><br>
     <a href="#">
-        <img src="../images/ContinuerAvecFacebook.png"
-
-             alt="Continuer avec Facebook"></a><br><br>
+        <img src="../images/ContinuerAvecFacebook.png"></a><br><br>
 
 <!--    <div class="g-signin2" data-width="300" data-height="50"-->
 <!--         data-longtitle="false" data-theme="dark"></div>-->
@@ -21,7 +19,6 @@
         </div>
     </div>
     <div id="name"></div>
-    <script>startApp();</script>
 
 <!--    <br><br>-->
 <!--    <a href="#">-->
@@ -46,4 +43,15 @@
 
 <script src="https://apis.google.com/js/platform.js?onload=renderButton"
         async defer></script>
+<script>gapi.load('auth2', function () {
+        // Retrieve the singleton for the GoogleAuth library and set up the client.
+        auth2 = gapi.auth2.init({
+            client_id: '266969397484-tlf4h2dn463kvmhn9lpovtgm93re0i63.apps.googleusercontent.com',
+            cookiepolicy: 'single_host_origin',
+            // Request scopes in addition to 'profile' and 'email'
+            //scope: 'additional_scope'
+        });
+        attachSignin(document.getElementById('customBtn'));
+    });
+</script>
 <?php
