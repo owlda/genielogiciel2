@@ -20,13 +20,13 @@ switch($_POST['action']){
         ListerCircuit($smarty,$db);
         break;
     case 'detail_circuit':
-        DetailCircuit($smarty,$db);
+        DetailCircuit($smarty,$db,$voc);
         break;
     case 'modcircuit':
         FormModCircuit($smarty,$db, $voc);
         break;
     case 'addetape':
-        FormAddEtape($smarty,$db, $voc);
+        FormAddEtape($smarty, $voc);
         break;
     case 'btn_register_rabais':
         EnregestrerRabais($db);
@@ -76,25 +76,17 @@ function EnregistrerPays($smarty,$db){
     $reponse['list_pays'] = $smarty->fetch("select_pays.tpl");
 }
 
-//TODO Form for add un circuit
+//TODO Form for Add un circuit
 function FormAddCircuit($smarty, $voc){
     global $reponse;
     $reponse['action'] = 'addcircuit';
-
-    $smarty->assign('title', $voc["label_titre_circuit"]);
-    $smarty->assign('theme', $voc["label_theme_circuit"]);
-    $smarty->assign('btn_submit', $voc["btn_submit"]);
-    $smarty->assign('h1_circuit', $voc["label_add_circuit"]);
-    $smarty->assign('btn_add_theme', $voc["btn_add_theme"]);
-    $smarty->assign('ville_depart', $voc["label_ville_depart"]);
-
-    //Array
-    $arr_theme_circuit = $voc["arr_theme_circuit"];
-    $smarty->assign('arr_theme_circuit', $arr_theme_circuit);
+    //Initialization vocabulaire
+    $smarty = AddEditCircuitSmarty($smarty, $voc);
+    //Transfer data to *.tpl
     $reponse['form_add_circuit'] = $smarty->fetch("form_add_circuit.tpl");
 }
 
-//TODO Load form for edit un circuit param - ?id=
+//TODO Load form for Edit un circuit
 function FormModCircuit($smarty,$db, $voc){
     global $reponse;
     $reponse['action'] = 'modcircuit';
@@ -143,6 +135,10 @@ function FormModCircuit($smarty,$db, $voc){
 
 //TODO Enregistrer un circuit
 function EnregistrerCircuit($smarty,$db){
+
+    global $reponse;
+    $reponse['action'] = 'btn_register_circuit';
+
     $table = 'circuit';
     /*$record['idCircuit'] =*/
     $record['titre'] = $_POST['input_title'];
@@ -160,6 +156,10 @@ function EnregistrerCircuit($smarty,$db){
 
 //TODO Enregistrer un etape
 function EnregistrerEtape($smarty,$db){
+
+    global $reponse;
+    $reponse['action'] = 'btn_register_etape';
+
     $table = 'etape';
     $record['numeroEtap'] = 0;
     $record['titre'] = $_POST['input_title'];
@@ -207,14 +207,15 @@ function ListerCircuit($smarty,$db){
 
 }
 
-//TODO Detail un circuit param - ?id=
-function DetailCircuit($smarty,$db){
+//TODO Detail un circuit
+function DetailCircuit($smarty,$db,$voc){
     global $reponse;
     $reponse['action'] = "detail_circuit";
 
     $idCircuit = $_POST["idCircuit"];
     $regex = "/^[1-9]+$/";
     $resultat = preg_match($regex, (int)$idCircuit);
+
     if($resultat === 1)
     {
         $rs1 = GetCircuitById($idCircuit, $db);
@@ -246,43 +247,14 @@ function DetailCircuit($smarty,$db){
     }
 }
 
-//TODO Form Add etape
-function FormAddEtape($smarty,$db, $voc){
-
+//TODO Form for Add un etape
+function FormAddEtape($smarty, $voc){
     global $reponse;
     $reponse['action'] = 'addetape';
-
-    $idCircuit = $_POST["idCircuit"];
-    $regex = "/^[1-9]+$/";
-    $resultat = preg_match($regex, (int)$idCircuit);
-
-    if($resultat === 1)
-    {
-        /* Array */
-        $smarty->assign('arr_pays', $voc["arr_pays"]);
-
-        $rs1 = GetCircuitById($idCircuit, $db);
-        $smarty->assign('idCircuit', $rs1[0]['idCircuit']);
-        $smarty->assign('titre', $rs1[0]['titre']);
-        $smarty->assign('description', $rs1[0]['description']);
-        $smarty->assign('duree', $rs1[0]['duree']);
-        $smarty->assign('pointDepart', $rs1[0]['pointDepart']);
-        $smarty->assign('prix', $rs1[0]['prix']);
-        $smarty->assign('idTheme', $rs1[0]['idTheme']);
-        $smarty->assign('NomTheme', $rs1[0]['NomTheme']);
-        $smarty->assign('dateDepart', $rs1[0]['dateDepart']);
-        $smarty->assign('dateFin', $rs1[0]['dateFin']);
-        $smarty->assign('idStatutCircuit', $rs1[0]['idStatutCircuit']);
-
-        //Transfer data to *.tpl
-        $reponse['form_add_etape'] = $smarty->fetch("form_add_etape.tpl");
-
-    }
-    else
-    {
-
-
-    }
+    //Initialization vocabulaire
+    $smarty = AddEditEtapeSmarty($smarty,$voc);
+    //Transfer data to *.tpl
+    $reponse['form_add_etape'] = $smarty->fetch("form_add_etape.tpl");
 }
 
 //TODO Get All Circuit from DB
@@ -314,7 +286,6 @@ function DateDBtoInputDate($DateDB){
 
 //TODO Get All Circuit from DB
 function GetAllEtapeFromCircuit($idCircuit, $db){
-
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $SQL = 'SELECT * FROM etape WHERE idCircuit = '.$idCircuit;
     $rs = $db->getAll($SQL);
@@ -328,8 +299,8 @@ function GetAllEtapeFromCircuit($idCircuit, $db){
     return $rs;
 }
 
+//TODO Register un rabais pour circuit
 function EnregestrerRabais($db){
-
     global $reponse;
     $reponse['action'] = 'register_rabais';
     $table = 'rabais';
@@ -338,9 +309,39 @@ function EnregestrerRabais($db){
     $record['datefin'] = $_POST['dateFin'];
     $record['idCircuit'] = $_POST['idCircuit'];
     $db->autoExecute($table, $record, 'INSERT');
-
 }
 
+//TODO Transfer data to tpl smarty
+function AddEditEtapeSmarty($smarty, $voc){
+    $idCircuit = $_POST["idCircuit"];
+    $smarty->assign('idCircuit', $idCircuit);
+    $smarty->assign('h1_add_etape', $voc["lb_h1_add_etape"]);
+    $smarty->assign('title', $voc["lb_titre_etape"]);
+    $smarty->assign('pays', $voc["lb_pays_etape"]);
+    $smarty->assign('add_new_pays', $voc["lb_add_new_pays"]);
+    $smarty->assign('btn_add_pays', $voc["btn_add_pays"]);
+    $smarty->assign('btn_submit', $voc["btn_submit"]);
+    $smarty->assign('btn_cancel', $voc["btn_cancel"]);
+    $smarty->assign('date_debut', $voc["lb_date_debut_etape"]);
+    $smarty->assign('description', $voc["lb_description_etape"]);
+    //Array
+    $smarty->assign('arr_pays', $voc["arr_pays"]);
+    return $smarty;
+}
+
+function AddEditCircuitSmarty($smarty, $voc){
+    $smarty->assign('h1_circuit', $voc["lb_h1_add_circuit"]);
+    $smarty->assign('title', $voc["lb_titre_circuit"]);
+    $smarty->assign('theme', $voc["lb_theme_circuit"]);
+    $smarty->assign('btn_submit', $voc["btn_submit"]);
+    $smarty->assign('btn_cancel', $voc["btn_cancel"]);
+    $smarty->assign('btn_add_theme', $voc["btn_add_theme"]);
+    $smarty->assign('add_new_theme', $voc["lb_add_new_theme"]);
+    $smarty->assign('ville_depart', $voc["lb_ville_depart"]);
+    //Array
+    $smarty->assign('arr_theme_circuit', $voc["arr_theme_circuit"]);
+    return $smarty;
+}
 
 echo json_encode($reponse);
 

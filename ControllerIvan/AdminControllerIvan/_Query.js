@@ -148,17 +148,14 @@ function BtnAddCircuit(){
 }
 
 //TODO Enregistrer un etape
-function BtnAddEtape(){
+function BtnAddEtape(idCircuit){
 
     var FormAddEtape = new FormData(AddFormEtape);
     FormAddEtape.append('action','btn_register_etape');
-    var url_string = window.location.href;
-    var url = new URL(url_string);
-    FormAddEtape.append('idCircuit',url.searchParams.get("id"));
+    FormAddEtape.append('idCircuit', idCircuit);
     var nicE = new nicEditors.findEditor('NicEdit');
     FormAddEtape.append('description',nicE.getContent());
     FormAddEtape.append('id_pays', $('#SelectPays').val());
-
     var controller = GetUrlController();
 
     $.ajax({
@@ -206,13 +203,11 @@ function ListerCircuit(){
 }
 
 //TODO Detail un circuit
-function DetailCircuit() {
+function DetailCircuit(idCircuit) {
 
     var FormCircuit = new FormData();
-    var url_string = window.location.href;
-    var url = new URL(url_string);
     FormCircuit.append('action','detail_circuit');
-    FormCircuit.append('idCircuit',url.searchParams.get("id"));
+    FormCircuit.append('idCircuit',idCircuit);
     var controller = GetUrlController();
     $.ajax({
         type : 'POST',
@@ -233,13 +228,11 @@ function DetailCircuit() {
     });
 }
 
-//TODO Load form for add un circuit
-function LoadAddEtape(){
+//TODO Load form for Add un etape
+function LoadAddEtape(idCircuit){
     var FormAddEtape = new FormData();
     FormAddEtape.append('action','addetape');
-    var url_string = window.location.href;
-    var url = new URL(url_string);
-    FormAddEtape.append('idCircuit',url.searchParams.get("id"));
+    FormAddEtape.append('idCircuit',idCircuit);
     var controller = GetUrlController();
     $.ajax({
         type : 'POST',

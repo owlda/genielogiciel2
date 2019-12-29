@@ -1,4 +1,4 @@
-<input class="btn btn-success" type="button" value="Ajouter un étape" style="margin-top: 5px;" onclick="location.href='add-etape.php?id={$idCircuit}'">
+<input class="btn btn-success" type="button" value="Ajouter un étape" style="margin-top: 5px;" onclick="LoadAddEtape({$idCircuit})">
 
 {if $Nb_etape > 0}
 

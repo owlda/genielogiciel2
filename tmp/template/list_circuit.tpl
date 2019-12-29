@@ -1,5 +1,5 @@
 <h1>Liste des circuits</h1>
-<input value="Ajouter un circuit" class="btn btn-success" type="button" onclick="location.href='add-circuit.php'">
+<input value="Ajouter un circuit" class="btn btn-success" type="button" onclick="LoadAddCircuit();">
 <div class="container-fluid" style="width: 95%;padding: 2%;">
     <div class="row" id="card-container"></div>
     <table class="table">
@@ -39,7 +39,7 @@
                 <td>{$key.NomTheme}</td>
                 <td>{$key.dateDepart}</td>
                 <td>{$key.dateFin}</td>
-                <td><a href="../pages/detail-circuit.php?id={$key.idCircuit}">Détaillé</a></td>
+                <td> <input type="button" value="Détaillé" class="btn btn-info" onclick="DetailCircuit({$key.idCircuit})"></td>
             </tr>
         {/foreach}
         </tbody>

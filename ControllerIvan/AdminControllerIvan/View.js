@@ -4,6 +4,14 @@ var Vue=function(reponse){
         case "addcircuit" :
             AddCircuit_View(reponse);
             break;
+        case "btn_register_circuit" :
+            alert("Circuit a été ajouté...");
+            location.reload();
+            break;
+        case "btn_register_etape" :
+            alert("Étape a été ajouté...");
+            DetailCircuit(reponse.idCircuit);
+            break;
         case "register_theme" :
             EnregistreTheme_View(reponse);
             break;
@@ -35,22 +43,28 @@ function DelRabais_View() {
     location.reload();
 }
 
-
 function AddCircuit_View(reponse){
-    $("#form-circuit").html(reponse.form_add_circuit);
-};
+    document.documentElement.scrollTop = 0;
+    $("#list-circuit").html(reponse.form_add_circuit);
+    $("#ajouter-circuit").html("");
+    $("#ajouter-etape").html("");
+}
 
 function AddEtape_View(reponse){
-    $("#form-etape").html(reponse.form_add_etape);
-};
+    document.documentElement.scrollTop = 0;
+    $("#list-circuit").html(reponse.form_add_etape);
+    $("#ajouter-circuit").html("");
+    $("#ajouter-etape").html("");
+
+}
+
 function EnregistreTheme_View(reponse){
     alert("Thème a été ajouté...");
     $("#ViewNewTheme").css("display", "none");
     $("#SelectTheme").html(reponse.list_theme);
-};
+}
 
 function EnregisterPays_View(reponse) {
-
     alert("Pays a été ajouté...");
     $("#ViewNewPays").css("display", "none");
     $("#SelectPays").html(reponse.list_pays);
@@ -58,9 +72,11 @@ function EnregisterPays_View(reponse) {
 
 function ListerCircuit_View(reponse){
     $("#list-circuit").html(reponse.list_circuit);
-};
+}
 
 function DetailCircuit_View(reponse) {
+    document.documentElement.scrollTop = 0;
+    $("#list-circuit").html("");
     $("#ajouter-circuit").html(reponse.detail_circuit);
     $("#ajouter-etape").html(reponse.detail_etape);
 }
