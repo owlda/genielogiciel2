@@ -19,6 +19,7 @@ function BtnViewNewTheme() {
     $('#ViewNewTheme').css('display', 'block');
 }
 
+
 function BtnNotTheme() {
     $('#ViewNewTheme').css('display', 'none');
 }

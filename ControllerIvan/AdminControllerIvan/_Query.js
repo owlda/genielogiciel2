@@ -149,7 +149,6 @@ function BtnAddCircuit(){
 
 //TODO Enregistrer un etape
 function BtnAddEtape(idCircuit){
-
     var FormAddEtape = new FormData(AddFormEtape);
     FormAddEtape.append('action','btn_register_etape');
     FormAddEtape.append('idCircuit', idCircuit);

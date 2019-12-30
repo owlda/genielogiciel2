@@ -38,7 +38,7 @@
     </div>
 
     <div>
-        <label for="exampleInputEmail1" id="label_description_circuit">Description:</label>
+        <label id="label_description_circuit">Description:</label>
         <textarea id="NicEdit" cols="70" rows="5" style="width: 60%" ></textarea>
     </div>
     <br>

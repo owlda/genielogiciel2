@@ -159,6 +159,7 @@ function EnregistrerEtape($smarty,$db){
 
     global $reponse;
     $reponse['action'] = 'btn_register_etape';
+    $reponse['idCircuit'] = $_POST['idCircuit'];
 
     $table = 'etape';
     $record['numeroEtap'] = 0;
@@ -177,7 +178,6 @@ function EnregistrerEtape($smarty,$db){
 //TODO Lister des circuit
 function ListerCircuit($smarty,$db){
     global $reponse;
-
     $reponse['action'] = "list_circuit";
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $rs = $db->getAll('SELECT * FROM circuit');
@@ -209,42 +209,31 @@ function ListerCircuit($smarty,$db){
 
 //TODO Detail un circuit
 function DetailCircuit($smarty,$db,$voc){
+
     global $reponse;
     $reponse['action'] = "detail_circuit";
-
     $idCircuit = $_POST["idCircuit"];
-    $regex = "/^[1-9]+$/";
-    $resultat = preg_match($regex, (int)$idCircuit);
+    $rs1 = GetCircuitById($idCircuit, $db);
+    $smarty->assign('idCircuit', $rs1[0]['idCircuit']);
+    $smarty->assign('titre', $rs1[0]['titre']);
+    $smarty->assign('description', $rs1[0]['description']);
+    $smarty->assign('duree', $rs1[0]['duree']);
+    $smarty->assign('pointDepart', $rs1[0]['pointDepart']);
+    $smarty->assign('prix', $rs1[0]['prix']);
+    $smarty->assign('idTheme', $rs1[0]['idTheme']);
+    $smarty->assign('NomTheme', $rs1[0]['NomTheme']);
+    $smarty->assign('dateDepart', $rs1[0]['dateDepart']);
+    $smarty->assign('dateFin', $rs1[0]['dateFin']);
+    $smarty->assign('idStatutCircuit', $rs1[0]['idStatutCircuit']);
 
-    if($resultat === 1)
-    {
-        $rs1 = GetCircuitById($idCircuit, $db);
-        $smarty->assign('idCircuit', $rs1[0]['idCircuit']);
-        $smarty->assign('titre', $rs1[0]['titre']);
-        $smarty->assign('description', $rs1[0]['description']);
-        $smarty->assign('duree', $rs1[0]['duree']);
-        $smarty->assign('pointDepart', $rs1[0]['pointDepart']);
-        $smarty->assign('prix', $rs1[0]['prix']);
-        $smarty->assign('idTheme', $rs1[0]['idTheme']);
-        $smarty->assign('NomTheme', $rs1[0]['NomTheme']);
-        $smarty->assign('dateDepart', $rs1[0]['dateDepart']);
-        $smarty->assign('dateFin', $rs1[0]['dateFin']);
-        $smarty->assign('idStatutCircuit', $rs1[0]['idStatutCircuit']);
+    $arr_etape = GetAllEtapeFromCircuit($idCircuit, $db);
+    $smarty->assign('arr_etape', $arr_etape);
+    $smarty->assign('count_etape', sizeof($arr_etape));
 
-        $arr_etape = GetAllEtapeFromCircuit($idCircuit, $db);
-        $smarty->assign('arr_etape', $arr_etape);
-        $smarty->assign('Nb_etape', sizeof($arr_etape));
-
-        //Transfer data to *.tpl
-        $smarty->fetch("modal_del_circuit.tpl");
-        $reponse['detail_circuit'] = $smarty->fetch("detail_circuit.tpl");
-        $reponse['detail_etape'] = $smarty->fetch("detail_etape.tpl");
-
-    }
-    else
-    {
-
-    }
+    //Transfer data to *.tpl
+    $smarty->fetch("modal_del_circuit.tpl");
+    $reponse['detail_circuit'] = $smarty->fetch("detail_circuit.tpl");
+    $reponse['detail_etape'] = $smarty->fetch("detail_etape.tpl");
 }
 
 //TODO Form for Add un etape
