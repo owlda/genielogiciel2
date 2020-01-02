@@ -106,8 +106,8 @@ function connecter($smarty)
                 $_SESSION['id'] = $ligne['idMembre'];
                 $_SESSION['sessionstatus'] = true;
                 $_SESSION['courriel'] = $ligne['courriel'];
-/*
-                $smarty->assign('courriel', $_SESSION['courriel']);
+
+/*                $smarty->assign('courriel', $_SESSION['courriel']);
                 $smarty->fetch('../tmp/template/menu_client.tpl');*/
 
             }
@@ -133,6 +133,22 @@ function i_connecter($smarty)
     $reponse['action'] = 'i_connecter';
     $smarty->assign('courriel', $_SESSION['courriel']);
     $reponse['temp'] = $smarty->fetch('menu_client.tpl');
+
+   /* $requete = 'SELECT * FROM circuit';
+    try{
+        $unModel = new membreModele($requete, array());
+        $stmt = $unModel->executer();
+        $ligne = $stmt->fetch(PDO::FETCH_ASSOC);
+        $reponse['id'] = $ligne['idCircuit'];
+        $smarty->assign('id', $ligne['idCircuit']);
+        $smarty->fetch('carousel_vahe.tpl');
+
+    }
+    catch(Exception $e){
+
+    }finally{
+        unset($unModele);
+    }*/
 
 }
 

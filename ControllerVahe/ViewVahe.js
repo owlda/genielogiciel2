@@ -26,8 +26,9 @@ var membreVue = function(reponse){
             }
             break;
         case 'i_connecter':
-            //alert(reponse.temp);
+            alert(reponse.id);
             $("#menu").html(reponse.temp);
+
             break;
     }
 }
