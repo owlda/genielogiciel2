@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-12-20 15:44:58
+/* Smarty version 3.1.33, created on 2019-12-20 17:01:11
   from 'C:\web\xampp\htdocs\genielogiciel2-master\tmp\template\detail_circuit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dfcde6ae5aed2_19109306',
+  'unifunc' => 'content_5dfcf0479cbc73_33445253',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dd82ac5cf692ec9e9b29a43bc7ae034cbcb044f0' => 
     array (
       0 => 'C:\\web\\xampp\\htdocs\\genielogiciel2-master\\tmp\\template\\detail_circuit.tpl',
-      1 => 1576850832,
+      1 => 1576857437,
       2 => 'file',
     ),
   ),
@@ -22,8 +22,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:modal_del_circuit.tpl' => 1,
   ),
 ),false)) {
-function content_5dfcde6ae5aed2_19109306 (Smarty_Internal_Template $_smarty_tpl) {
-?><h1><?php echo $_smarty_tpl->tpl_vars['titre']->value;?>
+function content_5dfcf0479cbc73_33445253 (Smarty_Internal_Template $_smarty_tpl) {
+?><a href="../pages/list-circuit.php">Liste des circuit</a>
+<h1><?php echo $_smarty_tpl->tpl_vars['titre']->value;?>
 </h1>
 <div class="btn-toolbar">
     <div class="btn-group" role="group">
