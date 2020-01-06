@@ -43,7 +43,28 @@ switch($_POST['action']){
     case 'btn_add_jour':
         ModalAddJour($smarty, $db);
         break;
+    case 'btn_register_ville':
+        EnregistrerVille($smarty,$db);
+        break;
 }
+
+//TODO Enregistrer nouvelle ville
+function EnregistrerVille($smarty,$db){
+    global $reponse;
+    $reponse['action'] = "register_ville";
+
+    $table = 'villes';
+    $record['nom'] = $_POST['new_ville'];
+    $record['idPays'] = $_POST['idPays'];
+    $db->autoExecute($table, $record, 'INSERT');
+
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $SQL = 'SELECT * FROM villes WHERE idPays = ' . $_POST['idPays'];
+    $rs = $db->getAssoc($SQL);
+    $smarty->assign('arr_list_ville', $rs);
+    $reponse['list_ville'] = $smarty->fetch("select_villes.tpl");
+}
+
 
 //TODO Modal Add un jour for Etape
 function ModalAddJour($smarty, $db){
@@ -51,6 +72,10 @@ function ModalAddJour($smarty, $db){
     $reponse['action'] = "btn_add_jour";
     $smarty->assign('idPays', $_POST["idPays"]);
     $smarty->assign('idEtape', $_POST["idEtape"]);
+    $smarty->assign('NomPays', GetNomPaysById($_POST["idPays"], $db));
+    $smarty->assign('NomPays', GetNomPaysById($_POST["idPays"], $db));
+    $smarty->assign('arr_list_ville', GetAllVilleFromPays($_POST["idPays"], $db));
+
     //Transfer data to *.tpl
     $smarty->fetch("modal_add_jour.tpl");
     $reponse['modal_add_jour'] = $smarty->fetch("modal_add_jour.tpl");
@@ -306,7 +331,7 @@ function AddEditCircuitSmarty($smarty, $voc){
     return $smarty;
 }
 
-//Support
+//Support *********** ************* *************
 //TODO Get Circuits with all info from DB
 function GetCircuitById($idCircuit, $db){
 
@@ -347,6 +372,20 @@ function GetAllEtapeFromCircuit($idCircuit, $db){
         $rs[$key]['NomPays'] = $supres[$rs[$key]['idPays']];
     }
     return $rs;
+}
+
+function GetNomPaysById($idPays, $db){
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $SQL = 'SELECT * FROM pays WHERE idPays = '.$idPays;
+    $rs = $db->getAll($SQL);
+
+    return $rs[0]['nom'];
+}
+
+function GetAllVilleFromPays($idPays, $db){
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $SQL = 'SELECT * FROM villes WHERE idPays = '.$idPays;
+    return $db->getAll($SQL);
 }
 
 

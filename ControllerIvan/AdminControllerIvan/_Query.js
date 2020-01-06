@@ -57,6 +57,59 @@ function LoadAddCircuit(){
     });
 }
 
+//TODO Load form for Add un etape
+function LoadAddEtape(idCircuit){
+    var FormAddEtape = new FormData();
+    FormAddEtape.append('action','addetape');
+    FormAddEtape.append('idCircuit',idCircuit);
+    var controller = GetUrlController();
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddEtape,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+}
+
+function LoadModalAddJour(idPays, idEtape){
+    var FormAddJour = new FormData();
+    FormAddJour.append('action','btn_add_jour');
+    FormAddJour.append('idPays', idPays);
+    FormAddJour.append('idEtape', idEtape);
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddJour,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+
+
+}
+
 //TODO Enregistrer un theme
 function BtnAddTheme(){
     var FormAddTheme = new FormData();
@@ -109,7 +162,34 @@ function BtnAddPays(){
             console.log(xhr);
         }
     });
+}
 
+//TODO Enregistrer une ville
+function BtnAddVille(idPays){
+    var FormAddVille = new FormData();
+    FormAddVille.append('action','btn_register_ville');
+    FormAddVille.append('idPays', idPays);
+    let new_ville = $('#NewVille').val();
+    FormAddVille.append('new_ville', new_ville);
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddVille,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
 }
 
 //TODO Enregistrer un circuit
@@ -227,31 +307,6 @@ function DetailCircuit(idCircuit) {
     });
 }
 
-//TODO Load form for Add un etape
-function LoadAddEtape(idCircuit){
-    var FormAddEtape = new FormData();
-    FormAddEtape.append('action','addetape');
-    FormAddEtape.append('idCircuit',idCircuit);
-    var controller = GetUrlController();
-    $.ajax({
-        type : 'POST',
-        url : controller,
-        data : FormAddEtape,
-        dataType : 'json',
-        async : false,
-        cache : false,
-        contentType : false,
-        processData : false,
-        success : function (reponse){
-            Vue(reponse);
-        },
-        error: function (xhr, error) {
-            console.log(error);
-            console.log(xhr);
-        }
-    });
-}
-
 //TODO Enregistrer un rabais
 function BtnRegistreRabais(idCircuit){
 
@@ -308,30 +363,3 @@ function BtnDelRabais(idCircuit) {
 
 }
 
-function BtnAddJour(idPays, idEtape){
-    var FormAddJour = new FormData();
-    FormAddJour.append('action','btn_add_jour');
-    FormAddJour.append('idPays', idPays);
-    FormAddJour.append('idEtape', idEtape);
-    var controller = GetUrlController();
-
-    $.ajax({
-        type : 'POST',
-        url : controller,
-        data : FormAddJour,
-        dataType : 'json',
-        async : false,
-        cache : false,
-        contentType : false,
-        processData : false,
-        success : function (reponse){
-            Vue(reponse);
-        },
-        error: function (xhr, error) {
-            console.log(error);
-            console.log(xhr);
-        }
-    });
-
-
-}

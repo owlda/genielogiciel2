@@ -11,10 +11,21 @@
             <div class="modal-body">
                 <form id="FormAddJour">
 
+                    <div class="form-group" style="display: inline;">
+                        <label>Pays:</label>
+                        <select readonly="true" class="form-control"  id="SelectPays" name="SelectPays" style="width:30%;">
+                            <option value="{$idPays}">{$NomPays}</option>
+                        </select>
+                    </div>
+                    <br>
                     <div class="form-group">
                         <label style="display: block">Ville:</label>
-                        <select class="form-control"  id="SelectPays" name="SelectPays" style="width:50%;display: inline;">
-                            <option value="1111">1111</option>
+                        <select class="form-control"  id="SelectVille" name="SelectVille" style="width:50%;display: inline;">
+                            {foreach $arr_list_ville as $ville}
+                                <option value="{$ville.idVille}">
+                                    {$ville.nom}
+                                </option>
+                            {/foreach}
                         </select>
                         <input type="button" value="Ajouter une ville" class="btn btn-primary" style="display: inline" onclick="BtnViewNewVille()">
                     </div>
@@ -23,7 +34,7 @@
                         <label>Nouvelle ville:</label>
                         <input type="text" class="form-control" id="NewVille">
                         <br>
-                        <input type="button" value="Enregistrer" id="btn_add_theme" class="btn btn-success" onclick="BtnAddVille()">
+                        <input type="button" value="Enregistrer" id="btn_add_theme" class="btn btn-success" onclick="BtnAddVille({$idPays})">
                         <input type="button" value="Annuler" id="btn_not_theme" class="btn btn-secondary" onclick="BtnNotVille()">
                     </div>
 
@@ -42,18 +53,11 @@
                         <input type="text" value="{$idEtape}" class="form-control" id="input_id_etape" name="input_id_etape" style="width: 60px;display: inline;" readonly>
                     </div>
 
-                    <div class="form-group" style="display: inline;margin-left: 10px;">
-                        <label style="display: inline;">Pays:</label>
-                        <select readonly="true" class="form-control"  id="SelectPays" name="SelectPays" style="width:30%;display: inline;">
-                                <option value="111">1111</option>
-                        </select>
-                    </div>
-
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <button type="button" id="register_rabais" class="btn btn-success">Enregistrer</button>
+                <button type="button" id="register_jour" class="btn btn-success">Enregistrer</button>
             </div>
         </div>
     </div>

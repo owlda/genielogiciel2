@@ -39,12 +39,14 @@ var Vue=function(reponse){
         case "btn_add_jour" :
             AddJour_View(reponse);
             break;
+        case "register_ville" :
+            EnregisterVille_View(reponse);
+            break;
     }
 };
 
 function AddJour_View(reponse) {
     $("#all-modal").html(reponse.modal_add_jour);
-
     $('#modal_add_jour').modal('show');
     $('.modal-backdrop').css('position', 'static');
     $('#ViewNewVille').css('display', 'none');
@@ -68,6 +70,12 @@ function AddEtape_View(reponse){
     $("#ajouter-circuit").html("");
     $("#ajouter-etape").html("");
 
+}
+
+function EnregisterVille_View(reponse){
+    alert("Ville a été ajouté...");
+    $("#ViewNewVille").css("display", "none");
+    $("#SelectVille").html(reponse.list_ville);
 }
 
 function EnregistreTheme_View(reponse){
