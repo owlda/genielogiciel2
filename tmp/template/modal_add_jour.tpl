@@ -34,12 +34,12 @@
 
                     <div class="form-group" style="display: inline;">
                         <label style="display: inline;">ID_Pays:</label>
-                        <input type="text" value="111" class="form-control" id="input_id_pays" name="input_id_pays" style="width: 60px;display: inline;" readonly>
+                        <input type="text" value="{$idPays}" class="form-control" id="input_id_pays" name="input_id_pays" style="width: 60px;display: inline;" readonly>
                     </div>
 
                     <div class="form-group" style="display: inline;margin-left: 10px;">
                         <label style="display: inline;">ID_Etape:</label>
-                        <input type="text" value="111" class="form-control" id="input_id_pays" name="input_id_pays" style="width: 60px;display: inline;" readonly>
+                        <input type="text" value="{$idEtape}" class="form-control" id="input_id_etape" name="input_id_etape" style="width: 60px;display: inline;" readonly>
                     </div>
 
                     <div class="form-group" style="display: inline;margin-left: 10px;">

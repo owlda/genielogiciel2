@@ -36,8 +36,20 @@ var Vue=function(reponse){
         case "del_rabais" :
             DelRabais_View();
             break;
+        case "btn_add_jour" :
+            AddJour_View(reponse);
+            break;
     }
 };
+
+function AddJour_View(reponse) {
+    $("#all-modal").html(reponse.modal_add_jour);
+
+    $('#modal_add_jour').modal('show');
+    $('.modal-backdrop').css('position', 'static');
+    $('#ViewNewVille').css('display', 'none');
+
+}
 
 function DelRabais_View() {
     location.reload();

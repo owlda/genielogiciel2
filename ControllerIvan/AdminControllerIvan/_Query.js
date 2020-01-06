@@ -307,3 +307,31 @@ function BtnDelRabais(idCircuit) {
     });
 
 }
+
+function BtnAddJour(idPays, idEtape){
+    var FormAddJour = new FormData();
+    FormAddJour.append('action','btn_add_jour');
+    FormAddJour.append('idPays', idPays);
+    FormAddJour.append('idEtape', idEtape);
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddJour,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+
+
+}

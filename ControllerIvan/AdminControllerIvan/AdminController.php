@@ -40,6 +40,21 @@ switch($_POST['action']){
     case 'btn_del_rabais':
         BtnDelRabais($db);
         break;
+    case 'btn_add_jour':
+        ModalAddJour($smarty, $db);
+        break;
+}
+
+//TODO Modal Add un jour for Etape
+function ModalAddJour($smarty, $db){
+    global $reponse;
+    $reponse['action'] = "btn_add_jour";
+    $smarty->assign('idPays', $_POST["idPays"]);
+    $smarty->assign('idEtape', $_POST["idEtape"]);
+    //Transfer data to *.tpl
+    $smarty->fetch("modal_add_jour.tpl");
+    $reponse['modal_add_jour'] = $smarty->fetch("modal_add_jour.tpl");
+
 }
 
 //TODO Supprimer un rabais
@@ -227,6 +242,7 @@ function DetailCircuit($smarty,$db,$voc){
     $smarty->assign('idStatutCircuit', $rs1[0]['idStatutCircuit']);
 
     $arr_etape = GetAllEtapeFromCircuit($idCircuit, $db);
+
     $smarty->assign('arr_etape', $arr_etape);
     $smarty->assign('count_etape', sizeof($arr_etape));
 
@@ -244,48 +260,6 @@ function FormAddEtape($smarty, $voc){
     $smarty = AddEditEtapeSmarty($smarty,$voc);
     //Transfer data to *.tpl
     $reponse['form_add_etape'] = $smarty->fetch("form_add_etape.tpl");
-}
-
-//TODO Get All Circuit from DB
-function GetCircuitById($idCircuit, $db){
-
-    $db->setFetchMode(ADODB_FETCH_ASSOC);
-    $SQL = 'SELECT * FROM circuit WHERE idCircuit = '.$idCircuit;
-    $rs = $db->getAll($SQL);
-
-    foreach($rs as $key=>$value){
-        $db->setFetchMode(ADODB_FETCH_ASSOC);
-        $SQL1 = 'SELECT * FROM typecircuit WHERE id ='. $rs[$key]['idTheme'];
-        $supres = $db->getAssoc($SQL1);
-        $rs[$key]['NomTheme'] = $supres[$rs[$key]['idTheme']];
-        $SQL2 = 'SELECT * FROM statutcircuit WHERE idStatutCircuit ='. $rs[$key]['idStatutCircuit'];
-        $supres = $db->getAssoc($SQL2);
-        $rs[$key]['NomStatutCircuit'] = $supres[$rs[$key]['idStatutCircuit']];
-    }
-
-    return $rs;
-}
-
-//TODO Convert datetime DB to date input form
-function DateDBtoInputDate($DateDB){
-    $date_html = explode(" ", $DateDB);
-    $DateDB = $date_html[0]."T".explode(":", $date_html[1])[0].":".explode(":", $date_html[1])[1];
-    return $DateDB;
-}
-
-//TODO Get All Circuit from DB
-function GetAllEtapeFromCircuit($idCircuit, $db){
-    $db->setFetchMode(ADODB_FETCH_ASSOC);
-    $SQL = 'SELECT * FROM etape WHERE idCircuit = '.$idCircuit;
-    $rs = $db->getAll($SQL);
-
-    foreach($rs as $key=>$value){
-        $db->setFetchMode(ADODB_FETCH_ASSOC);
-        $SQL1 = 'SELECT * FROM pays WHERE idPays ='. $rs[$key]['idPays'];
-        $supres = $db->getAssoc($SQL1);
-        $rs[$key]['NomPays'] = $supres[$rs[$key]['idPays']];
-    }
-    return $rs;
 }
 
 //TODO Register un rabais pour circuit
@@ -331,6 +305,52 @@ function AddEditCircuitSmarty($smarty, $voc){
     $smarty->assign('arr_theme_circuit', $voc["arr_theme_circuit"]);
     return $smarty;
 }
+
+//Support
+//TODO Get Circuits with all info from DB
+function GetCircuitById($idCircuit, $db){
+
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $SQL = 'SELECT * FROM circuit WHERE idCircuit = '.$idCircuit;
+    $rs = $db->getAll($SQL);
+
+    foreach($rs as $key=>$value){
+        $db->setFetchMode(ADODB_FETCH_ASSOC);
+        $SQL1 = 'SELECT * FROM typecircuit WHERE id ='. $rs[$key]['idTheme'];
+        $supres = $db->getAssoc($SQL1);
+        $rs[$key]['NomTheme'] = $supres[$rs[$key]['idTheme']];
+        $SQL2 = 'SELECT * FROM statutcircuit WHERE idStatutCircuit ='. $rs[$key]['idStatutCircuit'];
+        $supres = $db->getAssoc($SQL2);
+        $rs[$key]['NomStatutCircuit'] = $supres[$rs[$key]['idStatutCircuit']];
+    }
+
+    return $rs;
+}
+
+//TODO Convert datetime DB to date input form
+function DateDBtoInputDate($DateDB){
+    $date_html = explode(" ", $DateDB);
+    $DateDB = $date_html[0]."T".explode(":", $date_html[1])[0].":".explode(":", $date_html[1])[1];
+    return $DateDB;
+}
+
+//TODO Get Etape with all info from DB
+function GetAllEtapeFromCircuit($idCircuit, $db){
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $SQL = 'SELECT * FROM etape WHERE idCircuit = '.$idCircuit;
+    $rs = $db->getAll($SQL);
+
+    foreach($rs as $key=>$value){
+        $db->setFetchMode(ADODB_FETCH_ASSOC);
+        $SQL1 = 'SELECT * FROM pays WHERE idPays ='. $rs[$key]['idPays'];
+        $supres = $db->getAssoc($SQL1);
+        $rs[$key]['NomPays'] = $supres[$rs[$key]['idPays']];
+    }
+    return $rs;
+}
+
+
+
 
 echo json_encode($reponse);
 

@@ -31,12 +31,11 @@
         <section id="ajouter-etape" class="animated zoomInRight"></section>
     </div>
 
+    <div id="all-modal"></div>
 </main>
 <div class="footer-clean animated zoomInRight">
     <?php include __DIR__.'/../tmp/template/footer.tpl '?>
 </div>
-
-<?php include __DIR__.'/../tmp/template/modal_add_jour.tpl'?>
 
 <script src="../libs/jquery-3.4.1.min.js"></script>
 <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
