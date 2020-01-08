@@ -82,6 +82,7 @@ function LoadAddEtape(idCircuit){
     });
 }
 
+//TODO Load modal form for Add un jour
 function LoadModalAddJour(idPays, idEtape){
     var FormAddJour = new FormData();
     FormAddJour.append('action','btn_add_jour');
@@ -107,6 +108,32 @@ function LoadModalAddJour(idPays, idEtape){
         }
     });
 
+
+}
+
+//TODO Enregistrer un jour
+function BtnAddJour(){
+    var FormJourAdd = new FormData(FormAddJour);
+    FormJourAdd.append('action','btn_register_jour');
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormJourAdd,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
 
 }
 

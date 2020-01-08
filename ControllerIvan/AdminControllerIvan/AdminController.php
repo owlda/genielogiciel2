@@ -43,6 +43,9 @@ switch($_POST['action']){
     case 'btn_add_jour':
         ModalAddJour($smarty, $db);
         break;
+    case 'btn_register_jour':
+        EnregistrerJour($db);
+        break;
     case 'btn_register_ville':
         EnregistrerVille($smarty,$db);
         break;
@@ -59,12 +62,30 @@ function EnregistrerVille($smarty,$db){
     $db->autoExecute($table, $record, 'INSERT');
 
     $db->setFetchMode(ADODB_FETCH_ASSOC);
-    $SQL = 'SELECT * FROM villes WHERE idPays = ' . $_POST['idPays'];
+    $SQL = 'SELECT * FROM villes WHERE idPays = ' . $_POST['idPays'] . ' ORDER BY  nom';
     $rs = $db->getAssoc($SQL);
     $smarty->assign('arr_list_ville', $rs);
     $reponse['list_ville'] = $smarty->fetch("select_villes.tpl");
 }
 
+//TODO Enregistrer un jour
+function EnregistrerJour($db){
+
+    global $reponse;
+    $reponse['action'] = 'register_jour';
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $SQL = 'SELECT * FROM etape ' . 'WHERE idEtape = ' . $_POST['input_id_etape'];
+    $rs = $db->getAll($SQL);
+    $reponse['idCircuit'] = $rs[0]['idCircuit'];
+
+    $table = 'jour';
+    $record['numeroJour'] = 0;
+    $record['description'] = $_POST['NicEdit'];
+    $record['prix'] = 0;
+    $record['idVille'] = $_POST['SelectVille'];
+    $record['idEtape'] = $_POST['input_id_etape'];
+    $db->autoExecute($table, $record, 'INSERT');
+}
 
 //TODO Modal Add un jour for Etape
 function ModalAddJour($smarty, $db){
@@ -73,13 +94,11 @@ function ModalAddJour($smarty, $db){
     $smarty->assign('idPays', $_POST["idPays"]);
     $smarty->assign('idEtape', $_POST["idEtape"]);
     $smarty->assign('NomPays', GetNomPaysById($_POST["idPays"], $db));
-    $smarty->assign('NomPays', GetNomPaysById($_POST["idPays"], $db));
     $smarty->assign('arr_list_ville', GetAllVilleFromPays($_POST["idPays"], $db));
 
     //Transfer data to *.tpl
     $smarty->fetch("modal_add_jour.tpl");
     $reponse['modal_add_jour'] = $smarty->fetch("modal_add_jour.tpl");
-
 }
 
 //TODO Supprimer un rabais
@@ -267,7 +286,6 @@ function DetailCircuit($smarty,$db,$voc){
     $smarty->assign('idStatutCircuit', $rs1[0]['idStatutCircuit']);
 
     $arr_etape = GetAllEtapeFromCircuit($idCircuit, $db);
-
     $smarty->assign('arr_etape', $arr_etape);
     $smarty->assign('count_etape', sizeof($arr_etape));
 

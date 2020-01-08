@@ -10,7 +10,6 @@
             </div>
             <div class="modal-body">
                 <form id="FormAddJour">
-
                     <div class="form-group" style="display: inline;">
                         <label>Pays:</label>
                         <select readonly="true" class="form-control"  id="SelectPays" name="SelectPays" style="width:30%;">
@@ -40,7 +39,7 @@
 
                     <div class="form-group">
                         <label id="label_description_circuit">Description:</label><br>
-                        <textarea id="NicEdit" cols="70" rows="5" style="width: 60%" ></textarea>
+                        <textarea id="NicEdit" name="NicEdit" cols="70" rows="5" style="width: 60%" ></textarea>
                     </div>
 
                     <div class="form-group" style="display: inline;">
@@ -57,7 +56,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <button type="button" id="register_jour" class="btn btn-success">Enregistrer</button>
+                <button type="button" id="register_jour" class="btn btn-success" onclick="BtnAddJour();">Enregistrer</button>
             </div>
         </div>
     </div>

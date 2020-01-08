@@ -1,5 +1,6 @@
 <input class="btn btn-success" type="button" value="Ajouter un étape" style="margin-top: 5px;" onclick="LoadAddEtape({$idCircuit})">
 
+{*loop for etapes*}
 {if $count_etape > 0}
     {foreach $arr_etape as $etape}
         <h4>{$etape.titre}</h4>

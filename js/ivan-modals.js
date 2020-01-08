@@ -10,16 +10,15 @@ function BtnAddRabais(idCircuit){
     $('#register_rabais').attr('onclick', str);
 }
 
-/*function BtnAddJour(idPays, idEtape){
-    $('#modal_add_jour').modal('show');
-    $('.modal-backdrop').css('position', 'static');
-    $('#ViewNewVille').css('display', 'none');
-}*/
-
 function BtnNotVille() {
     $('#ViewNewVille').css('display', 'none');
 }
 
 function BtnViewNewVille() {
     $('#ViewNewVille').css('display', 'block');
+}
+
+function LoadModalAddHotel(){
+    $('#modal_add_hotel').modal('show');
+    $('.modal-backdrop').css('position', 'static');
 }

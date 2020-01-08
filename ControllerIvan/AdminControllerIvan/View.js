@@ -42,11 +42,34 @@ var Vue=function(reponse){
         case "register_ville" :
             EnregisterVille_View(reponse);
             break;
+        case "register_jour" :
+            $('#all-modal').html("");
+            alert("Jour a été ajouté...");
+            DetailCircuit(reponse.idCircuit);
+            break;
     }
 };
 
+function EnregisterVille_View(reponse){
+    alert("Ville a été ajouté...");
+    $("#ViewNewVille").css("display", "none");
+    $("#SelectVille").html(reponse.list_ville);
+}
+
+function EnregistreTheme_View(reponse){
+    alert("Thème a été ajouté...");
+    $("#ViewNewTheme").css("display", "none");
+    $("#SelectTheme").html(reponse.list_theme);
+}
+
+function EnregisterPays_View(reponse) {
+    alert("Pays a été ajouté...");
+    $("#ViewNewPays").css("display", "none");
+    $("#SelectPays").html(reponse.list_pays);
+}
+
 function AddJour_View(reponse) {
-    $("#all-modal").html(reponse.modal_add_jour);
+    $("#all-modal").append(reponse.modal_add_jour);
     $('#modal_add_jour').modal('show');
     $('.modal-backdrop').css('position', 'static');
     $('#ViewNewVille').css('display', 'none');
@@ -70,24 +93,6 @@ function AddEtape_View(reponse){
     $("#ajouter-circuit").html("");
     $("#ajouter-etape").html("");
 
-}
-
-function EnregisterVille_View(reponse){
-    alert("Ville a été ajouté...");
-    $("#ViewNewVille").css("display", "none");
-    $("#SelectVille").html(reponse.list_ville);
-}
-
-function EnregistreTheme_View(reponse){
-    alert("Thème a été ajouté...");
-    $("#ViewNewTheme").css("display", "none");
-    $("#SelectTheme").html(reponse.list_theme);
-}
-
-function EnregisterPays_View(reponse) {
-    alert("Pays a été ajouté...");
-    $("#ViewNewPays").css("display", "none");
-    $("#SelectPays").html(reponse.list_pays);
 }
 
 function ListerCircuit_View(reponse){
