@@ -43,8 +43,8 @@ var Vue=function(reponse){
             EnregisterVille_View(reponse);
             break;
         case "register_jour" :
-            $('#all-modal').html("");
             alert("Jour a été ajouté...");
+            $('#modal_add_jour').modal('hide');
             DetailCircuit(reponse.idCircuit);
             break;
     }
@@ -69,7 +69,7 @@ function EnregisterPays_View(reponse) {
 }
 
 function AddJour_View(reponse) {
-    $("#all-modal").append(reponse.modal_add_jour);
+    $("#div_modal_add_jour").html(reponse.modal_add_jour);
     $('#modal_add_jour').modal('show');
     $('.modal-backdrop').css('position', 'static');
     $('#ViewNewVille').css('display', 'none');

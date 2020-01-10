@@ -79,7 +79,7 @@ function EnregistrerJour($db){
     $reponse['idCircuit'] = $rs[0]['idCircuit'];
 
     $table = 'jour';
-    $record['numeroJour'] = 0;
+    $record['numeroJour'] = $_POST['num_jour'];
     $record['description'] = $_POST['NicEdit'];
     $record['prix'] = 0;
     $record['idVille'] = $_POST['SelectVille'];
@@ -286,6 +286,17 @@ function DetailCircuit($smarty,$db,$voc){
     $smarty->assign('idStatutCircuit', $rs1[0]['idStatutCircuit']);
 
     $arr_etape = GetAllEtapeFromCircuit($idCircuit, $db);
+
+    for ($i = 0; $i <= sizeof($arr_etape)-1; $i++) {
+        $arr_etape[$i]['arr_jour'] = GetAllJourForEtape($arr_etape[$i]['idEtape'], $db);
+        for ($j = 0; $j <= sizeof($arr_etape[$i]['arr_jour'])-1; $j++){
+            $arr_etape[$i]['arr_jour'][$j]['NomVille'] =  GetNomVilleById($arr_etape[$i]['arr_jour'][$j]['idVille'],$db);
+        }
+
+        $arr_etape[$i]['NomPays'] = GetNomPaysById($arr_etape[$i]['idPays'], $db);
+        $arr_etape[$i]['count_jour'] = sizeof($arr_etape[$i]['arr_jour']);
+    }
+
     $smarty->assign('arr_etape', $arr_etape);
     $smarty->assign('count_etape', sizeof($arr_etape));
 
@@ -392,11 +403,17 @@ function GetAllEtapeFromCircuit($idCircuit, $db){
     return $rs;
 }
 
+function GetAllJourForEtape($idEtape, $db){
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $SQL = 'SELECT * FROM jour WHERE idEtape = '.$idEtape . ' ORDER BY  numeroJour DESC';
+    $rs = $db->getAll($SQL);
+    return $rs;
+}
+
 function GetNomPaysById($idPays, $db){
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $SQL = 'SELECT * FROM pays WHERE idPays = '.$idPays;
     $rs = $db->getAll($SQL);
-
     return $rs[0]['nom'];
 }
 
@@ -404,6 +421,13 @@ function GetAllVilleFromPays($idPays, $db){
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $SQL = 'SELECT * FROM villes WHERE idPays = '.$idPays;
     return $db->getAll($SQL);
+}
+
+function GetNomVilleById($idVille, $db){
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $SQL = 'SELECT * FROM villes WHERE idVille = '.$idVille;
+    $rs = $db->getAll($SQL);
+    return $rs[0]['nom'];
 }
 
 

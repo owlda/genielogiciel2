@@ -11,6 +11,11 @@
             <div class="modal-body">
                 <form id="FormAddJour">
                     <div class="form-group" style="display: inline;">
+                        <label style="display: inline;">Numero de jour:</label>
+                        <input type="number" value="0" class="form-control" id="num_jour" name="num_jour" style="width: 150px;">
+                    </div>
+                    <br>
+                    <div class="form-group" style="display: inline;">
                         <label>Pays:</label>
                         <select readonly="true" class="form-control"  id="SelectPays" name="SelectPays" style="width:30%;">
                             <option value="{$idPays}">{$NomPays}</option>
