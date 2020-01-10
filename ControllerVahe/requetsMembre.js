@@ -17,7 +17,6 @@ function requetEnregistrerMembre() {
             alert('L\'execution du script n\'est pas reussit');
         }
     });
-
 }
 
 // la fonction pour faire POST par ajax pour envoyer les données de la formuler de la login vers le serveur
