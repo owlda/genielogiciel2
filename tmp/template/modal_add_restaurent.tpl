@@ -8,19 +8,20 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="FormAddHotel">
+                <form id="FormAddRestaurent">
                     <div class="row">
                         <div class="col">
                             <label>Pays:</label>
                             <select readonly="true" class="form-control"  id="SelectPays" name="SelectPays" >
-                                <option value="BBBBB">BBBBB</option>
+                                <option value="{$idPays}">{$NomPays}</option>
                             </select>
                         </div>
                         <div class="col">
                             <label>Ville:</label>
                             <select class="form-control"  id="SelectVille" name="SelectVille" >
-                                <option value="BBBBB">BBBBB</option>
-                                <option value="KKKKK">KKKKK</option>
+                                {foreach $arr_list_ville as $ville}
+                                    <option value="{$ville.idVille}" {if $ville.idVille == $select_ville_value} selected="selected" {/if}> {$ville.nom}</option>
+                                {/foreach}
                             </select>
                         </div>
                     </div>

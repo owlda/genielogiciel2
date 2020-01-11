@@ -39,6 +39,9 @@ var Vue=function(reponse){
         case "btn_add_jour" :
             AddJour_View(reponse);
             break;
+        case "btn_add_restaurent" :
+            AddRestaurent_View(reponse);
+            break;
         case "register_ville" :
             EnregisterVille_View(reponse);
             break;
@@ -66,6 +69,14 @@ function EnregisterPays_View(reponse) {
     alert("Pays a été ajouté...");
     $("#ViewNewPays").css("display", "none");
     $("#SelectPays").html(reponse.list_pays);
+}
+
+function AddRestaurent_View(reponse) {
+    $("#div_modal_add_restaurent").html(reponse.modal_add_restaurent);
+    $('#modal_add_restaurent').modal('show');
+    $('.modal-backdrop').css('position', 'static');
+    /*$('#ViewNewVille').css('display', 'none');*/
+
 }
 
 function AddJour_View(reponse) {

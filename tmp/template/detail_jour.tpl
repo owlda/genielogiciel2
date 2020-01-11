@@ -20,7 +20,11 @@
 </div>
 <hr>
 <section id="detail_restaurant">
-    {include file="detail_restaurant.tpl" idPays=$idPays idJour=$idJour}
+    {include file="detail_restaurant.tpl"
+    idPays=$idPays
+    idJour=$idJour
+    arr_restaurent=$arr_restaurent
+    CountRestaurentJour=$CountRestaurentJour}
 </section>
 <hr>
 <section id="detail_activity">

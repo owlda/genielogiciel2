@@ -48,12 +48,14 @@
                         </div>
                         <section id="detail_jour">
                             {include file="detail_jour.tpl"
+                            arr_restaurent = $etape.arr_jour[$etape.count_jour-1].Restaurent
                             idPays = $etape.idPays
                             DescriptionJour=$etape.arr_jour[$etape.count_jour-1].description
                             idJour=$etape.arr_jour[$etape.count_jour-1].idJour
                             NameJour='Jour 1'
+                            CountRestaurentJour = $etape.arr_jour[$etape.count_jour-1].count_restaurent
                             NomPays=$etape.NomPays
-                            NomVille=$etape.arr_jour[0].NomVille }
+                            NomVille=$etape.arr_jour[$etape.count_jour-1].NomVille }
                         </section>
                     </div>
                 </div>
