@@ -6,7 +6,11 @@ function GetUrlController() {
     return dir + '/ControllerIvan/AdminControllerIvan/AdminController.php';
 }
 
-//TODO Load form for edit un circuit
+//TODO
+
+
+//TODO Load form
+//form for edit un circuit
 function LoadModifierCircuit() {
     var FormModCircuit = new FormData();
     var url_string = window.location.href;
@@ -32,8 +36,7 @@ function LoadModifierCircuit() {
         }
     });
 }
-
-//TODO Load form for add un circuit
+//form for add un circuit
 function LoadAddCircuit(){
     var FormAddCircuit = new FormData();
     FormAddCircuit.append('action','addcircuit');
@@ -56,8 +59,7 @@ function LoadAddCircuit(){
         }
     });
 }
-
-//TODO Load form for Add un etape
+//form for Add un etape
 function LoadAddEtape(idCircuit){
     var FormAddEtape = new FormData();
     FormAddEtape.append('action','addetape');
@@ -82,7 +84,8 @@ function LoadAddEtape(idCircuit){
     });
 }
 
-//TODO Load modal form for Add un jour
+//TODO Load modal
+//modal form for Add un jour
 function LoadModalAddJour(idPays, idEtape){
     var FormAddJour = new FormData();
     FormAddJour.append('action','btn_add_jour');
@@ -110,8 +113,7 @@ function LoadModalAddJour(idPays, idEtape){
 
 
 }
-
-//TODO Load modal form for Add un jour
+//modal form for Add un restaurent
 function LoadModalAddRestaurent(idPays, idJour){
     var FormAddRestaurent = new FormData();
     FormAddRestaurent.append('action','btn_add_restaurent');
@@ -140,16 +142,20 @@ function LoadModalAddRestaurent(idPays, idJour){
 
 }
 
-//TODO Enregistrer un jour
-function BtnAddJour(){
-    var FormJourAdd = new FormData(FormAddJour);
-    FormJourAdd.append('action','btn_register_jour');
+//TODO Enregistrer
+//Enregistrer une ville
+function BtnAddRestaurent(idVille){
+    var FormAddRestaurent = new FormData();
+    FormAddRestaurent.append('action','btn_register_restaurent');
+    FormAddRestaurent.append('idVille', idVille);
+    FormAddRestaurent.append('NewNameRestaurent', $('#NewNameRestaurent').val());
+    FormAddRestaurent.append('NewSiteRestaurent', $('#NewSiteRestaurent').val());
     var controller = GetUrlController();
 
     $.ajax({
         type : 'POST',
         url : controller,
-        data : FormJourAdd,
+        data : FormAddRestaurent,
         dataType : 'json',
         async : false,
         cache : false,
@@ -163,10 +169,8 @@ function BtnAddJour(){
             console.log(xhr);
         }
     });
-
 }
-
-//TODO Enregistrer un theme
+//Enregistrer un theme
 function BtnAddTheme(){
     var FormAddTheme = new FormData();
     FormAddTheme.append('action','btn_register_theme');
@@ -192,8 +196,7 @@ function BtnAddTheme(){
         }
     });
 }
-
-//TODO Enregistrer un pays
+//Enregistrer un pays
 function BtnAddPays(){
     var FormAddPays = new FormData();
     FormAddPays.append('action','btn_register_pays');
@@ -219,8 +222,7 @@ function BtnAddPays(){
         }
     });
 }
-
-//TODO Enregistrer une ville
+//Enregistrer une ville
 function BtnAddVille(idPays){
     var FormAddVille = new FormData();
     FormAddVille.append('action','btn_register_ville');
@@ -247,8 +249,7 @@ function BtnAddVille(idPays){
         }
     });
 }
-
-//TODO Enregistrer un circuit
+//Enregistrer un circuit
 function BtnAddCircuit(){
 
     var FormAddCircuit = new FormData(AddFormCircuit);
@@ -282,8 +283,7 @@ function BtnAddCircuit(){
     });
 
 }
-
-//TODO Enregistrer un etape
+//Enregistrer un etape
 function BtnAddEtape(idCircuit){
     var FormAddEtape = new FormData(AddFormEtape);
     FormAddEtape.append('action','btn_register_etape');
@@ -311,6 +311,60 @@ function BtnAddEtape(idCircuit){
         }
     });
 
+}
+//Enregistrer un jour
+function BtnAddJour(){
+    var FormJourAdd = new FormData(FormAddJour);
+    FormJourAdd.append('action','btn_register_jour');
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormJourAdd,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+
+}
+//Enregistrer un rabais
+function BtnRegistreRabais(idCircuit){
+
+    var FormAddRabais = new FormData(FormAddRabais);
+    FormAddRabais.append('action','btn_register_rabais');
+    FormAddRabais.append('idCircuit',idCircuit);
+    FormAddRabais.append('pourcentage',$('#input_pourcentage').val());
+    FormAddRabais.append('dateDebut',$('#input_date_start').val());
+    FormAddRabais.append('dateFin',$('#input_date_end').val());
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddRabais,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
 }
 
 //TODO Lister des circuit
@@ -363,35 +417,7 @@ function DetailCircuit(idCircuit) {
     });
 }
 
-//TODO Enregistrer un rabais
-function BtnRegistreRabais(idCircuit){
 
-    var FormAddRabais = new FormData(FormAddRabais);
-    FormAddRabais.append('action','btn_register_rabais');
-    FormAddRabais.append('idCircuit',idCircuit);
-    FormAddRabais.append('pourcentage',$('#input_pourcentage').val());
-    FormAddRabais.append('dateDebut',$('#input_date_start').val());
-    FormAddRabais.append('dateFin',$('#input_date_end').val());
-    var controller = GetUrlController();
-
-    $.ajax({
-        type : 'POST',
-        url : controller,
-        data : FormAddRabais,
-        dataType : 'json',
-        async : false,
-        cache : false,
-        contentType : false,
-        processData : false,
-        success : function (reponse){
-            Vue(reponse);
-        },
-        error: function (xhr, error) {
-            console.log(error);
-            console.log(xhr);
-        }
-    });
-}
 
 function BtnDelRabais(idCircuit) {
     var FormDelRabais = new FormData();

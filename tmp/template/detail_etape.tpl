@@ -5,16 +5,15 @@
 <div class="container border border-primary rounded-lg animated zoomInRight" style="padding: 10px;">
     {foreach $arr_etape as $etape}
         <h2>{$etape.titre}</h2>
-        <div class="row">
-            <div class="col">Pays: {$etape.NomPays}</div>
-        </div>
         <div class="btn-toolbar" style="margin-bottom: 10px;">
             <div class="btn-group" role="group">
                 <input value="Modifier" class="btn btn-warning" type="button">
                 <button class="btn btn-danger" type="button">Supprimer</button>
                 <input value="Ajouter un jour" class="btn btn-success" type="button" onclick="LoadModalAddJour({$etape.idPays}, {$etape.idEtape})">
             </div>
-            <div class="btn-group" role="group"></div>
+        </div>
+        <div class="row">
+            <div class="col">Pays: {$etape.NomPays}</div>
         </div>
         <div class="row">
             <div class="col-4">
@@ -39,7 +38,7 @@
                                     <div class="dropdown-menu">
                                         {$count=$etape.count_jour}
                                         {foreach $etape.arr_jour as $jour}
-                                            <a class="dropdown-item" href="#" onclick="DetailJour({$jour.idJour}, {$jour.idVille}, 'Jour {$count}')">Jour {$count} (Num - {$jour.numeroJour})</a>
+                                            <a class="dropdown-item" href="#" onclick="DetailJour({$jour.idJour}, {$jour.idVille}, 'Jour {$count}')">Jour {$count} (NumeroJour={$jour.numeroJour})</a>
                                             {$count = $count - 1}
                                         {/foreach}
                                     </div>

@@ -12,41 +12,37 @@
                     <div class="row">
                         <div class="col">
                             <label>Pays:</label>
-                            <select readonly="true" class="form-control"  id="SelectPays" name="SelectPays" >
+                            <select readonly="true" class="form-control"  id="SelectPaysRestaurent" name="SelectPaysRestaurent" >
                                 <option value="{$idPays}">{$NomPays}</option>
                             </select>
                         </div>
                         <div class="col">
                             <label>Ville:</label>
-                            <select class="form-control"  id="SelectVille" name="SelectVille" >
-                                {foreach $arr_list_ville as $ville}
-                                    <option value="{$ville.idVille}" {if $ville.idVille == $select_ville_value} selected="selected" {/if}> {$ville.nom}</option>
-                                {/foreach}
+                            <select class="form-control" readonly="true" id="SelectVilleRestaurent" name="SelectVilleRestaurent" >
+                                <option value="{$arr_list_ville[0].idVille}">{$arr_list_ville[0].nom}</option>
                             </select>
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
                         <label style="display: block">Restaurent:</label>
-                        <select class="form-control"  id="SelectRestaurent" name="SelectRestaurent" style="width:50%;display: inline;">
-                            <option value="AAAA">AAAA</option>
+                        <select onchange="ChangeRestaurent()" class="form-control"  id="SelectRestaurent" name="SelectRestaurent" style="width:50%;display: inline;">
+                            {include file="select_restaurent.tpl" arr_list_restaurent=$arr_list_restaurent}
                         </select>
                         <input type="button" value="Ajouter un restaurent" class="btn btn-primary" style="display: inline" onclick="BtnViewNewRestaurent()">
                     </div>
-
-                    <div class="form-group" style="display: inline;">
+                    <div class="form-group">
                         <label style="display: inline;">Site:</label>
-                        <a href="#"><span>youtube.com</span></a>
-
+                        <a href="{$arr_list_restaurent[0].site}" id="link_site_restaurent" target="_blank"><span id="text_site_restaurent">{$arr_list_restaurent[0].site}</span></a>
                     </div>
-                    <div class="form-group animated zoomInRight" id="ViewNewRestaurent" style="width: 50%;margin-left: 10%;display: block;">
+                    <div class="form-group animated zoomInRight" id="ViewNewRestaurent" style="width: 50%;margin-left: 30%;display: none;">
                         <label>Nouveau restaurent:</label>
                         <input type="text" class="form-control" id="NewNameRestaurent">
-                        <label>Site:</label>
+                        <label>Site (avec http(s)://):</label>
                         <input type="text" class="form-control" id="NewSiteRestaurent">
                         <br>
                         <input type="button" value="Annuler" id="btn_not_hotel" class="btn btn-secondary" onclick="BtnNotRestaurent()">
-                        <input type="button" value="Enregistrer" id="btn_add_hotel" class="btn btn-success" onclick="BtnAddRestaurent()">
+                        <input type="button" value="Enregistrer" id="btn_add_hotel" class="btn btn-success" onclick="BtnAddRestaurent({$arr_list_ville[0].idVille})">
                     </div>
                     <br>
                     <br>

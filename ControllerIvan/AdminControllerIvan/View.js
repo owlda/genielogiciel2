@@ -1,3 +1,17 @@
+var SupportArrayRestaurent = {};
+
+function ChangeRestaurent(){
+    $('#text_site_restaurent').text(SupportArrayRestaurent[$('#SelectRestaurent').val()]);
+    $('#link_site_restaurent').attr('href', SupportArrayRestaurent[$('#SelectRestaurent').val()]);
+}
+
+function InitialSiteSelectRestaurent(arr_list_restaurent) {
+    SupportArrayRestaurent = {};
+    for (var restaurent of arr_list_restaurent){
+        SupportArrayRestaurent[restaurent.idRestaurent] = restaurent.site;
+    }
+}
+
 var Vue=function(reponse){
 
     switch(reponse.action){
@@ -33,6 +47,10 @@ var Vue=function(reponse){
         case "register_pays" :
             EnregisterPays_View(reponse);
             break;
+        case "register_restaurent" :
+            InitialSiteSelectRestaurent(reponse.list_restaurent);
+            EnregisterRestaurent_View(reponse);
+            break;
         case "del_rabais" :
             DelRabais_View();
             break;
@@ -40,6 +58,7 @@ var Vue=function(reponse){
             AddJour_View(reponse);
             break;
         case "btn_add_restaurent" :
+            InitialSiteSelectRestaurent(reponse.arr_list_restaurent);
             AddRestaurent_View(reponse);
             break;
         case "register_ville" :
@@ -53,30 +72,35 @@ var Vue=function(reponse){
     }
 };
 
+//TODO Enregistrer
+function EnregisterRestaurent_View(reponse){
+    alert("Restaurent a été ajouté...");
+    $("#ViewNewRestaurent").css("display", "none");
+    $("#SelectRestaurent").html(reponse.arr_list_restaurent);
+}
 function EnregisterVille_View(reponse){
     alert("Ville a été ajouté...");
     $("#ViewNewVille").css("display", "none");
     $("#SelectVille").html(reponse.list_ville);
 }
-
 function EnregistreTheme_View(reponse){
     alert("Thème a été ajouté...");
     $("#ViewNewTheme").css("display", "none");
     $("#SelectTheme").html(reponse.list_theme);
 }
-
 function EnregisterPays_View(reponse) {
     alert("Pays a été ajouté...");
     $("#ViewNewPays").css("display", "none");
     $("#SelectPays").html(reponse.list_pays);
 }
 
+
+
 function AddRestaurent_View(reponse) {
     $("#div_modal_add_restaurent").html(reponse.modal_add_restaurent);
     $('#modal_add_restaurent').modal('show');
     $('.modal-backdrop').css('position', 'static');
     /*$('#ViewNewVille').css('display', 'none');*/
-
 }
 
 function AddJour_View(reponse) {
@@ -84,7 +108,6 @@ function AddJour_View(reponse) {
     $('#modal_add_jour').modal('show');
     $('.modal-backdrop').css('position', 'static');
     $('#ViewNewVille').css('display', 'none');
-
 }
 
 function DelRabais_View() {
@@ -103,7 +126,6 @@ function AddEtape_View(reponse){
     $("#list-circuit").html(reponse.form_add_etape);
     $("#ajouter-circuit").html("");
     $("#ajouter-etape").html("");
-
 }
 
 function ListerCircuit_View(reponse){

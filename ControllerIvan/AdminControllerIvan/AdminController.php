@@ -52,9 +52,12 @@ switch($_POST['action']){
     case 'btn_register_ville':
         EnregistrerVille($smarty,$db);
         break;
+    case 'btn_register_restaurent':
+        EnregistrerRestaurent($smarty,$db);
+        break;
 }
 
-//TODO Modal
+//TODO Load modal
 //Modal Add un Restaurent for Jour
 function ModalAddRestaurent($smarty, $db){
     global $reponse;
@@ -72,6 +75,7 @@ function ModalAddRestaurent($smarty, $db){
     //Transfer data to *.tpl
     $smarty->fetch("modal_add_restaurent.tpl");
     $reponse['modal_add_restaurent'] = $smarty->fetch("modal_add_restaurent.tpl");
+    $reponse['arr_list_restaurent'] = $arr_list_restaurent;
 }
 //Modal Add un jour for Etape
 function ModalAddJour($smarty, $db){
@@ -88,6 +92,7 @@ function ModalAddJour($smarty, $db){
 }
 
 //TODO Supprimer un rabais
+//Supprimer un rabais
 function BtnDelRabais($db){
     global $reponse;
     $reponse['action'] = "del_rabais";
@@ -150,6 +155,15 @@ function FormModCircuit($smarty,$db, $voc){
         exit();
     }
 
+}
+//Form for Add un etape
+function FormAddEtape($smarty, $voc){
+    global $reponse;
+    $reponse['action'] = 'addetape';
+    //Initialization vocabulaire
+    $smarty = AddEditEtapeSmarty($smarty,$voc);
+    //Transfer data to *.tpl
+    $reponse['form_add_etape'] = $smarty->fetch("form_add_etape.tpl");
 }
 
 //TODO Enregistrer
@@ -262,7 +276,21 @@ function EnregistrerPays($smarty,$db){
     $smarty->assign('arr_list_pays', $rs);
     $reponse['list_pays'] = $smarty->fetch("select_pays.tpl");
 }
+//Enregistrer nouveau restaurent
+function EnregistrerRestaurent($smarty,$db){
+    global $reponse;
+    $reponse['action'] = "register_restaurent";
 
+    $table = 'restaurent';
+    $record['titre'] = $_POST['NewNameRestaurent'];
+    $record['idVille'] = $_POST['idVille'];
+    $record['site'] = $_POST['NewSiteRestaurent'];
+    $db->autoExecute($table, $record, 'INSERT');
+    $reponse['list_restaurent'] = GetAllRestaurentFromVille($_POST['idVille'], $db);
+    $smarty->assign('arr_list_restaurent', $reponse['list_restaurent']);
+    $reponse['arr_list_restaurent'] = $smarty->fetch("select_restaurent.tpl");
+
+}
 
 
 //TODO Lister des circuit
@@ -339,16 +367,6 @@ function DetailCircuit($smarty,$db,$voc){
     $reponse['detail_etape'] = $smarty->fetch("detail_etape.tpl");
 }
 
-//TODO Form for Add un etape
-function FormAddEtape($smarty, $voc){
-    global $reponse;
-    $reponse['action'] = 'addetape';
-    //Initialization vocabulaire
-    $smarty = AddEditEtapeSmarty($smarty,$voc);
-    //Transfer data to *.tpl
-    $reponse['form_add_etape'] = $smarty->fetch("form_add_etape.tpl");
-}
-
 //TODO Transfer data to tpl smarty
 function AddEditEtapeSmarty($smarty, $voc){
     $idCircuit = $_POST["idCircuit"];
@@ -366,7 +384,6 @@ function AddEditEtapeSmarty($smarty, $voc){
     $smarty->assign('arr_pays', $voc["arr_pays"]);
     return $smarty;
 }
-
 function AddEditCircuitSmarty($smarty, $voc){
     $smarty->assign('h1_circuit', $voc["lb_h1_add_circuit"]);
     $smarty->assign('title', $voc["lb_titre_circuit"]);
@@ -421,7 +438,7 @@ function GetAllEtapeFromCircuit($idCircuit, $db){
     }
     return $rs;
 }
-//Get Jour with all info from DB ORDER BY  numeroJour DESC
+//Get Jour with all info from DB ORDER BY numeroJour DESC
 function GetAllJourForEtape($idEtape, $db){
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $SQL = 'SELECT * FROM jour WHERE idEtape = '.$idEtape . ' ORDER BY  numeroJour DESC';
@@ -457,7 +474,7 @@ function GetAllVilleFromPays($idPays, $db){
 
 function GetAllRestaurentFromVille($idVille, $db){
     $db->setFetchMode(ADODB_FETCH_ASSOC);
-    $SQL = 'SELECT * FROM restaurent WHERE idVille = '.$idVille;
+    $SQL = 'SELECT * FROM restaurent WHERE idVille = '.$idVille  . ' ORDER BY  titre';
     return $db->getAll($SQL);
 }
 

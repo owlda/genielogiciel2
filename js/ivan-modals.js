@@ -10,12 +10,18 @@ function BtnAddRabais(idCircuit){
     $('#register_rabais').attr('onclick', str);
 }
 
+function BtnViewNewVille() {
+    $('#ViewNewVille').css('display', 'block');
+}
 function BtnNotVille() {
     $('#ViewNewVille').css('display', 'none');
 }
 
-function BtnViewNewVille() {
-    $('#ViewNewVille').css('display', 'block');
+function BtnViewNewRestaurent() {
+    $('#ViewNewRestaurent').css('display', 'block');
+}
+function BtnNotRestaurent() {
+    $('#ViewNewRestaurent').css('display', 'none');
 }
 
 function LoadModalAddHotel(){

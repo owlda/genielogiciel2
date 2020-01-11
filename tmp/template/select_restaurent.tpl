@@ -1,3 +1,3 @@
 {foreach $arr_list_restaurent as  $restaurent}
-    <option value="{$k}">{$v.nom}</option>
+    <option value="{$restaurent.idRestaurent}">{$restaurent.titre}</option>
 {/foreach}
