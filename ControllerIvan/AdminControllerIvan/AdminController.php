@@ -55,6 +55,9 @@ switch($_POST['action']){
     case 'btn_register_restaurent':
         EnregistrerRestaurent($smarty,$db);
         break;
+    case 'btn_register_restaurent_jour':
+        EnregistrerRestaurentJour($smarty,$db);
+        break;
 }
 
 //TODO Load modal
@@ -91,7 +94,7 @@ function ModalAddJour($smarty, $db){
     $reponse['modal_add_jour'] = $smarty->fetch("modal_add_jour.tpl");
 }
 
-//TODO Supprimer un rabais
+//TODO Supprimer
 //Supprimer un rabais
 function BtnDelRabais($db){
     global $reponse;
@@ -164,6 +167,46 @@ function FormAddEtape($smarty, $voc){
     $smarty = AddEditEtapeSmarty($smarty,$voc);
     //Transfer data to *.tpl
     $reponse['form_add_etape'] = $smarty->fetch("form_add_etape.tpl");
+}
+//Detail un circuit
+function DetailCircuit($smarty,$db,$voc){
+    global $reponse;
+    $reponse['action'] = "detail_circuit";
+    $idCircuit = $_POST["idCircuit"];
+    $rs1 = GetCircuitById($idCircuit, $db);
+    $smarty->assign('idCircuit', $rs1[0]['idCircuit']);
+    $smarty->assign('titre', $rs1[0]['titre']);
+    $smarty->assign('description', $rs1[0]['description']);
+    $smarty->assign('duree', $rs1[0]['duree']);
+    $smarty->assign('pointDepart', $rs1[0]['pointDepart']);
+    $smarty->assign('prix', $rs1[0]['prix']);
+    $smarty->assign('idTheme', $rs1[0]['idTheme']);
+    $smarty->assign('NomTheme', $rs1[0]['NomTheme']);
+    $smarty->assign('dateDepart', $rs1[0]['dateDepart']);
+    $smarty->assign('dateFin', $rs1[0]['dateFin']);
+    $smarty->assign('idStatutCircuit', $rs1[0]['idStatutCircuit']);
+
+    $arr_etape = GetAllEtapeFromCircuit($idCircuit, $db);
+
+    for ($i = 0; $i <= sizeof($arr_etape)-1; $i++) {
+        $arr_etape[$i]['arr_jour'] = GetAllJourForEtape($arr_etape[$i]['idEtape'], $db);
+        for ($j = 0; $j <= sizeof($arr_etape[$i]['arr_jour'])-1; $j++){
+            $arr_etape[$i]['arr_jour'][$j]['NomVille'] =  GetNomVilleById($arr_etape[$i]['arr_jour'][$j]['idVille'],$db);
+            $arr_etape[$i]['arr_jour'][$j]['Restaurent'] = GetAllRestaurentFromJour($arr_etape[$i]['arr_jour'][$j]['idJour'], $db);
+            $arr_etape[$i]['arr_jour'][$j]['count_restaurent'] = sizeof($arr_etape[$i]['arr_jour'][$j]['Restaurent']);
+        }
+
+        $arr_etape[$i]['NomPays'] = GetNomPaysById($arr_etape[$i]['idPays'], $db);
+        $arr_etape[$i]['count_jour'] = sizeof($arr_etape[$i]['arr_jour']);
+    }
+
+    $smarty->assign('arr_etape', $arr_etape);
+    $smarty->assign('count_etape', sizeof($arr_etape));
+
+    //Transfer data to *.tpl
+    $smarty->fetch("modal_del_circuit.tpl");
+    $reponse['detail_circuit'] = $smarty->fetch("detail_circuit.tpl");
+    $reponse['detail_etape'] = $smarty->fetch("detail_etape.tpl");
 }
 
 //TODO Enregistrer
@@ -289,11 +332,31 @@ function EnregistrerRestaurent($smarty,$db){
     $reponse['list_restaurent'] = GetAllRestaurentFromVille($_POST['idVille'], $db);
     $smarty->assign('arr_list_restaurent', $reponse['list_restaurent']);
     $reponse['arr_list_restaurent'] = $smarty->fetch("select_restaurent.tpl");
+}
+//Enregistrer restaurent for jour
+function EnregistrerRestaurentJour($smarty,$db){
+    global $reponse;
+    $reponse['action'] = "register_restaurent_jour";
+    $reponse['idJour'] = $_POST['input_id_jour'];
 
+    $table = 'restaurentsjour';
+    $record['idRestaurent'] = $_POST['SelectRestaurent'];
+    $record['idJour'] = $_POST['input_id_jour'];
+    $record['numeroEtap'] = 0;
+    $record['numeroJour'] = 0;
+    $db->autoExecute($table, $record, 'INSERT');
+
+    $list_restaurent = GetAllRestaurentFromJour($reponse['idJour'], $db);
+    $smarty->assign('CountRestaurentJour', sizeof($list_restaurent));
+    $smarty->assign('idPays', $_POST['SelectPaysRestaurent']);
+    $smarty->assign('idJour', $_POST['input_id_jour']);
+    $smarty->assign('arr_restaurent', $list_restaurent);
+
+    $reponse['detail_restaurant'] = $smarty->fetch("detail_restaurant.tpl");
 }
 
-
-//TODO Lister des circuit
+//TODO Lister
+//Lister des circuit
 function ListerCircuit($smarty,$db){
     global $reponse;
     $reponse['action'] = "list_circuit";
@@ -323,48 +386,6 @@ function ListerCircuit($smarty,$db){
     $smarty->assign('arr_list_circuit', $rs);
     $reponse['list_circuit'] = $smarty->fetch("list_circuit.tpl");
 
-}
-
-//TODO Detail un circuit
-function DetailCircuit($smarty,$db,$voc){
-
-    global $reponse;
-    $reponse['action'] = "detail_circuit";
-    $idCircuit = $_POST["idCircuit"];
-    $rs1 = GetCircuitById($idCircuit, $db);
-    $smarty->assign('idCircuit', $rs1[0]['idCircuit']);
-    $smarty->assign('titre', $rs1[0]['titre']);
-    $smarty->assign('description', $rs1[0]['description']);
-    $smarty->assign('duree', $rs1[0]['duree']);
-    $smarty->assign('pointDepart', $rs1[0]['pointDepart']);
-    $smarty->assign('prix', $rs1[0]['prix']);
-    $smarty->assign('idTheme', $rs1[0]['idTheme']);
-    $smarty->assign('NomTheme', $rs1[0]['NomTheme']);
-    $smarty->assign('dateDepart', $rs1[0]['dateDepart']);
-    $smarty->assign('dateFin', $rs1[0]['dateFin']);
-    $smarty->assign('idStatutCircuit', $rs1[0]['idStatutCircuit']);
-
-    $arr_etape = GetAllEtapeFromCircuit($idCircuit, $db);
-
-    for ($i = 0; $i <= sizeof($arr_etape)-1; $i++) {
-        $arr_etape[$i]['arr_jour'] = GetAllJourForEtape($arr_etape[$i]['idEtape'], $db);
-        for ($j = 0; $j <= sizeof($arr_etape[$i]['arr_jour'])-1; $j++){
-            $arr_etape[$i]['arr_jour'][$j]['NomVille'] =  GetNomVilleById($arr_etape[$i]['arr_jour'][$j]['idVille'],$db);
-            $arr_etape[$i]['arr_jour'][$j]['Restaurent'] = GetAllRestaurentFromJour($arr_etape[$i]['arr_jour'][$j]['idJour'], $db);
-            $arr_etape[$i]['arr_jour'][$j]['count_restaurent'] = sizeof($arr_etape[$i]['arr_jour'][$j]['Restaurent']);
-        }
-
-        $arr_etape[$i]['NomPays'] = GetNomPaysById($arr_etape[$i]['idPays'], $db);
-        $arr_etape[$i]['count_jour'] = sizeof($arr_etape[$i]['arr_jour']);
-    }
-
-    $smarty->assign('arr_etape', $arr_etape);
-    $smarty->assign('count_etape', sizeof($arr_etape));
-
-    //Transfer data to *.tpl
-    $smarty->fetch("modal_del_circuit.tpl");
-    $reponse['detail_circuit'] = $smarty->fetch("detail_circuit.tpl");
-    $reponse['detail_etape'] = $smarty->fetch("detail_etape.tpl");
 }
 
 //TODO Transfer data to tpl smarty
@@ -445,7 +466,7 @@ function GetAllJourForEtape($idEtape, $db){
     $rs = $db->getAll($SQL);
     return $rs;
 }
-
+//Get Name of Pays by Id
 function GetNomPaysById($idPays, $db){
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $SQL = 'SELECT * FROM pays WHERE idPays = '.$idPays;

@@ -6,9 +6,6 @@ function GetUrlController() {
     return dir + '/ControllerIvan/AdminControllerIvan/AdminController.php';
 }
 
-//TODO
-
-
 //TODO Load form
 //form for edit un circuit
 function LoadModifierCircuit() {
@@ -83,6 +80,36 @@ function LoadAddEtape(idCircuit){
         }
     });
 }
+//TODO Show detail
+//Detail un circuit
+function DetailCircuit(idCircuit) {
+
+    var FormCircuit = new FormData();
+    FormCircuit.append('action','detail_circuit');
+    FormCircuit.append('idCircuit',idCircuit);
+    var controller = GetUrlController();
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormCircuit,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+}
+//Detail jour by idJour
+function ShowDetailJour(idJour, idVilleJour, NameJour){
+
+}
 
 //TODO Load modal
 //modal form for Add un jour
@@ -143,7 +170,32 @@ function LoadModalAddRestaurent(idPays, idJour){
 }
 
 //TODO Enregistrer
-//Enregistrer une ville
+//Enregistrer un nouveau restaurent
+function BtnAddRestaurentForJour(){
+    var BtnAddRestaurentForJour = new FormData(FormAddRestaurent);
+    BtnAddRestaurentForJour.append('action','btn_register_restaurent_jour');
+    BtnAddRestaurentForJour.append('site', $('#text_site_restaurent').text());
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : BtnAddRestaurentForJour,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+}
+//Enregistrer un nouveau restaurent
 function BtnAddRestaurent(idVille){
     var FormAddRestaurent = new FormData();
     FormAddRestaurent.append('action','btn_register_restaurent');

@@ -60,7 +60,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <button type="button" id="register_jour" class="btn btn-success">Enregistrer</button>
+                <button type="button" id="register_jour" class="btn btn-success" onclick="BtnAddRestaurentForJour()">Enregistrer</button>
             </div>
         </div>
     </div>

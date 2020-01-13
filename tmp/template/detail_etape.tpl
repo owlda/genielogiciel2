@@ -36,22 +36,23 @@
                                         Changer un jour
                                     </button>
                                     <div class="dropdown-menu">
+                                        {*loop for jours*}
                                         {$count=$etape.count_jour}
                                         {foreach $etape.arr_jour as $jour}
-                                            <a class="dropdown-item" href="#" onclick="DetailJour({$jour.idJour}, {$jour.idVille}, 'Jour {$count}')">Jour {$count} (NumeroJour={$jour.numeroJour})</a>
+                                            <a class="dropdown-item" href="#" onclick="ShowDetailJour({$jour.idJour}, {$jour.idVille}, 'Jour {$count}')">Jour {$count} (NumeroJour={$jour.numeroJour}, id={$jour.idJour})</a>
                                             {$count = $count - 1}
                                         {/foreach}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <section id="detail_jour">
+                        <section id="detail_jour_{$etape.arr_jour[$etape.count_jour-1].idJour}">
                             {include file="detail_jour.tpl"
                             arr_restaurent = $etape.arr_jour[$etape.count_jour-1].Restaurent
                             idPays = $etape.idPays
-                            DescriptionJour=$etape.arr_jour[$etape.count_jour-1].description
                             idJour=$etape.arr_jour[$etape.count_jour-1].idJour
                             NameJour='Jour 1'
+                            DescriptionJour=$etape.arr_jour[$etape.count_jour-1].description
                             CountRestaurentJour = $etape.arr_jour[$etape.count_jour-1].count_restaurent
                             NomPays=$etape.NomPays
                             NomVille=$etape.arr_jour[$etape.count_jour-1].NomVille }

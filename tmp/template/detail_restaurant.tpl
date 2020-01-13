@@ -37,7 +37,6 @@
             </div>
             <div class="col"></div>
         </div>
-
     {/foreach}
 {/if}
 

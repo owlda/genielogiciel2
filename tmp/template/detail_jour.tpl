@@ -19,7 +19,7 @@
     <div class="col-8"><span style="font-weight: bold">Description:</span> {$DescriptionJour}</div>
 </div>
 <hr>
-<section id="detail_restaurant">
+<section id="detail_restaurant_jour_{$idJour}">
     {include file="detail_restaurant.tpl"
     idPays=$idPays
     idJour=$idJour

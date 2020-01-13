@@ -69,6 +69,11 @@ var Vue=function(reponse){
             $('#modal_add_jour').modal('hide');
             DetailCircuit(reponse.idCircuit);
             break;
+        case "register_restaurent_jour" :
+            alert("Restaurent a été ajouté pour le jour.");
+            $('#modal_add_restaurent').modal('hide');
+            $("#detail_restaurant_jour_" + reponse.idJour).html(reponse.detail_restaurant);
+            break;
     }
 };
 
@@ -77,6 +82,7 @@ function EnregisterRestaurent_View(reponse){
     alert("Restaurent a été ajouté...");
     $("#ViewNewRestaurent").css("display", "none");
     $("#SelectRestaurent").html(reponse.arr_list_restaurent);
+    ChangeRestaurent();
 }
 function EnregisterVille_View(reponse){
     alert("Ville a été ajouté...");
