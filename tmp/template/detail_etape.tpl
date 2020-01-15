@@ -39,7 +39,7 @@
                                         {*loop for jours*}
                                         {$count=$etape.count_jour}
                                         {foreach $etape.arr_jour as $jour}
-                                            <a class="dropdown-item" href="#" onclick="ShowDetailJour({$jour.idJour}, {$jour.idVille}, 'Jour {$count}')">Jour {$count} (NumeroJour={$jour.numeroJour}, id={$jour.idJour})</a>
+                                            <a class="dropdown-item" href="#{$etape.arr_jour[$etape.count_jour-1].idJour}" onclick="ShowDetailJourChange({$etape.arr_jour[$etape.count_jour-1].idJour}, {$jour.idJour}, {$jour.idVille}, 'Jour {$count}', {$etape.idPays})">Jour {$count} (NumeroJour={$jour.numeroJour}, id={$jour.idJour})</a>
                                             {$count = $count - 1}
                                         {/foreach}
                                     </div>

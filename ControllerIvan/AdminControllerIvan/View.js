@@ -74,6 +74,10 @@ var Vue=function(reponse){
             $('#modal_add_restaurent').modal('hide');
             $("#detail_restaurant_jour_" + reponse.idJour).html(reponse.detail_restaurant);
             break;
+        case "detail_jour_change" :
+            alert("Jour a été changé...");
+            $("#detail_jour_" + reponse.idJourSelectChange).html(reponse.detail_jour);
+            break;
     }
 };
 
@@ -99,8 +103,6 @@ function EnregisterPays_View(reponse) {
     $("#ViewNewPays").css("display", "none");
     $("#SelectPays").html(reponse.list_pays);
 }
-
-
 
 function AddRestaurent_View(reponse) {
     $("#div_modal_add_restaurent").html(reponse.modal_add_restaurent);

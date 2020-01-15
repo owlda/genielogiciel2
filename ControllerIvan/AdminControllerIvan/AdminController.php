@@ -23,7 +23,7 @@ switch($_POST['action']){
         DetailCircuit($smarty,$db,$voc);
         break;
     case 'modcircuit':
-        FormModCircuit($smarty,$db, $voc);
+        FormEditCircuit($smarty,$db, $voc);
         break;
     case 'addetape':
         FormAddEtape($smarty, $voc);
@@ -57,6 +57,9 @@ switch($_POST['action']){
         break;
     case 'btn_register_restaurent_jour':
         EnregistrerRestaurentJour($smarty,$db);
+        break;
+    case 'detail_jour_change':
+        DetailJourChange($smarty,$db);
         break;
 }
 
@@ -114,7 +117,7 @@ function FormAddCircuit($smarty, $voc){
     $reponse['form_add_circuit'] = $smarty->fetch("form_add_circuit.tpl");
 }
 //Form for Edit un circuit
-function FormModCircuit($smarty,$db, $voc){
+function FormEditCircuit($smarty, $db, $voc){
     global $reponse;
     $reponse['action'] = 'modcircuit';
 
@@ -207,6 +210,24 @@ function DetailCircuit($smarty,$db,$voc){
     $smarty->fetch("modal_del_circuit.tpl");
     $reponse['detail_circuit'] = $smarty->fetch("detail_circuit.tpl");
     $reponse['detail_etape'] = $smarty->fetch("detail_etape.tpl");
+}
+//Detail jour changes
+function DetailJourChange($smarty,$db){
+    global $reponse;
+    $reponse['action'] = "detail_jour_change";
+    $reponse['idJourSelectChange'] = $_POST['idJourSelectChange'];
+    $detail_jour = GetJourByidJour($_POST['idJour'],$db);
+    $lst_detail_restaurent = GetAllRestaurentFromJour($_POST['idJour'],$db);
+
+    $smarty->assign('arr_restaurent', $lst_detail_restaurent);
+    $smarty->assign('idPays', $_POST['idPaysEtape']);
+    $smarty->assign('idJour', $_POST['idJour']);
+    $smarty->assign('NameJour', $_POST['NameJour']);
+    $smarty->assign('DescriptionJour', $detail_jour[0]['description']);
+    $smarty->assign('CountRestaurentJour', sizeof($lst_detail_restaurent));
+    $smarty->assign('NomPays', GetNomPaysById($_POST['idPaysEtape'], $db));
+    $smarty->assign('NomVille', GetNomVilleById($_POST['idVilleJour'], $db));
+    $reponse['detail_jour'] = $smarty->fetch("detail_jour.tpl");
 }
 
 //TODO Enregistrer
@@ -388,7 +409,7 @@ function ListerCircuit($smarty,$db){
 
 }
 
-//TODO Transfer data to tpl smarty
+//TODO Transfer voc data to tpl smarty
 function AddEditEtapeSmarty($smarty, $voc){
     $idCircuit = $_POST["idCircuit"];
     $smarty->assign('idCircuit', $idCircuit);
@@ -466,7 +487,14 @@ function GetAllJourForEtape($idEtape, $db){
     $rs = $db->getAll($SQL);
     return $rs;
 }
-//Get Name of Pays by Id
+//Get Jour with all info from DB by idJour
+function GetJourByidJour($idJour , $db){
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $SQL = 'SELECT * FROM jour WHERE idJour = '.$idJour;
+    $rs = $db->getAll($SQL);
+    return $rs;
+}
+//Get Name of Pays by idPays
 function GetNomPaysById($idPays, $db){
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $SQL = 'SELECT * FROM pays WHERE idPays = '.$idPays;

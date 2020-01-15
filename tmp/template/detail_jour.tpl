@@ -27,10 +27,10 @@
     CountRestaurentJour=$CountRestaurentJour}
 </section>
 <hr>
-<section id="detail_activity">
+<section id="detail_activity_jour_{$idJour}">
 
 </section>
 <hr>
-<section id="detail_hotel">
+<section id="detail_hotel_jour_{$idJour}">
 
 </section>

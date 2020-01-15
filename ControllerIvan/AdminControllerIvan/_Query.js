@@ -80,18 +80,44 @@ function LoadAddEtape(idCircuit){
         }
     });
 }
-//TODO Show detail
 //Detail un circuit
 function DetailCircuit(idCircuit) {
-
     var FormCircuit = new FormData();
-    FormCircuit.append('action','detail_circuit');
-    FormCircuit.append('idCircuit',idCircuit);
+    FormCircuit.append('action', 'detail_circuit');
+    FormCircuit.append('idCircuit', idCircuit);
+    var controller = GetUrlController();
+    $.ajax({
+        type: 'POST',
+        url: controller,
+        data: FormCircuit,
+        dataType: 'json',
+        async: false,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (reponse) {
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+}
+//Detail jour by idJour
+function ShowDetailJourChange(idJourSelectChange, idJour, idVilleJour, NameJour, idPaysEtape){
+    var FormDetailJour = new FormData();
+    FormDetailJour.append('action','detail_jour_change');
+    FormDetailJour.append('idJour',idJour);
+    FormDetailJour.append('idJourSelectChange',idJourSelectChange);
+    FormDetailJour.append('idVilleJour',idVilleJour);
+    FormDetailJour.append('NameJour',NameJour);
+    FormDetailJour.append('idPaysEtape',idPaysEtape);
     var controller = GetUrlController();
     $.ajax({
         type : 'POST',
         url : controller,
-        data : FormCircuit,
+        data : FormDetailJour,
         dataType : 'json',
         async : false,
         cache : false,
@@ -105,9 +131,6 @@ function DetailCircuit(idCircuit) {
             console.log(xhr);
         }
     });
-}
-//Detail jour by idJour
-function ShowDetailJour(idJour, idVilleJour, NameJour){
 
 }
 
@@ -419,7 +442,8 @@ function BtnRegistreRabais(idCircuit){
     });
 }
 
-//TODO Lister des circuit
+//TODO Lister
+//Lister des circuit
 function ListerCircuit(){
     var FormAddCircuit = new FormData();
     FormAddCircuit.append('action','list_circuit');
@@ -443,34 +467,8 @@ function ListerCircuit(){
     });
 }
 
-//TODO Detail un circuit
-function DetailCircuit(idCircuit) {
-
-    var FormCircuit = new FormData();
-    FormCircuit.append('action','detail_circuit');
-    FormCircuit.append('idCircuit',idCircuit);
-    var controller = GetUrlController();
-    $.ajax({
-        type : 'POST',
-        url : controller,
-        data : FormCircuit,
-        dataType : 'json',
-        async : false,
-        cache : false,
-        contentType : false,
-        processData : false,
-        success : function (reponse){
-            Vue(reponse);
-        },
-        error: function (xhr, error) {
-            console.log(error);
-            console.log(xhr);
-        }
-    });
-}
-
-
-
+//TODO Supprimer
+//Supprimer un rabais
 function BtnDelRabais(idCircuit) {
     var FormDelRabais = new FormData();
     FormDelRabais.append('action','btn_del_rabais');
