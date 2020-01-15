@@ -1,11 +1,14 @@
 <?php
-//@mkdir('../pages/upload/'.$num_circuit); need to test
-$folder_name = '../pages/upload/';
+session_start();
+
+$num_circuit = $_SESSION['numCircuit'];
+$mkdir = @mkdir('upload/'.$num_circuit);
+$folder_name = 'upload/'.$num_circuit.'/';
 
 if(!empty($_FILES))
 {
     $temp_file = $_FILES['file']['tmp_name'];
-    $location = $folder_name . $_FILES['file']['name'];
+    $location = $folder_name.$_FILES['file']['name'];
     move_uploaded_file($temp_file, $location);
 }
 
@@ -17,7 +20,7 @@ if(isset($_POST["name"]))
 
 $result = array();
 
-$files = scandir('../pages/upload');
+$files = scandir('upload/'.$num_circuit);
 
 $output = '<div class="row">';
 
