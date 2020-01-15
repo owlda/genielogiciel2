@@ -289,7 +289,6 @@ function EnregistrerVille($smarty,$db){
 }
 //Enregistrer un jour
 function EnregistrerJour($db){
-
     global $reponse;
     $reponse['action'] = 'register_jour';
     $db->setFetchMode(ADODB_FETCH_ASSOC);

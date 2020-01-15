@@ -75,7 +75,7 @@ var Vue=function(reponse){
             $("#detail_restaurant_jour_" + reponse.idJour).html(reponse.detail_restaurant);
             break;
         case "detail_jour_change" :
-            alert("Jour a été changé...");
+            //alert("Jour a été changé...");
             $("#detail_jour_" + reponse.idJourSelectChange).html(reponse.detail_jour);
             break;
     }
