@@ -6,7 +6,8 @@ function GetUrlController() {
     return dir + '/ControllerIvan/AdminControllerIvan/AdminController.php';
 }
 
-//TODO Load form for edit un circuit
+//TODO Load form
+//form for edit un circuit
 function LoadModifierCircuit() {
     var FormModCircuit = new FormData();
     var url_string = window.location.href;
@@ -32,8 +33,7 @@ function LoadModifierCircuit() {
         }
     });
 }
-
-//TODO Load form for add un circuit
+//form for add un circuit
 function LoadAddCircuit(){
     var FormAddCircuit = new FormData();
     FormAddCircuit.append('action','addcircuit');
@@ -56,8 +56,196 @@ function LoadAddCircuit(){
         }
     });
 }
+//form for Add un etape
+function LoadAddEtape(idCircuit){
+    var FormAddEtape = new FormData();
+    FormAddEtape.append('action','addetape');
+    FormAddEtape.append('idCircuit',idCircuit);
+    var controller = GetUrlController();
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddEtape,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+}
+//Detail un circuit
+function DetailCircuit(idCircuit) {
+    var FormCircuit = new FormData();
+    FormCircuit.append('action', 'detail_circuit');
+    FormCircuit.append('idCircuit', idCircuit);
+    var controller = GetUrlController();
+    $.ajax({
+        type: 'POST',
+        url: controller,
+        data: FormCircuit,
+        dataType: 'json',
+        async: false,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (reponse) {
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+}
+//Detail jour by idJour
+function ShowDetailJourChange(idJourSelectChange, idJour, idVilleJour, NameJour, idPaysEtape){
+    var FormDetailJour = new FormData();
+    FormDetailJour.append('action','detail_jour_change');
+    FormDetailJour.append('idJour',idJour);
+    FormDetailJour.append('idJourSelectChange',idJourSelectChange);
+    FormDetailJour.append('idVilleJour',idVilleJour);
+    FormDetailJour.append('NameJour',NameJour);
+    FormDetailJour.append('idPaysEtape',idPaysEtape);
+    var controller = GetUrlController();
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormDetailJour,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
 
-//TODO Enregistrer un theme
+}
+
+//TODO Load modal
+//modal form for Add un jour
+function LoadModalAddJour(idPays, idEtape){
+    var FormAddJour = new FormData();
+    FormAddJour.append('action','btn_add_jour');
+    FormAddJour.append('idPays', idPays);
+    FormAddJour.append('idEtape', idEtape);
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddJour,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+
+
+}
+//modal form for Add un restaurent
+function LoadModalAddRestaurent(idPays, idJour){
+    var FormAddRestaurent = new FormData();
+    FormAddRestaurent.append('action','btn_add_restaurent');
+    FormAddRestaurent.append('idPays', idPays);
+    FormAddRestaurent.append('idJour', idJour);
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddRestaurent,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+
+
+}
+
+//TODO Enregistrer
+//Enregistrer un nouveau restaurent
+function BtnAddRestaurentForJour(){
+    var BtnAddRestaurentForJour = new FormData(FormAddRestaurent);
+    BtnAddRestaurentForJour.append('action','btn_register_restaurent_jour');
+    BtnAddRestaurentForJour.append('site', $('#text_site_restaurent').text());
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : BtnAddRestaurentForJour,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+}
+//Enregistrer un nouveau restaurent
+function BtnAddRestaurent(idVille){
+    var FormAddRestaurent = new FormData();
+    FormAddRestaurent.append('action','btn_register_restaurent');
+    FormAddRestaurent.append('idVille', idVille);
+    FormAddRestaurent.append('NewNameRestaurent', $('#NewNameRestaurent').val());
+    FormAddRestaurent.append('NewSiteRestaurent', $('#NewSiteRestaurent').val());
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddRestaurent,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+}
+//Enregistrer un theme
 function BtnAddTheme(){
     var FormAddTheme = new FormData();
     FormAddTheme.append('action','btn_register_theme');
@@ -83,8 +271,7 @@ function BtnAddTheme(){
         }
     });
 }
-
-//TODO Enregistrer un pays
+//Enregistrer un pays
 function BtnAddPays(){
     var FormAddPays = new FormData();
     FormAddPays.append('action','btn_register_pays');
@@ -109,10 +296,35 @@ function BtnAddPays(){
             console.log(xhr);
         }
     });
-
 }
+//Enregistrer une ville
+function BtnAddVille(idPays){
+    var FormAddVille = new FormData();
+    FormAddVille.append('action','btn_register_ville');
+    FormAddVille.append('idPays', idPays);
+    let new_ville = $('#NewVille').val();
+    FormAddVille.append('new_ville', new_ville);
+    var controller = GetUrlController();
 
-//TODO Enregistrer un circuit
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddVille,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+}
+//Enregistrer un circuit
 function BtnAddCircuit(){
 
     var FormAddCircuit = new FormData(AddFormCircuit);
@@ -146,19 +358,14 @@ function BtnAddCircuit(){
     });
 
 }
-
-//TODO Enregistrer un etape
-function BtnAddEtape(){
-
+//Enregistrer un etape
+function BtnAddEtape(idCircuit){
     var FormAddEtape = new FormData(AddFormEtape);
     FormAddEtape.append('action','btn_register_etape');
-    var url_string = window.location.href;
-    var url = new URL(url_string);
-    FormAddEtape.append('idCircuit',url.searchParams.get("id"));
+    FormAddEtape.append('idCircuit', idCircuit);
     var nicE = new nicEditors.findEditor('NicEdit');
     FormAddEtape.append('description',nicE.getContent());
     FormAddEtape.append('id_pays', $('#SelectPays').val());
-
     var controller = GetUrlController();
 
     $.ajax({
@@ -180,16 +387,16 @@ function BtnAddEtape(){
     });
 
 }
-
-//TODO Lister des circuit
-function ListerCircuit(){
-    var FormAddCircuit = new FormData();
-    FormAddCircuit.append('action','list_circuit');
+//Enregistrer un jour
+function BtnAddJour(){
+    var FormJourAdd = new FormData(FormAddJour);
+    FormJourAdd.append('action','btn_register_jour');
     var controller = GetUrlController();
+
     $.ajax({
         type : 'POST',
         url : controller,
-        data : FormAddCircuit,
+        data : FormJourAdd,
         dataType : 'json',
         async : false,
         cache : false,
@@ -203,64 +410,9 @@ function ListerCircuit(){
             console.log(xhr);
         }
     });
+
 }
-
-//TODO Detail un circuit
-function DetailCircuit() {
-
-    var FormCircuit = new FormData();
-    var url_string = window.location.href;
-    var url = new URL(url_string);
-    FormCircuit.append('action','detail_circuit');
-    FormCircuit.append('idCircuit',url.searchParams.get("id"));
-    var controller = GetUrlController();
-    $.ajax({
-        type : 'POST',
-        url : controller,
-        data : FormCircuit,
-        dataType : 'json',
-        async : false,
-        cache : false,
-        contentType : false,
-        processData : false,
-        success : function (reponse){
-            Vue(reponse);
-        },
-        error: function (xhr, error) {
-            console.log(error);
-            console.log(xhr);
-        }
-    });
-}
-
-//TODO Load form for add un circuit
-function LoadAddEtape(){
-    var FormAddEtape = new FormData();
-    FormAddEtape.append('action','addetape');
-    var url_string = window.location.href;
-    var url = new URL(url_string);
-    FormAddEtape.append('idCircuit',url.searchParams.get("id"));
-    var controller = GetUrlController();
-    $.ajax({
-        type : 'POST',
-        url : controller,
-        data : FormAddEtape,
-        dataType : 'json',
-        async : false,
-        cache : false,
-        contentType : false,
-        processData : false,
-        success : function (reponse){
-            Vue(reponse);
-        },
-        error: function (xhr, error) {
-            console.log(error);
-            console.log(xhr);
-        }
-    });
-}
-
-//TODO Enregistrer un rabais
+//Enregistrer un rabais
 function BtnRegistreRabais(idCircuit){
 
     var FormAddRabais = new FormData(FormAddRabais);
@@ -290,6 +442,33 @@ function BtnRegistreRabais(idCircuit){
     });
 }
 
+//TODO Lister
+//Lister des circuit
+function ListerCircuit(){
+    var FormAddCircuit = new FormData();
+    FormAddCircuit.append('action','list_circuit');
+    var controller = GetUrlController();
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddCircuit,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+}
+
+//TODO Supprimer
+//Supprimer un rabais
 function BtnDelRabais(idCircuit) {
     var FormDelRabais = new FormData();
     FormDelRabais.append('action','btn_del_rabais');
@@ -315,3 +494,4 @@ function BtnDelRabais(idCircuit) {
     });
 
 }
+

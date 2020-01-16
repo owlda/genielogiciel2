@@ -12,7 +12,6 @@ $(document).ready(function () {
         question = nicE.getContent();
         alert(question);
     });
-
 });
 
 function BtnViewNewTheme() {
@@ -30,6 +29,13 @@ function BtnViewNewPays() {
 function BtnNotPays() {
     $('#ViewNewPays').css('display', 'none');
 }
+
+
+
+
+
+
+
 
 function Create_Form_Ivan() {
     $('#form-circuit').text("");

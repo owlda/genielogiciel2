@@ -9,3 +9,22 @@ function BtnAddRabais(idCircuit){
     let str = 'BtnRegistreRabais(' + idCircuit + ')'
     $('#register_rabais').attr('onclick', str);
 }
+
+function BtnViewNewVille() {
+    $('#ViewNewVille').css('display', 'block');
+}
+function BtnNotVille() {
+    $('#ViewNewVille').css('display', 'none');
+}
+
+function BtnViewNewRestaurent() {
+    $('#ViewNewRestaurent').css('display', 'block');
+}
+function BtnNotRestaurent() {
+    $('#ViewNewRestaurent').css('display', 'none');
+}
+
+function LoadModalAddHotel(){
+    $('#modal_add_hotel').modal('show');
+    $('.modal-backdrop').css('position', 'static');
+}

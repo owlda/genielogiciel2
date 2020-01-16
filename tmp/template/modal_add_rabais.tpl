@@ -10,26 +10,24 @@
             </div>
             <div class="modal-body">
                 <form id="FormAddRabais">
-
-                <div class="form-group">
-                    <label style="display: inline;">Rabais:</label>
-                    <input type="text" class="form-control" id="input_pourcentage" name="input_pourcentage" style="width: 60px;display: inline;" placeholder="%">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Date de début:</label>
-                    <div class="col-10">
-                        <input class="form-control small" style="width: 250px" type="datetime-local" id="input_date_start" name="input_date_start">
+                    <div class="form-group">
+                        <label style="display: inline;">Rabais:</label>
+                        <input type="text" class="form-control" id="input_pourcentage" name="input_pourcentage" style="width: 60px;display: inline;" placeholder="%">
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Date de fin:</label>
-                    <div class="col-10">
-                        <input class="form-control" style="width: 250px" type="datetime-local" id="input_date_end" name="input_date_end">
+                    <div class="form-group">
+                        <label>Date de début:</label>
+                        <div class="col-10">
+                            <input class="form-control small" style="width: 250px" type="datetime-local" id="input_date_start" name="input_date_start">
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label>Date de fin:</label>
+                        <div class="col-10">
+                            <input class="form-control" style="width: 250px" type="datetime-local" id="input_date_end" name="input_date_end">
+                        </div>
+                    </div>
                 </form>
             </div>
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                 <button type="button" id="register_rabais" class="btn btn-success">Enregistrer</button>
