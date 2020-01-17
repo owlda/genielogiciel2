@@ -64,8 +64,14 @@ switch($_POST['action']){
     case 'btn_register_restaurent_jour':
         EnregistrerRestaurentJour($smarty,$db);
         break;
+    case 'btn_register_hotel_jour':
+        EnregistrerHotelJour($smarty,$db);
+        break;
     case 'btn_register_activity_jour':
         EnregistrerActivityJour($smarty,$db);
+        break;
+    case 'btn_register_hotel':
+        EnregistrerNewHotel($smarty,$db);
         break;
     case 'detail_jour_change':
         DetailJourChange($smarty,$db);
@@ -268,8 +274,9 @@ function DetailJourChange($smarty,$db){
     $detail_jour = GetJourByidJour($_POST['idJour'],$db);
     $lst_detail_restaurent = GetAllRestaurentFromJour($_POST['idJour'],$db);
     $lst_detail_activity = GetAllActivityFromJour($_POST['idJour'],$db);
+    $lst_detail_hotel = GetAllHotelFromJour($_POST['idJour'],$db);
 
-    $smarty->assign('prix', $detail_jour[0]['prix']);
+    $smarty->assign('prixJour', $detail_jour[0]['prix']);
     $smarty->assign('idPaysEtape', $_POST['idPaysEtape']);
     $smarty->assign('NomPaysEtape', GetNomPaysById($_POST['idPaysEtape'], $db));
     $smarty->assign('idVilleJour', $_POST['idVilleJour']);
@@ -281,6 +288,8 @@ function DetailJourChange($smarty,$db){
     $smarty->assign('CountRestaurentJour', sizeof($lst_detail_restaurent));
     $smarty->assign('arr_activity', $lst_detail_activity);
     $smarty->assign('CountActivityJour', sizeof($lst_detail_activity));
+    $smarty->assign('arr_hotel', $lst_detail_hotel);
+    $smarty->assign('CountHotelJour', sizeof($lst_detail_hotel));
     $reponse['detail_jour'] = $smarty->fetch("detail_jour.tpl");
 }
 
@@ -452,6 +461,43 @@ function EnregistrerActivityJour($smarty,$db){
     $smarty->assign('CountActivityJour', sizeof($list_activity));
 
     $reponse['detail_activity'] = $smarty->fetch("detail_activity.tpl");
+}
+//Enregistrer nouveau hotel
+function EnregistrerNewHotel($smarty, $db){
+    global $reponse;
+    $reponse['action'] = "register_hotel";
+
+    $table = 'hotel';
+    $record['titre'] = $_POST['NewNameHotel'];
+    $record['idVille'] = $_POST['idVille'];
+    $record['site'] = $_POST['NewSiteHotel'];
+    $db->autoExecute($table, $record, 'INSERT');
+
+    $reponse['list_hotel'] = GetAllHotelFromVille($_POST['idVille'], $db);
+    $smarty->assign('arr_list_hotel', $reponse['list_hotel']);
+    $reponse['arr_list_hotel'] = $smarty->fetch("select_hotel.tpl");
+}
+//Enregistrer hotel for jour
+function EnregistrerHotelJour($smarty,$db){
+    global $reponse;
+    $reponse['action'] = "register_hotel_jour";
+    $reponse['idJour'] = $_POST['input_id_jour'];
+
+    $table = 'hotelsjour';
+    $record['idHotel'] = $_POST['SelectHotel'];
+    $record['idJour'] = $_POST['input_id_jour'];
+    $record['numeroEtap'] = 0;
+    $record['numeroJour'] = 0;
+    $db->autoExecute($table, $record, 'INSERT');
+
+    $list_hotel = GetAllHotelFromJour($reponse['idJour'], $db);
+    $smarty->assign('CountHotelJour', sizeof($list_hotel));
+    $smarty->assign('idPaysEtape', $_POST['SelectPaysHotel']);
+    $smarty->assign('idJour', $_POST['input_id_jour']);
+    $smarty->assign('idVilleJour', $_POST['input_id_ville_jour']);
+    $smarty->assign('arr_hotel', $list_hotel);
+
+    $reponse['detail_hotel'] = $smarty->fetch("detail_hotel.tpl");
 }
 
 //TODO Lister

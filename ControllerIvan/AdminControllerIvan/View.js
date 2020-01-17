@@ -6,6 +6,11 @@ function ChangeRestaurent(){
     $('#link_site_restaurent').attr('href', SupportArrayRestaurent[$('#SelectRestaurent').val()]);
 }
 
+function ChangeHotel(){
+    $('#text_site_hotel').text(SupportArrayHotel[$('#SelectHotel').val()]);
+    $('#link_site_hotel').attr('href', SupportArrayHotel[$('#SelectHotel').val()]);
+}
+
 function InitialSiteSelectRestaurent(arr_list_restaurent) {
     SupportArrayRestaurent = {};
     for (var restaurent of arr_list_restaurent){
@@ -16,7 +21,7 @@ function InitialSiteSelectRestaurent(arr_list_restaurent) {
 function InitialSiteSelectHotel(arr_list_hotel) {
     SupportArrayHotel = {};
     for (var hotel of arr_list_hotel){
-        SupportArrayRestaurent[hotel.idHotel] = hotel.site;
+        SupportArrayHotel[hotel.idHotel] = hotel.site;
     }
 }
 
@@ -59,6 +64,10 @@ var Vue=function(reponse){
             InitialSiteSelectRestaurent(reponse.list_restaurent);
             EnregisterRestaurent_View(reponse);
             break;
+        case "register_hotel" :
+            InitialSiteSelectHotel(reponse.list_hotel);
+            EnregisterHotel_View(reponse);
+            break;
         case "del_rabais" :
             DelRabais_View();
             break;
@@ -85,14 +94,13 @@ var Vue=function(reponse){
             DetailCircuit(reponse.idCircuit);
             break;
         case "register_restaurent_jour" :
-            alert("Restaurent a été ajouté pour le jour.");
-            $('#modal_add_restaurent').modal('hide');
-            $("#detail_restaurant_jour_" + reponse.idJour).html(reponse.detail_restaurant);
+            EnregisterRestaurentJour_View(reponse);
+            break;
+        case "register_hotel_jour" :
+            EnregisterHotelJour_View(reponse);
             break;
         case "register_activity_jour" :
-            alert("Activité a été ajouté pour le jour.");
-            $('#modal_add_activity').modal('hide');
-            $("#detail_activity_jour_" + reponse.idJour).html(reponse.detail_activity);
+            EnregisterActivityJour_View(reponse);
             break;
         case "detail_jour_change" :
             //alert("Jour a été changé...");
@@ -108,6 +116,12 @@ function EnregisterRestaurent_View(reponse){
     $("#SelectRestaurent").html(reponse.arr_list_restaurent);
     ChangeRestaurent();
 }
+function EnregisterHotel_View(reponse){
+    alert("Hotel a été ajouté...");
+    $("#ViewNewHotel").css("display", "none");
+    $("#SelectHotel").html(reponse.arr_list_hotel);
+    ChangeHotel();
+}
 function EnregisterVille_View(reponse){
     alert("Ville a été ajouté...");
     $("#ViewNewVille").css("display", "none");
@@ -122,6 +136,24 @@ function EnregisterPays_View(reponse) {
     alert("Pays a été ajouté...");
     $("#ViewNewPays").css("display", "none");
     $("#SelectPays").html(reponse.list_pays);
+}
+function EnregisterRestaurentJour_View(reponse){
+    alert("Restaurent a été ajouté pour le jour.");
+    $('#modal_add_restaurent').modal('hide');
+    $("#detail_restaurant_jour_" + reponse.idJour).html(reponse.detail_restaurant);
+}
+function EnregisterActivityJour_View(reponse){
+    alert("Activité a été ajouté pour le jour.");
+    $('#modal_add_activity').modal('hide');
+    $("#detail_activity_jour_" + reponse.idJour).html(reponse.detail_activity);
+}
+function EnregisterHotelJour_View(reponse){
+    alert("Hotel a été ajouté pour le jour.");
+    $('#modal_add_hotel').modal('hide');
+    $("#detail_hotel_jour_" + reponse.idJour).html(reponse.detail_hotel);
+}
+function RegisterRabais_View() {
+    location.reload();
 }
 
 //TODO Show modal
@@ -143,36 +175,32 @@ function AddHotel_View(reponse) {
     $('.modal-backdrop').css('position', 'static');
     /*$('#ViewNewVille').css('display', 'none');*/
 }
-
 function AddJour_View(reponse) {
     $("#div_modal_add_jour").html(reponse.modal_add_jour);
     $('#modal_add_jour').modal('show');
     $('.modal-backdrop').css('position', 'static');
     $('#ViewNewVille').css('display', 'none');
 }
-
 function DelRabais_View() {
     location.reload();
 }
 
+//TODO load form
 function AddCircuit_View(reponse){
     document.documentElement.scrollTop = 0;
     $("#list-circuit").html(reponse.form_add_circuit);
     $("#ajouter-circuit").html("");
     $("#ajouter-etape").html("");
 }
-
 function AddEtape_View(reponse){
     document.documentElement.scrollTop = 0;
     $("#list-circuit").html(reponse.form_add_etape);
     $("#ajouter-circuit").html("");
     $("#ajouter-etape").html("");
 }
-
 function ListerCircuit_View(reponse){
     $("#list-circuit").html(reponse.list_circuit);
 }
-
 function DetailCircuit_View(reponse) {
     document.documentElement.scrollTop = 0;
     $("#list-circuit").html("");
@@ -184,6 +212,3 @@ function ModCircuit_View(reponse) {
     $("#form-circuit").html(reponse.form_edit_circuit);
 }
 
-function RegisterRabais_View() {
-    location.reload();
-}

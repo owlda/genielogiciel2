@@ -19,9 +19,6 @@
                 </div>
             </div>
             <div class="col"></div>
-            {*            <div class="col" style="text-align: right;margin-right: 5px;">
-                            <span style="padding: 5px;background-color: greenyellow;font-size: 20px;">1000$</span>
-                        </div>*}
         </div>
         <div class="row">
             <div class="col"></div>

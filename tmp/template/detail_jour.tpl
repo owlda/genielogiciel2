@@ -10,7 +10,7 @@
     </div>
     <div class="col"></div>
     <div class="col" style="text-align: right;margin-right: 5px;">
-        <span style="padding: 5px;background-color: greenyellow;font-size: 20px;">{$prix} $</span>
+        <span style="padding: 5px;background-color: greenyellow;font-size: 20px;">{$prixJour} $</span>
     </div>
 </div>
 <div class="row">

@@ -23,3 +23,10 @@ function BtnViewNewRestaurent() {
 function BtnNotRestaurent() {
     $('#ViewNewRestaurent').css('display', 'none');
 }
+
+function BtnViewNewHotel() {
+    $('#ViewNewHotel').css('display', 'block');
+}
+function BtnNotHotel() {
+    $('#ViewNewHotel').css('display', 'none');
+}

@@ -48,7 +48,7 @@
                         </div>
                         <section id="detail_jour_{$etape.arr_jour[$etape.count_jour-1].idJour}">
                             {include file="detail_jour.tpl"
-                            prix = $etape.arr_jour[$etape.count_jour-1].prix
+                            prixJour = $etape.arr_jour[$etape.count_jour-1].prix
                             idPaysEtape = $etape.idPays
                             NomPaysEtape=$etape.NomPays
                             idVilleJour=$etape.arr_jour[$etape.count_jour-1].idVille

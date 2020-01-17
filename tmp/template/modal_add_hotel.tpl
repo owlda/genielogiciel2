@@ -36,7 +36,7 @@
                         <a href="{$arr_list_hotel[0].site}" id="link_site_hotel" target="_blank"><span id="text_site_hotel">{$arr_list_hotel[0].site}</span></a>
                     </div>
                     <div class="form-group animated zoomInRight" id="ViewNewHotel" style="width: 50%;margin-left: 30%;display: none;">
-                        <label>Nouveau restaurent:</label>
+                        <label>Nouveau hotel:</label>
                         <input type="text" class="form-control" id="NewNameHotel">
                         <label>Site (avec http(s)://):</label>
                         <input type="text" class="form-control" id="NewSiteHotel">
