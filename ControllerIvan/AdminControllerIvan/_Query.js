@@ -220,6 +220,36 @@ function LoadModalAddActivity(idPaysEtape, idVilleJour, idJour){
 
 
 }
+//modal form for Add un hotel
+function LoadModalAddHotel(idPaysEtape, idVilleJour, idJour){
+
+    var FormAddHotel = new FormData();
+    FormAddHotel.append('action','btn_add_hotel');
+    FormAddHotel.append('idPaysEtape', idPaysEtape);
+    FormAddHotel.append('idVilleJour', idVilleJour);
+    FormAddHotel.append('idJour', idJour);
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddHotel,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+
+
+}
 
 //TODO Enregistrer
 //Enregistrer un nouveau restaurent

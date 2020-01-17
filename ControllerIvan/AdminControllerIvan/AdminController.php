@@ -46,6 +46,9 @@ switch($_POST['action']){
     case 'btn_add_restaurent':
         ModalAddRestaurent($smarty, $db);
         break;
+    case 'btn_add_hotel':
+        ModalAddHotel($smarty, $db);
+        break;
     case 'btn_add_activity':
         ModalAddActivity($smarty, $db);
         break;
@@ -102,6 +105,24 @@ function ModalAddActivity($smarty, $db){
     //Transfer data to *.tpl
     $smarty->fetch("modal_add_activity.tpl");
     $reponse['modal_add_activity'] = $smarty->fetch("modal_add_activity.tpl");
+}
+//Modal Add un Hotel for Jour
+function ModalAddHotel($smarty, $db){
+    global $reponse;
+    $reponse['action'] = "btn_add_hotel";
+    $arr_list_hotel = GetAllHotelFromVille($_POST["idVilleJour"], $db);
+
+    $smarty->assign('idPaysEtape', $_POST["idPaysEtape"]);
+    $smarty->assign('idVilleJour', $_POST["idVilleJour"]);
+    $smarty->assign('idJour', $_POST["idJour"]);
+    $smarty->assign('NomPaysEtape', GetNomPaysById($_POST["idPaysEtape"], $db));
+    $smarty->assign('NomVilleJour', GetNomVilleById($_POST["idVilleJour"], $db));
+    $smarty->assign('arr_list_hotel', $arr_list_hotel);
+
+    //Transfer data to *.tpl
+    $smarty->fetch("modal_add_hotel.tpl");
+    $reponse['modal_add_hotel'] = $smarty->fetch("modal_add_hotel.tpl");
+    $reponse['arr_list_hotel'] = $arr_list_hotel;
 }
 //Modal Add un jour for Etape
 function ModalAddJour($smarty, $db){
@@ -568,6 +589,12 @@ function GetAllVilleFromPays($idPays, $db){
 function GetAllRestaurentFromVille($idVille, $db){
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $SQL = 'SELECT * FROM restaurent WHERE idVille = '.$idVille  . ' ORDER BY  titre';
+    return $db->getAll($SQL);
+}
+
+function GetAllHotelFromVille($idVille, $db){
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $SQL = 'SELECT * FROM hotel WHERE idVille = '.$idVille  . ' ORDER BY  titre';
     return $db->getAll($SQL);
 }
 //Get Nome de ville from ville by idVille

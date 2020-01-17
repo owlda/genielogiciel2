@@ -32,6 +32,7 @@
     <div id="div_modal_add_jour"></div>
     <div id="div_modal_add_restaurent"></div>
     <div id="div_modal_add_activity"></div>
+    <div id="div_modal_add_hotel"></div>
 </main>
 <div class="footer-clean animated zoomInRight">
     <?php include __DIR__.'/../tmp/template/footer.tpl '?>

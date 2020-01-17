@@ -44,5 +44,5 @@
     idJour=$idJour
     arr_hotel=$arr_hotel
     CountHotelJour=$CountHotelJour}
-
 </section>
+<hr>

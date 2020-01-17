@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col">
         <input class="btn btn-success" type="button" value="Ajouter un hotel" onclick="LoadModalAddHotel({$idPaysEtape}, {$idVilleJour}, {$idJour})">
-        <h3>Restaurant(s):</h3>
+        <h3>Hotel(s):</h3>
     </div>
     <div class="col"></div>
 </div>
@@ -23,14 +23,14 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-6">
-                <div class="col"><span style="font-weight: bold">Place:</span> {$restaurent.VilleRestaurent} </div>
+                <div class="col"><span style="font-weight: bold">Place:</span> {$hotel.VilleHotel} </div>
             </div>
             <div class="col"></div>
         </div>
         <div class="row">
             <div class="col"></div>
             <div class="col-6">
-                <div class="col"><span style="font-weight: bold">Site:</span><a href="{$restaurent.site}"> {$restaurent.site}</a> </div>
+                <div class="col"><span style="font-weight: bold">Site:</span><a href="{$hotel.site}"> {$hotel.site}</a> </div>
             </div>
             <div class="col"></div>
         </div>

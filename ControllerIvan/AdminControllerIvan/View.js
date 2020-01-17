@@ -1,4 +1,5 @@
 var SupportArrayRestaurent = {};
+var SupportArrayHotel = {};
 
 function ChangeRestaurent(){
     $('#text_site_restaurent').text(SupportArrayRestaurent[$('#SelectRestaurent').val()]);
@@ -9,6 +10,13 @@ function InitialSiteSelectRestaurent(arr_list_restaurent) {
     SupportArrayRestaurent = {};
     for (var restaurent of arr_list_restaurent){
         SupportArrayRestaurent[restaurent.idRestaurent] = restaurent.site;
+    }
+}
+
+function InitialSiteSelectHotel(arr_list_hotel) {
+    SupportArrayHotel = {};
+    for (var hotel of arr_list_hotel){
+        SupportArrayRestaurent[hotel.idHotel] = hotel.site;
     }
 }
 
@@ -61,6 +69,10 @@ var Vue=function(reponse){
             InitialSiteSelectRestaurent(reponse.arr_list_restaurent);
             AddRestaurent_View(reponse);
             break;
+        case "btn_add_hotel" :
+            InitialSiteSelectHotel(reponse.arr_list_hotel);
+            AddHotel_View(reponse);
+            break;
         case "btn_add_activity" :
             AddActivity_View(reponse);
             break;
@@ -112,16 +124,22 @@ function EnregisterPays_View(reponse) {
     $("#SelectPays").html(reponse.list_pays);
 }
 
+//TODO Show modal
 function AddRestaurent_View(reponse) {
     $("#div_modal_add_restaurent").html(reponse.modal_add_restaurent);
     $('#modal_add_restaurent').modal('show');
     $('.modal-backdrop').css('position', 'static');
     /*$('#ViewNewVille').css('display', 'none');*/
 }
-
 function AddActivity_View(reponse) {
     $("#div_modal_add_activity").html(reponse.modal_add_activity);
     $('#modal_add_activity').modal('show');
+    $('.modal-backdrop').css('position', 'static');
+    /*$('#ViewNewVille').css('display', 'none');*/
+}
+function AddHotel_View(reponse) {
+    $("#div_modal_add_hotel").html(reponse.modal_add_hotel);
+    $('#modal_add_hotel').modal('show');
     $('.modal-backdrop').css('position', 'static');
     /*$('#ViewNewVille').css('display', 'none');*/
 }

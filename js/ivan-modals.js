@@ -23,8 +23,3 @@ function BtnViewNewRestaurent() {
 function BtnNotRestaurent() {
     $('#ViewNewRestaurent').css('display', 'none');
 }
-
-function LoadModalAddHotel(){
-    $('#modal_add_hotel').modal('show');
-    $('.modal-backdrop').css('position', 'static');
-}
