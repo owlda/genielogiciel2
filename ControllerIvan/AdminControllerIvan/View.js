@@ -61,6 +61,9 @@ var Vue=function(reponse){
             InitialSiteSelectRestaurent(reponse.arr_list_restaurent);
             AddRestaurent_View(reponse);
             break;
+        case "btn_add_activity" :
+            AddActivity_View(reponse);
+            break;
         case "register_ville" :
             EnregisterVille_View(reponse);
             break;
@@ -73,6 +76,11 @@ var Vue=function(reponse){
             alert("Restaurent a été ajouté pour le jour.");
             $('#modal_add_restaurent').modal('hide');
             $("#detail_restaurant_jour_" + reponse.idJour).html(reponse.detail_restaurant);
+            break;
+        case "register_activity_jour" :
+            alert("Activité a été ajouté pour le jour.");
+            $('#modal_add_activity').modal('hide');
+            $("#detail_activity_jour_" + reponse.idJour).html(reponse.detail_activity);
             break;
         case "detail_jour_change" :
             //alert("Jour a été changé...");
@@ -107,6 +115,13 @@ function EnregisterPays_View(reponse) {
 function AddRestaurent_View(reponse) {
     $("#div_modal_add_restaurent").html(reponse.modal_add_restaurent);
     $('#modal_add_restaurent').modal('show');
+    $('.modal-backdrop').css('position', 'static');
+    /*$('#ViewNewVille').css('display', 'none');*/
+}
+
+function AddActivity_View(reponse) {
+    $("#div_modal_add_activity").html(reponse.modal_add_activity);
+    $('#modal_add_activity').modal('show');
     $('.modal-backdrop').css('position', 'static');
     /*$('#ViewNewVille').css('display', 'none');*/
 }

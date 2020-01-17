@@ -10,27 +10,39 @@
     </div>
     <div class="col"></div>
     <div class="col" style="text-align: right;margin-right: 5px;">
-        <span style="padding: 5px;background-color: greenyellow;font-size: 20px;">1000$</span>
+        <span style="padding: 5px;background-color: greenyellow;font-size: 20px;">{$prix} $</span>
     </div>
 </div>
 <div class="row">
-    <div class="col"><span style="font-weight: bold">Pays:</span> {$NomPays}</div>
-    <div class="col"><span style="font-weight: bold">Ville:</span> {$NomVille}</div>
+    <div class="col"><span style="font-weight: bold">Pays:</span> {$NomPaysEtape}</div>
+    <div class="col"><span style="font-weight: bold">Ville:</span> {$NomVilleJour}</div>
     <div class="col-8"><span style="font-weight: bold">Description:</span> {$DescriptionJour}</div>
 </div>
 <hr>
 <section id="detail_restaurant_jour_{$idJour}">
     {include file="detail_restaurant.tpl"
-    idPays=$idPays
+    idPaysEtape=$idPaysEtape
+    idVilleJour=$idVilleJour
     idJour=$idJour
     arr_restaurent=$arr_restaurent
     CountRestaurentJour=$CountRestaurentJour}
 </section>
 <hr>
 <section id="detail_activity_jour_{$idJour}">
-
+    {include file="detail_activity.tpl"
+    idPaysEtape=$idPaysEtape
+    idVilleJour=$idVilleJour
+    idJour=$idJour
+    arr_activity=$arr_activity
+    CountActivityJour=$CountActivityJour}
 </section>
 <hr>
 <section id="detail_hotel_jour_{$idJour}">
+    {include file="detail_hotel.tpl"
+    idPaysEtape=$idPaysEtape
+    idVilleJour=$idVilleJour
+    idJour=$idJour
+    arr_hotel=$arr_hotel
+    CountHotelJour=$CountHotelJour}
 
 </section>

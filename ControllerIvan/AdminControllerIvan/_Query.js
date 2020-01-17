@@ -105,11 +105,11 @@ function DetailCircuit(idCircuit) {
     });
 }
 //Detail jour by idJour
-function ShowDetailJourChange(idJourSelectChange, idJour, idVilleJour, NameJour, idPaysEtape){
+function ShowDetailJourChange(idJourHtmlSelectChange, idJour, idVilleJour, NameJour, idPaysEtape){
     var FormDetailJour = new FormData();
     FormDetailJour.append('action','detail_jour_change');
     FormDetailJour.append('idJour',idJour);
-    FormDetailJour.append('idJourSelectChange',idJourSelectChange);
+    FormDetailJour.append('idJourSelectChange',idJourHtmlSelectChange);
     FormDetailJour.append('idVilleJour',idVilleJour);
     FormDetailJour.append('NameJour',NameJour);
     FormDetailJour.append('idPaysEtape',idPaysEtape);
@@ -131,7 +131,6 @@ function ShowDetailJourChange(idJourSelectChange, idJour, idVilleJour, NameJour,
             console.log(xhr);
         }
     });
-
 }
 
 //TODO Load modal
@@ -164,10 +163,11 @@ function LoadModalAddJour(idPays, idEtape){
 
 }
 //modal form for Add un restaurent
-function LoadModalAddRestaurent(idPays, idJour){
+function LoadModalAddRestaurent(idPaysEtape, idVilleJour, idJour){
     var FormAddRestaurent = new FormData();
     FormAddRestaurent.append('action','btn_add_restaurent');
-    FormAddRestaurent.append('idPays', idPays);
+    FormAddRestaurent.append('idPaysEtape', idPaysEtape);
+    FormAddRestaurent.append('idVilleJour', idVilleJour);
     FormAddRestaurent.append('idJour', idJour);
     var controller = GetUrlController();
 
@@ -175,6 +175,35 @@ function LoadModalAddRestaurent(idPays, idJour){
         type : 'POST',
         url : controller,
         data : FormAddRestaurent,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+
+
+}
+//modal form for Add une activité
+function LoadModalAddActivity(idPaysEtape, idVilleJour, idJour){
+    var FormAddActivity = new FormData();
+    FormAddActivity.append('action','btn_add_activity');
+    FormAddActivity.append('idPaysEtape', idPaysEtape);
+    FormAddActivity.append('idVilleJour', idVilleJour);
+    FormAddActivity.append('idJour', idJour);
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddActivity,
         dataType : 'json',
         async : false,
         cache : false,
@@ -204,6 +233,30 @@ function BtnAddRestaurentForJour(){
         type : 'POST',
         url : controller,
         data : BtnAddRestaurentForJour,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+}
+//Enregistrer un nouveau restaurent
+function BtnAddActivityForJour(){
+    var BtnAddActivityForJour = new FormData(FormAddActivity);
+    BtnAddActivityForJour.append('action','btn_register_activity_jour');
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : BtnAddActivityForJour,
         dataType : 'json',
         async : false,
         cache : false,
