@@ -11,7 +11,7 @@
 <div class="row">
     <div class="col">
         <div class="card" style="padding: 10px;">
-            {include file='carousel-circuit.tpl'}
+            {include file='carousel_circuit.tpl' arr_image_circuit=$arr_image_circuit}
             <div class="list-group-item text-white bg-dark" style="text-align: center;display: inline;">
                 <h2 class="text-center my-1" style="display: inline;margin-bottom: 10px;">{$prix}$</h2>
             </div>

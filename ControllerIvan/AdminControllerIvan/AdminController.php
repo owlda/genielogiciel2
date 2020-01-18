@@ -222,6 +222,8 @@ function DetailCircuit($smarty,$db,$voc){
     global $reponse;
     $reponse['action'] = "detail_circuit";
     $idCircuit = $_POST["idCircuit"];
+    $str = "../../upload/".$_POST["idCircuit"]."/*";
+    $smarty->assign('arr_image_circuit', glob($str));
     $rs1 = GetCircuitById($idCircuit, $db);
     $smarty->assign('idCircuit', $rs1[0]['idCircuit']);
     $smarty->assign('titre', $rs1[0]['titre']);
