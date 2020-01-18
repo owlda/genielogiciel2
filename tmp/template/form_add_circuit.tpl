@@ -1,9 +1,25 @@
 <div style="padding: 20px">
 <a href="../pages/admin.php">Liste des circuit</a>
 <h1>{$h1_circuit}</h1>
-    <div style="width: 50%;height: 50%">{include file='carousel-circuit.tpl'}</div>
+
 {*<button id="verification-NicEdit">Verification Editor</button>*}
 <form class="animated zoomInRight" id="AddFormCircuit">
+    <div class="form-group animated zoomInRight">
+        <label>Statut:</label>
+        <select class="form-control"  id="SelectStatus" name="SelectStatut" style="width:25%;display: inline;">
+            {include file="select_statutcircuit.tpl" arr_list_statutcircuit=$arr_list_statutcircuit}
+        </select>
+        <input type="button" value="Ajouter un statut" class="btn btn-primary" style="display: inline" onclick="BtnViewNewStatut()">
+    </div>
+    <div class="form-group animated zoomInRight" id="ViewNewStatut" style="width: 30%;margin-left: 20%;display: none;">
+        <label>ID statut:</label>
+        <input type="number" style="width: 100px;" class="form-control" id="NewIdStatut">
+        <label>Statut:</label>
+        <input type="text" class="form-control" id="NewNameStatut">
+        <br>
+        <input type="button" value="Annuler" id="btn_not_hotel" class="btn btn-secondary" onclick="BtnNotStatut()">
+        <input type="button" value="Enregistrer" id="btn_add_hotel" class="btn btn-success" onclick="BtnAddStatus()">
+    </div>
     <div class="form-group animated zoomInRight">
         <label>{$title}</label>
         <input type="text" class="form-control" id="input_title" name="input_title">

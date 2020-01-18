@@ -405,6 +405,32 @@ function BtnAddHotel(idVille){
         }
     });
 }
+//Enregistrer un nouveau statut
+function BtnAddStatus(){
+    var FormAddStatut = new FormData();
+    FormAddStatut.append('action','btn_register_statut');
+    FormAddStatut.append('NewIdStatut', $('#NewIdStatut').val());
+    FormAddStatut.append('NewNameStatut', $('#NewNameStatut').val());
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormAddStatut,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+}
 //Enregistrer un nouveau theme
 function BtnAddTheme(){
     var FormAddTheme = new FormData();

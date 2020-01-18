@@ -42,6 +42,9 @@ var Vue=function(reponse){
         case "register_theme" :
             EnregistreTheme_View(reponse);
             break;
+        case "register_statut" :
+            EnregistreStatut_View(reponse);
+            break;
         case "list_circuit" :
             ListerCircuit_View(reponse);
             break;
@@ -131,6 +134,11 @@ function EnregistreTheme_View(reponse){
     alert("Thème a été ajouté...");
     $("#ViewNewTheme").css("display", "none");
     $("#SelectTheme").html(reponse.list_theme);
+}
+function EnregistreStatut_View(reponse){
+    alert("Statut a été ajouté...");
+    $("#ViewNewStatut").css("display", "none");
+    $("#SelectStatus").html(reponse.list_statut);
 }
 function EnregisterPays_View(reponse) {
     alert("Pays a été ajouté...");

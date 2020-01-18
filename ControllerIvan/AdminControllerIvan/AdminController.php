@@ -8,7 +8,10 @@ $reponse = array();
 
 switch($_POST['action']){
     case "addcircuit" :
-        FormAddCircuit($smarty,$voc);
+        FormAddCircuit($smarty,$voc, $db);
+        break;
+    case 'btn_register_statut':
+        EnregistrerNewStatut($smarty,$db);
         break;
     case 'btn_register_theme':
         EnregistrerTheme($smarty,$db);
@@ -155,9 +158,10 @@ function BtnDelRabais($db){
 
 //TODO Load form
 //Form for Add un circuit
-function FormAddCircuit($smarty, $voc){
+function FormAddCircuit($smarty, $voc, $db){
     global $reponse;
     $reponse['action'] = 'addcircuit';
+    $smarty->assign('arr_list_statutcircuit', GetAllStatutCircuit($db));
     //Initialization vocabulaire
     $smarty = AddEditCircuitSmarty($smarty, $voc);
     //Transfer data to *.tpl
@@ -296,6 +300,20 @@ function DetailJourChange($smarty,$db){
 }
 
 //TODO Enregistrer
+//Enregistrer nouveau status
+function EnregistrerNewStatut($smarty, $db){
+    global $reponse;
+    $reponse['action'] = "register_statut";
+
+    $table = 'statutcircuit';
+    $record['idStatutCircuit'] = $_POST['NewIdStatut'];
+    $record['statut'] = $_POST['NewNameStatut'];
+    $db->autoExecute($table, $record, 'INSERT');
+
+    $reponse['list_statut'] = GetAllStatutCircuit($db);
+    $smarty->assign('arr_list_statutcircuit', $reponse['list_statut']);
+    $reponse['list_statut'] = $smarty->fetch("select_statutcircuit.tpl");
+}
 //Enregistrer un circuit
 function EnregistrerCircuit($smarty,$db){
 
@@ -567,6 +585,12 @@ function AddEditCircuitSmarty($smarty, $voc){
 }
 
 //TODO Function Get/Convert
+//Get all StatutCircuit
+function GetAllStatutCircuit($db){
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $SQL = 'SELECT * FROM statutcircuit';
+    return $db->getAll($SQL);
+}
 //Get Circuits with all info from DB
 function GetCircuitById($idCircuit, $db){
 
@@ -671,7 +695,7 @@ function GetAllActivityFromJour($idJour, $db){
     $SQL = 'SELECT * FROM activity WHERE idJour = '.$idJour;
     return $db->getAll($SQL);
 }
-//Get all Restaurent from Jour by idJour
+//Get all Hotel from Jour by idJour
 function GetAllHotelFromJour($idJour, $db){
     $db->setFetchMode(ADODB_FETCH_ASSOC);
 

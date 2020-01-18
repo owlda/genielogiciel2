@@ -30,3 +30,10 @@ function BtnViewNewHotel() {
 function BtnNotHotel() {
     $('#ViewNewHotel').css('display', 'none');
 }
+
+function BtnViewNewStatut() {
+    $('#ViewNewStatut').css('display', 'block');
+}
+function BtnNotStatut() {
+    $('#ViewNewStatut').css('display', 'none');
+}
