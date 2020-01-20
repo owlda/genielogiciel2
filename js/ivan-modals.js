@@ -24,7 +24,16 @@ function BtnNotRestaurent() {
     $('#ViewNewRestaurent').css('display', 'none');
 }
 
-function LoadModalAddHotel(){
-    $('#modal_add_hotel').modal('show');
-    $('.modal-backdrop').css('position', 'static');
+function BtnViewNewHotel() {
+    $('#ViewNewHotel').css('display', 'block');
+}
+function BtnNotHotel() {
+    $('#ViewNewHotel').css('display', 'none');
+}
+
+function BtnViewNewStatut() {
+    $('#ViewNewStatut').css('display', 'block');
+}
+function BtnNotStatut() {
+    $('#ViewNewStatut').css('display', 'none');
 }

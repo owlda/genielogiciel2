@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col">
-        <input class="btn btn-success" type="button" value="Ajouter un restaurant" onclick="LoadModalAddRestaurent({$idPays}, {$idJour})">
+        <input class="btn btn-success" type="button" value="Ajouter un restaurant" onclick="LoadModalAddRestaurent({$idPaysEtape}, {$idVilleJour}, {$idJour})">
         <h3>Restaurant(s):</h3>
     </div>
     <div class="col"></div>

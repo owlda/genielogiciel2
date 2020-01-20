@@ -20,9 +20,7 @@
 <?php include __DIR__.'/../tmp/template/menu-renIvan.tpl'?>
 
 <main>
-    <div class="container" id="list-circuit">
-
-    </div>
+    <div class="container" id="list-circuit"></div>
 
     <div class="container" style="padding: 10px;">
         <!--Ajouter un circuit-->
@@ -33,6 +31,8 @@
 
     <div id="div_modal_add_jour"></div>
     <div id="div_modal_add_restaurent"></div>
+    <div id="div_modal_add_activity"></div>
+    <div id="div_modal_add_hotel"></div>
 </main>
 <div class="footer-clean animated zoomInRight">
     <?php include __DIR__.'/../tmp/template/footer.tpl '?>

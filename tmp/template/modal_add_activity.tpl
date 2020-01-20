@@ -1,48 +1,36 @@
-<div class="modal fade" id="modal_add_restaurent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_add_activity" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Ajouter un restaurent</h5>
+                <h5 class="modal-title">Ajouter une activité</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form id="FormAddRestaurent">
+                <form id="FormAddActivity">
                     <div class="row">
                         <div class="col">
                             <label>Pays:</label>
-                            <select readonly="true" class="form-control"  id="SelectPaysRestaurent" name="SelectPaysRestaurent" >
+                            <select readonly="true" class="form-control"  id="SelectPaysActivity" name="SelectPaysActivity" >
                                 <option value="{$idPaysEtape}">{$NomPaysEtape}</option>
                             </select>
                         </div>
                         <div class="col">
                             <label>Ville:</label>
-                            <select class="form-control" readonly="true" id="SelectVilleRestaurent" name="SelectVilleRestaurent" >
+                            <select class="form-control" readonly="true" id="SelectVilleActivity" name="SelectVilleActivity" >
                                 <option value="{$idVilleJour}">{$NomVilleJour}</option>
                             </select>
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
-                        <label style="display: block">Restaurent:</label>
-                        <select onchange="ChangeRestaurent()" class="form-control"  id="SelectRestaurent" name="SelectRestaurent" style="width:50%;display: inline;">
-                            {include file="select_restaurent.tpl" arr_list_restaurent=$arr_list_restaurent}
-                        </select>
-                        <input type="button" value="Ajouter un restaurent" class="btn btn-primary" style="display: inline" onclick="BtnViewNewRestaurent()">
+                        <label id="label_title_activity">Titre:</label><br>
+                        <input type="text" id="title_activity" name="title_activity" style="width:80%" ></input>
                     </div>
                     <div class="form-group">
-                        <label style="display: inline;">Site:</label>
-                        <a href="{$arr_list_restaurent[0].site}" id="link_site_restaurent" target="_blank"><span id="text_site_restaurent">{$arr_list_restaurent[0].site}</span></a>
-                    </div>
-                    <div class="form-group animated zoomInRight" id="ViewNewRestaurent" style="width: 50%;margin-left: 30%;display: none;">
-                        <label>Nouveau restaurent:</label>
-                        <input type="text" class="form-control" id="NewNameRestaurent">
-                        <label>Site (avec http(s)://):</label>
-                        <input type="text" class="form-control" id="NewSiteRestaurent">
-                        <br>
-                        <input type="button" value="Annuler" id="btn_not_hotel" class="btn btn-secondary" onclick="BtnNotRestaurent()">
-                        <input type="button" value="Enregistrer" id="btn_add_hotel" class="btn btn-success" onclick="BtnAddRestaurent({$idVilleJour})">
+                        <label id="label_description_activity">Description:</label><br>
+                        <textarea id="NicEdit" name="NicEdit" cols="70" rows="5" style="width: 60%" ></textarea>
                     </div>
                     <br>
                     <br>
@@ -64,7 +52,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <button type="button" id="register_jour" class="btn btn-success" onclick="BtnAddRestaurentForJour()">Enregistrer</button>
+                <button type="button" id="register_jour" class="btn btn-success" onclick="BtnAddActivityForJour()">Enregistrer</button>
             </div>
         </div>
     </div>

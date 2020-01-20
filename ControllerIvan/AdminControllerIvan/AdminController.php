@@ -8,7 +8,10 @@ $reponse = array();
 
 switch($_POST['action']){
     case "addcircuit" :
-        FormAddCircuit($smarty,$voc);
+        FormAddCircuit($smarty,$voc, $db);
+        break;
+    case 'btn_register_statut':
+        EnregistrerNewStatut($smarty,$db);
         break;
     case 'btn_register_theme':
         EnregistrerTheme($smarty,$db);
@@ -46,6 +49,12 @@ switch($_POST['action']){
     case 'btn_add_restaurent':
         ModalAddRestaurent($smarty, $db);
         break;
+    case 'btn_add_hotel':
+        ModalAddHotel($smarty, $db);
+        break;
+    case 'btn_add_activity':
+        ModalAddActivity($smarty, $db);
+        break;
     case 'btn_register_jour':
         EnregistrerJour($db);
         break;
@@ -53,10 +62,19 @@ switch($_POST['action']){
         EnregistrerVille($smarty,$db);
         break;
     case 'btn_register_restaurent':
-        EnregistrerRestaurent($smarty,$db);
+        EnregistrerNewRestaurent($smarty,$db);
         break;
     case 'btn_register_restaurent_jour':
         EnregistrerRestaurentJour($smarty,$db);
+        break;
+    case 'btn_register_hotel_jour':
+        EnregistrerHotelJour($smarty,$db);
+        break;
+    case 'btn_register_activity_jour':
+        EnregistrerActivityJour($smarty,$db);
+        break;
+    case 'btn_register_hotel':
+        EnregistrerNewHotel($smarty,$db);
         break;
     case 'detail_jour_change':
         DetailJourChange($smarty,$db);
@@ -68,20 +86,52 @@ switch($_POST['action']){
 function ModalAddRestaurent($smarty, $db){
     global $reponse;
     $reponse['action'] = "btn_add_restaurent";
-    $smarty->assign('idPays', $_POST["idPays"]);
+    $arr_list_restaurent = GetAllRestaurentFromVille($_POST["idVilleJour"], $db);
+
+    $smarty->assign('idPaysEtape', $_POST["idPaysEtape"]);
+    $smarty->assign('idVilleJour', $_POST["idVilleJour"]);
     $smarty->assign('idJour', $_POST["idJour"]);
-    $smarty->assign('NomPays', GetNomPaysById($_POST["idPays"], $db));
-    $arr_list_ville = GetAllVilleFromPays($_POST["idPays"], $db);
-    $select_ville_value =  $arr_list_ville[0]['idVille'];
-    $arr_list_restaurent = GetAllRestaurentFromVille($select_ville_value, $db);
-    $smarty->assign('arr_list_ville', $arr_list_ville);
+    $smarty->assign('NomPaysEtape', GetNomPaysById($_POST["idPaysEtape"], $db));
+    $smarty->assign('NomVilleJour', GetNomVilleById($_POST["idVilleJour"], $db));
     $smarty->assign('arr_list_restaurent', $arr_list_restaurent);
-    $smarty->assign('select_ville_value', $select_ville_value);
 
     //Transfer data to *.tpl
     $smarty->fetch("modal_add_restaurent.tpl");
     $reponse['modal_add_restaurent'] = $smarty->fetch("modal_add_restaurent.tpl");
     $reponse['arr_list_restaurent'] = $arr_list_restaurent;
+}
+//Modal Add une Activity for Jour
+function ModalAddActivity($smarty, $db){
+    global $reponse;
+    $reponse['action'] = "btn_add_activity";
+
+    $smarty->assign('idPaysEtape', $_POST["idPaysEtape"]);
+    $smarty->assign('idVilleJour', $_POST["idVilleJour"]);
+    $smarty->assign('idJour', $_POST["idJour"]);
+    $smarty->assign('NomPaysEtape', GetNomPaysById($_POST["idPaysEtape"], $db));
+    $smarty->assign('NomVilleJour', GetNomVilleById($_POST["idVilleJour"], $db));
+
+    //Transfer data to *.tpl
+    $smarty->fetch("modal_add_activity.tpl");
+    $reponse['modal_add_activity'] = $smarty->fetch("modal_add_activity.tpl");
+}
+//Modal Add un Hotel for Jour
+function ModalAddHotel($smarty, $db){
+    global $reponse;
+    $reponse['action'] = "btn_add_hotel";
+    $arr_list_hotel = GetAllHotelFromVille($_POST["idVilleJour"], $db);
+
+    $smarty->assign('idPaysEtape', $_POST["idPaysEtape"]);
+    $smarty->assign('idVilleJour', $_POST["idVilleJour"]);
+    $smarty->assign('idJour', $_POST["idJour"]);
+    $smarty->assign('NomPaysEtape', GetNomPaysById($_POST["idPaysEtape"], $db));
+    $smarty->assign('NomVilleJour', GetNomVilleById($_POST["idVilleJour"], $db));
+    $smarty->assign('arr_list_hotel', $arr_list_hotel);
+
+    //Transfer data to *.tpl
+    $smarty->fetch("modal_add_hotel.tpl");
+    $reponse['modal_add_hotel'] = $smarty->fetch("modal_add_hotel.tpl");
+    $reponse['arr_list_hotel'] = $arr_list_hotel;
 }
 //Modal Add un jour for Etape
 function ModalAddJour($smarty, $db){
@@ -108,9 +158,10 @@ function BtnDelRabais($db){
 
 //TODO Load form
 //Form for Add un circuit
-function FormAddCircuit($smarty, $voc){
+function FormAddCircuit($smarty, $voc, $db){
     global $reponse;
     $reponse['action'] = 'addcircuit';
+    $smarty->assign('arr_list_statutcircuit', GetAllStatutCircuit($db));
     //Initialization vocabulaire
     $smarty = AddEditCircuitSmarty($smarty, $voc);
     //Transfer data to *.tpl
@@ -156,7 +207,6 @@ function FormEditCircuit($smarty, $db, $voc){
         //Transfer form tpl to edit circuit
         $reponse['form_edit_circuit'] = $smarty->fetch("form_edit_circuit.tpl");
 
-
     } else {
         exit();
     }
@@ -176,6 +226,8 @@ function DetailCircuit($smarty,$db,$voc){
     global $reponse;
     $reponse['action'] = "detail_circuit";
     $idCircuit = $_POST["idCircuit"];
+    $str = "../../upload/".$_POST["idCircuit"]."/*";
+    $smarty->assign('arr_image_circuit', glob($str));
     $rs1 = GetCircuitById($idCircuit, $db);
     $smarty->assign('idCircuit', $rs1[0]['idCircuit']);
     $smarty->assign('titre', $rs1[0]['titre']);
@@ -191,17 +243,26 @@ function DetailCircuit($smarty,$db,$voc){
 
     $arr_etape = GetAllEtapeFromCircuit($idCircuit, $db);
 
+    //Initialization arr_jour/arr_activity/arr_hotel for arr_etape
     for ($i = 0; $i <= sizeof($arr_etape)-1; $i++) {
         $arr_etape[$i]['arr_jour'] = GetAllJourForEtape($arr_etape[$i]['idEtape'], $db);
         for ($j = 0; $j <= sizeof($arr_etape[$i]['arr_jour'])-1; $j++){
             $arr_etape[$i]['arr_jour'][$j]['NomVille'] =  GetNomVilleById($arr_etape[$i]['arr_jour'][$j]['idVille'],$db);
+            //Get list restaurent from jour
             $arr_etape[$i]['arr_jour'][$j]['Restaurent'] = GetAllRestaurentFromJour($arr_etape[$i]['arr_jour'][$j]['idJour'], $db);
             $arr_etape[$i]['arr_jour'][$j]['count_restaurent'] = sizeof($arr_etape[$i]['arr_jour'][$j]['Restaurent']);
+            //Get list activity from jour
+            $arr_etape[$i]['arr_jour'][$j]['Activity'] = GetAllActivityFromJour($arr_etape[$i]['arr_jour'][$j]['idJour'], $db);
+            $arr_etape[$i]['arr_jour'][$j]['count_activity'] = sizeof($arr_etape[$i]['arr_jour'][$j]['Activity']);
+            //Get list hotel from jour
+            $arr_etape[$i]['arr_jour'][$j]['Hotel'] = GetAllHotelFromJour($arr_etape[$i]['arr_jour'][$j]['idJour'], $db);
+            $arr_etape[$i]['arr_jour'][$j]['count_hotel'] = sizeof($arr_etape[$i]['arr_jour'][$j]['Activity']);
         }
-
         $arr_etape[$i]['NomPays'] = GetNomPaysById($arr_etape[$i]['idPays'], $db);
         $arr_etape[$i]['count_jour'] = sizeof($arr_etape[$i]['arr_jour']);
     }
+
+    $tt = 0;
 
     $smarty->assign('arr_etape', $arr_etape);
     $smarty->assign('count_etape', sizeof($arr_etape));
@@ -218,19 +279,41 @@ function DetailJourChange($smarty,$db){
     $reponse['idJourSelectChange'] = $_POST['idJourSelectChange'];
     $detail_jour = GetJourByidJour($_POST['idJour'],$db);
     $lst_detail_restaurent = GetAllRestaurentFromJour($_POST['idJour'],$db);
+    $lst_detail_activity = GetAllActivityFromJour($_POST['idJour'],$db);
+    $lst_detail_hotel = GetAllHotelFromJour($_POST['idJour'],$db);
 
-    $smarty->assign('arr_restaurent', $lst_detail_restaurent);
-    $smarty->assign('idPays', $_POST['idPaysEtape']);
+    $smarty->assign('prixJour', $detail_jour[0]['prix']);
+    $smarty->assign('idPaysEtape', $_POST['idPaysEtape']);
+    $smarty->assign('NomPaysEtape', GetNomPaysById($_POST['idPaysEtape'], $db));
+    $smarty->assign('idVilleJour', $_POST['idVilleJour']);
+    $smarty->assign('NomVilleJour', GetNomVilleById($_POST['idVilleJour'], $db));
     $smarty->assign('idJour', $_POST['idJour']);
     $smarty->assign('NameJour', $_POST['NameJour']);
     $smarty->assign('DescriptionJour', $detail_jour[0]['description']);
+    $smarty->assign('arr_restaurent', $lst_detail_restaurent);
     $smarty->assign('CountRestaurentJour', sizeof($lst_detail_restaurent));
-    $smarty->assign('NomPays', GetNomPaysById($_POST['idPaysEtape'], $db));
-    $smarty->assign('NomVille', GetNomVilleById($_POST['idVilleJour'], $db));
+    $smarty->assign('arr_activity', $lst_detail_activity);
+    $smarty->assign('CountActivityJour', sizeof($lst_detail_activity));
+    $smarty->assign('arr_hotel', $lst_detail_hotel);
+    $smarty->assign('CountHotelJour', sizeof($lst_detail_hotel));
     $reponse['detail_jour'] = $smarty->fetch("detail_jour.tpl");
 }
 
 //TODO Enregistrer
+//Enregistrer nouveau status
+function EnregistrerNewStatut($smarty, $db){
+    global $reponse;
+    $reponse['action'] = "register_statut";
+
+    $table = 'statutcircuit';
+    $record['idStatutCircuit'] = $_POST['NewIdStatut'];
+    $record['statut'] = $_POST['NewNameStatut'];
+    $db->autoExecute($table, $record, 'INSERT');
+
+    $reponse['list_statut'] = GetAllStatutCircuit($db);
+    $smarty->assign('arr_list_statutcircuit', $reponse['list_statut']);
+    $reponse['list_statut'] = $smarty->fetch("select_statutcircuit.tpl");
+}
 //Enregistrer un circuit
 function EnregistrerCircuit($smarty,$db){
 
@@ -340,7 +423,7 @@ function EnregistrerPays($smarty,$db){
     $reponse['list_pays'] = $smarty->fetch("select_pays.tpl");
 }
 //Enregistrer nouveau restaurent
-function EnregistrerRestaurent($smarty,$db){
+function EnregistrerNewRestaurent($smarty, $db){
     global $reponse;
     $reponse['action'] = "register_restaurent";
 
@@ -349,6 +432,7 @@ function EnregistrerRestaurent($smarty,$db){
     $record['idVille'] = $_POST['idVille'];
     $record['site'] = $_POST['NewSiteRestaurent'];
     $db->autoExecute($table, $record, 'INSERT');
+
     $reponse['list_restaurent'] = GetAllRestaurentFromVille($_POST['idVille'], $db);
     $smarty->assign('arr_list_restaurent', $reponse['list_restaurent']);
     $reponse['arr_list_restaurent'] = $smarty->fetch("select_restaurent.tpl");
@@ -368,11 +452,72 @@ function EnregistrerRestaurentJour($smarty,$db){
 
     $list_restaurent = GetAllRestaurentFromJour($reponse['idJour'], $db);
     $smarty->assign('CountRestaurentJour', sizeof($list_restaurent));
-    $smarty->assign('idPays', $_POST['SelectPaysRestaurent']);
+    $smarty->assign('idPaysEtape', $_POST['SelectPaysRestaurent']);
     $smarty->assign('idJour', $_POST['input_id_jour']);
+    $smarty->assign('idVilleJour', $_POST['input_id_ville_jour']);
     $smarty->assign('arr_restaurent', $list_restaurent);
 
     $reponse['detail_restaurant'] = $smarty->fetch("detail_restaurant.tpl");
+}
+//Enregistrer activity for jour
+function EnregistrerActivityJour($smarty,$db){
+    global $reponse;
+    $reponse['action'] = "register_activity_jour";
+    $reponse['idJour'] = $_POST['input_id_jour'];
+
+    $table = 'activity';
+    $record['titre'] = $_POST['title_activity'];
+    $record['description'] = $_POST['NicEdit'];
+    $record['prix'] = 0;
+    $record['idJour'] = $_POST['input_id_jour'];
+    $db->autoExecute($table, $record, 'INSERT');
+
+    $list_activity = GetAllActivityFromJour($reponse['idJour'], $db);
+
+    $smarty->assign('idPaysEtape', $_POST['SelectPaysActivity']);
+    $smarty->assign('idVilleJour', $_POST['input_id_ville_jour']);
+    $smarty->assign('idJour', $_POST['input_id_jour']);
+    $smarty->assign('arr_activity', $list_activity);
+    $smarty->assign('CountActivityJour', sizeof($list_activity));
+
+    $reponse['detail_activity'] = $smarty->fetch("detail_activity.tpl");
+}
+//Enregistrer nouveau hotel
+function EnregistrerNewHotel($smarty, $db){
+    global $reponse;
+    $reponse['action'] = "register_hotel";
+
+    $table = 'hotel';
+    $record['titre'] = $_POST['NewNameHotel'];
+    $record['idVille'] = $_POST['idVille'];
+    $record['site'] = $_POST['NewSiteHotel'];
+    $db->autoExecute($table, $record, 'INSERT');
+
+    $reponse['list_hotel'] = GetAllHotelFromVille($_POST['idVille'], $db);
+    $smarty->assign('arr_list_hotel', $reponse['list_hotel']);
+    $reponse['arr_list_hotel'] = $smarty->fetch("select_hotel.tpl");
+}
+//Enregistrer hotel for jour
+function EnregistrerHotelJour($smarty,$db){
+    global $reponse;
+    $reponse['action'] = "register_hotel_jour";
+    $reponse['idJour'] = $_POST['input_id_jour'];
+
+    $table = 'hotelsjour';
+    $record['idHotel'] = $_POST['SelectHotel'];
+    $record['idJour'] = $_POST['input_id_jour'];
+    $record['numeroEtap'] = 0;
+    $record['numeroJour'] = 0;
+    $db->autoExecute($table, $record, 'INSERT');
+
+    $list_hotel = GetAllHotelFromJour($reponse['idJour'], $db);
+    $smarty->assign('CountHotelJour', sizeof($list_hotel));
+    $smarty->assign('idPaysEtape', $_POST['SelectPaysHotel']);
+    $smarty->assign('idJour', $_POST['input_id_jour']);
+    $smarty->assign('idVilleJour', $_POST['input_id_ville_jour']);
+    $smarty->assign('arr_hotel', $list_hotel);
+
+    $reponse['detail_hotel'] = $smarty->fetch("detail_hotel.tpl");
 }
 
 //TODO Lister
@@ -440,6 +585,12 @@ function AddEditCircuitSmarty($smarty, $voc){
 }
 
 //TODO Function Get/Convert
+//Get all StatutCircuit
+function GetAllStatutCircuit($db){
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $SQL = 'SELECT * FROM statutcircuit';
+    return $db->getAll($SQL);
+}
 //Get Circuits with all info from DB
 function GetCircuitById($idCircuit, $db){
 
@@ -501,19 +652,6 @@ function GetNomPaysById($idPays, $db){
     return $rs[0]['nom'];
 }
 
-function GetAllRestaurentFromJour($idJour, $db){
-    $db->setFetchMode(ADODB_FETCH_ASSOC);
-
-    $SQL = 'SELECT r.*, v.nom as \'VilleRestaurent\', e.idEtape, j.idJour FROM restaurent as r
-            INNER JOIN restaurentsjour rj on r.idRestaurent = rj.idRestaurent
-            INNER JOIN jour j on rj.idJour = j.idJour
-            INNER JOIN villes v on r.idVille = v.idVille
-            INNER JOIN etape e on j.idEtape = e.idEtape
-            WHERE rj.idJour = '. $idJour;
-    $rs = $db->getAll($SQL);
-    return $rs;
-}
-
 function GetAllVilleFromPays($idPays, $db){
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $SQL = 'SELECT * FROM villes WHERE idPays = '.$idPays;
@@ -526,13 +664,50 @@ function GetAllRestaurentFromVille($idVille, $db){
     return $db->getAll($SQL);
 }
 
+function GetAllHotelFromVille($idVille, $db){
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $SQL = 'SELECT * FROM hotel WHERE idVille = '.$idVille  . ' ORDER BY  titre';
+    return $db->getAll($SQL);
+}
+//Get Nome de ville from ville by idVille
 function GetNomVilleById($idVille, $db){
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $SQL = 'SELECT * FROM villes WHERE idVille = '.$idVille;
     $rs = $db->getAll($SQL);
     return $rs[0]['nom'];
 }
+//Get all Restaurent from Jour by idJour
+function GetAllRestaurentFromJour($idJour, $db){
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
 
+    $SQL = 'SELECT r.*, v.nom as \'VilleRestaurent\', e.idEtape, j.idJour FROM restaurent as r
+            INNER JOIN restaurentsjour rj on r.idRestaurent = rj.idRestaurent
+            INNER JOIN jour j on rj.idJour = j.idJour
+            INNER JOIN villes v on r.idVille = v.idVille
+            INNER JOIN etape e on j.idEtape = e.idEtape
+            WHERE rj.idJour = '. $idJour;
+    $rs = $db->getAll($SQL);
+    return $rs;
+}
+//Get all Activity from Jour by idJour
+function GetAllActivityFromJour($idJour, $db){
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $SQL = 'SELECT * FROM activity WHERE idJour = '.$idJour;
+    return $db->getAll($SQL);
+}
+//Get all Hotel from Jour by idJour
+function GetAllHotelFromJour($idJour, $db){
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+
+    $SQL = 'SELECT h.*, v.nom as \'VilleHotel\', e.idEtape, j.idJour FROM hotel as h
+                INNER JOIN hotelsjour hj on h.idHotel = hj.idHotel
+                INNER JOIN jour j on hj.idJour = j.idJour
+                INNER JOIN villes v on h.idVille = v.idVille
+                INNER JOIN etape e on j.idEtape = e.idEtape
+                WHERE hj.idJour = '. $idJour;
+    $rs = $db->getAll($SQL);
+    return $rs;
+}
 
 
 

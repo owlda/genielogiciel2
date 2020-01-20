@@ -4,7 +4,7 @@
 {if $count_etape > 0}
 <div class="container border border-primary rounded-lg animated zoomInRight" style="padding: 10px;">
     {foreach $arr_etape as $etape}
-        <h2>{$etape.titre}</h2>
+        <h2><span>(ID={$etape.idEtape}) </span>{$etape.titre}</h2>
         <div class="btn-toolbar" style="margin-bottom: 10px;">
             <div class="btn-group" role="group">
                 <input value="Modifier" class="btn btn-warning" type="button">
@@ -48,14 +48,20 @@
                         </div>
                         <section id="detail_jour_{$etape.arr_jour[$etape.count_jour-1].idJour}">
                             {include file="detail_jour.tpl"
-                            arr_restaurent = $etape.arr_jour[$etape.count_jour-1].Restaurent
-                            idPays = $etape.idPays
+                            prixJour = $etape.arr_jour[$etape.count_jour-1].prix
+                            idPaysEtape = $etape.idPays
+                            NomPaysEtape=$etape.NomPays
+                            idVilleJour=$etape.arr_jour[$etape.count_jour-1].idVille
+                            NomVilleJour=$etape.arr_jour[$etape.count_jour-1].NomVille
                             idJour=$etape.arr_jour[$etape.count_jour-1].idJour
                             NameJour='Jour 1'
                             DescriptionJour=$etape.arr_jour[$etape.count_jour-1].description
+                            arr_restaurent = $etape.arr_jour[$etape.count_jour-1].Restaurent
                             CountRestaurentJour = $etape.arr_jour[$etape.count_jour-1].count_restaurent
-                            NomPays=$etape.NomPays
-                            NomVille=$etape.arr_jour[$etape.count_jour-1].NomVille }
+                            arr_activity = $etape.arr_jour[$etape.count_jour-1].Activity
+                            CountActivityJour = $etape.arr_jour[$etape.count_jour-1].count_activity
+                            arr_hotel = $etape.arr_jour[$etape.count_jour-1].Hotel
+                            CountHotelJour = $etape.arr_jour[$etape.count_jour-1].count_hotel}
                         </section>
                     </div>
                 </div>

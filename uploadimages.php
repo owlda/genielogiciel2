@@ -14,7 +14,7 @@ if (isset($_POST['submitN'])) {
     try {
 
         $num_circuit = $_POST['idNumeroC'];
-        $mkdir = @mkdir('upload/'.$num_circuit);
+        @mkdir('upload/'.$num_circuit);
         $_SESSION['numCircuit'] = $num_circuit;
 
     }
