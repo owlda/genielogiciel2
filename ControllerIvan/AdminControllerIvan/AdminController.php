@@ -330,7 +330,7 @@ function EnregistrerCircuit($smarty,$db){
     $record['idTheme'] = (int)$_POST['SelectTheme'];
     $record['dateDepart'] = '2020-12-12 15:15:15';
     $record['dateFin'] = '2020-12-12 15:15:15';
-    $record['idStatutCircuit'] = 0;
+    $record['idStatutCircuit'] = $_POST['SelectStatut'];
 
     $db->autoExecute($table, $record, 'INSERT');
 }
