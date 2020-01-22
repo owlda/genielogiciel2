@@ -92,9 +92,7 @@ var Vue=function(reponse){
             EnregisterVille_View(reponse);
             break;
         case "register_jour" :
-            alert("Jour a été ajouté...");
-            $('#modal_add_jour').modal('hide');
-            DetailCircuit(reponse.idCircuit);
+            EnregisterJour_View(reponse);
             break;
         case "register_restaurent_jour" :
             EnregisterRestaurentJour_View(reponse);
@@ -113,6 +111,12 @@ var Vue=function(reponse){
 };
 
 //TODO Enregistrer
+function EnregisterJour_View(reponse){
+    alert("Jour a été ajouté...");
+    $('#modal_add_jour').modal('hide');
+    $("#ajouter_jour_" + reponse.idEtape).html(reponse.ajouter_jour);
+    //DetailCircuit(reponse.idCircuit);
+}
 function EnregisterRestaurent_View(reponse){
     alert("Restaurent a été ajouté...");
     $("#ViewNewRestaurent").css("display", "none");

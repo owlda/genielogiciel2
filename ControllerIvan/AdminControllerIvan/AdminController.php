@@ -56,7 +56,7 @@ switch($_POST['action']){
         ModalAddActivity($smarty, $db);
         break;
     case 'btn_register_jour':
-        EnregistrerJour($db);
+        EnregistrerJour($smarty,$db);
         break;
     case 'btn_register_ville':
         EnregistrerVille($smarty,$db);
@@ -316,7 +316,6 @@ function EnregistrerNewStatut($smarty, $db){
 }
 //Enregistrer un circuit
 function EnregistrerCircuit($smarty,$db){
-
     global $reponse;
     $reponse['action'] = 'btn_register_circuit';
 
@@ -371,7 +370,7 @@ function EnregistrerVille($smarty,$db){
     $reponse['list_ville'] = $smarty->fetch("select_villes.tpl");
 }
 //Enregistrer un jour
-function EnregistrerJour($db){
+function EnregistrerJour($smarty,$db){
     global $reponse;
     $reponse['action'] = 'register_jour';
     $db->setFetchMode(ADODB_FETCH_ASSOC);
@@ -386,6 +385,29 @@ function EnregistrerJour($db){
     $record['idVille'] = $_POST['SelectVille'];
     $record['idEtape'] = $_POST['input_id_etape'];
     $db->autoExecute($table, $record, 'INSERT');
+
+    $arr_etape[0]['arr_jour'] = GetAllJourForEtape($_POST['idEtape'], $db);
+    for ($j = 0; $j <= sizeof($arr_etape[0]['arr_jour'])-1; $j++){
+        $arr_etape[0]['arr_jour'][$j]['NomVille'] =  GetNomVilleById($arr_etape[0]['arr_jour'][$j]['idVille'],$db);
+        //Get list restaurent from jour
+        $arr_etape[0]['arr_jour'][$j]['Restaurent'] = GetAllRestaurentFromJour($arr_etape[0]['arr_jour'][$j]['idJour'], $db);
+        $arr_etape[0]['arr_jour'][$j]['count_restaurent'] = sizeof($arr_etape[0]['arr_jour'][$j]['Restaurent']);
+        //Get list activity from jour
+        $arr_etape[0]['arr_jour'][$j]['Activity'] = GetAllActivityFromJour($arr_etape[0]['arr_jour'][$j]['idJour'], $db);
+        $arr_etape[0]['arr_jour'][$j]['count_activity'] = sizeof($arr_etape[0]['arr_jour'][$j]['Activity']);
+        //Get list hotel from jour
+        $arr_etape[0]['arr_jour'][$j]['Hotel'] = GetAllHotelFromJour($arr_etape[0]['arr_jour'][$j]['idJour'], $db);
+        $arr_etape[0]['arr_jour'][$j]['count_hotel'] = sizeof($arr_etape[0]['arr_jour'][$j]['Activity']);
+    }
+    $arr_etape[0]['idPays'] = $_POST['SelectPays'];
+    $arr_etape[0]['NomPays'] = GetNomPaysById($_POST['SelectPays'], $db);
+    $arr_etape[0]['count_jour'] = sizeof($arr_etape[0]['arr_jour']);
+
+    $reponse['idEtape'] = $_POST['input_id_etape'];
+    $smarty->assign('etape', $arr_etape[0]);
+    $reponse['ajouter_jour'] = $smarty->fetch("ajouter_jour.tpl");
+
+    $k=0;
 }
 //Enregistrer un rabais pour circuit
 function EnregestrerRabais($db){

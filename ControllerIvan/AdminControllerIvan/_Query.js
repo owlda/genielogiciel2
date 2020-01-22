@@ -574,9 +574,10 @@ function BtnAddEtape(idCircuit){
 
 }
 //Enregistrer un jour
-function BtnAddJour(){
+function BtnAddJour(idEtape){
     var FormJourAdd = new FormData(FormAddJour);
     FormJourAdd.append('action','btn_register_jour');
+    FormJourAdd.append('idEtape',idEtape);
     var controller = GetUrlController();
 
     $.ajax({
@@ -600,7 +601,6 @@ function BtnAddJour(){
 }
 //Enregistrer un rabais
 function BtnRegistreRabais(idCircuit){
-
     var FormAddRabais = new FormData(FormAddRabais);
     FormAddRabais.append('action','btn_register_rabais');
     FormAddRabais.append('idCircuit',idCircuit);
