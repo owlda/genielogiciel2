@@ -11,6 +11,7 @@ var membreVue = function(reponse){
             }
             break;
         case 'connecter':
+            alert("test");
             if(reponse.msg=='BADPASS')
             {
                 alert('Mauvais mot de passe ou courriel')
@@ -28,6 +29,7 @@ var membreVue = function(reponse){
         case 'i_connecter':
             //alert(reponse.id);
             $("#menu").html(reponse.temp);
+            $("#card1").html(reponse.card1);
             break;
     }
 }

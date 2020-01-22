@@ -40,7 +40,7 @@
     <?php include __DIR__ . '/tmp/template/carousel.tpl ' ?>
 </div>
 <div class="container">
-    <?php include __DIR__ . '/tmp/template/cardssliderDenis.tpl ' ?>
+    <?php include __DIR__ . '/tmp/template/cardssliderVahe.tpl' ?>
 </div>
 
 <div class="container" id="modals">
