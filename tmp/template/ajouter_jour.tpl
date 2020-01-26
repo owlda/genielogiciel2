@@ -4,7 +4,7 @@
             <div class="col">
                 <div class="btn-group dropup">
                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                        Changer un jour
+                        Changer un jour ({$etape.count_jour})
                     </button>
                     <div class="dropdown-menu" id="list_jour_etape_{$etape.idEtape}">
                         {include file="list_jour.tpl" count=$etape.count_jour etape_arr_jour=$etape.arr_jour}

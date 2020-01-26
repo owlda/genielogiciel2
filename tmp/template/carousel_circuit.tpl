@@ -2,9 +2,9 @@
             <div class="carousel slide" data-ride="carousel" id="carousel-1">
                 <div class="carousel-inner" role="listbox">
                     {$count=0}
-                    {foreach from=$arr_image_circuit item=image}
+                    {foreach $arr_image_circuit as $image_circuit}
                         <div class="carousel-item {if $count==0}active{/if}">
-                            <img class="w-100 d-block" src="{$image}" alt="Slide Image" {if $count==0}loading="auto"{/if}>
+                            <img class="w-100 d-block" src="{$image_circuit.imagePath}" alt="Slide Image" {if $count==0}loading="auto"{/if}>
                         </div>
                         {$count=$count+1}
                     {/foreach}
