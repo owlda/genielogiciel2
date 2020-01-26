@@ -18,15 +18,24 @@ switch ($action){
         i_connecter($smarty, $db);
         break;
     case 'connecter':
-        connecter($smarty);
+        connecter($smarty, $db);
         break;
     case 'deconnect':
         deconnect();
         break;
+    case 'showcircuit':
+        $id = $_POST['id'];
+        showcircuit($smarty, $db, $id);
     default: break;
 }
 
 // Les actions
+
+// cette fonction fait requet à la base de données pour recevoir les données de circuit avec id pour montrer au client
+function showcircuit($smarty, $db, $id)
+{
+
+}
 
 // Enregistre les données de la formulaire créer un compte
 function enregistrerMembre()
@@ -76,7 +85,7 @@ function enregistrerMembre()
 }
 
 // cette fonction fait la login du client
-function connecter($smarty)
+function connecter($smarty, $db)
 {
     global $reponse;
     $reponse['action'] = 'connecter';
@@ -109,6 +118,7 @@ function connecter($smarty)
 
 /*                $smarty->assign('courriel', $_SESSION['courriel']);
                 $smarty->fetch('../tmp/template/menu_client.tpl');*/
+
 
             }
             else{
@@ -196,7 +206,10 @@ function i_connecter($smarty, $db)
 // deconnect le client et destroy la session
 function deconnect()
 {
+    global $reponse;
+    $reponse['action'] = 'deconnect';
     session_destroy();
+
 }
 
 echo json_encode($reponse);

@@ -39,8 +39,8 @@
 <div class="container">
     <?php include __DIR__ . '/tmp/template/carousel.tpl ' ?>
 </div>
-<div class="container">
-    <?php include __DIR__ . '/tmp/template/cardssliderVahe.tpl' ?>
+<div class="container" id="card1">
+
 </div>
 
 <div class="container" id="modals">
@@ -71,6 +71,8 @@
 
 
 </body>
+<script src="ControllerVahe/requetsMembre.js"></script>
+<script src="ControllerVahe/ViewVahe.js"></script>
 </html>
 <?php
 

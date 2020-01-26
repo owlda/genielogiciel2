@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col">
-        <h2 style="padding: 5px;">{$NameJour}</h2>
+        <h2 style="padding: 5px;"><span style="font-size: medium">(ID={$idJour}) </span>{$NameJour}</h2>
         <div class="btn-toolbar">
             <div class="btn-group" role="group">
                 <button class="btn btn-warning" type="button">Modifier</button>
@@ -14,8 +14,8 @@
     </div>
 </div>
 <div class="row">
-    <div class="col"><span style="font-weight: bold">Pays:</span> {$NomPaysEtape}</div>
-    <div class="col"><span style="font-weight: bold">Ville:</span> {$NomVilleJour}</div>
+    <div class="col" style="white-space: nowrap;"><span style="font-weight: bold;">Pays:</span> {$NomPaysEtape}</div>
+    <div class="col" style="white-space: nowrap;"><span style="font-weight: bold">Ville:</span> {$NomVilleJour}</div>
     <div class="col-8"><span style="font-weight: bold">Description:</span> {$DescriptionJour}</div>
 </div>
 <hr>
