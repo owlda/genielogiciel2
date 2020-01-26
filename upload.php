@@ -2,6 +2,9 @@
 session_start();
 include 'config_ivan/conf-ivan.php';
 
+if(!isset($_SESSION['numCircuit'])){
+    exit;
+}
 $num_circuit = $_SESSION['numCircuit'];
 
 $SQL = 'SELECT * FROM circuit WHERE idCircuit = '.$num_circuit;
