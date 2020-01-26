@@ -24,7 +24,11 @@ $smarty1->setTemplateDir(__DIR__.'/tmp/template');
 $smarty1->setCompileDir(__DIR__.'/tmp/template_c');
 $smarty1->setCacheDir(__DIR__.'/tmp/cashe');
 $smarty1->setCompileDir(__DIR__.'/tmp/configs');
-$smarty1->assign('idNumeroC', $_POST['idNumeroC']);
+if(!isset($_POST['idNumeroC'])){
+    $smarty1->assign('idNumeroC', 0);
+} else {
+    $smarty1->assign('idNumeroC', $_POST['idNumeroC']);
+}
 $smarty1->display('form_Dropzone.tpl');
 
 include __DIR__ . '/tmp/template/Script_Dropzone.tpl '; ?>
