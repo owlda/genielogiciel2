@@ -226,8 +226,8 @@ function DetailCircuit($smarty,$db,$voc){
     global $reponse;
     $reponse['action'] = "detail_circuit";
     $idCircuit = $_POST["idCircuit"];
-    $str = "../../upload/".$_POST["idCircuit"]."/*";
-    $smarty->assign('arr_image_circuit', glob($str));
+    $arr_image_circuit = GetImageByidCircuit($_POST["idCircuit"], $db);
+    $smarty->assign('arr_image_circuit', $arr_image_circuit);
     $rs1 = GetCircuitById($idCircuit, $db);
     $smarty->assign('idCircuit', $rs1[0]['idCircuit']);
     $smarty->assign('titre', $rs1[0]['titre']);
@@ -672,6 +672,14 @@ function GetNomPaysById($idPays, $db){
     $SQL = 'SELECT * FROM pays WHERE idPays = '.$idPays;
     $rs = $db->getAll($SQL);
     return $rs[0]['nom'];
+}
+
+function GetImageByidCircuit($idCircuit, $db){
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $SQL = "SELECT * FROM photo as ph
+            INNER JOIN photocircuit p on ph.idPhoto = p.idPhoto
+            WHERE p.idCircuit = ".$idCircuit;
+    return $db->getAll($SQL);
 }
 
 function GetAllVilleFromPays($idPays, $db){
