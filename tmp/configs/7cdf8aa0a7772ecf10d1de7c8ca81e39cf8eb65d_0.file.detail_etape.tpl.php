@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-12-20 18:24:08
+/* Smarty version 3.1.33, created on 2020-01-24 22:24:16
   from 'C:\web\xampp\htdocs\genielogiciel2-master\tmp\template\detail_etape.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dfd03b84dcd33_95357927',
+  'unifunc' => 'content_5e2b6080de7f96_00506248',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7cdf8aa0a7772ecf10d1de7c8ca81e39cf8eb65d' => 
     array (
       0 => 'C:\\web\\xampp\\htdocs\\genielogiciel2-master\\tmp\\template\\detail_etape.tpl',
-      1 => 1576859947,
+      1 => 1579704760,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:carousel-circuit.tpl' => 1,
   ),
 ),false)) {
-function content_5dfd03b84dcd33_95357927 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e2b6080de7f96_00506248 (Smarty_Internal_Template $_smarty_tpl) {
 ?><input class="btn btn-success" type="button" value="Ajouter un étape" style="margin-top: 5px;" onclick="location.href='add-etape.php?id=<?php echo $_smarty_tpl->tpl_vars['idCircuit']->value;?>
 '">
 

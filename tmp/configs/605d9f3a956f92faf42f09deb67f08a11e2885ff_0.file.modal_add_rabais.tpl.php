@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-12-20 15:09:55
+/* Smarty version 3.1.33, created on 2020-01-24 20:12:05
   from 'C:\web\xampp\htdocs\genielogiciel2-master\tmp\template\modal_add_rabais.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5dfcd633976517_64498039',
+  'unifunc' => 'content_5e2b418568ec31_89504902',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '605d9f3a956f92faf42f09deb67f08a11e2885ff' => 
     array (
       0 => 'C:\\web\\xampp\\htdocs\\genielogiciel2-master\\tmp\\template\\modal_add_rabais.tpl',
-      1 => 1576850832,
+      1 => 1579704760,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5dfcd633976517_64498039 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e2b418568ec31_89504902 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Modal -->
 <div class="modal fade" id="modal_rabais" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
