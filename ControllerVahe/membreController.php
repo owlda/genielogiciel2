@@ -43,16 +43,6 @@ function enregistrerMembre()
     global $reponse;
     $reponse['action']='devenirmembre';
 
-/*    $record['nomMembre'] = $_POST['txtNomNouv'];
-    $record['prenomMembre'] = $_POST['txtPrenomNouv'];
-    $record['courriel'] = $_POST['txtCourrielNouv'];
-    $record['motdepass'] = $_POST['txtMotPasseNouv'];
-    $record['telephone'] = $_POST['txtTelephone'];
-    $record['adresse'] = $_POST['txtAdresse'];
-    $record['villle'] = $_POST['txtVille'];
-    $record['pays'] = $_POST['txtPays'];
-    $record['codepostal'] = $_POST['txtCodePostal'];*/
-
     $prenom = $_POST["txtPrenomNouv"];
     $nom = $_POST["txtNomNouv"];
     $courriel = $_POST["txtCourrielNouv"];
@@ -63,7 +53,6 @@ function enregistrerMembre()
     $ville = $_POST["txtVille"];
     $pays = $_POST["txtPays"];
     $codepostale = $_POST["txtCodePostal"];
-
 
     //On verifie si les deux mot de passe sésis sont identique
     if($_POST['txtMotPasseNouv'] != $_POST["txtMotPasseConf"])
@@ -147,6 +136,20 @@ function i_connecter($smarty, $db)
     $smarty->assign('arrayCircuit', $arrayCircuit); //arrayCircuit of the circuit
     //$arr['Photo'] = array('1'=>'11111','2'=>'22222');
    // $arrayCircuit[0]['photo'] = $arr['Photo'];
+
+    $arrayPhoto = array();  //to put paths to photo, for each circuit one photo will be chosed
+
+    foreach ($arrayCircuit as $key=>$value){
+        $idCircuit = $arrayCircuit[$key]['idCircuit'];
+        $requet = "SELECT * FROM photoCircuit WHERE idCircuit = ".$idCircuit." limit 1";
+        $idPhoto = $db->getAll($requet);
+        $requet2 = "SELECT * FROM photo WHERE idPhoto = ".$idPhoto[0]['idPhoto'];
+        $path = $db->getAll($requet2);
+        $str = $path[0]['imagePath'];
+        array_push($arrayPhoto, ltrim($str, '/'));
+    }
+
+    $smarty->assign('arrayPhoto', $arrayPhoto);
 
     $reponse['card1'] = $smarty->fetch('cardssliderVaheContent.tpl');
 
