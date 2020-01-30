@@ -14,35 +14,26 @@
     <script src="../ControllerIvan/AdminControllerIvan/View.js"></script>
     <script src="../libs/jquery-3.4.1.min.js"></script>
     <script src="../js/ivan-modals.js"></script>
-    <script src="../js/ivan-cookies.js"></script>
-    <script src="../js/ivan-generale.js"></script>
 </head>
 
-<body onload="ListerCircuit();">
+<body>
 <?php include __DIR__.'/../tmp/template/menu-renIvan.tpl'?>
-
 <main>
-    <div class="container" id="list-circuit"></div>
-
-    <div class="container" style="padding: 10px;">
-        <!--Ajouter un circuit-->
-        <section id="ajouter-circuit" class="animated zoomInRight"></section>
-        <!--Ajouter un etape-->
-        <section id="ajouter-etape" class="animated zoomInRight"></section>
+    <form id="FormFullCircuit" >
+        <div class="form-group animated zoomInRight" style="width: 10%;margin-left: 10%;">
+        <label>ID Circuit:</label>
+        <input type="number" class="form-control" id="idCircuit" name="idCircuit">
+        <br>
+        <input type="button" value="Chercher" id="btn_cherche" class="btn btn-info" onclick="BtnFullCircuit()">
     </div>
-
-    <div id="div_modal_add_jour"></div>
-    <div id="div_modal_add_restaurent"></div>
-    <div id="div_modal_add_activity"></div>
-    <div id="div_modal_add_hotel"></div>
+    </form>
+    <div class="container" id="table_circuit" style="padding-bottom: 10%;"></div>
 </main>
 <div class="footer-clean animated zoomInRight">
     <?php include __DIR__.'/../tmp/template/footer.tpl '?>
 </div>
-
 <script src="../libs/jquery-3.4.1.min.js"></script>
 <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>
