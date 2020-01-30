@@ -1,26 +1,42 @@
 <?php
-//TODO vocabulary AddCircuit
-$voc["label_add_circuit"] = "Add circuit";
-$voc["label_titre_circuit"] = "Title:";
-$voc["label_date_circuit"] = "Date:";
-$voc["label_description_circuit"] = "Description:";
-$voc["label_theme_circuit"] = "Theme:";
+//Array from BD
+$voc["arr_theme_circuit"] = array();
+$db->setFetchMode(ADODB_FETCH_ASSOC);
+$voc["arr_theme_circuit"] = $db->getAll('SELECT * FROM typecircuit');
+
+$voc["arr_status_circuit"] = array();
+$db->setFetchMode(ADODB_FETCH_ASSOC);
+$voc["arr_status_circuit"] = $db->getAssoc('SELECT * FROM statutcircuit');
+
+$voc["arr_pays"] = array();
+$db->setFetchMode(ADODB_FETCH_ASSOC);
+$voc["arr_pays"] = $db->getAll('SELECT * FROM pays');
+
+//Button
 $voc["btn_add_theme"] = "Add theme";
-$voc["label_ville_depart"] = "Departure city";
-$voc["btn_submit"] = "Submit";
-//Array
-$voc["theme_circuit"] = array();
-$voc["theme_circuit"]['50'] = "Historical";
-$voc["theme_circuit"]['40'] = "Gastronomic";
-$voc["theme_circuit"]['2'] = "Ethnographic";
+$voc["btn_add_status"] = "Add status";
+$voc["btn_add_pays"] = "Add country";
+$voc["btn_submit"] = "Add";
+$voc["btn_cancel"] = "Cancel";
 
-$voc["ville_depart"] = array();
-$voc["ville_depart"]['50'] = "Montreal";
-$voc["ville_depart"]['40'] = "Toronto";
-$voc["ville_depart"]['2'] = "New York";
+//Label add/edit circuit
+$voc["lb_status"] = "Status";
+$voc["lb_price"] = "Price";
+$voc["lb_h1_add_circuit"] = "Add trip";
+$voc["lb_title"] = "Title:";
+$voc["lb_date_depart"] = "Starting day";
+$voc["lb_description_circuit"] = "Description";
+$voc["lb_theme"] = "Theme:";
+$voc["lb_add_new_theme"] = "New theme";
+$voc["lb_ville_depart"] = "Ville de départ";
 
-$voc['email'] = "Email:";
-
+//Label add/edit etape
+$voc["lb_h1_add_etape"] = "Ajouter un étape";
+$voc["lb_titre_etape"] = "Titre:";
+$voc["lb_pays_etape"] = "Pays:";
+$voc["lb_date_debut_etape"] = "Date de début";
+$voc["lb_description_etape"] = "Description:";
+$voc["lb_add_new_pays"] = "Nouveau pays:";
 
 
 ?>

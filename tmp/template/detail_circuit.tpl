@@ -1,12 +1,18 @@
 <a href="../pages/admin.php">Liste des circuit</a>
 <h1>{$titre}</h1>
+
 <div class="btn-toolbar">
     <div class="btn-group" role="group">
         <input value="Modifier" class="btn btn-warning" type="button" onclick="location.href='edit-circuit.php?id={$idCircuit}'">
         <input value="Supprimer" class="btn btn-danger" type="button" id="btn_del_circuit" onclick="ShowModalDeleteCircuit();">
     </div>
 </div>
-<div><span class="font-weight-bold">Date de début: </span><span class="small">{$dateDepart}</span> &nbsp; &nbsp; <span class="font-weight-bold">Date de fin: <span class="small">{$dateFin}</span></span></div>
+<div>
+    <span class="font-weight-bold">Date de début: </span>
+    <span class="small">{$dateDepart}</span> &nbsp; &nbsp;
+    <span class="font-weight-bold">Date de fin: </span>
+    <span class="small">{$dateFin}</span>
+</div>
 <div><span><span class="font-weight-bold">Thème: </span><span>{$NomTheme}</span> &nbsp; &nbsp; <span class="font-weight-bold">Ville de départ: </span><span>{$pointDepart}</span></div>
 <div class="row">
     <div class="col">
