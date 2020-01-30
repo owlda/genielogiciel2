@@ -1,14 +1,28 @@
-<a href="../pages/list_circuit.php" target="_blank">Liste des circuit</a>
+<div style="padding: 20px">
+<a href="../pages/list-circuit.php">Liste des circuit</a>
 <h1>{$h1_circuit}</h1>
-<button id="verification-NicEdit">Verification Editor</button>
+    <div style="width: 50%;height: 50%">{include file='carousel-circuit.tpl'}</div>
+{*<button id="verification-NicEdit">Verification Editor</button>*}
 <form class="animated zoomInRight" id="AddFormCircuit">
+    <div class="form-group">
+        <label style="display: block">Status:</label>
+        <select class="form-control"  id="SelectTheme" name="SelectTheme" style="width:30%;display: inline;">
+            {foreach from=$arr_status_circuit key=k item=v}
+                <option value="{$k}"
+                        {if $k == $db_idStatutCircuit} selected="selected" {/if}>
+                    {$v}
+                </option>
+            {/foreach}
+        </select>
+    </div>
+    <div class="form-group animated zoomInRight">
+        <label>Prix:</label>
+        <input type="text" class="form-control" id="input_prix" name="input_prix" style="width: 100px" value="{$db_prix}">
+    </div>
+
     <div class="form-group animated zoomInRight">
         <label>{$title}</label>
         <input type="text" class="form-control" id="input_title" name="input_title" value="{$db_titre}">
-    </div>
-    <div class="form-group animated zoomInRight">
-        <label for="exampleInputEmail1">Test date</label>
-        <input type="text" value="{$db_dateDepart}"  class="form-control" id="input_title" name="input_title">
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Date de début:</label>
@@ -51,6 +65,7 @@
     </div>
     <input type="button" id="btn_add_circuit" class="btn btn-primary" value="{$btn_submit}" onclick="BtnAddCircuit()">
 </form>
+</div>
 
 <script src="../libs/nicEdit-latest.js"></script>
 <script src="../js/ivan-js.js"></script>

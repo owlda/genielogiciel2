@@ -1,5 +1,4 @@
-<a href="../pages/list_circuit.php" target="_blank">Liste des circuit</a>
-<h1>{$h1_circuit}</h1>
+<a href="pages/list_circuit.php" target="_blank">Liste des circuit</a>
 <button id="verification-NicEdit">Verification Editor</button>
 <form class="animated zoomInRight" id="AddFormCircuit">
     <div class="form-group animated zoomInRight">
@@ -36,6 +35,7 @@
         <label>{$ville_depart}</label>
         <input type="text" class="form-control" id="input_ville_depart" name="input_ville_depart">
     </div>
+
     <input type="button" id="btn_add_circuit" class="btn btn-primary" value="{$btn_submit}" onclick="BtnAddCircuit()">
 </form>
 

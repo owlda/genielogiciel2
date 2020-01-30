@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Circuit</title>
-
     <link rel="stylesheet" href="../assetsIvan/css/hover-min.css">
     <link rel="stylesheet" href="../assetsIvan/css/animate.css">
     <link rel="stylesheet" href="../assetsIvan/bootstrap/css/bootstrap.min.css">
@@ -18,17 +17,21 @@
     <link rel="stylesheet" href="../assetsIvan/css/Footer-Clean.css">
     <link rel="stylesheet" href="../assetsIvan/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="../assetsIvan/css/styles.css">
-
-    <script src="../ControllerIvan/AdminControllerIvan/_Query.js"></script>
-    <script src="../ControllerIvan/AdminControllerIvan/View.js"></script>
+    <script src="../ControllerDenis/_Query.js"></script>
+    <script src="../ControllerDenis/View.js"></script>
     <script src="../libs/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
 </head>
 
-<body onload="LoadModifierCircuit()">
+<body onload="LoadAddCircuitDenis()">
 <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
     <div class="container"><img src="../assetsIvan/img/travel-icon.png" style="width: 30px;height: 30px;margin-right: 5px;"><a class="navbar-brand" href="#"><strong>Northern Star Travel</strong></a><a href="#"><i class="icon ion-android-call" style="margin-right: 10px;"></i>1-800-885-8555</a>
         <select
-            style="margin: 5px;">
+                style="margin: 5px;">
             <option value="12" selected="">FR</option>
             <option value="13">EN</option>
             <option value="14">ES</option>
@@ -42,6 +45,21 @@
     </div>
 </nav>
 <main>
+    <h4 style="text-align: center; margin-bottom: 2%">Ajouter un nouveau circuit.</h4>
+    <div class="container">
+        <form action="../upload.php" class="dropzone" id="dropzoneFrom">
+        </form>
+        <br />
+        <br />
+        <div align="center">
+            <button type="button" class="btn btn-info" id="submit-all">Upload</button>
+        </div>
+        <br />
+        <br />
+        <div id="preview"></div>
+        <br />
+        <br />
+    </div>
     <div class="container" id="form-circuit"></div>
 </main>
 <div class="footer-clean animated zoomInRight">
@@ -81,7 +99,52 @@
 </div>
 <script src="../assetsIvan/js/jquery.min.js"></script>
 <script src="../assetsIvan/bootstrap/js/bootstrap.min.js"></script>
-
 </body>
-
 </html>
+<script>
+    $(document).ready(function(){
+        Dropzone.options.dropzoneFrom = {
+            autoProcessQueue: false,
+            acceptedFiles:".png,.jpg,.gif,.bmp,.jpeg",
+            init: function(){
+                var submitButton = document.querySelector('#submit-all');
+                myDropzone = this;
+                submitButton.addEventListener("click", function(){
+                    myDropzone.processQueue();
+                });
+                this.on("complete", function(){
+                    if(this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0)
+                    {
+                        var _this = this;
+                        _this.removeAllFiles();
+                    }
+                    list_image();
+                });
+            },
+        };
+        list_image();
+        function list_image()
+        {
+            $.ajax({
+                url:"../pages/upload.php",
+                success:function(data){
+                    $('#preview').html(data);
+                }
+            });
+        }
+
+        $(document).on('click', '.remove_image', function(){
+            var name = $(this).attr('id');
+            $.ajax({
+                url:"../pages/upload.php",
+                method:"POST",
+                data:{name:name},
+                success:function(data)
+                {
+                    list_image();
+                }
+            })
+        });
+
+    });
+</script>

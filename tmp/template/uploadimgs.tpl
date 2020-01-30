@@ -8,6 +8,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
 </header>
 <body>
+<form method="post" style="margin-left: 15%">
+    <label for="NumberCircuit">Numero Circuit</label><br>
+    <input value="{$test}" type="text" id="idNumeroC" name="idNumeroC"><br><br> <div class="form-group">
+        <button type="submit" class="btn btn-primary" id="submitBtn" name="submitN">Changer dCircuit</button>
+    </div>
+</form>
 <div class="container">
     <form action="upload.php" class="dropzone" id="dropzoneFrom">
     </form>
@@ -25,13 +31,13 @@
 </body>
 </html>
 <script>
-
     $(document).ready(function(){
         Dropzone.options.dropzoneFrom = {
             autoProcessQueue: false,
             acceptedFiles:".png,.jpg,.gif,.bmp,.jpeg",
             init: function(){
                 var submitButton = document.querySelector('#submit-all');
+
                 myDropzone = this;
                 submitButton.addEventListener("click", function(){
                     myDropzone.processQueue();
@@ -47,6 +53,7 @@
             },
         };
         list_image();
+
         function list_image()
         {
             $.ajax({

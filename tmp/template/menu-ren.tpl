@@ -10,7 +10,7 @@
                 </li>
 
             </ul>
-            <span class="navbar-text actions"> <a class="login" href="#">Connexion</a><a class="btn btn-light action-button" role="button" href="#">Devenir un membre</a></span>
+            <span class="navbar-text actions"> <a class="login" href="forms/formindex.php">Connexion</a><a class="btn btn-light action-button" role="button" href="forms/formindex.php">Devenir un membre</a></span>
             <select
                     style="margin: 5px;">
                 <option value="12" selected="">FR</option>
