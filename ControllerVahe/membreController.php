@@ -24,17 +24,41 @@ switch ($action){
         deconnect();
         break;
     case 'showcircuit':
-        $id = $_POST['id'];
-        showcircuit($smarty, $db, $id);
+        showcircuit($smarty, $db);
     default: break;
 }
 
 // Les actions
 
 // cette fonction fait requet à la base de données pour recevoir les données de circuit avec id pour montrer au client
-function showcircuit($smarty, $db, $id)
+function showcircuit($smarty, $db)
 {
+    global $reponse;
+    $idCircuit = $_POST['id'];
+    $reponse['action'] = 'showcircuit';
+    $requet = "SELECT * FROM circuit WHERE idCircuit = ".$idCircuit;
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $circuit = $db->getAll($requet);
+    $titre = $circuit[0]['titre'];
+    $description = $circuit[0]['description'];
+    $prix = $circuit[0]['prix'];
 
+    // we find ids of the photos of the circuits after we find paths of the photo and put in the array
+    $arrayPhoto = array();
+    $requet = "SELECT * FROM photocircuit WHERE idCircuit=".$idCircuit." limit 3"; // to find photo's ids of the circuit from tablle photocircuit
+    $idPhotosCircuit = $db->getAll($requet);
+    foreach($idPhotosCircuit as $key=>$value)
+    {
+        $requet = "SELECT * FROM photo WHERE idPhoto=".$idPhotosCircuit[$key]['idPhoto']; // to find photo path by photo id from table photo
+        $path = $db->getAll($requet);
+        $str = ltrim($path[0]['imagePath'], '/');
+        array_push($arrayPhoto, $str);
+    }
+
+    $smarty->assign('arrayPhoto', $arrayPhoto);
+    $smarty->assign('titre', $titre);
+
+    $reponse['circuit'] = $smarty->fetch('circuit_details.tpl');
 }
 
 // Enregistre les données de la formulaire créer un compte

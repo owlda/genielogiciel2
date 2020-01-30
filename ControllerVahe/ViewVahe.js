@@ -1,4 +1,5 @@
 var membreVue = function(reponse){
+
     switch(reponse.action)
     {
         case 'devenirmembre':
@@ -32,6 +33,14 @@ var membreVue = function(reponse){
             break;
         case 'deconnect':
             window.location.href = 'index_ren.php';
+            break;
+        case 'showcircuit':
+/*            $('#carousel').html("");
+            $('#card1').html("");
+            $('#card1').hide();*/
+            $("#circuitx").html(reponse.circuit);
+            $("#exampleModalLong").modal('show');
+            break;
         default:
             break;
     }

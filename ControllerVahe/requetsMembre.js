@@ -87,13 +87,13 @@ function deconnect()
 
 }
 
-// on appel cette fonction pour recevoire les données du circuit à montrer
+/*on appel cette fonction pour recevoire les données du circuit à montrer*/
 
 function showcard(id)
 {
-   /* var formiConnexion = new FormData();
+    var formiConnexion = new FormData();
     formiConnexion.append('action','showcircuit');
-    formiConnexion.append('id',id);
+    formiConnexion.append('id', id);
     $.ajax({
         type : 'POST',
         url : 'ControllerVahe/membreController.php',
@@ -108,9 +108,7 @@ function showcard(id)
         error: function (xhr, error) {
             alert(error);
         }
-    });*/
-   alert(id);
-
+    });
 }
 
 function addpanier(id) {
