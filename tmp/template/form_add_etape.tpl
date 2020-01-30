@@ -13,11 +13,7 @@
     <div class="form-group">
         <label style="display: block">{$pays}</label>
         <select class="form-control"  id="SelectPays" name="SelectPays" style="width:30%;display: inline;">
-            {foreach from=$arr_pays key=k item=v}
-                <option value="{$k}">
-                    {$v}
-                </option>
-            {/foreach}
+            {include file="select_pays.tpl" arr_pays=$arr_pays}
         </select>
         <input type="button" value="{$btn_add_pays}" class="btn btn-primary" style="display: inline" onclick="BtnViewNewPays()">
     </div>

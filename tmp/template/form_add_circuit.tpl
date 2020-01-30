@@ -41,9 +41,7 @@
     <div class="form-group">
         <label style="display: block">{$theme}</label>
         <select class="form-control"  id="SelectTheme" name="SelectTheme" style="width:30%;display: inline;">
-            {foreach from=$arr_theme_circuit key=k item=v}
-                <option value="{$k}">{$v}</option>
-            {/foreach}
+            {include file="select_themes.tpl" arr_theme_circuit=$arr_theme_circuit}
         </select>
         <input type="button" value="{$btn_add_theme}" class="btn btn-primary" style="display: inline" onclick="BtnViewNewTheme()">
     </div>

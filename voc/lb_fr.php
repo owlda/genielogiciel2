@@ -2,7 +2,7 @@
 //Array from BD
 $voc["arr_theme_circuit"] = array();
 $db->setFetchMode(ADODB_FETCH_ASSOC);
-$voc["arr_theme_circuit"] = $db->getAssoc('SELECT * FROM typecircuit');
+$voc["arr_theme_circuit"] = $db->getAll('SELECT * FROM typecircuit');
 
 $voc["arr_status_circuit"] = array();
 $db->setFetchMode(ADODB_FETCH_ASSOC);
@@ -10,7 +10,7 @@ $voc["arr_status_circuit"] = $db->getAssoc('SELECT * FROM statutcircuit');
 
 $voc["arr_pays"] = array();
 $db->setFetchMode(ADODB_FETCH_ASSOC);
-$voc["arr_pays"] = $db->getAssoc('SELECT * FROM pays');
+$voc["arr_pays"] = $db->getAll('SELECT * FROM pays');
 
 //Button
 $voc["btn_add_theme"] = "Ajouter un thème";
