@@ -18,7 +18,6 @@
 
 <body>
 <?php include __DIR__.'/../tmp/template/menu-renIvan.tpl'?>
-
 <main>
     <form id="FormFullCircuit" >
         <div class="form-group animated zoomInRight" style="width: 10%;margin-left: 10%;">
@@ -28,21 +27,13 @@
         <input type="button" value="Chercher" id="btn_cherche" class="btn btn-info" onclick="BtnFullCircuit()">
     </div>
     </form>
-
-
-    <div class="container" id="table_circuit" style="padding-bottom: 10%;">
-
-    </div>
-
-
+    <div class="container" id="table_circuit" style="padding-bottom: 10%;"></div>
 </main>
 <div class="footer-clean animated zoomInRight">
     <?php include __DIR__.'/../tmp/template/footer.tpl '?>
 </div>
-
 <script src="../libs/jquery-3.4.1.min.js"></script>
 <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>

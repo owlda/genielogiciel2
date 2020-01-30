@@ -1,8 +1,18 @@
 <?php
 //Config Ivan
 require_once __DIR__.'/../../config_ivan/conf-ivan.php';
-//Initialize vocabulary
-require_once __DIR__.'/../../voc/lb_fr.php';
+
+switch($_COOKIE['lang']){
+    case "es":
+        require __DIR__.'/../../voc/lb_es.php';
+        break;
+    case "en" :
+        require __DIR__.'/../../voc/lb_en.php';
+        break;
+    default :
+        require __DIR__.'/../../voc/lb_fr.php';
+        break;
+}
 
 $reponse = array();
 
