@@ -175,6 +175,7 @@ function FormAddCircuit($smarty, $voc, $db){
     global $reponse;
     $reponse['action'] = 'addcircuit';
     $smarty->assign('arr_list_statutcircuit', GetAllStatutCircuit($db));
+    $smarty->assign('voc', $voc);
     //Initialization vocabulaire
     $smarty = AddEditCircuitSmarty($smarty, $voc);
     //Transfer data to *.tpl
@@ -243,13 +244,13 @@ function DetailCircuit($smarty,$db,$voc){
     $smarty->assign('arr_image_circuit', $arr_image_circuit);
     $rs1 = GetCircuitById($idCircuit, $db);
     $smarty->assign('idCircuit', $rs1[0]['idCircuit']);
-    $smarty->assign('titre', $rs1[0]['titre']);
-    $smarty->assign('description', $rs1[0]['description']);
+    $smarty->assign('titre', $rs1[0]['titre'.$_COOKIE['lang']]);
+    $smarty->assign('description', $rs1[0]['description'.$_COOKIE['lang']]);
     $smarty->assign('duree', $rs1[0]['duree']);
-    $smarty->assign('pointDepart', $rs1[0]['pointDepart']);
+    $smarty->assign('pointDepart', $rs1[0]['pointDepart'.$_COOKIE['lang']]);
     $smarty->assign('prix', $rs1[0]['prix']);
     $smarty->assign('idTheme', $rs1[0]['idTheme']);
-    $smarty->assign('NomTheme', $rs1[0]['NomTheme']);
+    $smarty->assign('NomTheme', $rs1[0]['NomTheme'.$_COOKIE['lang']]);
     $smarty->assign('dateDepart', $rs1[0]['dateDepart']);
     $smarty->assign('dateFin', $rs1[0]['dateFin']);
     $smarty->assign('idStatutCircuit', $rs1[0]['idStatutCircuit']);

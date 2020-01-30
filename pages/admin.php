@@ -14,6 +14,8 @@
     <script src="../ControllerIvan/AdminControllerIvan/View.js"></script>
     <script src="../libs/jquery-3.4.1.min.js"></script>
     <script src="../js/ivan-modals.js"></script>
+    <script src="../js/ivan-cookies.js"></script>
+    <script src="../js/ivan-generale.js"></script>
 </head>
 
 <body onload="ListerCircuit();">
