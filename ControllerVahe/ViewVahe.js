@@ -6,7 +6,6 @@ var membreVue = function(reponse){
                 alert("Les mot de passe ne correspondent pas");
             if(reponse.msg == 'OK')
             {
-                alert('sakjdhajfhk');
                 window.location.href = '../index_ren.php';
             }
             break;
@@ -23,11 +22,17 @@ var membreVue = function(reponse){
             {
                 // si le requete marche et le mot de passe est correct on dirige vers le site du client
                 window.location.href = '../index_client_vahe.php';
+
             }
             break;
         case 'i_connecter':
-            //alert(reponse.temp);
+
             $("#menu").html(reponse.temp);
+            $("#card1").html(reponse.card1);
+            break;
+        case 'deconnect':
+            window.location.href = 'index_ren.php';
+        default:
             break;
     }
 }

@@ -17,7 +17,6 @@ function requetEnregistrerMembre() {
             alert('L\'execution du script n\'est pas reussit');
         }
     });
-
 }
 
 // la fonction pour faire POST par ajax pour envoyer les données de la formuler de la login vers le serveur
@@ -37,6 +36,7 @@ function connecter()
             membreVue(reponse);
         },
         error: function (xhr, error) {
+
             alert('Erreur de execution du script');
         }
     });
@@ -44,6 +44,7 @@ function connecter()
 
 function initclientmenue()
 {
+
     var formiConnexion = new FormData();
     formiConnexion.append('action','i_connecter');
     $.ajax({
@@ -65,6 +66,7 @@ function initclientmenue()
 
 function deconnect()
 {
+
     var formiConnexion = new FormData();
     formiConnexion.append('action','deconnect');
     $.ajax({
@@ -83,4 +85,34 @@ function deconnect()
         }
     });
 
+}
+
+// on appel cette fonction pour recevoire les données du circuit à montrer
+
+function showcard(id)
+{
+   /* var formiConnexion = new FormData();
+    formiConnexion.append('action','showcircuit');
+    formiConnexion.append('id',id);
+    $.ajax({
+        type : 'POST',
+        url : 'ControllerVahe/membreController.php',
+        data : formiConnexion,
+        contentType : false,
+        processData : false,
+        dataType : 'json',
+        success : function (reponse){
+
+            membreVue(reponse);
+        },
+        error: function (xhr, error) {
+            alert(error);
+        }
+    });*/
+   alert(id);
+
+}
+
+function addpanier(id) {
+    alert(id);
 }
