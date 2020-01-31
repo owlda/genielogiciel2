@@ -1,13 +1,39 @@
-<a href="../pages/admin.php">Liste des circuit</a>
-<h1>{$titre}</h1>
+<a href="../pages/admin.php">{$voc["lb_h1_list_circuit"]}</a>
+<h1>
+    {if !isset($titre) || empty($titre)}
+        <div class="alert alert-danger" role="alert">NULL</div>
+    {/if}
+    {$titre}
+</h1>
+
 <div class="btn-toolbar">
     <div class="btn-group" role="group">
-        <input value="Modifier" class="btn btn-warning" type="button" onclick="location.href='edit-circuit.php?id={$idCircuit}'">
-        <input value="Supprimer" class="btn btn-danger" type="button" id="btn_del_circuit" onclick="ShowModalDeleteCircuit();">
+        <input value="{$voc["btn_edit"]}" class="btn btn-warning" type="button" onclick="location.href='edit-circuit.php?id={$idCircuit}'">
+        <input value="{$voc["btn_del"]}" class="btn btn-danger" type="button" id="btn_del_circuit" onclick="ShowModalDeleteCircuit();">
     </div>
 </div>
-<div><span class="font-weight-bold">Date de début: </span><span class="small">{$dateDepart}</span> &nbsp; &nbsp; <span class="font-weight-bold">Date de fin: <span class="small">{$dateFin}</span></span></div>
-<div><span><span class="font-weight-bold">Thème: </span><span>{$NomTheme}</span> &nbsp; &nbsp; <span class="font-weight-bold">Ville de départ: </span><span>{$pointDepart}</span></div>
+<div>
+    <span class="font-weight-bold">{$voc["lb_date_depart"]}: </span>
+    <span class="small">{$dateDepart}</span> &nbsp; &nbsp;
+    <span class="font-weight-bold">{$voc["lb_date_fin"]}: </span>
+    <span class="small">{$dateFin}</span>
+</div>
+<div>
+    <span class="font-weight-bold">{$voc["lb_theme"]} </span>
+    <span>
+        {if !isset($NomTheme) || empty($NomTheme)}
+            <div class="alert alert-danger" role="alert">NULL</div>
+        {/if}
+        {$NomTheme}
+    </span> &nbsp; &nbsp;
+    <span class="font-weight-bold">{$voc["lb_ville_depart"]}: </span>
+    <span>
+        {if !isset($pointDepart) || empty($pointDepart)}
+            <div class="alert alert-danger" role="alert">NULL</div>
+        {/if}
+        {$pointDepart}
+    </span>
+</div>
 <div class="row">
     <div class="col">
         <div class="card" style="padding: 10px;">

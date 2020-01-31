@@ -107,6 +107,9 @@ var Vue=function(reponse){
             //alert("Jour a été changé...");
             $("#detail_jour_" + reponse.idJourSelectChange).html(reponse.detail_jour);
             break;
+        case "table_circuit" :
+            ShowFullTableCircuit(reponse);
+            break;
     }
 };
 
@@ -219,6 +222,10 @@ function DetailCircuit_View(reponse) {
     $("#ajouter-circuit").html(reponse.detail_circuit);
     $("#ajouter-etape").html(reponse.detail_etape);
 }
+function ShowFullTableCircuit(reponse) {
+    $("#table_circuit").html(reponse.table_circuit);
+}
+
 
 function ModCircuit_View(reponse) {
     $("#form-circuit").html(reponse.form_edit_circuit);

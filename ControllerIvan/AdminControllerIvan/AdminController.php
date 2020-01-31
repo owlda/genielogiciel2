@@ -1,8 +1,18 @@
 <?php
 //Config Ivan
 require_once __DIR__.'/../../config_ivan/conf-ivan.php';
-//Initialize vocabulary
-require_once __DIR__.'/../../voc/lb_fr.php';
+
+switch($_COOKIE['lang']){
+    case "es":
+        require __DIR__.'/../../voc/lb_es.php';
+        break;
+    case "en" :
+        require __DIR__.'/../../voc/lb_en.php';
+        break;
+    default :
+        require __DIR__.'/../../voc/lb_fr.php';
+        break;
+}
 
 $reponse = array();
 
@@ -20,7 +30,7 @@ switch($_POST['action']){
         EnregistrerCircuit($smarty,$db);
         break;
     case 'list_circuit':
-        ListerCircuit($smarty,$db);
+        ListerCircuit($smarty, $voc, $db);
         break;
     case 'detail_circuit':
         DetailCircuit($smarty,$db,$voc);
@@ -44,7 +54,7 @@ switch($_POST['action']){
         BtnDelRabais($db);
         break;
     case 'btn_add_jour':
-        ModalAddJour($smarty, $db);
+        ModalAddJour($smarty, $voc, $db);
         break;
     case 'btn_add_restaurent':
         ModalAddRestaurent($smarty, $db);
@@ -78,6 +88,9 @@ switch($_POST['action']){
         break;
     case 'detail_jour_change':
         DetailJourChange($smarty,$db);
+        break;
+    case 'table_circuit':
+        GetTableFullCircuit($smarty,$db,$voc);
         break;
 }
 
@@ -134,13 +147,14 @@ function ModalAddHotel($smarty, $db){
     $reponse['arr_list_hotel'] = $arr_list_hotel;
 }
 //Modal Add un jour for Etape
-function ModalAddJour($smarty, $db){
+function ModalAddJour($smarty, $voc, $db){
     global $reponse;
     $reponse['action'] = "btn_add_jour";
     $smarty->assign('idPays', $_POST["idPays"]);
     $smarty->assign('idEtape', $_POST["idEtape"]);
     $smarty->assign('NomPays', GetNomPaysById($_POST["idPays"], $db));
     $smarty->assign('arr_list_ville', GetAllVilleFromPays($_POST["idPays"], $db));
+    $smarty->assign('voc', $voc);
 
     //Transfer data to *.tpl
     $smarty->fetch("modal_add_jour.tpl");
@@ -162,8 +176,9 @@ function FormAddCircuit($smarty, $voc, $db){
     global $reponse;
     $reponse['action'] = 'addcircuit';
     $smarty->assign('arr_list_statutcircuit', GetAllStatutCircuit($db));
+    $smarty->assign('voc', $voc);
     //Initialization vocabulaire
-    $smarty = AddEditCircuitSmarty($smarty, $voc);
+    //$smarty = AddEditCircuitSmarty($smarty, $voc);
     //Transfer data to *.tpl
     $reponse['form_add_circuit'] = $smarty->fetch("form_add_circuit.tpl");
 }
@@ -217,7 +232,9 @@ function FormAddEtape($smarty, $voc){
     global $reponse;
     $reponse['action'] = 'addetape';
     //Initialization vocabulaire
-    $smarty = AddEditEtapeSmarty($smarty,$voc);
+    $idCircuit = $_POST["idCircuit"];
+    $smarty->assign('idCircuit', $idCircuit);
+    $smarty->assign('voc', $voc);
     //Transfer data to *.tpl
     $reponse['form_add_etape'] = $smarty->fetch("form_add_etape.tpl");
 }
@@ -230,10 +247,10 @@ function DetailCircuit($smarty,$db,$voc){
     $smarty->assign('arr_image_circuit', $arr_image_circuit);
     $rs1 = GetCircuitById($idCircuit, $db);
     $smarty->assign('idCircuit', $rs1[0]['idCircuit']);
-    $smarty->assign('titre', $rs1[0]['titre']);
-    $smarty->assign('description', $rs1[0]['description']);
+    $smarty->assign('titre', $rs1[0]['titre'.$_COOKIE['lang']]);
+    $smarty->assign('description', $rs1[0]['description'.$_COOKIE['lang']]);
     $smarty->assign('duree', $rs1[0]['duree']);
-    $smarty->assign('pointDepart', $rs1[0]['pointDepart']);
+    $smarty->assign('pointDepart', $rs1[0]['pointDepart'.$_COOKIE['lang']]);
     $smarty->assign('prix', $rs1[0]['prix']);
     $smarty->assign('idTheme', $rs1[0]['idTheme']);
     $smarty->assign('NomTheme', $rs1[0]['NomTheme']);
@@ -241,30 +258,10 @@ function DetailCircuit($smarty,$db,$voc){
     $smarty->assign('dateFin', $rs1[0]['dateFin']);
     $smarty->assign('idStatutCircuit', $rs1[0]['idStatutCircuit']);
 
-    $arr_etape = GetAllEtapeFromCircuit($idCircuit, $db);
-
-    //Initialization arr_jour/arr_activity/arr_hotel for arr_etape
-    for ($i = 0; $i <= sizeof($arr_etape)-1; $i++) {
-        $arr_etape[$i]['arr_jour'] = GetAllJourForEtape($arr_etape[$i]['idEtape'], $db);
-        for ($j = 0; $j <= sizeof($arr_etape[$i]['arr_jour'])-1; $j++){
-            $arr_etape[$i]['arr_jour'][$j]['NomVille'] =  GetNomVilleById($arr_etape[$i]['arr_jour'][$j]['idVille'],$db);
-            //Get list restaurent from jour
-            $arr_etape[$i]['arr_jour'][$j]['Restaurent'] = GetAllRestaurentFromJour($arr_etape[$i]['arr_jour'][$j]['idJour'], $db);
-            $arr_etape[$i]['arr_jour'][$j]['count_restaurent'] = sizeof($arr_etape[$i]['arr_jour'][$j]['Restaurent']);
-            //Get list activity from jour
-            $arr_etape[$i]['arr_jour'][$j]['Activity'] = GetAllActivityFromJour($arr_etape[$i]['arr_jour'][$j]['idJour'], $db);
-            $arr_etape[$i]['arr_jour'][$j]['count_activity'] = sizeof($arr_etape[$i]['arr_jour'][$j]['Activity']);
-            //Get list hotel from jour
-            $arr_etape[$i]['arr_jour'][$j]['Hotel'] = GetAllHotelFromJour($arr_etape[$i]['arr_jour'][$j]['idJour'], $db);
-            $arr_etape[$i]['arr_jour'][$j]['count_hotel'] = sizeof($arr_etape[$i]['arr_jour'][$j]['Activity']);
-        }
-        $arr_etape[$i]['NomPays'] = GetNomPaysById($arr_etape[$i]['idPays'], $db);
-        $arr_etape[$i]['count_jour'] = sizeof($arr_etape[$i]['arr_jour']);
-    }
-
-    $tt = 0;
+    $arr_etape = GetFullEtapeByIdCircuit($idCircuit, $db);
 
     $smarty->assign('arr_etape', $arr_etape);
+    $smarty->assign('voc', $voc);
     $smarty->assign('count_etape', sizeof($arr_etape));
 
     //Transfer data to *.tpl
@@ -272,8 +269,31 @@ function DetailCircuit($smarty,$db,$voc){
     $reponse['detail_circuit'] = $smarty->fetch("detail_circuit.tpl");
     $reponse['detail_etape'] = $smarty->fetch("detail_etape.tpl");
 }
+
+function GetTableFullCircuit($smarty,$db,$voc){
+    global $reponse;
+    $reponse['action'] = "table_circuit";
+    $arr_etape = GetFullEtapeByIdCircuit($_POST['idCircuit'], $db);
+    $all_jour = 0;
+    $all_prix = 0;
+    for ($i = 0; $i < sizeof($arr_etape); $i++){
+        $all_jour += $arr_etape[$i]['count_jour'];
+        $all_prix += $arr_etape[$i]['prix'];
+        for ($j = 0; $j < sizeof($arr_etape[$i]['arr_jour']); $j++){
+            $all_prix += $arr_etape[$i]['arr_jour'][$j]['prix'];
+        }
+    }
+    $e = 0;
+    $smarty->assign('all_prix', $all_prix);
+    $smarty->assign('all_jour', $all_jour);
+    $smarty->assign('count_etape', sizeof($arr_etape));
+    $smarty->assign('arr_etape', $arr_etape);
+    $reponse['table_circuit'] = $smarty->fetch("stat.tpl");
+
+
+}
 //Detail jour changes
-function DetailJourChange($smarty,$db){
+function DetailJourChange($smarty, $voc, $db){
     global $reponse;
     $reponse['action'] = "detail_jour_change";
     $reponse['idJourSelectChange'] = $_POST['idJourSelectChange'];
@@ -296,6 +316,7 @@ function DetailJourChange($smarty,$db){
     $smarty->assign('CountActivityJour', sizeof($lst_detail_activity));
     $smarty->assign('arr_hotel', $lst_detail_hotel);
     $smarty->assign('CountHotelJour', sizeof($lst_detail_hotel));
+    $smarty->assign('voc', $voc);
     $reponse['detail_jour'] = $smarty->fetch("detail_jour.tpl");
 }
 
@@ -304,12 +325,10 @@ function DetailJourChange($smarty,$db){
 function EnregistrerNewStatut($smarty, $db){
     global $reponse;
     $reponse['action'] = "register_statut";
-
     $table = 'statutcircuit';
     $record['idStatutCircuit'] = $_POST['NewIdStatut'];
     $record['statut'] = $_POST['NewNameStatut'];
     $db->autoExecute($table, $record, 'INSERT');
-
     $reponse['list_statut'] = GetAllStatutCircuit($db);
     $smarty->assign('arr_list_statutcircuit', $reponse['list_statut']);
     $reponse['list_statut'] = $smarty->fetch("select_statutcircuit.tpl");
@@ -321,10 +340,10 @@ function EnregistrerCircuit($smarty,$db){
 
     $table = 'circuit';
     /*$record['idCircuit'] =*/
-    $record['titre'] = $_POST['input_title'];
-    $record['description'] = $_POST['description'];
+    $record['titre'.$_COOKIE['lang']] = $_POST['input_title'];
+    $record['description'.$_COOKIE['lang']] = $_POST['description'];
     $record['duree'] = 0;
-    $record['pointDepart'] = $_POST['input_ville_depart'];
+    $record['pointDepart'.$_COOKIE['lang']] = $_POST['input_ville_depart'];
     $record['prix'] = $_POST['prix'];
     $record['idTheme'] = (int)$_POST['SelectTheme'];
     $record['dateDepart'] = '2020-12-12 15:15:15';
@@ -341,14 +360,14 @@ function EnregistrerEtape($smarty,$db){
     $reponse['idCircuit'] = $_POST['idCircuit'];
 
     $table = 'etape';
-    $record['numeroEtap'] = 0;
-    $record['titre'] = $_POST['input_title'];
-    $record['description'] = $_POST['description'];
+    $record['numeroEtap'] = $_POST['input_number'];
+    $record['titre'.$_COOKIE['lang']] = $_POST['input_title'];
+    $record['description'.$_COOKIE['lang']] = $_POST['description'];
     $record['duree'] = 0;
-    $record['prix'] = 0;
+    $record['prix'] = (float)$_POST['input_price'];
     $record['idPays'] = (int)$_POST['SelectPays'];
-    $record['dateDebut'] = $_POST['input_date'];
-    $record['dateFin'] = $_POST['input_date'];
+    $record['dateDebut'] = $_POST['input_date_start'];
+    $record['dateFin'] = $_POST['input_date_end'];
     $record['idCircuit'] = $_POST['idCircuit'];
 
     $db->autoExecute($table, $record, 'INSERT');
@@ -425,11 +444,12 @@ function EnregistrerTheme($smarty,$db){
     global $reponse;
     $reponse['action'] = "register_theme";
     $table = 'typecircuit';
-    $record['theme'] = $_POST['new_theme'];
+    $record['theme'.$_COOKIE['lang']] = $_POST['new_theme'];
     $db->autoExecute($table, $record, 'INSERT');
+
     $db->setFetchMode(ADODB_FETCH_ASSOC);
-    $rs = $db->getAssoc('SELECT * FROM typecircuit');
-    $smarty->assign('arr_list_theme', $rs);
+    $rs = $db->getAll('SELECT * FROM typecircuit');
+    $smarty->assign('arr_theme_circuit', $rs);
     $reponse['list_theme'] = $smarty->fetch("select_themes.tpl");
 }
 //Enregistrer nouveau pays
@@ -437,11 +457,11 @@ function EnregistrerPays($smarty,$db){
     global $reponse;
     $reponse['action'] = "register_pays";
     $table = 'pays';
-    $record['nom'] = $_POST['new_pays'];
+    $record['nom'.$_COOKIE['lang']] = $_POST['new_pays'];
     $db->autoExecute($table, $record, 'INSERT');
     $db->setFetchMode(ADODB_FETCH_ASSOC);
-    $rs = $db->getAssoc('SELECT * FROM pays');
-    $smarty->assign('arr_list_pays', $rs);
+    $rs = $db->getAll('SELECT * FROM pays');
+    $smarty->assign('arr_pays', $rs);
     $reponse['list_pays'] = $smarty->fetch("select_pays.tpl");
 }
 //Enregistrer nouveau restaurent
@@ -544,7 +564,7 @@ function EnregistrerHotelJour($smarty,$db){
 
 //TODO Lister
 //Lister des circuit
-function ListerCircuit($smarty,$db){
+function ListerCircuit($smarty, $voc, $db){
     global $reponse;
     $reponse['action'] = "list_circuit";
     $db->setFetchMode(ADODB_FETCH_ASSOC);
@@ -555,7 +575,7 @@ function ListerCircuit($smarty,$db){
         $db->setFetchMode(ADODB_FETCH_ASSOC);
         $SQL1 = 'SELECT * FROM typecircuit WHERE id ='. $rs[$key]['idTheme'];
         $supres = $db->getAll($SQL1);
-        $rs[$key]['NomTheme'] = $supres[0]['theme'];
+        $rs[$key]['NomTheme'] = $supres[0]['theme'.$_COOKIE['lang']];
         $SQL2 = 'SELECT * FROM statutcircuit WHERE idStatutCircuit ='. $rs[$key]['idStatutCircuit'];
         $supres = $db->getAll($SQL2);
         $rs[$key]['NomStatutCircuit'] = $supres[0]['statut'];
@@ -570,6 +590,7 @@ function ListerCircuit($smarty,$db){
         }
     }
 
+    $smarty->assign('voc', $voc);
     $smarty->assign('arr_list_circuit', $rs);
     $reponse['list_circuit'] = $smarty->fetch("list_circuit.tpl");
 
@@ -601,12 +622,35 @@ function AddEditCircuitSmarty($smarty, $voc){
     $smarty->assign('btn_add_theme', $voc["btn_add_theme"]);
     $smarty->assign('add_new_theme', $voc["lb_add_new_theme"]);
     $smarty->assign('ville_depart', $voc["lb_ville_depart"]);
+
     //Array
     $smarty->assign('arr_theme_circuit', $voc["arr_theme_circuit"]);
     return $smarty;
 }
 
-//TODO Function Get/Convert
+//TODO Function Get
+function GetFullEtapeByIdCircuit($idCircuit, $db){
+    $arr_etape = GetAllEtapeFromCircuit($idCircuit, $db);
+    //Initialization arr_jour/arr_activity/arr_hotel for arr_etape
+    for ($i = 0; $i <= sizeof($arr_etape)-1; $i++) {
+        $arr_etape[$i]['arr_jour'] = GetAllJourForEtape($arr_etape[$i]['idEtape'], $db);
+        for ($j = 0; $j <= sizeof($arr_etape[$i]['arr_jour'])-1; $j++){
+            $arr_etape[$i]['arr_jour'][$j]['NomVille'] =  GetNomVilleById($arr_etape[$i]['arr_jour'][$j]['idVille'],$db);
+            //Get list restaurent from jour
+            $arr_etape[$i]['arr_jour'][$j]['Restaurent'] = GetAllRestaurentFromJour($arr_etape[$i]['arr_jour'][$j]['idJour'], $db);
+            $arr_etape[$i]['arr_jour'][$j]['count_restaurent'] = sizeof($arr_etape[$i]['arr_jour'][$j]['Restaurent']);
+            //Get list activity from jour
+            $arr_etape[$i]['arr_jour'][$j]['Activity'] = GetAllActivityFromJour($arr_etape[$i]['arr_jour'][$j]['idJour'], $db);
+            $arr_etape[$i]['arr_jour'][$j]['count_activity'] = sizeof($arr_etape[$i]['arr_jour'][$j]['Activity']);
+            //Get list hotel from jour
+            $arr_etape[$i]['arr_jour'][$j]['Hotel'] = GetAllHotelFromJour($arr_etape[$i]['arr_jour'][$j]['idJour'], $db);
+            $arr_etape[$i]['arr_jour'][$j]['count_hotel'] = sizeof($arr_etape[$i]['arr_jour'][$j]['Hotel']);
+        }
+        $arr_etape[$i]['NomPays'] = GetNomPaysById($arr_etape[$i]['idPays'], $db);
+        $arr_etape[$i]['count_jour'] = sizeof($arr_etape[$i]['arr_jour']);
+    }
+    return $arr_etape;
+}
 //Get all StatutCircuit
 function GetAllStatutCircuit($db){
     $db->setFetchMode(ADODB_FETCH_ASSOC);
@@ -623,11 +667,11 @@ function GetCircuitById($idCircuit, $db){
     foreach($rs as $key=>$value){
         $db->setFetchMode(ADODB_FETCH_ASSOC);
         $SQL1 = 'SELECT * FROM typecircuit WHERE id ='. $rs[$key]['idTheme'];
-        $supres = $db->getAssoc($SQL1);
-        $rs[$key]['NomTheme'] = $supres[$rs[$key]['idTheme']];
+        $supres = $db->getAll($SQL1);
+        $rs[$key]['NomTheme'] = $supres[0]['theme'.$_COOKIE['lang']];
         $SQL2 = 'SELECT * FROM statutcircuit WHERE idStatutCircuit ='. $rs[$key]['idStatutCircuit'];
-        $supres = $db->getAssoc($SQL2);
-        $rs[$key]['NomStatutCircuit'] = $supres[$rs[$key]['idStatutCircuit']];
+        $supres = $db->getAll($SQL2);
+        $rs[$key]['NomStatutCircuit'] = $supres[0]['status'];
     }
 
     return $rs;
@@ -641,14 +685,14 @@ function DateDBtoInputDate($DateDB){
 //Get Etape with all info from DB
 function GetAllEtapeFromCircuit($idCircuit, $db){
     $db->setFetchMode(ADODB_FETCH_ASSOC);
-    $SQL = 'SELECT * FROM etape WHERE idCircuit = '.$idCircuit;
+    $SQL = 'SELECT * FROM etape WHERE idCircuit = '.$idCircuit . ' ORDER BY  numeroEtap ASC';;
     $rs = $db->getAll($SQL);
 
     foreach($rs as $key=>$value){
         $db->setFetchMode(ADODB_FETCH_ASSOC);
         $SQL1 = 'SELECT * FROM pays WHERE idPays ='. $rs[$key]['idPays'];
-        $supres = $db->getAssoc($SQL1);
-        $rs[$key]['NomPays'] = $supres[$rs[$key]['idPays']];
+        $supres = $db->getAll($SQL1);
+        $rs[$key]['NomPays'] = $supres[0]['nom'.$_COOKIE['lang']];
     }
     return $rs;
 }
@@ -671,7 +715,7 @@ function GetNomPaysById($idPays, $db){
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $SQL = 'SELECT * FROM pays WHERE idPays = '.$idPays;
     $rs = $db->getAll($SQL);
-    return $rs[0]['nom'];
+    return $rs[0]['nom'.$_COOKIE['lang']];
 }
 
 function GetImageByidCircuit($idCircuit, $db){
@@ -704,7 +748,7 @@ function GetNomVilleById($idVille, $db){
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $SQL = 'SELECT * FROM villes WHERE idVille = '.$idVille;
     $rs = $db->getAll($SQL);
-    return $rs[0]['nom'];
+    return $rs[0]['nom'.$_COOKIE['lang']];
 }
 //Get all Restaurent from Jour by idJour
 function GetAllRestaurentFromJour($idJour, $db){
