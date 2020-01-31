@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2020-01-31 19:45:09
+/* Smarty version 3.1.33, created on 2020-01-31 19:51:18
   from 'C:\web\xampp\htdocs\genielogiciel2-master\tmp\template\list_circuit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5e3475b52bffc5_56957795',
+  'unifunc' => 'content_5e3477262f1da4_20724460',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b22fd0c1783db292fa65555b790c15dcea08b365' => 
     array (
       0 => 'C:\\web\\xampp\\htdocs\\genielogiciel2-master\\tmp\\template\\list_circuit.tpl',
-      1 => 1580432159,
+      1 => 1580496612,
       2 => 'file',
     ),
   ),
@@ -22,23 +22,34 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:modal_add_rabais.tpl' => 1,
   ),
 ),false)) {
-function content_5e3475b52bffc5_56957795 (Smarty_Internal_Template $_smarty_tpl) {
-?><h1>Liste des circuits</h1>
-<input value="Ajouter un circuit" class="btn btn-success" type="button" onclick="location.href='add-circuit.php'">
-<div class="container-fluid" style="width: 95%;padding: 2%;">
+function content_5e3477262f1da4_20724460 (Smarty_Internal_Template $_smarty_tpl) {
+?><h1><?php echo $_smarty_tpl->tpl_vars['voc']->value["lb_h1_list_circuit"];?>
+</h1>
+<input value="<?php echo $_smarty_tpl->tpl_vars['voc']->value["btn_add_circuit"];?>
+" class="btn btn-success" type="button" onclick="LoadAddCircuit();">
+<div class="container-fluid" style="padding: 2%;">
     <div class="row" id="card-container"></div>
-    <table class="table">
+    <table class="table table-hover">
         <thead>
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Photo</th>
-            <th scope="col">Titre</th>
-            <th scope="col">Prix</th>
-            <th scope="col">Rabais</th>
-            <th scope="col">Status</th>
-            <th scope="col">Thème</th>
-            <th scope="col">Date de départ</th>
-            <th scope="col">Date de fin</th>
+            <th scope="col"><?php echo $_smarty_tpl->tpl_vars['voc']->value["lb_title"];?>
+</th>
+            <th scope="col"><?php echo $_smarty_tpl->tpl_vars['voc']->value["lb_price"];?>
+</th>
+            <th scope="col"><?php echo $_smarty_tpl->tpl_vars['voc']->value["lb_rabais"];?>
+</th>
+            <th scope="col"><?php echo $_smarty_tpl->tpl_vars['voc']->value["lb_status"];?>
+</th>
+            <th scope="col"><?php echo $_smarty_tpl->tpl_vars['voc']->value["lb_theme"];?>
+</th>
+            <th scope="col"><?php echo $_smarty_tpl->tpl_vars['voc']->value["lb_ville_depart"];?>
+</th>
+            <th scope="col"><?php echo $_smarty_tpl->tpl_vars['voc']->value["lb_date_depart"];?>
+</th>
+            <th scope="col"><?php echo $_smarty_tpl->tpl_vars['voc']->value["lb_date_fin"];?>
+</th>
             <th scope="col">...</th>
         </tr>
         </thead>
@@ -53,13 +64,19 @@ foreach ($_from as $_smarty_tpl->tpl_vars['key']->value) {
 </th>
                 <td><div style="width: 100px;height: 100px"><?php $_smarty_tpl->_subTemplateRender('file:carousel-circuit.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, true);
 ?></div></td>
-                <td><?php echo $_smarty_tpl->tpl_vars['key']->value['titre'];?>
-</td>
+                <td>
+                    <?php if (!(($_smarty_tpl->tpl_vars['key']->value[('titre').($_COOKIE['lang'])] !== null )) || empty($_smarty_tpl->tpl_vars['key']->value[('titre').($_COOKIE['lang'])])) {?>
+                        <div class="alert alert-danger" role="alert">NULL</div>
+                    <?php }?>
+                    <?php echo $_smarty_tpl->tpl_vars['key']->value[('titre').($_COOKIE['lang'])];?>
+
+                </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['key']->value['prix'];?>
 $</td>
                 <td>
                     <?php if ($_smarty_tpl->tpl_vars['key']->value['Rabais'] < 0) {?>
-                        <input type="button" value="&#10133; Rabais" class="btn btn-primary" style="display: inline" onclick="BtnAddRabais(<?php echo $_smarty_tpl->tpl_vars['key']->value['idCircuit'];?>
+                        <input type="button" value="&#10133; <?php echo $_smarty_tpl->tpl_vars['voc']->value["lb_rabais"];?>
+" class="btn btn-primary" style="display: inline" onclick="BtnAddRabais(<?php echo $_smarty_tpl->tpl_vars['key']->value['idCircuit'];?>
 )">
                         <?php } else { ?>
                         <span style="font-size: xx-large"><?php echo $_smarty_tpl->tpl_vars['key']->value['Rabais'];?>
@@ -75,14 +92,27 @@ $</td>
                 </td>
                 <td><strong><?php echo $_smarty_tpl->tpl_vars['key']->value['NomStatutCircuit'];?>
 </strong></td>
-                <td><?php echo $_smarty_tpl->tpl_vars['key']->value['NomTheme'];?>
-</td>
+                <td>
+                    <?php if (!isset($_smarty_tpl->tpl_vars['key']->value['NomTheme']) || empty($_smarty_tpl->tpl_vars['key']->value['NomTheme'])) {?>
+                        <div class="alert alert-danger" role="alert">NULL</div>
+                    <?php }?>
+                    <?php echo $_smarty_tpl->tpl_vars['key']->value['NomTheme'];?>
+
+                </td>
+                <td>
+                    <?php if (!(($_smarty_tpl->tpl_vars['key']->value[('pointDepart').($_COOKIE['lang'])] !== null )) || empty($_smarty_tpl->tpl_vars['key']->value[('pointDepart').($_COOKIE['lang'])])) {?>
+                        <div class="alert alert-danger" role="alert">NULL</div>
+                    <?php }?>
+                    <?php echo $_smarty_tpl->tpl_vars['key']->value[('pointDepart').($_COOKIE['lang'])];?>
+
+                </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['key']->value['dateDepart'];?>
 </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['key']->value['dateFin'];?>
 </td>
-                <td><a href="../pages/detail-circuit.php?id=<?php echo $_smarty_tpl->tpl_vars['key']->value['idCircuit'];?>
-">Détaillé</a></td>
+                <td> <input type="button" value="<?php echo $_smarty_tpl->tpl_vars['voc']->value["btn_detail"];?>
+" class="btn btn-info" onclick="DetailCircuit(<?php echo $_smarty_tpl->tpl_vars['key']->value['idCircuit'];?>
+)"></td>
             </tr>
         <?php
 }
