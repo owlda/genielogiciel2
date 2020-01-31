@@ -21,7 +21,7 @@
             NomVilleJour=$etape.arr_jour[$etape.count_jour-1].NomVille
             idJour=$etape.arr_jour[$etape.count_jour-1].idJour
             NameJour='Jour 1'
-            DescriptionJour=$etape.arr_jour[$etape.count_jour-1].description
+            DescriptionJour=$etape.arr_jour[$etape.count_jour-1]['description'|cat:$smarty.cookies.lang]]
             arr_restaurent = $etape.arr_jour[$etape.count_jour-1].Restaurent
             CountRestaurentJour = $etape.arr_jour[$etape.count_jour-1].count_restaurent
             arr_activity = $etape.arr_jour[$etape.count_jour-1].Activity

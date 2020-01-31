@@ -104,6 +104,29 @@ function DetailCircuit(idCircuit) {
         }
     });
 }
+//Full stat un circuit by id
+function BtnFullCircuit(){
+    var FormCircuit = new FormData(FormFullCircuit);
+    FormCircuit.append('action', 'table_circuit');
+    var controller = GetUrlController();
+    $.ajax({
+        type: 'POST',
+        url: controller,
+        data: FormCircuit,
+        dataType: 'json',
+        async: false,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (reponse) {
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+}
 //Detail jour by idJour
 function ShowDetailJourChange(idJourHtmlSelectChange, idJour, idVilleJour, NameJour, idPaysEtape){
     var FormDetailJour = new FormData();

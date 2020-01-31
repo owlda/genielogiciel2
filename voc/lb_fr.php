@@ -2,7 +2,7 @@
 //Array from BD
 $voc["arr_theme_circuit"] = array();
 $db->setFetchMode(ADODB_FETCH_ASSOC);
-$voc["arr_theme_circuit"] = $db->getAssoc('SELECT * FROM typecircuit');
+$voc["arr_theme_circuit"] = $db->getAll('SELECT * FROM typecircuit');
 
 $voc["arr_status_circuit"] = array();
 $db->setFetchMode(ADODB_FETCH_ASSOC);
@@ -10,30 +10,47 @@ $voc["arr_status_circuit"] = $db->getAssoc('SELECT * FROM statutcircuit');
 
 $voc["arr_pays"] = array();
 $db->setFetchMode(ADODB_FETCH_ASSOC);
-$voc["arr_pays"] = $db->getAssoc('SELECT * FROM pays');
+$voc["arr_pays"] = $db->getAll('SELECT * FROM pays');
 
 //Button
+$voc["btn_add_circuit"] = "Ajouter un circuit";
+$voc["btn_add_etape"] = "Ajouter un étape";
+$voc["btn_add_day"] = "Ajouter un jour";
 $voc["btn_add_theme"] = "Ajouter un thème";
+$voc["btn_add_status"] = "Ajouter un statut";
 $voc["btn_add_pays"] = "Ajouter un pays";
 $voc["btn_submit"] = "Enregistrer";
 $voc["btn_cancel"] = "Annuler";
+$voc["btn_detail"] = "Détaillé";
+$voc["btn_edit"] = "Modifier";
+$voc["btn_del"] = "Supprimer";
 
 //Label add/edit circuit
+$voc["lb_status"] = "Statut";
+$voc["lb_price"] = "Prix";
 $voc["lb_h1_add_circuit"] = "Ajouter un circuit";
-$voc["lb_titre_circuit"] = "Titre:";
-$voc["lb_date_circuit"] = "Date:";
-$voc["lb_description_circuit"] = "Description:";
-$voc["lb_theme_circuit"] = "Thème:";
+$voc["lb_title"] = "Titre";
+$voc["lb_date_depart"] = "Date de départ";
+$voc["lb_date_fin"] = "Date de fin";
+$voc["lb_description"] = "Description";
+$voc["lb_theme"] = "Thème";
 $voc["lb_add_new_theme"] = "Nouveau thème";
 $voc["lb_ville_depart"] = "Ville de départ";
 
+//List
+$voc["lb_h1_list_circuit"] = "Liste des circuits";
+$voc["lb_rabais"] = "Rabais";
+
 //Label add/edit etape
 $voc["lb_h1_add_etape"] = "Ajouter un étape";
-$voc["lb_titre_etape"] = "Titre:";
-$voc["lb_pays_etape"] = "Pays:";
-$voc["lb_date_debut_etape"] = "Date de début:";
-$voc["lb_description_etape"] = "Description:";
-$voc["lb_add_new_pays"] = "Nouveau pays:";
+$voc["lb_pays"] = "Pays";
+$voc["lb_ville"] = "Ville";
+$voc["lb_date_debut_etape"] = "Date de début";
+$voc["lb_description"] = "Description";
+$voc["lb_add_new_pays"] = "Nouveau pays";
+$voc["lb_number"] = "Numéro";
+
+
 
 
 ?>

@@ -1,6 +1,6 @@
 <?php
-$conn = mysqli_connect("localhost","root", "", "dbmobile");
-$records = mysqli_query($conn,"select * from tbl_mobile_travels" );
+$conn = mysqli_connect("localhost","root", "", "northernstartravel");
+$records = mysqli_query($conn,"SELECT * FROM circuit" );
 $data = array();
 while($row = mysqli_fetch_assoc($records))
 {
