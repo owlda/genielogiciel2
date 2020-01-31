@@ -16,7 +16,6 @@
             <select id="lang" style="margin: 5px;" onchange="ChangeCokies();">
                 <option value="" selected>FR</option>
                 <option value="en">EN</option>
-                <option value="es">ES</option>
             </select>
         </div>
     </div>
