@@ -33,7 +33,11 @@
         }
     }else {
         include __DIR__ . '/tmp/template/menu-ren.tpl ';
+
     }
+} else {
+    include __DIR__ . '/tmp/template/menu-ren.tpl ';
+}
 ?>
 
 <div class="container">
@@ -74,7 +78,6 @@
 </div>
 
 <?php include __DIR__ . '/tmp/template/footer.tpl ' ?>
-
 </body>
 <script src="ControllerVahe/requetsMembre.js"></script>
 <script src="ControllerVahe/ViewVahe.js"></script>
