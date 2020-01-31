@@ -19,7 +19,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">{$voc["lb_pays"]}: {$etape.NomPays}</div>
+            <div class="col">{$voc["lb_pays"]}:
+                {if !isset($etape.NomPays) || empty($etape.NomPays)}
+                    <div class="alert alert-danger" role="alert">NULL</div>
+                {/if}
+                {$etape.NomPays}
+            </div>
         </div>
         <div class="row">
             <div class="col-4">
@@ -28,6 +33,9 @@
                 </div>
             </div>
             <div class="col-8">
+                {if !isset($etape['description'|cat:$smarty.cookies.lang]) || empty($etape['description'|cat:$smarty.cookies.lang])}
+                    <div class="alert alert-danger" role="alert">NULL</div>
+                {/if}
                 <p>{$etape['description'|cat:$smarty.cookies.lang]}</p>
             </div>
         </div>
