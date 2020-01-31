@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2020-01-24 20:12:05
+/* Smarty version 3.1.33, created on 2020-01-31 19:45:09
   from 'C:\web\xampp\htdocs\genielogiciel2-master\tmp\template\list_circuit.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5e2b4185336db6_42560701',
+  'unifunc' => 'content_5e3475b52bffc5_56957795',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b22fd0c1783db292fa65555b790c15dcea08b365' => 
     array (
       0 => 'C:\\web\\xampp\\htdocs\\genielogiciel2-master\\tmp\\template\\list_circuit.tpl',
-      1 => 1579704760,
+      1 => 1580432159,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:modal_add_rabais.tpl' => 1,
   ),
 ),false)) {
-function content_5e2b4185336db6_42560701 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e3475b52bffc5_56957795 (Smarty_Internal_Template $_smarty_tpl) {
 ?><h1>Liste des circuits</h1>
 <input value="Ajouter un circuit" class="btn btn-success" type="button" onclick="location.href='add-circuit.php'">
 <div class="container-fluid" style="width: 95%;padding: 2%;">
