@@ -25,17 +25,13 @@
 </head>
 <body onload="initclientmenue()">
 <?php
-    session_start();
-    if(isset($_SESSION['sessionstatus'])){
-        if ($_SESSION['sessionstatus'] == true) {
-            echo('<div id="menu"></div>');
-            //include __DIR__ . '/tmp/template/menu_client.tpl ';
-        }
-    }else {
-        include __DIR__ . '/tmp/template/menu-ren.tpl ';
-
+session_start();
+if(isset($_SESSION['sessionstatus'])){
+    if ($_SESSION['sessionstatus'] == true) {
+        echo('<div id="menu"></div>');
+        //include __DIR__ . '/tmp/template/menu_client.tpl ';
     }
-} else {
+}else {
     include __DIR__ . '/tmp/template/menu-ren.tpl ';
 }
 ?>
@@ -78,9 +74,9 @@
 </div>
 
 <?php include __DIR__ . '/tmp/template/footer.tpl ' ?>
+
 </body>
 <script src="ControllerVahe/requetsMembre.js"></script>
 <script src="ControllerVahe/ViewVahe.js"></script>
 </html>
 <?php
-
