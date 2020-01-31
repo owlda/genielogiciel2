@@ -13,11 +13,9 @@
             <span class="navbar-text actions"> <a class="login" href="#">Admin</a>
 
             </span>
-            <select
-                    style="margin: 5px;">
-                <option value="12" selected="">FR</option>
-                <option value="13">EN</option>
-                <option value="14">ES</option>
+            <select id="lang" style="margin: 5px;" onchange="ChangeCokies();">
+                <option value="" selected>FR</option>
+                <option value="en">EN</option>
             </select>
         </div>
     </div>
