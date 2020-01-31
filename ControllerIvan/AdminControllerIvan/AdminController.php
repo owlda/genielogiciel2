@@ -54,7 +54,7 @@ switch($_POST['action']){
         BtnDelRabais($db);
         break;
     case 'btn_add_jour':
-        ModalAddJour($smarty, $db);
+        ModalAddJour($smarty, $voc, $db);
         break;
     case 'btn_add_restaurent':
         ModalAddRestaurent($smarty, $db);
@@ -147,13 +147,14 @@ function ModalAddHotel($smarty, $db){
     $reponse['arr_list_hotel'] = $arr_list_hotel;
 }
 //Modal Add un jour for Etape
-function ModalAddJour($smarty, $db){
+function ModalAddJour($smarty, $voc, $db){
     global $reponse;
     $reponse['action'] = "btn_add_jour";
     $smarty->assign('idPays', $_POST["idPays"]);
     $smarty->assign('idEtape', $_POST["idEtape"]);
     $smarty->assign('NomPays', GetNomPaysById($_POST["idPays"], $db));
     $smarty->assign('arr_list_ville', GetAllVilleFromPays($_POST["idPays"], $db));
+    $smarty->assign('voc', $voc);
 
     //Transfer data to *.tpl
     $smarty->fetch("modal_add_jour.tpl");
