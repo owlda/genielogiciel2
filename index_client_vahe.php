@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -31,7 +30,6 @@
         if ($_SESSION['sessionstatus'] == true) {
             echo('<div id="menu"></div>');
             //include __DIR__ . '/tmp/template/menu_client.tpl ';
-
         }
     }else {
         include __DIR__ . '/tmp/template/menu-ren.tpl ';
@@ -42,7 +40,15 @@
     <?php include __DIR__ . '/tmp/template/carousel.tpl ' ?>
 </div>
 <div class="container">
-    <?php include __DIR__ . '/tmp/template/cardssliderDenis.tpl ' ?>
+    <div class="card-group"  id="card1" style="padding:20px; margin-bottom: 20px;">
+    </div>
+</div>
+
+// here we keep a modal in which we will show the data for the chosen circuit to show all the details, we will use bootstrap
+// colapsable to show the details
+
+<div class="container" id="circuitmodal">
+
 </div>
 
 <div class="container" id="modals">
@@ -69,10 +75,9 @@
 
 <?php include __DIR__ . '/tmp/template/footer.tpl ' ?>
 
-
-
-
 </body>
+<script src="ControllerVahe/requetsMembre.js"></script>
+<script src="ControllerVahe/ViewVahe.js"></script>
 </html>
 <?php
 
