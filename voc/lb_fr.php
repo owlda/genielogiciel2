@@ -44,6 +44,7 @@ $voc["lb_rabais"] = "Rabais";
 //Label add/edit etape
 $voc["lb_h1_add_etape"] = "Ajouter un étape";
 $voc["lb_pays"] = "Pays";
+$voc["lb_ville"] = "Ville";
 $voc["lb_date_debut_etape"] = "Date de début";
 $voc["lb_description"] = "Description";
 $voc["lb_add_new_pays"] = "Nouveau pays";
