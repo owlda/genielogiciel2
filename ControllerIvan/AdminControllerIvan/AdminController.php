@@ -478,6 +478,7 @@ function EnregistrerNewRestaurent($smarty, $db){
     $reponse['list_restaurent'] = GetAllRestaurentFromVille($_POST['idVille'], $db);
     $smarty->assign('arr_list_restaurent', $reponse['list_restaurent']);
     $reponse['arr_list_restaurent'] = $smarty->fetch("select_restaurent.tpl");
+    $reponse['site_restaurent'] = $reponse['list_restaurent'][0]['site'];
 }
 //Enregistrer restaurent for jour
 function EnregistrerRestaurentJour($smarty,$db){
@@ -700,7 +701,7 @@ function GetAllVilleFromPays($idPays, $db){
 
 function GetAllRestaurentFromVille($idVille, $db){
     $db->setFetchMode(ADODB_FETCH_ASSOC);
-    $SQL = 'SELECT * FROM restaurent WHERE idVille = '.$idVille  . ' ORDER BY  titre';
+    $SQL = 'SELECT * FROM restaurent WHERE idVille = '.$idVille  . ' ORDER BY ' . 'titre'.$_COOKIE['lang'];
     return $db->getAll($SQL);
 }
 

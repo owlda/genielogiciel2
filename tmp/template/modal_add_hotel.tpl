@@ -33,7 +33,15 @@
                     </div>
                     <div class="form-group">
                         <label style="display: inline;">Site:</label>
-                        <a href="{$arr_list_hotel[0].site}" id="link_site_hotel" target="_blank"><span id="text_site_hotel">{$arr_list_hotel[0].site}</span></a>
+                        {if isset($arr_list_hotel[0].site) || !empty($arr_list_hotel[0].site)}
+                            <a href="{$arr_list_hotel[0].site}" id="link_site_hotel" target="_blank">
+                                <span id="text_site_hotel">{$arr_list_hotel[0].site}</span>
+                            </a>
+                        {else}
+                            <a href="" id="link_site_hotel" target="_blank">
+                                <span id="text_site_hotel"></span>
+                            </a>
+                        {/if}
                     </div>
                     <div class="form-group animated zoomInRight" id="ViewNewHotel" style="width: 50%;margin-left: 30%;display: none;">
                         <label>Nouveau hotel:</label>
