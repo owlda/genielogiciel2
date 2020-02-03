@@ -7,7 +7,7 @@ $db->port = 3306;
 $server = "localhost";
 $user = "root";
 $password = "";
-$database = "northernstartravelv";
+$database = "northernstartravel";
 $db->connect($server, $user, $password, $database);
 
 //TODO Initialization Smarty
