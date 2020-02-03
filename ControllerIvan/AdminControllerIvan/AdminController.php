@@ -633,6 +633,7 @@ function GetCircuitById($idCircuit, $db){
     $SQL = 'SELECT * FROM circuit WHERE idCircuit = '.$idCircuit;
     $rs = $db->getAll($SQL);
 
+
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $SQL1 = 'SELECT * FROM typecircuit WHERE id ='. $rs[0]['idTheme'];
     $supres = $db->getAll($SQL1);
@@ -640,8 +641,6 @@ function GetCircuitById($idCircuit, $db){
     $SQL2 = 'SELECT * FROM statutcircuit WHERE idStatutCircuit ='. $rs[0]['idStatutCircuit'];
     $supres = $db->getAll($SQL2);
     $rs[0]['NomStatutCircuit'] = $supres[0]['statut'];
-
-
     return $rs;
 }
 //Convert datetime DB to date input form
