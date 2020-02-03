@@ -25,11 +25,7 @@
                     <div class="form-group">
                         <label style="display: block">{$voc["lb_ville"]}</label>
                         <select class="form-control"  id="SelectVille" name="SelectVille" style="width:50%;display: inline;">
-                            {foreach $arr_list_ville as $ville}
-                                <option value="{$ville.idVille}">
-                                    {$ville.nom}
-                                </option>
-                            {/foreach}
+                            {include file='select_villes.tpl' arr_list_ville=$arr_list_ville}
                         </select>
                         <input type="button" value="Ajouter une ville" class="btn btn-primary" style="display: inline" onclick="BtnViewNewVille()">
                     </div>
