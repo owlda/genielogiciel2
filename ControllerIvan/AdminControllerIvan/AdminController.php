@@ -1,10 +1,10 @@
 <?php
 //Config Ivan
 require_once __DIR__.'/../../config_ivan/conf-ivan.php';
-
+$voc = null;
 switch($_COOKIE['lang']){
     case "es":
-        require __DIR__.'/../../voc/lb_es.php';
+        //require __DIR__.'/../../voc/lb_es.php';
         break;
     case "en" :
         require __DIR__.'/../../voc/lb_en.php';
@@ -15,6 +15,7 @@ switch($_COOKIE['lang']){
 }
 
 $reponse = array();
+
 
 switch($_POST['action']){
     case "addcircuit" :
@@ -87,10 +88,10 @@ switch($_POST['action']){
         EnregistrerNewHotel($smarty,$db);
         break;
     case 'detail_jour_change':
-        DetailJourChange($smarty,$db);
+        DetailJourChange($smarty, $voc, $db);
         break;
     case 'table_circuit':
-        GetTableFullCircuit($smarty,$db,$voc);
+        GetTableFullCircuit($smarty,$db, $voc);
         break;
 }
 
@@ -740,7 +741,7 @@ function GetAllActivityFromJour($idJour, $db){
 function GetAllHotelFromJour($idJour, $db){
     $db->setFetchMode(ADODB_FETCH_ASSOC);
 
-    $SQL = 'SELECT h.*, v.nom as \'VilleHotel\', e.idEtape, j.idJour FROM hotel as h
+    $SQL = 'SELECT h.*, v.nom'.$_COOKIE['lang'].' as \'VilleHotel\', e.idEtape, j.idJour FROM hotel as h
                 INNER JOIN hotelsjour hj on h.idHotel = hj.idHotel
                 INNER JOIN jour j on hj.idJour = j.idJour
                 INNER JOIN villes v on h.idVille = v.idVille

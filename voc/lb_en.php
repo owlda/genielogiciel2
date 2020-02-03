@@ -47,5 +47,7 @@ $voc['lb_ville'] = "Town";
 $voc['lb_date_debut_etape'] = "Date de début";
 $voc['lb_add_new_pays'] = "New country";
 $voc['lb_number'] = "Number";
+$voc['lb_day'] = "Day";
+
 
 ?>
