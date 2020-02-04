@@ -11,13 +11,17 @@
             {/if}
             {$etape['titre'|cat:$smarty.cookies.lang]}
         </h2>
-        <div class="btn-toolbar" style="margin-bottom: 10px;">
-            <div class="btn-group" role="group">
-                <input value="{$voc["btn_edit"]}" class="btn btn-warning" type="button">
-                <input value="{$voc["btn_del"]}" class="btn btn-danger" type="button">
-                <input value="{$voc["btn_add_day"]}" class="btn btn-success" type="button" onclick="LoadModalAddJour({$etape.idPays}, {$etape.idEtape})">
+
+            <div class="btn-toolbar" style="margin-bottom: 10px;">
+                <div class="btn-group" role="group">
+                    <input value="{$voc["btn_edit"]}" class="btn btn-warning" type="button">
+                    <input value="{$voc["btn_del"]}" class="btn btn-danger" type="button">
+                    {if isset($etape.NomPays) || !empty($etape.NomPays)}
+                        <input value="{$voc["btn_add_day"]}" class="btn btn-success" type="button" onclick="LoadModalAddJour({$etape.idPays}, {$etape.idEtape})">
+                    {/if}
+                </div>
             </div>
-        </div>
+
         <div class="row">
             <div class="col">{$voc["lb_pays"]}:
                 {if !isset($etape.NomPays) || empty($etape.NomPays)}

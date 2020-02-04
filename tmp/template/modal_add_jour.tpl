@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Ajouter un jour</h5>
+                <h5 class="modal-title">{$voc["btn_add_day"]}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -11,25 +11,21 @@
             <div class="modal-body">
                 <form id="FormAddJour">
                     <div class="form-group" style="display: inline;">
-                        <label style="display: inline;">Numero de jour:</label>
+                        <label style="display: inline;">{$voc["lb_number"]}</label>
                         <input type="number" value="0" class="form-control" id="num_jour" name="num_jour" style="width: 150px;">
                     </div>
                     <br>
                     <div class="form-group" style="display: inline;">
-                        <label>Pays:</label>
+                        <label>{$voc["lb_pays"]}</label>
                         <select readonly="true" class="form-control"  id="SelectPays" name="SelectPays" style="width:30%;">
                             <option value="{$idPays}">{$NomPays}</option>
                         </select>
                     </div>
                     <br>
                     <div class="form-group">
-                        <label style="display: block">Ville:</label>
+                        <label style="display: block">{$voc["lb_ville"]}</label>
                         <select class="form-control"  id="SelectVille" name="SelectVille" style="width:50%;display: inline;">
-                            {foreach $arr_list_ville as $ville}
-                                <option value="{$ville.idVille}">
-                                    {$ville.nom}
-                                </option>
-                            {/foreach}
+                            {include file='select_villes.tpl' arr_list_ville=$arr_list_ville}
                         </select>
                         <input type="button" value="Ajouter une ville" class="btn btn-primary" style="display: inline" onclick="BtnViewNewVille()">
                     </div>
