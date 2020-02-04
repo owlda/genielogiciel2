@@ -55,6 +55,14 @@ function showcircuit($smarty, $db)
         array_push($arrayPhoto, $str);
     }
 
+    // Here we need to get all the etaps for this circuit
+
+    $requet = "SELECT * FROM etape WHERE idCircuit = ".$idCircuit." ORDER BY numeroEtap ASC";
+    $arrayetap = $db->getAll($requet);
+
+
+
+    $smarty->assign('arrayetap', $arrayetap);
     $smarty->assign('arrayPhoto', $arrayPhoto);
     $smarty->assign('titre', $titre);
 

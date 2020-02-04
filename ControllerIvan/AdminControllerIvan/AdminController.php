@@ -670,7 +670,7 @@ function GetCircuitById($idCircuit, $db){
         $rs[$key]['NomTheme'] = $supres[0]['theme'.$_COOKIE['lang']];
         $SQL2 = 'SELECT * FROM statutcircuit WHERE idStatutCircuit ='. $rs[$key]['idStatutCircuit'];
         $supres = $db->getAll($SQL2);
-        $rs[$key]['NomStatutCircuit'] = $supres[0]['status'];
+        $rs[$key]['NomStatutCircuit'] = $supres[0]['statut'];
     }
 
     return $rs;

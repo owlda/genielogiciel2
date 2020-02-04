@@ -1,6 +1,4 @@
 
-
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -32,48 +30,46 @@
                 <a href="#demo" data-toggle="collapse" style="text-align: center"><h1>{$titre}</h1></a>
 
                 <div id="demo" class="collapse">
-                    <div id="accordion">
 
-                        <div class="card">
-                            <div class="card-header">
-                                <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                                    Collapsible Group Item #1
-                                </a>
-                            </div>
-                            <div id="collapseOne" class="collapse" data-parent="#accordion">
-                                <div class="card-body">
-                                    Lorem ipsum..
-                                </div>
+                    {foreach $arrayetap as $etap}
+                        <div>
+                            <a href="#etap{$etap.idEtape}" data-toggle="collapse">Étape - {$etap.numeroEtap}</a>
+
+                            <div id="etap{$etap.idEtape}" class="collapse">
+                                <p>{$etap.description}</p>
+                                {*{foreach $arrayjour as $jour}
+                                    <div style="margin-left: 10px;">
+                                        <a href="{$jour.idJour}" data-toggle="collapse">{$jour.numeroJour}</a>
+
+                                        <div id="{$jour.idJour}" class="collapse">
+                                            <h3>{$jour.description}</h3>
+                                            <div style="margin-left: 10px;">
+                                                <a href="{$jour.idHotel}" data-toggle="collapse">Hotel</a>
+
+                                                <div id="{$jour.idHotel}" class="collapse">
+                                                    <a href="http://{$jour.hotelSite}">{$jour.hotelTitre}</a>
+                                                </div>
+                                            </div>
+                                            <div style="margin-left: 10px;">
+                                                <a href="{$jour.idActivity}" data-toggle="collapse">Activity</a>
+
+                                                <div id="{$jour.idActivity}" class="collapse" >
+                                                    <h3>{$jour.descriptionActivity}</h3>
+                                                </div>
+                                            </div>
+                                            <div  style="margin-left: 10px;">
+                                                <a href="{$jour.idRestaurent}" data-toggle="collapse">Restaurent</a>
+
+                                                <div id="{$jour.idRestaurent}" class="collapse">
+                                                    <a href="http://{$jour.resto}">{$jour.restoTitre}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {/foreach}*}
                             </div>
                         </div>
-
-                        <div class="card">
-                            <div class="card-header">
-                                <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                                    Collapsible Group Item #2
-                                </a>
-                            </div>
-                            <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                                <div class="card-body">
-                                    Lorem ipsum..
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header">
-                                <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-                                    Collapsible Group Item #3
-                                </a>
-                            </div>
-                            <div id="collapseThree" class="collapse" data-parent="#accordion">
-                                <div class="card-body">
-                                    Lorem ipsum..
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                    {/foreach}
                 </div>
 
 
