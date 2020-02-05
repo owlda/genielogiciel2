@@ -19,6 +19,7 @@ $voc['btn_add_day'] = "Add day";
 $voc['btn_add_theme'] = "Add theme";
 $voc['btn_add_status'] = "Add status";
 $voc['btn_add_pays'] = "Add country";
+$voc['btn_add_ville'] = "Add Town";
 $voc['btn_submit'] = "Add";
 $voc['btn_cancel'] = "Cancel";
 $voc['btn_detail'] = "Detail";

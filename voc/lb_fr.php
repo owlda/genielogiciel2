@@ -19,6 +19,7 @@ $voc["btn_add_day"] = "Ajouter un jour";
 $voc["btn_add_theme"] = "Ajouter un thème";
 $voc["btn_add_status"] = "Ajouter un statut";
 $voc["btn_add_pays"] = "Ajouter un pays";
+$voc['btn_add_ville'] = "Ajouter une ville";
 $voc["btn_submit"] = "Enregistrer";
 $voc["btn_cancel"] = "Annuler";
 $voc["btn_detail"] = "Détaillé";
