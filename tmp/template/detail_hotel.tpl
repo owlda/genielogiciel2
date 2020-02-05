@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col">
-        <input class="btn btn-success" type="button" value="Ajouter un hotel" onclick="LoadModalAddHotel({$idPaysEtape}, {$idVilleJour}, {$idJour})">
-        <h3>Hotel(s):</h3>
+        <input class="btn btn-success" type="button" value="{$voc['btn_add_hotel']}" onclick="LoadModalAddHotel({$idPaysEtape}, {$idVilleJour}, {$idJour})">
+        <h3>{$voc['lb_hotel']}</h3>
     </div>
     <div class="col"></div>
 </div>
@@ -13,8 +13,8 @@
                 <h4>{$hotel.titre}</h4>
                 <div class="btn-toolbar">
                     <div class="btn-group" role="group">
-                        <button class="btn btn-warning" type="button">Modifier</button>
-                        <button class="btn btn-danger" type="button">Supprimer</button>
+                        <input value="{$voc['btn_edit']}" class="btn btn-warning" type="button">
+                        <input value="{$voc['btn_del']}" class="btn btn-danger" type="button">
                     </div>
                 </div>
             </div>

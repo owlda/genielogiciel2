@@ -128,10 +128,11 @@ function BtnFullCircuit(){
     });
 }
 //Detail jour by idJour
-function ShowDetailJourChange(idJourHtmlSelectChange, idJour, idVilleJour, NameJour, idPaysEtape){
+function ShowDetailJourChange(idJourHtmlSelectChange, idJour, idVilleJour, NameJour, idPaysEtape, idEtape){
     var FormDetailJour = new FormData();
     FormDetailJour.append('action','detail_jour_change');
     FormDetailJour.append('idJour',idJour);
+    FormDetailJour.append('idEtape',idEtape);
     FormDetailJour.append('idJourSelectChange',idJourHtmlSelectChange);
     FormDetailJour.append('idVilleJour',idVilleJour);
     FormDetailJour.append('NameJour',NameJour);
@@ -674,6 +675,33 @@ function ListerCircuit(){
             console.log(xhr);
         }
     });
+}
+
+//Modifier un jour
+function BtnEditJour(idJour, idEtape){
+    var FormJourAdd = new FormData(FormAddJour);
+    FormJourAdd.append('action','btn_register_jour');
+    FormJourAdd.append('idEtape',idEtape);
+    var controller = GetUrlController();
+
+    $.ajax({
+        type : 'POST',
+        url : controller,
+        data : FormJourAdd,
+        dataType : 'json',
+        async : false,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function (reponse){
+            Vue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+        }
+    });
+
 }
 
 

@@ -4,7 +4,7 @@
             <div class="col">
                 <div class="btn-group dropup">
                     <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                        Changer un jour ({$etape.count_jour})
+                        {$voc['btn_change_day']} ({$etape.count_jour})
                     </button>
                     <div class="dropdown-menu" id="list_jour_etape_{$etape.idEtape}">
                         {include file="list_jour.tpl" count=$etape.count_jour etape_arr_jour=$etape.arr_jour voc=$voc}
@@ -15,6 +15,7 @@
         <section id="detail_jour_{$etape.arr_jour[$etape.count_jour-1].idJour}">
             {include file="detail_jour.tpl"
             voc = $voc
+            idEtape = $etape.idEtape
             prixJour = $etape.arr_jour[$etape.count_jour-1].prix
             idPaysEtape = $etape.idPays
             NomPaysEtape=$etape.NomPays
