@@ -28,6 +28,7 @@
                     </div>
                 </div>
                 <a href="#demo" data-toggle="collapse" style="text-align: center"><h1>{$titre}</h1></a>
+                <p>{$description}</p>
 
                 <div id="demo" class="collapse">
 
@@ -37,7 +38,7 @@
 
                             <div id="etap{$etap.idEtape}" class="collapse">
                                 <p>{$etap.description}</p>
-                                {*{foreach $arrayjour as $jour}
+                                {foreach $etap.jour as $jour}
                                     <div style="margin-left: 10px;">
                                         <a href="{$jour.idJour}" data-toggle="collapse">{$jour.numeroJour}</a>
 
@@ -66,7 +67,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                {/foreach}*}
+                                {/foreach}
                             </div>
                         </div>
                     {/foreach}

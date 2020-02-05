@@ -60,11 +60,19 @@ function showcircuit($smarty, $db)
     $requet = "SELECT * FROM etape WHERE idCircuit = ".$idCircuit." ORDER BY numeroEtap ASC";
     $arrayetap = $db->getAll($requet);
 
+    foreach($arrayetap as $key=>$value)
+    {
+        $etaptemp = $arrayetap[$key]['idEtape'];
+        $requet = "SELECT * FROM  jour WHERE idEtape=".$etaptemp;
+        $arrayjour = $db->getAll($requet);
+        $arrayetap[$key]['jour'] = $arrayjour;
+    }
 
 
     $smarty->assign('arrayetap', $arrayetap);
     $smarty->assign('arrayPhoto', $arrayPhoto);
     $smarty->assign('titre', $titre);
+    $smarty->assign('description', $description);
 
     $reponse['circuit'] = $smarty->fetch('circuit_details.tpl');
 }

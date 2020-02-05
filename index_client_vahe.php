@@ -35,9 +35,6 @@
         include __DIR__ . '/tmp/template/menu-ren.tpl ';
 
     }
-} else {
-    include __DIR__ . '/tmp/template/menu-ren.tpl ';
-}
 ?>
 
 <div class="container" id="carousel">
