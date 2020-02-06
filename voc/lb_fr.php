@@ -19,6 +19,7 @@ $voc["btn_add_day"] = "Ajouter un jour";
 $voc["btn_add_theme"] = "Ajouter un thème";
 $voc["btn_add_status"] = "Ajouter un statut";
 $voc["btn_add_pays"] = "Ajouter un pays";
+$voc['btn_add_ville'] = "Ajouter une ville";
 $voc["btn_submit"] = "Enregistrer";
 $voc["btn_cancel"] = "Annuler";
 $voc["btn_detail"] = "Détaillé";
@@ -35,6 +36,7 @@ $voc["lb_price"] = "Prix";
 $voc["lb_h1_add_circuit"] = "Ajouter un circuit";
 $voc["lb_title"] = "Titre";
 $voc["lb_date_depart"] = "Date de départ";
+$voc["lb_date_debut"] = "Date de début";
 $voc["lb_date_fin"] = "Date de fin";
 $voc["lb_description"] = "Description";
 $voc["lb_theme"] = "Thème";
@@ -63,5 +65,9 @@ $voc["lb_h1_add_restaurant"] = "Ajouter un restaurant";
 $voc['lb_site'] = "Site";
 $voc['lb_add_new_restaurant'] = "Nouveau restaurent";
 
+$voc["lb_h1_add_rabais"] = "Ajouter un rabais";
+$voc["lb_place"] = "Place";
+
+$voc["lb_h1_add_activity"] = "Ajouter une activité";
 
 ?>
