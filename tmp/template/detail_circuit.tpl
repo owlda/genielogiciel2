@@ -5,13 +5,15 @@
     {/if}
     {$titre}
 </h1>
-
-<div class="btn-toolbar">
-    <div class="btn-group" role="group">
-        <input value="{$voc["btn_edit"]}" class="btn btn-warning" type="button" onclick="location.href='edit-circuit.php?id={$idCircuit}'">
-        <input value="{$voc["btn_del"]}" class="btn btn-danger" type="button" id="btn_del_circuit" onclick="ShowModalDeleteCircuit();">
+{if (isset($titre) || !empty($titre)) && (isset($NomTheme) || !empty($NomTheme))}
+    <div class="btn-toolbar">
+        <div class="btn-group" role="group">
+            <input value="{$voc["btn_edit"]}" class="btn btn-warning" type="button" onclick="location.href='edit-circuit.php?id={$idCircuit}'">
+            <input value="{$voc["btn_del"]}" class="btn btn-danger" type="button" id="btn_del_circuit" onclick="ShowModalDeleteCircuit();">
+        </div>
     </div>
-</div>
+{/if}
+
 <div>
     <span class="font-weight-bold">{$voc["lb_date_depart"]}: </span>
     <span class="small">{$dateDepart}</span> &nbsp; &nbsp;

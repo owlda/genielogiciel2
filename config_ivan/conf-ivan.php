@@ -10,6 +10,7 @@ $password = "";
 $database = "northernstartravelv2";
 $db->connect($server, $user, $password, $database);
 
+
 //TODO Initialization Smarty
 require __DIR__.'/../libs/Smarty/libs/Smarty.class.php';
 $smarty = new Smarty();

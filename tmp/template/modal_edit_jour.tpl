@@ -27,15 +27,15 @@
                         <select class="form-control"  id="SelectVille" name="SelectVille" style="width:50%;display: inline;">
                             {include file='select_villes.tpl' arr_list_ville=$arr_list_ville}
                         </select>
-                        <input type="button" value="{$voc['btn_add_ville']}" class="btn btn-primary" style="display: inline" onclick="BtnViewNewVille()">
+                        <input type="button" value="Ajouter une ville" class="btn btn-primary" style="display: inline" onclick="BtnViewNewVille()">
                     </div>
 
                     <div class="form-group animated zoomInRight" id="ViewNewVille" style="width: 50%;margin-left: 10%;display: none;">
                         <label>Nouvelle ville:</label>
                         <input type="text" class="form-control" id="NewVille">
                         <br>
-                        <input type="button" value="{$voc['btn_submit']}" id="btn_add_theme" class="btn btn-success" onclick="BtnAddVille({$idPays})">
-                        <input type="button" value="{$voc['btn_cancel']}" id="btn_not_theme" class="btn btn-secondary" onclick="BtnNotVille()">
+                        <input type="button" value="Enregistrer" id="btn_add_theme" class="btn btn-success" onclick="BtnAddVille({$idPays})">
+                        <input type="button" value="Annuler" id="btn_not_theme" class="btn btn-secondary" onclick="BtnNotVille()">
                     </div>
 
                     <div class="form-group">
@@ -56,8 +56,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" id="register_jour" class="btn btn-success" onclick="BtnAddJour({$idEtape});">{$voc['btn_submit']}</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">{$voc['btn_cancel']}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <button type="button" id="register_jour" class="btn btn-success" onclick="BtnAddJour({$idEtape});">Enregistrer</button>
             </div>
         </div>
     </div>
