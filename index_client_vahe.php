@@ -29,12 +29,12 @@
     if(isset($_SESSION['sessionstatus'])){
         if ($_SESSION['sessionstatus'] == true) {
             echo('<div id="menu"></div>');
-            //include __DIR__ . '/tmp/template/menu_client.tpl ';
+            include __DIR__ . '/tmp/template/menu_client.tpl ';
         }
-    }else {
-        include __DIR__ . '/tmp/template/menu-ren.tpl ';
-
     }
+
+    else {include __DIR__ . '/tmp/template/menu-ren.tpl ';}
+
 ?>
 
 <div class="container" id="carousel">

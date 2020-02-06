@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost","root", "", "northernstartravel");
+$conn = mysqli_connect("localhost","root", "", "northernstartravelv2");
 $records = mysqli_query($conn,"SELECT * FROM circuit" );
 $data = array();
 while($row = mysqli_fetch_assoc($records))
