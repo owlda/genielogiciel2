@@ -66,4 +66,6 @@ $voc['lb_add_new_restaurant'] = "New restaurant";
 $voc["lb_h1_add_rabais"] = "Add discount";
 $voc["lb_place"] = "Place";
 
+$voc["lb_h1_add_activity"] = "Add activity";
+
 ?>
