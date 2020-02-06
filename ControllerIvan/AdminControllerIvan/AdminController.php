@@ -76,7 +76,7 @@ switch($_POST['action']){
         EnregistrerNewRestaurent($smarty,$db);
         break;
     case 'btn_register_restaurent_jour':
-        EnregistrerRestaurentJour($smarty,$db);
+        EnregistrerRestaurentJour($smarty, $voc, $db);
         break;
     case 'btn_register_hotel_jour':
         EnregistrerHotelJour($smarty,$db);
@@ -490,7 +490,7 @@ function EnregistrerNewRestaurent($smarty, $db){
     $reponse['site_restaurent'] = $reponse['list_restaurent'][0]['site'];
 }
 //Enregistrer restaurent for jour
-function EnregistrerRestaurentJour($smarty,$db){
+function EnregistrerRestaurentJour($smarty, $voc, $db){
     global $reponse;
     $reponse['action'] = "register_restaurent_jour";
     $reponse['idJour'] = $_POST['input_id_jour'];
@@ -508,6 +508,7 @@ function EnregistrerRestaurentJour($smarty,$db){
     $smarty->assign('idJour', $_POST['input_id_jour']);
     $smarty->assign('idVilleJour', $_POST['input_id_ville_jour']);
     $smarty->assign('arr_restaurent', $list_restaurent);
+    $smarty->assign('voc', $voc);
 
     $reponse['detail_restaurant'] = $smarty->fetch("detail_restaurant.tpl");
 }
