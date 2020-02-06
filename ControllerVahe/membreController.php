@@ -24,17 +24,64 @@ switch ($action){
         deconnect();
         break;
     case 'showcircuit':
-        $id = $_POST['id'];
-        showcircuit($smarty, $db, $id);
+        showcircuit($smarty, $db);
+        break;
+    case 'addpanier':
+        addpanier($smarty, $db);
+        break;
     default: break;
 }
 
 // Les actions
 
 // cette fonction fait requet à la base de données pour recevoir les données de circuit avec id pour montrer au client
-function showcircuit($smarty, $db, $id)
+function showcircuit($smarty, $db)
 {
+    global $reponse;
+    $idCircuit = $_POST['id'];
+    $reponse['action'] = 'showcircuit';
+    $requet = "SELECT * FROM circuit WHERE idCircuit = ".$idCircuit;
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $circuit = $db->getAll($requet);
+    $titre = $circuit[0]['titre'];
+    $description = $circuit[0]['description'];
+    $prix = $circuit[0]['prix'];
 
+    // we find ids of the photos of the circuits after we find paths of the photo and put in the array
+    $arrayPhoto = array();
+    $requet = "SELECT * FROM photocircuit WHERE idCircuit=".$idCircuit." limit 3"; // to find photo's ids of the circuit from tablle photocircuit
+    $idPhotosCircuit = $db->getAll($requet);
+    foreach($idPhotosCircuit as $key=>$value)
+    {
+        $requet = "SELECT * FROM photo WHERE idPhoto=".$idPhotosCircuit[$key]['idPhoto']; // to find photo path by photo id from table photo
+        $path = $db->getAll($requet);
+        $str = ltrim($path[0]['imagePath'], '/');
+        array_push($arrayPhoto, $str);
+    }
+
+    // Here we need to get all the etaps for this circuit
+
+    $requet = "SELECT * FROM etape WHERE idCircuit = ".$idCircuit." ORDER BY numeroEtap ASC";
+    $arrayetap = $db->getAll($requet);
+
+    foreach($arrayetap as $key=>$value)
+    {
+        $etaptemp = $arrayetap[$key]['idEtape'];
+        $requet = "select jour.idJour, jour.description as jdesc, jour.numeroJour, hotel.idHotel as hid, hotel.titre as htitre, hotel.site as hsite, activity.titre as atitre, 
+                activity.description as adesc, activity.idActivity as aid, restaurent.idRestaurent as rid, restaurent.titre as rtitre, restaurent.site as rsite  from jour left join hotelsjour on jour.idJour = hotelsjour.idJour 
+                left join hotel on hotelsjour.idHotel = hotel.idHotel left join activity on jour.idJour = activity.idJour left join restaurentsjour on 
+                jour.idJour=restaurentsjour.idJour left join restaurent on restaurent.idRestaurent = restaurentsjour.idRestaurent where jour.idEtape =".$etaptemp;
+        $arrayjour = $db->getAll($requet);
+        $arrayetap[$key]['jour'] = $arrayjour;
+    }
+
+
+    $smarty->assign('arrayetap', $arrayetap);
+    $smarty->assign('arrayPhoto', $arrayPhoto);
+    $smarty->assign('titre', $titre);
+    $smarty->assign('description', $description);
+
+    $reponse['circuit'] = $smarty->fetch('circuit_details.tpl');
 }
 
 // Enregistre les données de la formulaire créer un compte
@@ -212,6 +259,29 @@ function deconnect()
     global $reponse;
     $reponse['action'] = 'deconnect';
     session_destroy();
+
+}
+
+// add an item to panier
+function addpanier($smarty, $db)
+{
+    global $reponse;
+    $reponse['action'] = 'addpanier';
+    $idMembre = $_SESSION['id'];
+    $idCircuit = $_POST['idCircuit'];
+
+    $requete = "SELECT * FROM circuit WHERE idCircuit = ".$idCircuit;
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $arraycircuit = $db->getAll($requete);
+    $montant = $arraycircuit[0]['prix'];
+
+    //$requet = "INSERT INTO panier ($idMembre, idCircuit, montant) VALUES (?,?,?)";
+    $table = 'panier';
+    $record = array();
+    $record['idMembre'] = $idMembre;
+    $record['idCircuit'] = $idCircuit;
+    $record['prix'] = $montant;
+    $db->autoExecute($table, $record, 'INSERT');
 
 }
 

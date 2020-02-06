@@ -7,8 +7,9 @@ $db->port = 3306;
 $server = "localhost";
 $user = "root";
 $password = "";
-$database = "northernstartravel";
-$db->Connect($server, $user, $password, $database);
+$database = "northernstartravelv2";
+$db->connect($server, $user, $password, $database);
+
 
 //TODO Initialization Smarty
 require __DIR__.'/../libs/Smarty/libs/Smarty.class.php';

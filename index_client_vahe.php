@@ -29,18 +29,15 @@
     if(isset($_SESSION['sessionstatus'])){
         if ($_SESSION['sessionstatus'] == true) {
             echo('<div id="menu"></div>');
-            //include __DIR__ . '/tmp/template/menu_client.tpl ';
+            include __DIR__ . '/tmp/template/menu_client.tpl ';
         }
-    }else {
-        include __DIR__ . '/tmp/template/menu-ren.tpl ';
-
     }
-} else {
-    include __DIR__ . '/tmp/template/menu-ren.tpl ';
-}
+
+    else {include __DIR__ . '/tmp/template/menu-ren.tpl ';}
+
 ?>
 
-<div class="container">
+<div class="container" id="carousel">
     <?php include __DIR__ . '/tmp/template/carousel.tpl ' ?>
 </div>
 <div class="container">
@@ -48,10 +45,14 @@
     </div>
 </div>
 
-// here we keep a modal in which we will show the data for the chosen circuit to show all the details, we will use bootstrap
-// colapsable to show the details
+<div class="container" id="circuitx">
 
-<div class="container" id="circuitmodal">
+</div>
+
+<!--here we keep a modal in which we will show the data for the chosen circuit to show all the details, we will use bootstrap
+colapsable to show the details-->
+
+<div class="modal fade" id="circuit_detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
 </div>
 
