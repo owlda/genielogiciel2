@@ -1,12 +1,14 @@
 <div class="row">
     <div class="col">
         <h2 style="padding: 5px;"><span style="font-size: medium">(ID={$idJour}) </span>{$NameJour}</h2>
-        <div class="btn-toolbar">
-            <div class="btn-group" role="group">
-                <button class="btn btn-warning" type="button">{$voc['btn_edit']}</button>
-                <button class="btn btn-danger" type="button">{$voc['btn_del']}</button>
+        {if (isset($NomPaysEtape) || !empty($NomPaysEtape)) && (isset($NomVilleJour) || !empty($NomVilleJour))}
+            <div class="btn-toolbar">
+                <div class="btn-group" role="group">
+                    <input value="{$voc['btn_edit']}" class="btn btn-warning" type="button" onclick="BtnEditJour({$idJour}, {$idEtape})">
+                    <input value="{$voc['btn_del']}" class="btn btn-danger" type="button">
+                </div>
             </div>
-        </div>
+        {/if}
     </div>
     <div class="col"></div>
     <div class="col" style="text-align: right;margin-right: 5px;">
@@ -37,6 +39,7 @@
 {if isset($NomPaysEtape) || !empty($NomPaysEtape) || isset($NomVilleJour) || !empty($NomVilleJour)}
     <section id="detail_restaurant_jour_{$idJour}">
         {include file="detail_restaurant.tpl"
+        voc = $voc
         idPaysEtape=$idPaysEtape
         idVilleJour=$idVilleJour
         idJour=$idJour
@@ -46,6 +49,7 @@
     <hr>
     <section id="detail_activity_jour_{$idJour}">
         {include file="detail_activity.tpl"
+        voc = $voc
         idPaysEtape=$idPaysEtape
         idVilleJour=$idVilleJour
         idJour=$idJour
@@ -55,6 +59,7 @@
     <hr>
     <section id="detail_hotel_jour_{$idJour}">
         {include file="detail_hotel.tpl"
+        voc = $voc
         idPaysEtape=$idPaysEtape
         idVilleJour=$idVilleJour
         idJour=$idJour

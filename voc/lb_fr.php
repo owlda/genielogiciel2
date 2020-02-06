@@ -24,6 +24,10 @@ $voc["btn_cancel"] = "Annuler";
 $voc["btn_detail"] = "Détaillé";
 $voc["btn_edit"] = "Modifier";
 $voc["btn_del"] = "Supprimer";
+$voc['btn_change_day'] = "Changer un jour";
+$voc['btn_add_restaurant'] = "Ajouter un restaurant";
+$voc['btn_add_activity'] = "Ajouter un activité";
+$voc['btn_add_hotel'] = "Ajouter un hôtel";
 
 //Label add/edit circuit
 $voc["lb_status"] = "Statut";
@@ -51,7 +55,13 @@ $voc["lb_add_new_pays"] = "Nouveau pays";
 $voc["lb_number"] = "Numéro";
 $voc['lb_day'] = "Jour";
 
+$voc['lb_restaurant'] = "Restaurant(s)";
+$voc['lb_activity'] = "Activité(s)";
+$voc['lb_hotel'] = "Hotêl(s)";
 
+$voc["lb_h1_add_restaurant"] = "Ajouter un restaurant";
+$voc['lb_site'] = "Site";
+$voc['lb_add_new_restaurant'] = "Nouveau restaurent";
 
 
 ?>
