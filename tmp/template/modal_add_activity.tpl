@@ -25,11 +25,11 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        <label id="label_title_activity">Titre:</label><br>
+                        <label id="label_title_activity">{$voc["lb_title"]}</label><br>
                         <input type="text" id="title_activity" name="title_activity" style="width:80%" ></input>
                     </div>
                     <div class="form-group">
-                        <label id="label_description_activity">Description:</label><br>
+                        <label id="label_description_activity">{$voc["lb_description"] }</label><br>
                         <textarea id="NicEdit" name="NicEdit" cols="70" rows="5" style="width: 60%" ></textarea>
                     </div>
                     <br>
