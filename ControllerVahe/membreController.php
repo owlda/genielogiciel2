@@ -67,7 +67,10 @@ function showcircuit($smarty, $db)
     foreach($arrayetap as $key=>$value)
     {
         $etaptemp = $arrayetap[$key]['idEtape'];
-        $requet = "SELECT * FROM  jour WHERE idEtape=".$etaptemp;
+        $requet = "select jour.idJour, jour.description as jdesc, jour.numeroJour, hotel.idHotel as hid, hotel.titre as htitre, hotel.site as hsite, activity.titre as atitre, 
+                activity.description as adesc, activity.idActivity as aid, restaurent.idRestaurent as rid, restaurent.titre as rtitre, restaurent.site as rsite  from jour left join hotelsjour on jour.idJour = hotelsjour.idJour 
+                left join hotel on hotelsjour.idHotel = hotel.idHotel left join activity on jour.idJour = activity.idJour left join restaurentsjour on 
+                jour.idJour=restaurentsjour.idJour left join restaurent on restaurent.idRestaurent = restaurentsjour.idRestaurent where jour.idEtape =".$etaptemp;
         $arrayjour = $db->getAll($requet);
         $arrayetap[$key]['jour'] = $arrayjour;
     }

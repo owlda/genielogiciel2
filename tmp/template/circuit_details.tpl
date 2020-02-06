@@ -40,29 +40,30 @@
                                 <p>{$etap.description}</p>
                                 {foreach $etap.jour as $jour}
                                     <div style="margin-left: 10px;">
-                                        <a href="{$jour.idJour}" data-toggle="collapse">{$jour.numeroJour}</a>
+                                        <a href="#jour{$jour.idJour}" data-toggle="collapse">Jour - {$jour.numeroJour}</a>
 
-                                        <div id="{$jour.idJour}" class="collapse">
-                                            <h3>{$jour.description}</h3>
+                                        <div id="jour{$jour.idJour}" class="collapse">
+                                            jdhkgjh ajgh kjfdhkgj hkdjfgjk
+                                            <h3>{$jour.jdesc}</h3>
                                             <div style="margin-left: 10px;">
-                                                <a href="{$jour.idHotel}" data-toggle="collapse">Hotel</a>
+                                                <a href="#hotel{$jour.hid}" data-toggle="collapse">Hotel</a>
 
-                                                <div id="{$jour.idHotel}" class="collapse">
-                                                    <a href="http://{$jour.hotelSite}">{$jour.hotelTitre}</a>
+                                                <div id="hotel{$jour.hid}" class="collapse">
+                                                    <a href="http://{$jour.hsite}">{$jour.htitre}</a>
                                                 </div>
                                             </div>
                                             <div style="margin-left: 10px;">
-                                                <a href="{$jour.idActivity}" data-toggle="collapse">Activity</a>
+                                                <a href="#act{$jour.aid}" data-toggle="collapse">Activity</a>
 
-                                                <div id="{$jour.idActivity}" class="collapse" >
-                                                    <h3>{$jour.descriptionActivity}</h3>
+                                                <div id="act{$jour.aid}" class="collapse" >
+                                                    <h3>{$jour.adesc}</h3>
                                                 </div>
                                             </div>
                                             <div  style="margin-left: 10px;">
-                                                <a href="{$jour.idRestaurent}" data-toggle="collapse">Restaurent</a>
+                                                <a href="#resto{$jour.rid}" data-toggle="collapse">Restaurent</a>
 
-                                                <div id="{$jour.idRestaurent}" class="collapse">
-                                                    <a href="http://{$jour.resto}">{$jour.restoTitre}</a>
+                                                <div id="resto{$jour.rid}" class="collapse">
+                                                    <a href="http://{$jour.rsite}">{$jour.rtitre}</a>
                                                 </div>
                                             </div>
                                         </div>
