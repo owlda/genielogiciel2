@@ -57,9 +57,9 @@ $voc["lb_add_new_pays"] = "Nouveau pays";
 $voc["lb_number"] = "Numéro";
 $voc['lb_day'] = "Jour";
 
-$voc['lb_restaurant'] = "Restaurant(s)";
-$voc['lb_activity'] = "Activité(s)";
-$voc['lb_hotel'] = "Hotêl(s)";
+$voc['lb_restaurant'] = "Restaurant";
+$voc['lb_activity'] = "Activité";
+$voc['lb_hotel'] = "Hotêl";
 
 $voc["lb_h1_add_restaurant"] = "Ajouter un restaurant";
 $voc['lb_site'] = "Site";
@@ -69,5 +69,8 @@ $voc["lb_h1_add_rabais"] = "Ajouter un rabais";
 $voc["lb_place"] = "Place";
 
 $voc["lb_h1_add_activity"] = "Ajouter une activité";
+
+$voc["lb_h1_add_hotel"] = "Ajouter une hôtel";
+$voc['lb_add_new_hotel'] = "Nouveau hôtel";
 
 ?>

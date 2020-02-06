@@ -11,13 +11,13 @@
                 <form id="FormAddActivity">
                     <div class="row">
                         <div class="col">
-                            <label>Pays:</label>
+                            <label>{$voc["lb_pays"]}</label>
                             <select readonly="true" class="form-control"  id="SelectPaysActivity" name="SelectPaysActivity" >
                                 <option value="{$idPaysEtape}">{$NomPaysEtape}</option>
                             </select>
                         </div>
                         <div class="col">
-                            <label>Ville:</label>
+                            <label>{$voc["lb_ville"]}</label>
                             <select class="form-control" readonly="true" id="SelectVilleActivity" name="SelectVilleActivity" >
                                 <option value="{$idVilleJour}">{$NomVilleJour}</option>
                             </select>
@@ -51,8 +51,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <button type="button" id="register_jour" class="btn btn-success" onclick="BtnAddActivityForJour()">Enregistrer</button>
+                <button type="button" id="register_jour" class="btn btn-success" onclick="BtnAddActivityForJour()">{$voc["btn_submit"]}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{$voc["btn_cancel"]}</button>
             </div>
         </div>
     </div>

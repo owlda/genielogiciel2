@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Ajouter un hotel</h5>
+                <h5 class="modal-title">{$voc["lb_h1_add_hotel"]}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -25,14 +25,14 @@
                     </div>
                     <br>
                     <div class="form-group">
-                        <label style="display: block">Hotel:</label>
+                        <label style="display: block">{$voc['lb_hotel']}</label>
                         <select onchange="ChangeHotel()" class="form-control"  id="SelectHotel" name="SelectHotel" style="width:50%;display: inline;">
                             {include file="select_hotel.tpl" arr_list_hotel=$arr_list_hotel}
                         </select>
-                        <input type="button" value="Ajouter un hotel" class="btn btn-primary" style="display: inline" onclick="BtnViewNewHotel()">
+                        <input type="button" value="{$voc['btn_add_hotel']}" class="btn btn-primary" style="display: inline" onclick="BtnViewNewHotel()">
                     </div>
                     <div class="form-group">
-                        <label style="display: inline;">Site:</label>
+                        <label style="display: inline;">{$voc['lb_site']}</label>
                         {if isset($arr_list_hotel[0].site) || !empty($arr_list_hotel[0].site)}
                             <a href="{$arr_list_hotel[0].site}" id="link_site_hotel" target="_blank">
                                 <span id="text_site_hotel">{$arr_list_hotel[0].site}</span>
@@ -44,13 +44,13 @@
                         {/if}
                     </div>
                     <div class="form-group animated zoomInRight" id="ViewNewHotel" style="width: 50%;margin-left: 30%;display: none;">
-                        <label>Nouveau hotel:</label>
+                        <label>{$voc['lb_add_new_hotel']}</label>
                         <input type="text" class="form-control" id="NewNameHotel">
-                        <label>Site (avec http(s)://):</label>
+                        <label>{$voc['lb_site']} (http(s)://):</label>
                         <input type="text" class="form-control" id="NewSiteHotel">
                         <br>
-                        <input type="button" value="Annuler" id="btn_not_hotel" class="btn btn-secondary" onclick="BtnNotHotel()">
-                        <input type="button" value="Enregistrer" id="btn_add_hotel" class="btn btn-success" onclick="BtnAddHotel({$idVilleJour})">
+                        <input type="button" value="{$voc['btn_submit']}" id="btn_add_hotel" class="btn btn-success" onclick="BtnAddHotel({$idVilleJour})">
+                        <input type="button" value="{$voc['btn_cancel']}" id="btn_not_hotel" class="btn btn-secondary" onclick="BtnNotHotel()">
                     </div>
                     <br>
                     <br>
@@ -71,8 +71,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <button type="button" id="register_jour" class="btn btn-success" onclick="BtnAddHotelForJour()">Enregistrer</button>
+                <button type="button" id="register_jour" class="btn btn-success" onclick="BtnAddHotelForJour()">{$voc['btn_submit']}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{$voc['btn_cancel']}</button
             </div>
         </div>
     </div>
