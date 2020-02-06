@@ -36,6 +36,7 @@ $voc['lb_price'] = "Price";
 $voc['lb_h1_add_circuit'] = "Add travel";
 $voc['lb_title'] = "Title";
 $voc['lb_date_depart'] = "Starting day";
+$voc["lb_date_debut"] = "Starting day";
 $voc['lb_date_fin'] = "End day";
 $voc['lb_description'] = "Description";
 $voc['lb_theme'] = "Theme";
@@ -61,5 +62,8 @@ $voc['lb_hotel'] = "Hotel";
 $voc["lb_h1_add_restaurant"] = "Add restaurant";
 $voc['lb_site'] = "Site";
 $voc['lb_add_new_restaurant'] = "New restaurant";
+
+$voc["lb_h1_add_rabais"] = "Add discount";
+$voc["lb_place"] = "Place";
 
 ?>

@@ -63,4 +63,4 @@
     </table>
 </div>
 
-{include file="modal_add_rabais.tpl"}
+{include file="modal_add_rabais.tpl" voc=$voc}

@@ -16,7 +16,6 @@ switch($_COOKIE['lang']){
 
 $reponse = array();
 
-
 switch($_POST['action']){
     case "addcircuit" :
         FormAddCircuit($smarty,$voc, $db);
@@ -79,10 +78,10 @@ switch($_POST['action']){
         EnregistrerRestaurentJour($smarty, $voc, $db);
         break;
     case 'btn_register_hotel_jour':
-        EnregistrerHotelJour($smarty,$db);
+        EnregistrerHotelJour($smarty, $voc, $db);
         break;
     case 'btn_register_activity_jour':
-        EnregistrerActivityJour($smarty,$db);
+        EnregistrerActivityJour($smarty, $voc, $db);
         break;
     case 'btn_register_hotel':
         EnregistrerNewHotel($smarty,$db);
@@ -303,7 +302,7 @@ function DetailJourChange($smarty, $voc, $db){
     $reponse['action'] = "detail_jour_change";
     $reponse['idJourSelectChange'] = $_POST['idJourSelectChange'];
     $detail_jour = GetJourByidJour($_POST['idJour'],$db);
-    $lst_detail_restaurent = GetAllRestaurentFromJour($_POST['idJour'],$db);
+    $lst_detail_restaurent = GetAllRestaurentFromJour_VilleCookies($_POST['idJour'],$db);
     $lst_detail_activity = GetAllActivityFromJour($_POST['idJour'],$db);
     $lst_detail_hotel = GetAllHotelFromJour_NomVilleCookies($_POST['idJour'],$db);
 
@@ -415,7 +414,7 @@ function EnregistrerJour($smarty,$voc,$db){
     for ($j = 0; $j <= sizeof($arr_etape[0]['arr_jour'])-1; $j++){
         $arr_etape[0]['arr_jour'][$j]['NomVille'] =  GetNomVilleByIdCookies($arr_etape[0]['arr_jour'][$j]['idVille'],$db);
         //Get list restaurent from jour
-        $arr_etape[0]['arr_jour'][$j]['Restaurent'] = GetAllRestaurentFromJour($arr_etape[0]['arr_jour'][$j]['idJour'], $db);
+        $arr_etape[0]['arr_jour'][$j]['Restaurent'] = GetAllRestaurentFromJour_VilleCookies($arr_etape[0]['arr_jour'][$j]['idJour'], $db);
         $arr_etape[0]['arr_jour'][$j]['count_restaurent'] = sizeof($arr_etape[0]['arr_jour'][$j]['Restaurent']);
         //Get list activity from jour
         $arr_etape[0]['arr_jour'][$j]['Activity'] = GetAllActivityFromJour($arr_etape[0]['arr_jour'][$j]['idJour'], $db);
@@ -502,7 +501,7 @@ function EnregistrerRestaurentJour($smarty, $voc, $db){
     $record['numeroJour'] = 0;
     $db->autoExecute($table, $record, 'INSERT');
 
-    $list_restaurent = GetAllRestaurentFromJour($reponse['idJour'], $db);
+    $list_restaurent = GetAllRestaurentFromJour_VilleCookies($reponse['idJour'], $db);
     $smarty->assign('CountRestaurentJour', sizeof($list_restaurent));
     $smarty->assign('idPaysEtape', $_POST['SelectPaysRestaurent']);
     $smarty->assign('idJour', $_POST['input_id_jour']);
@@ -513,7 +512,7 @@ function EnregistrerRestaurentJour($smarty, $voc, $db){
     $reponse['detail_restaurant'] = $smarty->fetch("detail_restaurant.tpl");
 }
 //Enregistrer activity for jour
-function EnregistrerActivityJour($smarty,$db){
+function EnregistrerActivityJour($smarty, $voc, $db){
     global $reponse;
     $reponse['action'] = "register_activity_jour";
     $reponse['idJour'] = $_POST['input_id_jour'];
@@ -532,6 +531,7 @@ function EnregistrerActivityJour($smarty,$db){
     $smarty->assign('idJour', $_POST['input_id_jour']);
     $smarty->assign('arr_activity', $list_activity);
     $smarty->assign('CountActivityJour', sizeof($list_activity));
+    $smarty->assign('voc', $voc);
 
     $reponse['detail_activity'] = $smarty->fetch("detail_activity.tpl");
 }
@@ -551,7 +551,7 @@ function EnregistrerNewHotel($smarty, $db){
     $reponse['arr_list_hotel'] = $smarty->fetch("select_hotel.tpl");
 }
 //Enregistrer hotel for jour
-function EnregistrerHotelJour($smarty,$db){
+function EnregistrerHotelJour($smarty, $voc, $db){
     global $reponse;
     $reponse['action'] = "register_hotel_jour";
     $reponse['idJour'] = $_POST['input_id_jour'];
@@ -569,6 +569,7 @@ function EnregistrerHotelJour($smarty,$db){
     $smarty->assign('idJour', $_POST['input_id_jour']);
     $smarty->assign('idVilleJour', $_POST['input_id_ville_jour']);
     $smarty->assign('arr_hotel', $list_hotel);
+    $smarty->assign('voc', $voc);
 
     $reponse['detail_hotel'] = $smarty->fetch("detail_hotel.tpl");
 }
@@ -616,7 +617,7 @@ function GetFullEtapeByIdCircuit($idCircuit, $db){
         for ($j = 0; $j <= sizeof($arr_etape[$i]['arr_jour'])-1; $j++){
             $arr_etape[$i]['arr_jour'][$j]['NomVille'] =  GetNomVilleByIdCookies($arr_etape[$i]['arr_jour'][$j]['idVille'],$db);
             //Get list restaurent from jour
-            $arr_etape[$i]['arr_jour'][$j]['Restaurent'] = GetAllRestaurentFromJour($arr_etape[$i]['arr_jour'][$j]['idJour'], $db);
+            $arr_etape[$i]['arr_jour'][$j]['Restaurent'] = GetAllRestaurentFromJour_VilleCookies($arr_etape[$i]['arr_jour'][$j]['idJour'], $db);
             $arr_etape[$i]['arr_jour'][$j]['count_restaurent'] = sizeof($arr_etape[$i]['arr_jour'][$j]['Restaurent']);
             //Get list activity from jour
             $arr_etape[$i]['arr_jour'][$j]['Activity'] = GetAllActivityFromJour($arr_etape[$i]['arr_jour'][$j]['idJour'], $db);
@@ -727,10 +728,9 @@ function GetNomVilleByIdCookies($idVille, $db){
     return $rs[0]['nom'.$_COOKIE['lang']];
 }
 //Get all Restaurent from Jour by idJour
-function GetAllRestaurentFromJour($idJour, $db){
+function GetAllRestaurentFromJour_VilleCookies($idJour, $db){
     $db->setFetchMode(ADODB_FETCH_ASSOC);
-
-    $SQL = 'SELECT r.*, v.nom as \'VilleRestaurent\', e.idEtape, j.idJour FROM restaurent as r
+    $SQL = 'SELECT r.*, v.nom'.$_COOKIE['lang']. ' as VilleRestaurent, e.idEtape, j.idJour FROM restaurent as r
             INNER JOIN restaurentsjour rj on r.idRestaurent = rj.idRestaurent
             INNER JOIN jour j on rj.idJour = j.idJour
             INNER JOIN villes v on r.idVille = v.idVille

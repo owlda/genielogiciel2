@@ -36,6 +36,7 @@ $voc["lb_price"] = "Prix";
 $voc["lb_h1_add_circuit"] = "Ajouter un circuit";
 $voc["lb_title"] = "Titre";
 $voc["lb_date_depart"] = "Date de départ";
+$voc["lb_date_debut"] = "Date de début";
 $voc["lb_date_fin"] = "Date de fin";
 $voc["lb_description"] = "Description";
 $voc["lb_theme"] = "Thème";
@@ -64,5 +65,7 @@ $voc["lb_h1_add_restaurant"] = "Ajouter un restaurant";
 $voc['lb_site'] = "Site";
 $voc['lb_add_new_restaurant'] = "Nouveau restaurent";
 
+$voc["lb_h1_add_rabais"] = "Ajouter un rabais";
+$voc["lb_place"] = "Place";
 
 ?>

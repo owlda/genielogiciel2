@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-6">
-                <h4>{$restaurent.titre}</h4>
+                <h4>{$restaurent['titre'|cat:$smarty.cookies.lang]}</h4>
                 <div class="btn-toolbar">
                     <div class="btn-group" role="group">
                         <input value="{$voc['btn_edit']}" class="btn btn-warning" type="button">
@@ -23,14 +23,14 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-6">
-                <div class="col"><span style="font-weight: bold">Place:</span> {$restaurent.VilleRestaurent} </div>
+                <div class="col"><span style="font-weight: bold">{$voc["lb_place"]}</span> {$restaurent.VilleRestaurent} </div>
             </div>
             <div class="col"></div>
         </div>
         <div class="row">
             <div class="col"></div>
             <div class="col-6">
-                <div class="col"><span style="font-weight: bold">Site:</span><a href="{$restaurent.site}"> {$restaurent.site}</a> </div>
+                <div class="col"><span style="font-weight: bold">{$voc['lb_site']}</span><a href="{$restaurent.site}"> {$restaurent.site}</a> </div>
             </div>
             <div class="col"></div>
         </div>
