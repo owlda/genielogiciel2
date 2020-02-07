@@ -305,6 +305,28 @@ function BtnDelRabais(idCircuit) {
     });
 
 }
+//modal show cart
+function ShowCart(){
+    $('#modals_panier').modal('show');
+    $('.modal-backdrop').css('position', 'static');
+    var formiConnexion = new FormData();
+    formiConnexion.append('action','show_cart_modal');
+    $.ajax({
+        type : 'POST',
+        url : GetUrlControllerCart(),
+        data : formiConnexion,
+        contentType : false,
+        processData : false,
+        dataType : 'json',
+        success : function (reponse){
+            VueCart(reponse);
+        },
+        error: function (xhr, error) {
+            alert("COUNT_ERROR!");
+        }
+    });
+    alert("onclick ShowCart();");
+}
 
 //TODO Enregistrer
 //Enregistrer un restaurent for jour
@@ -749,8 +771,5 @@ function PanierCount() {
         }
     });
 }
-
-
-
 
 

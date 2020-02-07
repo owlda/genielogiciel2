@@ -163,7 +163,6 @@ function connecter($smarty, $db)
     }catch(Exception $e){
     }finally{
         unset($unModele);
-
     }
 
 }

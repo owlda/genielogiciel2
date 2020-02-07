@@ -40,7 +40,6 @@ function connecter()
         processData : false,
         dataType : 'json',
         success : function (reponse){
-
             membreVue(reponse);
         },
         error: function (xhr, error) {
@@ -52,7 +51,6 @@ function connecter()
 
 function initclientmenue()
 {
-
     var formiConnexion = new FormData();
     formiConnexion.append('action','i_connecter');
     $.ajax({
