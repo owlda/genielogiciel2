@@ -48,9 +48,11 @@ session_start();
 </div>
 
 <div class="container" id="circuitx">
-    <div id="cart_modal"></div>
+
 
 </div>
+
+<div id="cart_modal"></div>
 
 <!--here we keep a modal in which we will show the data for the chosen circuit to show all the details, we will use bootstrap
 colapsable to show the details-->

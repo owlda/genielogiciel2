@@ -27,12 +27,18 @@ switch ($_POST['action']) {
 function AddToCart($smarty, $voc, $db){
 
     global $reponse;
-    $reponse['action'] = "add_to_cart";
-    $table = 'panier';
-    $record['idMembre'] = $_SESSION['id'];
-    $record['idCircuit'] = $_POST['idCircuit'];
-    $record['montant'] = 0;
-    $db->autoExecute($table, $record, 'INSERT');
+
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $rs = $db->getAll("SELECT COUNT(*) as count FROM panier WHERE idMembre = " . $_SESSION['id'] . " AND " . "idCircuit = ".$_POST['idCircuit']);
+
+    if ($rs[0]['count'] == 0){
+        $reponse['action'] = "add_to_cart";
+        $table = 'panier';
+        $record['idMembre'] = $_SESSION['id'];
+        $record['idCircuit'] = $_POST['idCircuit'];
+        $record['montant'] = 0;
+        $db->autoExecute($table, $record, 'INSERT');
+    }
 
     $reponse['idCircuit'] = $_POST['idCircuit'];
     $reponse['count_item_cart'] = CoutItemToCart($_SESSION['id'], $db);
