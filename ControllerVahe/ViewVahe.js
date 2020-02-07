@@ -45,6 +45,18 @@ var membreVue = function(reponse){
             $("#circuitx").html(reponse.circuit);
             $("#exampleModalLong").modal('show');
             break;
+        case 'i_connecter':
+
+            $("#menu").html(reponse.temp);
+            $("#card1").html(reponse.card1);
+            PanierCount();
+            break;
+        case 'main':
+
+            //$("#menu").html(reponse.temp);
+            $("#mainslider").html(reponse.card1);
+            //PanierCount();
+            break;
         default:
             break;
     }

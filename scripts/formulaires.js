@@ -112,6 +112,27 @@ function attachSignin(element) {
 
 function initialiserMenu() {
     document.getElementById('name1').innerText = "Connexion";
+
+
+/*    var formiConnexion = new FormData();
+    formiConnexion.append('action','main');
+    $.ajax({
+        type : 'POST',
+        url : '../ControllerVahe/membreController.php',
+        data : formiConnexion,
+        contentType : false,
+        processData : false,
+        dataType : 'json',
+        success : function (reponse){
+            membreVue(reponse);
+        },
+        error: function (xhr, error) {
+            console.log(error);
+            console.log(xhr);
+            alert("LOL5");
+        }
+    });*/
+
 }
 
 /**

@@ -27,7 +27,7 @@
 </head>
 <body onload="initclientmenue();">
 <?php
-session_start();
+/*session_start();
     if(isset($_SESSION['sessionstatus'])){
         if ($_SESSION['sessionstatus'] == true) {
             echo('<div id="menu"></div>');
@@ -35,10 +35,10 @@ session_start();
         }
     }
 
-    else {include __DIR__ . '/tmp/template/menu-ren.tpl ';}
+    else {include __DIR__ . '/tmp/template/menu-ren.tpl ';}*/
 
 ?>
-
+<div id="menu"></div>
 
 <div class="container" id="carousel">
     <?php include __DIR__ . '/tmp/template/carousel.tpl ' ?>
@@ -50,15 +50,14 @@ session_start();
 
 <div class="container" id="circuitx">
 
-
 </div>
 
-<div id="cart_modal">
+<!--<div id="cart_modal">
     <div class="container" id="modals_panier">
-        <!-- Modal -->
+
         <div class="modal fade" id="myModal_panier" role="dialog">
             <div class="modal-dialog">
-                <!-- Modal content-->
+
                 <div class="modal-content">
                     <div class="modal-body" style="padding:5px 5px;">
                         <table class="table">
@@ -87,7 +86,7 @@ session_start();
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 <!--here we keep a modal in which we will show the data for the chosen circuit to show all the details, we will use bootstrap
 colapsable to show the details-->

@@ -25,7 +25,7 @@
 <div class="container">
     <?php include __DIR__ . '/tmp/template/carousel.tpl ' ?>
 </div>
-<div class="container">
+<div class="container" id="mainslider">
     <?php include __DIR__ . '/tmp/template/cardssliderDenis.tpl ' ?>
 </div>
 
