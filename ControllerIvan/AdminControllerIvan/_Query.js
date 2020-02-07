@@ -771,5 +771,3 @@ function PanierCount() {
 }
 
 
-
-

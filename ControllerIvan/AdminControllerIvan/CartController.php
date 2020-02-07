@@ -76,6 +76,8 @@ function ShowCart($smarty, $voc, $db){
 
 }
 
+
+
 echo json_encode($reponse);
 
 ?>
