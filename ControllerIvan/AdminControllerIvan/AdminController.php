@@ -60,7 +60,7 @@ switch($_POST['action']){
         ModalAddRestaurent($smarty, $voc, $db);
         break;
     case 'btn_add_hotel':
-        ModalAddHotel($smarty, $db);
+        ModalAddHotel($smarty, $voc, $db);
         break;
     case 'btn_add_activity':
         ModalAddActivity($smarty, $voc, $db);
@@ -84,7 +84,7 @@ switch($_POST['action']){
         EnregistrerActivityJour($smarty, $voc, $db);
         break;
     case 'btn_register_hotel':
-        EnregistrerNewHotel($smarty,$db);
+        EnregistrerNewHotel($smarty, $voc, $db);
         break;
     case 'detail_jour_change':
         DetailJourChange($smarty, $voc, $db);
@@ -134,7 +134,7 @@ function ModalAddActivity($smarty, $voc, $db){
     $reponse['modal_add_activity'] = $smarty->fetch("modal_add_activity.tpl");
 }
 //Modal Add un Hotel for Jour
-function ModalAddHotel($smarty, $db){
+function ModalAddHotel($smarty, $voc, $db){
     global $reponse;
     $reponse['action'] = "btn_add_hotel";
     $arr_list_hotel = GetAllHotelFromVille($_POST["idVilleJour"], $db);
@@ -145,6 +145,7 @@ function ModalAddHotel($smarty, $db){
     $smarty->assign('NomPaysEtape', GetNomPaysById($_POST["idPaysEtape"], $db));
     $smarty->assign('NomVilleJour', GetNomVilleByIdCookies($_POST["idVilleJour"], $db));
     $smarty->assign('arr_list_hotel', $arr_list_hotel);
+    $smarty->assign('voc', $voc);
 
     //Transfer data to *.tpl
     $smarty->fetch("modal_add_hotel.tpl");
@@ -519,8 +520,8 @@ function EnregistrerActivityJour($smarty, $voc, $db){
     $reponse['idJour'] = $_POST['input_id_jour'];
 
     $table = 'activity';
-    $record['titre'] = $_POST['title_activity'];
-    $record['description'] = $_POST['NicEdit'];
+    $record['titre'.$_COOKIE['lang']] = $_POST['title_activity'];
+    $record['description'.$_COOKIE['lang']] = $_POST['NicEdit'];
     $record['prix'] = 0;
     $record['idJour'] = $_POST['input_id_jour'];
     $db->autoExecute($table, $record, 'INSERT');
@@ -533,22 +534,22 @@ function EnregistrerActivityJour($smarty, $voc, $db){
     $smarty->assign('arr_activity', $list_activity);
     $smarty->assign('CountActivityJour', sizeof($list_activity));
     $smarty->assign('voc', $voc);
-
     $reponse['detail_activity'] = $smarty->fetch("detail_activity.tpl");
 }
 //Enregistrer nouveau hotel
-function EnregistrerNewHotel($smarty, $db){
+function EnregistrerNewHotel($smarty, $voc, $db){
     global $reponse;
     $reponse['action'] = "register_hotel";
 
     $table = 'hotel';
-    $record['titre'] = $_POST['NewNameHotel'];
+    $record['titre'.$_COOKIE['lang']] = $_POST['NewNameHotel'];
     $record['idVille'] = $_POST['idVille'];
     $record['site'] = $_POST['NewSiteHotel'];
     $db->autoExecute($table, $record, 'INSERT');
 
     $reponse['list_hotel'] = GetAllHotelFromVille($_POST['idVille'], $db);
     $smarty->assign('arr_list_hotel', $reponse['list_hotel']);
+    $smarty->assign('voc', $voc);
     $reponse['arr_list_hotel'] = $smarty->fetch("select_hotel.tpl");
 }
 //Enregistrer hotel for jour

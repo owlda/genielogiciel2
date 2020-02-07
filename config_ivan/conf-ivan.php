@@ -7,7 +7,7 @@ $db->port = 3306;
 $server = "localhost";
 $user = "root";
 $password = "";
-$database = "northernstartravelv2";
+$database = "northernstartravel";
 $db->connect($server, $user, $password, $database);
 
 
