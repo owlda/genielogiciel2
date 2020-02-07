@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>guest</title>
+    <script src="ControllerIvan/AdminControllerIvan/_Query.js"></script>
+    <script src="ControllerIvan/AdminControllerIvan/ViewCart.js"></script>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/Footer-Dark.css">
@@ -23,9 +25,9 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="scripts/formulaires.js"></script>
 </head>
-<body onload="initclientmenue()">
+<body onload="initclientmenue();">
 <?php
-    session_start();
+session_start();
     if(isset($_SESSION['sessionstatus'])){
         if ($_SESSION['sessionstatus'] == true) {
             echo('<div id="menu"></div>');
@@ -46,6 +48,11 @@
 </div>
 
 <div class="container" id="circuitx">
+
+
+</div>
+
+<div id="cart_modal">
 
 </div>
 
@@ -83,5 +90,4 @@ colapsable to show the details-->
 <script src="ControllerVahe/requetsMembre.js"></script>
 <script src="ControllerVahe/ViewVahe.js"></script>
 </html>
-<?php
 

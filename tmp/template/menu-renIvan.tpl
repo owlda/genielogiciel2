@@ -3,8 +3,9 @@
         <div class="collapse navbar-collapse"
              id="navcol-1">
             <ul class="nav navbar-nav mr-auto">
-                <li class="nav-item" role="presentation"><a class="nav-link" href="/pages/admin.php">Circuits</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="/pages/stat.php">Stat</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="http://localhost/files/Web3/circuit.in/www/pages/admin.php">Circuits</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="http://localhost/files/Web3/circuit.in/www/pages/stat.php">Stat</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="http://localhost/files/Web3/circuit.in/www//uploadimages.php">Images</a></li>
             </ul>
             <span class="navbar-text actions"> <a class="login" href="#">Admin</a>
 

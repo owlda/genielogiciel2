@@ -152,10 +152,6 @@ function connecter($smarty, $db)
                 $_SESSION['sessionstatus'] = true;
                 $_SESSION['courriel'] = $ligne['courriel'];
 
-/*                $smarty->assign('courriel', $_SESSION['courriel']);
-                $smarty->fetch('../tmp/template/menu_client.tpl');*/
-
-
             }
             else{
                 // si le mot de pass n'est pas correct on envoit un message
@@ -167,7 +163,6 @@ function connecter($smarty, $db)
     }catch(Exception $e){
     }finally{
         unset($unModele);
-
     }
 
 }
@@ -180,76 +175,26 @@ function i_connecter($smarty, $db)
     $requete = "SELECT * FROM circuit limit  3"; // we select first three circuits to show on the main page
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $arrayCircuit = $db->getAll($requete);
-    $smarty->assign('arrayCircuit', $arrayCircuit); //arrayCircuit of the circuit
-    //$arr['Photo'] = array('1'=>'11111','2'=>'22222');
-   // $arrayCircuit[0]['photo'] = $arr['Photo'];
-
-    $arrayPhoto = array();  //to put paths to photo, for each circuit one photo will be chosed
 
     foreach ($arrayCircuit as $key=>$value){
         $idCircuit = $arrayCircuit[$key]['idCircuit'];
         $requet = "SELECT * FROM photoCircuit WHERE idCircuit = ".$idCircuit." limit 1";
         $idPhoto = $db->getAll($requet);
+
         $requet2 = "SELECT * FROM photo WHERE idPhoto = ".$idPhoto[0]['idPhoto'];
         $path = $db->getAll($requet2);
         $str = $path[0]['imagePath'];
-        array_push($arrayPhoto, ltrim($str, '/'));
-    }
+        $arrayCircuit[$key]['photo'] = ltrim($str, '/');
 
-    $smarty->assign('arrayPhoto', $arrayPhoto);
+    }
+    $smarty->assign('arrayCircuit', $arrayCircuit); //arrayCircuit of the circuit
 
     $reponse['card1'] = $smarty->fetch('cardssliderVaheContent.tpl');
 
-/*    try{
-        $unModele=new membreModele($requete, $arrayCircuit);
-        $stmt=$unModele->executer();
-        $ligneCircuit = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if(!$ligneCircuit)
-        {
-            //la requete retourne false si la table est vide
-            $reponse['msg'] = 'table circuit empty';
-        }
-        else
-        {
-            // we add tha data to smarty variables
-
-                $idCircuit = $ligneCircuit['idCircuit'];
-                $titreCircuit = $ligneCircuit['titre'];
-                $descCircuit = $ligneCircuit['description'];
-                $reponse['msg'] = 'OK';
-                $smarty->assign('idCircuit1', $ligneCircuit['idCircuit']); //id of the circuit
-                $smarty->assign('titreCircuit1', $ligneCircuit['titre']); // title of the circuit
-                $smarty->assign('descCircuit1', $ligneCircuit['description']); // description of the circuit
-
-                $reponse['card1'] = $smarty->fetch('../tmp/template/cardssliderVaheContent.tpl');
-                // we fetch variables into cardssliderVahe.tpl
-        }
-    }catch(Exception $e){
-    }finally{
-        unset($unModele);
-    }*/
 
     $reponse['action'] = 'i_connecter'; //on traite la valeur 'i_connecter' dans la vue pour ajouter le menu du client
     $smarty->assign('courriel', $_SESSION['courriel']); // to show the e-mail of the client on the mene
     $reponse['temp'] = $smarty->fetch('menu_client.tpl'); // we pass the code of menu template to vue
-
-
-   /* $requete = 'SELECT * FROM circuit';
-    try{
-        $unModel = new membreModele($requete, array());
-        $stmt = $unModel->executer();
-        $ligne = $stmt->fetch(PDO::FETCH_ASSOC);
-        $reponse['id'] = $ligne['idCircuit'];
-        $smarty->assign('id', $ligne['idCircuit']);
-        $smarty->fetch('carousel_vahe.tpl');
-
-    }
-    catch(Exception $e){
-
-    }finally{
-        unset($unModele);
-    }*/
 
 }
 
@@ -262,28 +207,6 @@ function deconnect()
 
 }
 
-// add an item to panier
-function addpanier($smarty, $db)
-{
-    global $reponse;
-    $reponse['action'] = 'addpanier';
-    $idMembre = $_SESSION['id'];
-    $idCircuit = $_POST['idCircuit'];
-
-    $requete = "SELECT * FROM circuit WHERE idCircuit = ".$idCircuit;
-    $db->setFetchMode(ADODB_FETCH_ASSOC);
-    $arraycircuit = $db->getAll($requete);
-    $montant = $arraycircuit[0]['prix'];
-
-    //$requet = "INSERT INTO panier ($idMembre, idCircuit, montant) VALUES (?,?,?)";
-    $table = 'panier';
-    $record = array();
-    $record['idMembre'] = $idMembre;
-    $record['idCircuit'] = $idCircuit;
-    $record['prix'] = $montant;
-    $db->autoExecute($table, $record, 'INSERT');
-
-}
 
 echo json_encode($reponse);
 ?>

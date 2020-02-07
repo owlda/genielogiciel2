@@ -13,9 +13,11 @@
                 <div class="col" style="flex-grow: 1;">
                     <div class="carousel slide" data-ride="carousel"  id="carousel2">
                         <div class="carousel-inner" role="listbox" >
-                            <div class="carousel-item active"><img class="w-100 d-block" src="{$arrayPhoto[0]}" alt="Slide Image" loading="auto"></div>
-                            <div class="carousel-item"><img class="w-100 d-block" src="{$arrayPhoto[1]}" alt="Slide Image"></div>
-                            <div class="carousel-item"><img class="w-100 d-block" src="{$arrayPhoto[2]}" alt="Slide Image"></div>
+                            {foreach $arrayPhoto as $Photo}
+                            <div class="carousel-item active"><img class="w-100 d-block" src="{$Photo}" alt="Slide Image"></div>
+{*                           <div class="carousel-item"><img class="w-100 d-block" src="{$arrayPhoto[1]}" alt="Slide Image"></div>
+                            <div class="carousel-item"><img class="w-100 d-block" src="{$arrayPhoto[2]}" alt="Slide Image"></div>*}
+                            {/foreach}
                         </div>
                         <div><a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel2" role="button"
@@ -46,23 +48,23 @@
                                             jdhkgjh ajgh kjfdhkgj hkdjfgjk
                                             <h3>{$jour.jdesc}</h3>
                                             <div style="margin-left: 10px;">
-                                                <a href="#hotel{$jour.hid}" data-toggle="collapse">Hotel</a>
+                                                <a href="#hotel{$jour.hid}" data-toggle="collapse" style="color: #afafaf">Hotel</a>
 
-                                                <div id="hotel{$jour.hid}" class="collapse">
+                                                <div id="hotel{$jour.hid}" class="collapse" style="margin-left: 10px;">
                                                     <a href="http://{$jour.hsite}">{$jour.htitre}</a>
                                                 </div>
                                             </div>
                                             <div style="margin-left: 10px;">
                                                 <a href="#act{$jour.aid}" data-toggle="collapse">Activity</a>
 
-                                                <div id="act{$jour.aid}" class="collapse" >
+                                                <div id="act{$jour.aid}" class="collapse" style="margin-left: 10px;">
                                                     <h3>{$jour.adesc}</h3>
                                                 </div>
                                             </div>
                                             <div  style="margin-left: 10px;">
                                                 <a href="#resto{$jour.rid}" data-toggle="collapse">Restaurent</a>
 
-                                                <div id="resto{$jour.rid}" class="collapse">
+                                                <div id="resto{$jour.rid}" class="collapse" style="margin-left: 10px;">
                                                     <a href="http://{$jour.rsite}">{$jour.rtitre}</a>
                                                 </div>
                                             </div>
@@ -73,8 +75,6 @@
                         </div>
                     {/foreach}
                 </div>
-
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
