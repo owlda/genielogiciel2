@@ -152,10 +152,6 @@ function connecter($smarty, $db)
                 $_SESSION['sessionstatus'] = true;
                 $_SESSION['courriel'] = $ligne['courriel'];
 
-/*                $smarty->assign('courriel', $_SESSION['courriel']);
-                $smarty->fetch('../tmp/template/menu_client.tpl');*/
-
-
             }
             else{
                 // si le mot de pass n'est pas correct on envoit un message
@@ -180,29 +176,18 @@ function i_connecter($smarty, $db)
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $arrayCircuit = $db->getAll($requete);
 
-
-    $arrayPhoto = array();  //to put paths to photo, for each circuit one photo will be chosed
-
     foreach ($arrayCircuit as $key=>$value){
         $idCircuit = $arrayCircuit[$key]['idCircuit'];
         $requet = "SELECT * FROM photoCircuit WHERE idCircuit = ".$idCircuit." limit 1";
         $idPhoto = $db->getAll($requet);
 
-        if(sizeof($idPhoto))
-        {
-            $requet2 = "SELECT * FROM photo WHERE idPhoto = ".$idPhoto[0]['idPhoto'];
-            $path = $db->getAll($requet2);
-            $str = $path[0]['imagePath'];
-            $arrayCircuit[$key]['photo'] = ltrim($str, '/');
-            array_push($arrayPhoto, ltrim($str, '/'));
-        }
-        else{
-            $arrayCircuit[$key]['photo'] = '';
-        }
+        $requet2 = "SELECT * FROM photo WHERE idPhoto = ".$idPhoto[0]['idPhoto'];
+        $path = $db->getAll($requet2);
+        $str = $path[0]['imagePath'];
+        $arrayCircuit[$key]['photo'] = ltrim($str, '/');
 
     }
     $smarty->assign('arrayCircuit', $arrayCircuit); //arrayCircuit of the circuit
-    $smarty->assign('arrayPhoto', $arrayPhoto);
 
     $reponse['card1'] = $smarty->fetch('cardssliderVaheContent.tpl');
 
@@ -210,8 +195,6 @@ function i_connecter($smarty, $db)
     $reponse['action'] = 'i_connecter'; //on traite la valeur 'i_connecter' dans la vue pour ajouter le menu du client
     $smarty->assign('courriel', $_SESSION['courriel']); // to show the e-mail of the client on the mene
     $reponse['temp'] = $smarty->fetch('menu_client.tpl'); // we pass the code of menu template to vue
-
-
 
 }
 

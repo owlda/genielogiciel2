@@ -122,25 +122,3 @@ function showcard(id)
     });
 }
 
-/*function addpanier(id) {
-    alert(id);
-    var formiConnexion = new FormData();
-    formiConnexion.append('action','addpanier');
-    formiConnexion.append('idCircuit', id);
-    $.ajax({
-        type : 'POST',
-        url : 'ControllerVahe/membreController.php',
-        data : formiConnexion,
-        contentType : false,
-        processData : false,
-        dataType : 'json',
-        success : function (reponse){
-
-            membreVue(reponse);
-        },
-        error: function (xhr, error) {
-            alert("LOL3");
-            alert(error);
-        }
-    });
-}*/
