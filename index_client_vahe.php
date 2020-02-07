@@ -24,6 +24,7 @@
     <script src="scripts/formulaires.js"></script>
 </head>
 <body onload="initclientmenue()">
+
 <?php
     session_start();
     if(isset($_SESSION['sessionstatus'])){
