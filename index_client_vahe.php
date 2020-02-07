@@ -36,7 +36,6 @@
     }
 
     else {include __DIR__ . '/tmp/template/menu-ren.tpl ';}*/
-
 ?>
 <div id="menu"></div>
 
