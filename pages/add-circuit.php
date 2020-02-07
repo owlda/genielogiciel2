@@ -17,7 +17,7 @@
 </head>
 
 <body onload="LoadAddCircuit()">
-<?php include __DIR__.'/../tmp/template/menu-renIvan.tpl'?>
+<?php include __DIR__ . '/../tmp/template/menu-renIvanEN.tpl' ?>
 <main>
     <div class="container" id="form-circuit">
     </div>

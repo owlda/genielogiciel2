@@ -23,13 +23,13 @@
 <?php
 switch($_COOKIE['lang']){
     case "es":
-        //require __DIR__.'/../tmp/template/menu-renIvan.tpl';
+        //require __DIR__.'/../tmp/template/menu-renIvanEN.tpl';
         break;
     case "en" :
-        require __DIR__.'/../tmp/template/menu-renIvan.tpl';
+        require __DIR__.'/../tmp/template/menu-renIvanEN.tpl';
         break;
     default :
-        require __DIR__.'/../tmp/template/menu-renIvan.tpl';
+        require __DIR__.'/../tmp/template/menu-renIvanFR.tpl';
         break;
 }
 
