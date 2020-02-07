@@ -17,7 +17,7 @@
 </head>
 
 <body>
-<?php include __DIR__.'/../tmp/template/menu-renIvan.tpl'?>
+<?php include __DIR__ . '/../tmp/template/menu-renIvanEN.tpl' ?>
 <main>
     <form id="FormFullCircuit" >
         <div class="form-group animated zoomInRight" style="width: 10%;margin-left: 10%;">

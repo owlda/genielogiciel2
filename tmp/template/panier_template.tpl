@@ -14,21 +14,24 @@
                             <th scope="col"></th>
                         </tr>
                         </thead>
-                        {if }
-
+                        {if $count_item_cart > 0}
+                            <tbody>
+                            {foreach $arr_circuit_cart as  $circuit}
+                                <tr>
+                                    <td>{$circuit['titre'|cat:$smarty.cookies.lang]}</td>
+                                    <td><span style="font-weight: bold">{$circuit['prix']}<span></span></td>
+                                    <td><button type="button" class="btn btn-danger" id="idCircuit" onclick="RemoveItemCart()">Supprimer</button></td>
+                                </tr>
+                            {/foreach}
+                            <tr>
+                                <td></td>
+                                <td>Total - <span style="font-weight: bold; font-size: large">{$total}$</span></td>
+                                <td><button type="button" class="btn btn-success" id="idCircuit" onclick="payer()">Payer</button></td>
+                            </tr>
+                            </tbody>
                         {/if}
-                        <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td><button type="button" class="btn btn-info" id="idCircuit" onclick="remove(this.id)">Supprimer</button></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>Total - <span></span>$</td>
-                            <td><button type="button" class="btn btn-info" id="idCircuit" onclick="payer()">Supprimer</button></td>
-                        </tr>
-                        </tbody>
+
+
                     </table>
                 </div>
             </div>

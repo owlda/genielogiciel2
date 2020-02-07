@@ -27,7 +27,17 @@
 </head>
 <body onload="initclientmenue();">
 <?php
+/*session_start();
+    if(isset($_SESSION['sessionstatus'])){
+        if ($_SESSION['sessionstatus'] == true) {
+            echo('<div id="menu"></div>');
+            //include __DIR__ . '/tmp/template/menu_client.tpl ';
+        }
+    }
+
+    else {include __DIR__ . '/tmp/template/menu-ren.tpl ';}*/
 ?>
+<div id="menu"></div>
 
 <div class="container" id="carousel">
     <?php include __DIR__ . '/tmp/template/carousel.tpl ' ?>
@@ -37,22 +47,15 @@
     </div>
 </div>
 
-<div class="container" id="circuitmodal">
-
 <div class="container" id="circuitx">
 
-
 </div>
-
-<div id="cart_modal">
-
-</div>
+<div id="cart_modal"></div>
 
 <!--here we keep a modal in which we will show the data for the chosen circuit to show all the details, we will use bootstrap
 colapsable to show the details-->
 
 <div class="modal fade" id="circuit_detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
->>>>>>> 78756a17944818383bdc1ac8cfadd08088177123
 
 </div>
 
@@ -78,17 +81,7 @@ colapsable to show the details-->
     </div>
 </div>
 
-<?php switch($_COOKIE['lang']){
-    case "es":
-        require __DIR__.'/tmp/template/footer-es.tpl';
-        break;
-    case "en" :
-        require __DIR__.'/tmp/template/footer-en.tpl';
-        break;
-    default :
-        require __DIR__.'/tmp/template/footer.tpl';
-        break;
-}?>
+<?php include __DIR__ . '/tmp/template/footer.tpl ' ?>
 </body>
 <script src="ControllerVahe/requetsMembre.js"></script>
 <script src="ControllerVahe/ViewVahe.js"></script>

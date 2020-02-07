@@ -29,10 +29,38 @@ switch ($action){
     case 'addpanier':
         addpanier($smarty, $db);
         break;
+    case 'main':
+        main($smarty, $db);
+        break;
     default: break;
 }
 
 // Les actions
+
+/*function main($smarty, $db)
+{
+    $requete = "SELECT * FROM circuit limit  3"; // we select first three circuits to show on the main page
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $arrayCircuit = $db->getAll($requete);
+
+    foreach ($arrayCircuit as $key=>$value){
+        $idCircuit = $arrayCircuit[$key]['idCircuit'];
+        $requet = "SELECT * FROM photoCircuit WHERE idCircuit = ".$idCircuit." limit 1";
+        $idPhoto = $db->getAll($requet);
+
+        $requet2 = "SELECT * FROM photo WHERE idPhoto = ".$idPhoto[0]['idPhoto'];
+        $path = $db->getAll($requet2);
+        $str = $path[0]['imagePath'];
+        $arrayCircuit[$key]['photo'] = ltrim($str, '/');
+
+    }
+    $smarty->assign('arrayCircuit', $arrayCircuit); //arrayCircuit of the circuit
+
+    $reponse['card1'] = $smarty->fetch('card_slider_main.tpl');
+
+
+    $reponse['action'] = 'main';
+}*/
 
 // cette fonction fait requet à la base de données pour recevoir les données de circuit avec id pour montrer au client
 function showcircuit($smarty, $db)
@@ -171,6 +199,14 @@ function connecter($smarty, $db)
 function i_connecter($smarty, $db)
 {
     global $reponse;
+    if(isset($_SESSION['sessionstatus'])){
+        if ($_SESSION['sessionstatus'] == true) {
+            $smarty->assign('courriel', $_SESSION['courriel']); // to show the e-mail of the client on the mene
+            $reponse['temp'] = $smarty->fetch('menu_client.tpl');
+        }
+    }else
+        {$reponse['temp'] = $smarty->fetch('menu_ren.tpl');}
+
 
     $requete = "SELECT * FROM circuit limit  3"; // we select first three circuits to show on the main page
     $db->setFetchMode(ADODB_FETCH_ASSOC);
@@ -192,9 +228,8 @@ function i_connecter($smarty, $db)
     $reponse['card1'] = $smarty->fetch('cardssliderVaheContent.tpl');
 
 
-    $reponse['action'] = 'i_connecter'; //on traite la valeur 'i_connecter' dans la vue pour ajouter le menu du client
-    $smarty->assign('courriel', $_SESSION['courriel']); // to show the e-mail of the client on the mene
-    $reponse['temp'] = $smarty->fetch('menu_client.tpl'); // we pass the code of menu template to vue
+    $reponse['action'] = 'i_connecter';
+
 
 }
 

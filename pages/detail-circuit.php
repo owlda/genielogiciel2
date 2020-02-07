@@ -16,7 +16,7 @@
 </head>
 <body onload="DetailCircuit();">
 
-<?php include __DIR__.'/../tmp/template/menu-renIvan.tpl'?>
+<?php include __DIR__ . '/../tmp/template/menu-renIvanEN.tpl' ?>
 
 <main style="padding: 20px;">
     <div class="container border border-primary rounded-lg animated zoomInRight" style="padding: 10px;">

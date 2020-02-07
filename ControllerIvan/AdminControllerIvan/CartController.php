@@ -63,6 +63,7 @@ function ShowCart($smarty, $voc, $db){
     global $reponse;
     $reponse['action'] = "show_cart";
     $reponse['count_item_cart'] = 0;
+    $reponse['total'] = 0;
 
     if (isset($_SESSION['id'])){
         $reponse['res'] = "USER_OK";
@@ -73,6 +74,7 @@ function ShowCart($smarty, $voc, $db){
         if (sizeof($rs) > 0 ){
             foreach($rs as $key=>$value){
                 $arr_circuit_cart[$key] = GetCircuitById($rs[$key]['idCircuit'], $db);
+                $reponse['total'] += $arr_circuit_cart[$key]['prix'];
             }
         }
     } else {
@@ -81,6 +83,8 @@ function ShowCart($smarty, $voc, $db){
 
     $smarty->assign('voc', $voc);
     $smarty->assign('count_item_cart', $reponse['count_item_cart'] );
+    $smarty->assign('total', $reponse['total']);
+    $smarty->assign('arr_circuit_cart', $arr_circuit_cart);
     $reponse['modal_cart'] = $smarty->fetch("panier_template.tpl");
 }
 

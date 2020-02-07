@@ -16,7 +16,7 @@
 </head>
 
 <body onload="LoadAddEtape()">
-<?php include __DIR__.'/../tmp/template/menu-renIvan.tpl'?>
+<?php include __DIR__ . '/../tmp/template/menu-renIvanEN.tpl' ?>
 <main>
     <div class="container" id="form-etape"></div>
 </main>
