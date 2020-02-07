@@ -62,23 +62,26 @@ function GetCircuitById($idCircuit, $db){
 function ShowCart($smarty, $voc, $db){
     global $reponse;
     $reponse['action'] = "show_cart";
+    $reponse['count_item_cart'] = 0;
 
     if (isset($_SESSION['id'])){
         $reponse['res'] = "USER_OK";
         $db->setFetchMode(ADODB_FETCH_ASSOC);
         $rs = $db->getAll("SELECT * FROM panier WHERE idMembre = " . $_SESSION['id']);
+        $reponse['count_item_cart'] = sizeof($rs);
 
-        if (sizeof($rs)){
+        if (sizeof($rs) > 0 ){
             foreach($rs as $key=>$value){
                 $arr_circuit_cart[$key] = GetCircuitById($rs[$key]['idCircuit'], $db);
             }
-            $reponse['count_item_cart'] = sizeof($rs);
         }
     } else {
         $reponse['res'] = "USER_NOK";
     }
 
-
+    $smarty->assign('voc', $voc);
+    $smarty->assign('count_item_cart', $reponse['count_item_cart'] );
+    $reponse['modal_cart'] = $smarty->fetch("panier_template.tpl");
 
 }
 

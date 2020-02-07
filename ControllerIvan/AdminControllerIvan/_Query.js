@@ -307,8 +307,6 @@ function BtnDelRabais(idCircuit) {
 }
 //modal show cart
 function ShowCart(){
-    $('#modals_panier').modal('show');
-    $('.modal-backdrop').css('position', 'static');
     var formiConnexion = new FormData();
     formiConnexion.append('action','show_cart_modal');
     $.ajax({
@@ -325,7 +323,6 @@ function ShowCart(){
             alert("COUNT_ERROR!");
         }
     });
-    alert("onclick ShowCart();");
 }
 
 //TODO Enregistrer
@@ -732,6 +729,7 @@ function BtnEditJour(idJour, idEtape){
 
 }
 
+//TODO Panier
 function addpanier(id) {
     var formiConnexion = new FormData();
     formiConnexion.append('action','addpanier');

@@ -5,6 +5,7 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-body" style="padding:5px 5px;">
+
                     <table class="table">
                         <thead>
                         <tr>

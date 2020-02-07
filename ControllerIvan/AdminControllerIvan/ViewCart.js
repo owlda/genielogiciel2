@@ -16,12 +16,13 @@ var VueCart=function(reponse){
 
     function AddToCart_View(reponse){
         $('#cart_client').text(reponse.count_item_cart);
-        // let FuncShow = 'ShowCart(' + reponse.idCircuit +');';
-
-        $('#click_cart').attr('onclick', 'TestSchowCart()');
+        $('#click_cart').attr('onclick', 'ShowCart()');
     }
 
     function ShowCart_View(reponse){
+        $('#cart_modal').html(reponse.modal_cart);
+        $('#myModal_panier').modal('show');
+        $('.modal-backdrop').css('position', 'static');
 
         alert(reponse.res);
     }
