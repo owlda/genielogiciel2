@@ -1,9 +1,15 @@
-function GetUrlController() {
+function GetUrlControllerAdmin() {
     var loc = window.location.pathname;
     var dir = loc.substring(0, loc.lastIndexOf('/'));
     var dir = dir.substring(0, dir.length-1);
     var dir = dir.substring(0, dir.lastIndexOf('/'));
     return dir + '/ControllerIvan/AdminControllerIvan/AdminController.php';
+}
+
+function GetUrlControllerCart() {
+    var loc = window.location.pathname;
+    var dir = loc.substring(0, loc.lastIndexOf('/'));
+    return dir + '/ControllerIvan/AdminControllerIvan/CartController.php';
 }
 
 //TODO Load form
@@ -14,7 +20,7 @@ function LoadModifierCircuit() {
     var url = new URL(url_string);
     FormModCircuit.append('action','modcircuit');
     FormModCircuit.append('idCircuit',url.searchParams.get("id"));
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
     $.ajax({
         type : 'POST',
         url : controller,
@@ -37,7 +43,7 @@ function LoadModifierCircuit() {
 function LoadAddCircuit(){
     var FormAddCircuit = new FormData();
     FormAddCircuit.append('action','addcircuit');
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
     $.ajax({
         type : 'POST',
         url : controller,
@@ -61,7 +67,7 @@ function LoadAddEtape(idCircuit){
     var FormAddEtape = new FormData();
     FormAddEtape.append('action','addetape');
     FormAddEtape.append('idCircuit',idCircuit);
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
     $.ajax({
         type : 'POST',
         url : controller,
@@ -85,7 +91,7 @@ function DetailCircuit(idCircuit) {
     var FormCircuit = new FormData();
     FormCircuit.append('action', 'detail_circuit');
     FormCircuit.append('idCircuit', idCircuit);
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
     $.ajax({
         type: 'POST',
         url: controller,
@@ -108,7 +114,7 @@ function DetailCircuit(idCircuit) {
 function BtnFullCircuit(){
     var FormCircuit = new FormData(FormFullCircuit);
     FormCircuit.append('action', 'table_circuit');
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
     $.ajax({
         type: 'POST',
         url: controller,
@@ -137,7 +143,7 @@ function ShowDetailJourChange(idJourHtmlSelectChange, idJour, idVilleJour, NameJ
     FormDetailJour.append('idVilleJour',idVilleJour);
     FormDetailJour.append('NameJour',NameJour);
     FormDetailJour.append('idPaysEtape',idPaysEtape);
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
     $.ajax({
         type : 'POST',
         url : controller,
@@ -164,7 +170,7 @@ function LoadModalAddJour(idPays, idEtape){
     FormAddJour.append('action','btn_add_jour');
     FormAddJour.append('idPays', idPays);
     FormAddJour.append('idEtape', idEtape);
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
 
     $.ajax({
         type : 'POST',
@@ -193,7 +199,7 @@ function LoadModalAddRestaurent(idPaysEtape, idVilleJour, idJour){
     FormAddRestaurent.append('idPaysEtape', idPaysEtape);
     FormAddRestaurent.append('idVilleJour', idVilleJour);
     FormAddRestaurent.append('idJour', idJour);
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
 
     $.ajax({
         type : 'POST',
@@ -222,7 +228,7 @@ function LoadModalAddActivity(idPaysEtape, idVilleJour, idJour){
     FormAddActivity.append('idPaysEtape', idPaysEtape);
     FormAddActivity.append('idVilleJour', idVilleJour);
     FormAddActivity.append('idJour', idJour);
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
 
     $.ajax({
         type : 'POST',
@@ -251,7 +257,7 @@ function LoadModalAddHotel(idPaysEtape, idVilleJour, idJour){
     FormAddHotel.append('idPaysEtape', idPaysEtape);
     FormAddHotel.append('idVilleJour', idVilleJour);
     FormAddHotel.append('idJour', idJour);
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
 
     $.ajax({
         type : 'POST',
@@ -278,7 +284,7 @@ function BtnDelRabais(idCircuit) {
     var FormDelRabais = new FormData();
     FormDelRabais.append('action','btn_del_rabais');
     FormDelRabais.append('idCircuit',idCircuit);
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
 
     $.ajax({
         type : 'POST',
@@ -306,7 +312,7 @@ function BtnAddRestaurentForJour(){
     var BtnAddRestaurentForJour = new FormData(FormAddRestaurent);
     BtnAddRestaurentForJour.append('action','btn_register_restaurent_jour');
     BtnAddRestaurentForJour.append('site', $('#text_site_restaurent').text());
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
 
     $.ajax({
         type : 'POST',
@@ -330,7 +336,7 @@ function BtnAddRestaurentForJour(){
 function BtnAddActivityForJour(){
     var BtnAddActivityForJour = new FormData(FormAddActivity);
     BtnAddActivityForJour.append('action','btn_register_activity_jour');
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
 
     $.ajax({
         type : 'POST',
@@ -355,7 +361,7 @@ function BtnAddHotelForJour(){
     var BtnAddHoteltForJour = new FormData(FormAddHotel);
     BtnAddHoteltForJour.append('action','btn_register_hotel_jour');
     BtnAddHoteltForJour.append('site', $('#text_site_hotel').text());
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
 
     $.ajax({
         type : 'POST',
@@ -382,7 +388,7 @@ function BtnAddRestaurent(idVille){
     FormAddRestaurent.append('idVille', idVille);
     FormAddRestaurent.append('NewNameRestaurent', $('#NewNameRestaurent').val());
     FormAddRestaurent.append('NewSiteRestaurent', $('#NewSiteRestaurent').val());
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
 
     $.ajax({
         type : 'POST',
@@ -409,7 +415,7 @@ function BtnAddHotel(idVille){
     FormAddRestaurent.append('idVille', idVille);
     FormAddRestaurent.append('NewNameHotel', $('#NewNameHotel').val());
     FormAddRestaurent.append('NewSiteHotel', $('#NewSiteHotel').val());
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
 
     $.ajax({
         type : 'POST',
@@ -435,7 +441,7 @@ function BtnAddStatus(){
     FormAddStatut.append('action','btn_register_statut');
     FormAddStatut.append('NewIdStatut', $('#NewIdStatut').val());
     FormAddStatut.append('NewNameStatut', $('#NewNameStatut').val());
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
 
     $.ajax({
         type : 'POST',
@@ -461,7 +467,7 @@ function BtnAddTheme(){
     FormAddTheme.append('action','btn_register_theme');
     let new_theme = $('#NewTheme').val();
     FormAddTheme.append('new_theme',new_theme);
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
 
     $.ajax({
         type : 'POST',
@@ -487,7 +493,7 @@ function BtnAddPays(){
     FormAddPays.append('action','btn_register_pays');
     let new_pays = $('#NewPays').val();
     FormAddPays.append('new_pays', new_pays);
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
 
     $.ajax({
         type : 'POST',
@@ -514,7 +520,7 @@ function BtnAddVille(idPays){
     FormAddVille.append('idPays', idPays);
     let new_ville = $('#NewVille').val();
     FormAddVille.append('new_ville', new_ville);
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
 
     $.ajax({
         type : 'POST',
@@ -576,7 +582,7 @@ function BtnAddEtape(idCircuit){
     var nicE = new nicEditors.findEditor('NicEdit');
     FormAddEtape.append('description',nicE.getContent());
     FormAddEtape.append('id_pays', $('#SelectPays').val());
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
 
     $.ajax({
         type : 'POST',
@@ -602,7 +608,7 @@ function BtnAddJour(idEtape){
     var FormJourAdd = new FormData(FormAddJour);
     FormJourAdd.append('action','btn_register_jour');
     FormJourAdd.append('idEtape',idEtape);
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
 
     $.ajax({
         type : 'POST',
@@ -631,7 +637,7 @@ function BtnRegistreRabais(idCircuit){
     FormAddRabais.append('pourcentage',$('#input_pourcentage').val());
     FormAddRabais.append('dateDebut',$('#input_date_start').val());
     FormAddRabais.append('dateFin',$('#input_date_end').val());
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
 
     $.ajax({
         type : 'POST',
@@ -657,7 +663,7 @@ function BtnRegistreRabais(idCircuit){
 function ListerCircuit(){
     var FormAddCircuit = new FormData();
     FormAddCircuit.append('action','list_circuit');
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
     $.ajax({
         type : 'POST',
         url : controller,
@@ -682,7 +688,7 @@ function BtnEditJour(idJour, idEtape){
     var FormJourAdd = new FormData(FormAddJour);
     FormJourAdd.append('action','btn_register_jour');
     FormJourAdd.append('idEtape',idEtape);
-    var controller = GetUrlController();
+    var controller = GetUrlControllerAdmin();
 
     $.ajax({
         type : 'POST',
@@ -702,6 +708,46 @@ function BtnEditJour(idJour, idEtape){
         }
     });
 
+}
+
+function addpanier(id) {
+    var formiConnexion = new FormData();
+    formiConnexion.append('action','addpanier');
+    formiConnexion.append('idCircuit', id);
+    $.ajax({
+        type : 'POST',
+        url : GetUrlControllerCart(),
+        data : formiConnexion,
+        contentType : false,
+        processData : false,
+        dataType : 'json',
+        success : function (reponse){
+
+            VueCart(reponse);
+        },
+        error: function (xhr, error) {
+            alert("LOL_CART");
+        }
+    });
+}
+
+function PanierCount() {
+    var formiConnexion = new FormData();
+    formiConnexion.append('action','panier_count');
+    $.ajax({
+        type : 'POST',
+        url : GetUrlControllerCart(),
+        data : formiConnexion,
+        contentType : false,
+        processData : false,
+        dataType : 'json',
+        success : function (reponse){
+            VueCart(reponse);
+        },
+        error: function (xhr, error) {
+            alert("LOL_PANIER");
+        }
+    });
 }
 
 
