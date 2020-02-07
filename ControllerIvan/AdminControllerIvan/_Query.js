@@ -307,6 +307,8 @@ function BtnDelRabais(idCircuit) {
 }
 //modal show cart
 function ShowCart(){
+    $('#modals_panier').modal('show');
+    $('.modal-backdrop').css('position', 'static');
     var formiConnexion = new FormData();
     formiConnexion.append('action','show_cart_modal');
     $.ajax({

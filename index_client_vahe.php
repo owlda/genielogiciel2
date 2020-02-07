@@ -25,7 +25,7 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="scripts/formulaires.js"></script>
 </head>
-<body onload="initclientmenue();PanierCount();">
+<body onload="initclientmenue();">
 <?php
 session_start();
     if(isset($_SESSION['sessionstatus'])){
@@ -52,7 +52,41 @@ session_start();
 
 </div>
 
-<div id="cart_modal"></div>
+<div id="cart_modal">
+    <div class="container" id="modals_panier">
+        <!-- Modal -->
+        <div class="modal fade" id="myModal_panier" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-body" style="padding:5px 5px;">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Circuit</th>
+                                <th scope="col">Prix</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td><button type="button" class="btn btn-info" id="idCircuit" onclick="remove(this.id)">Supprimer</button></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Total - <span></span>$</td>
+                                <td><button type="button" class="btn btn-info" id="idCircuit" onclick="payer()">Supprimer</button></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--here we keep a modal in which we will show the data for the chosen circuit to show all the details, we will use bootstrap
 colapsable to show the details-->

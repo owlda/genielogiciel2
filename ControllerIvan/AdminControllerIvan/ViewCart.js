@@ -18,7 +18,7 @@ var VueCart=function(reponse){
         $('#cart_client').text(reponse.count_item_cart);
         // let FuncShow = 'ShowCart(' + reponse.idCircuit +');';
 
-        $('#click_cart').attr('onclick', 'ShowCart()');
+        $('#click_cart').attr('onclick', 'TestSchowCart()');
     }
 
     function ShowCart_View(reponse){
@@ -26,3 +26,9 @@ var VueCart=function(reponse){
         alert(reponse.res);
     }
 };
+
+function TestSchowCart() {
+    $('#myModal_panier').modal('show');
+    $('.modal-backdrop').css('position', 'static');
+
+}

@@ -33,6 +33,7 @@ var membreVue = function(reponse){
 
             $("#menu").html(reponse.temp);
             $("#card1").html(reponse.card1);
+            PanierCount();
             break;
         case 'deconnect':
             window.location.href = 'index_ren.php';
