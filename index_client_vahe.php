@@ -81,10 +81,15 @@ colapsable to show the details-->
     </div>
 </div>
 
+<!-- Modal panier-->
+<div class="modal fade" id="myPanier" role="dialog">
+
+</div>
+
+
 <?php include __DIR__ . '/tmp/template/footer.tpl ' ?>
 </body>
 <script src="ControllerVahe/requetsMembre.js"></script>
 <script src="ControllerVahe/ViewVahe.js"></script>
 </html>
-<?php
 
