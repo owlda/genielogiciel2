@@ -207,56 +207,12 @@ function i_connecter($smarty, $db)
 
     $reponse['card1'] = $smarty->fetch('cardssliderVaheContent.tpl');
 
-/*    try{
-        $unModele=new membreModele($requete, $arrayCircuit);
-        $stmt=$unModele->executer();
-        $ligneCircuit = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if(!$ligneCircuit)
-        {
-            //la requete retourne false si la table est vide
-            $reponse['msg'] = 'table circuit empty';
-        }
-        else
-        {
-            // we add tha data to smarty variables
-
-                $idCircuit = $ligneCircuit['idCircuit'];
-                $titreCircuit = $ligneCircuit['titre'];
-                $descCircuit = $ligneCircuit['description'];
-                $reponse['msg'] = 'OK';
-                $smarty->assign('idCircuit1', $ligneCircuit['idCircuit']); //id of the circuit
-                $smarty->assign('titreCircuit1', $ligneCircuit['titre']); // title of the circuit
-                $smarty->assign('descCircuit1', $ligneCircuit['description']); // description of the circuit
-
-                $reponse['card1'] = $smarty->fetch('../tmp/template/cardssliderVaheContent.tpl');
-                // we fetch variables into cardssliderVahe.tpl
-        }
-    }catch(Exception $e){
-    }finally{
-        unset($unModele);
-    }*/
 
     $reponse['action'] = 'i_connecter'; //on traite la valeur 'i_connecter' dans la vue pour ajouter le menu du client
     $smarty->assign('courriel', $_SESSION['courriel']); // to show the e-mail of the client on the mene
     $reponse['temp'] = $smarty->fetch('menu_client.tpl'); // we pass the code of menu template to vue
 
 
-   /* $requete = 'SELECT * FROM circuit';
-    try{
-        $unModel = new membreModele($requete, array());
-        $stmt = $unModel->executer();
-        $ligne = $stmt->fetch(PDO::FETCH_ASSOC);
-        $reponse['id'] = $ligne['idCircuit'];
-        $smarty->assign('id', $ligne['idCircuit']);
-        $smarty->fetch('carousel_vahe.tpl');
-
-    }
-    catch(Exception $e){
-
-    }finally{
-        unset($unModele);
-    }*/
 
 }
 
