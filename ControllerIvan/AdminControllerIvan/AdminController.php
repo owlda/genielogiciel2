@@ -580,6 +580,7 @@ function EnregistrerHotelJour($smarty, $voc, $db){
 //Lister des circuit
 function ListerCircuit($smarty, $voc, $db){
     global $reponse;
+    $tmp = gethostname();
     $reponse['action'] = "list_circuit";
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $rs = $db->getAll('SELECT * FROM circuit');

@@ -9,11 +9,20 @@ var VueCart=function(reponse){
         case "panier_count" :
             AddToCart_View(reponse);
             break;
-
+        case "show_cart" :
+            ShowCart_View(reponse);
+            break;
     }
 
     function AddToCart_View(reponse){
         $('#cart_client').text(reponse.count_item_cart);
-        $('#click_cart').attr('onclick', 'ShowCart(this);');
+        // let FuncShow = 'ShowCart(' + reponse.idCircuit +');';
+
+        $('#click_cart').attr('onclick', 'ShowCart()');
+    }
+
+    function ShowCart_View(reponse){
+
+        alert(reponse.res);
     }
 };
