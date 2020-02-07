@@ -6,15 +6,15 @@ footer.tpl<div class="footer-dark">
                     <h3>Services</h3>
                     <ul>
                         <li><a href="#">Promotions</a></li>
-                        <li><a href="#">Circuits</a></li>
-                        <li><a href="#">Voyages</a></li>
+                        <li><a href="#">Trips</a></li>
+                        <li><a href="#">Travels</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-3 item">
-                    <h3>A propos</h3>
+                    <h3>About</h3>
                     <ul>
-                        <li><a href="#">Entreprise</a></li>
-                        <li><a href="#">Equipe</a></li>
+                        <li><a href="#">Company</a></li>
+                        <li><a href="#">Team</a></li>
                         <li><a href="#">Careers</a></li>
                     </ul>
                 </div>

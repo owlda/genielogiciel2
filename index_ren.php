@@ -15,13 +15,23 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="scripts/formulaires.js"></script>
 </head>
-
 <?php include __DIR__ . '/tmp/template/headerDenis.tpl ';
 
 ?>
 <body onload="initialiserMenu()">
-<?php include __DIR__ . '/tmp/template/menu-ren.tpl ' ?>
-
+<?php
+switch($_COOKIE['lang']){
+    case "es":
+        require __DIR__.'/tmp/template/menu-ren-es.tpl';
+        break;
+    case "en" :
+        require __DIR__.'/tmp/template/menu-ren-en.tpl';
+        break;
+    default :
+        require __DIR__.'/tmp/template/menu-ren.tpl';
+        break;
+}
+?>
 <div class="container">
     <?php include __DIR__ . '/tmp/template/carousel.tpl ' ?>
 </div>
@@ -50,7 +60,19 @@
         </div>
     </div>
 </div>
-<?php include __DIR__ . '/tmp/template/footer.tpl ' ?>
+<?php
+switch($_COOKIE['lang']){
+    case "es":
+        require __DIR__.'/tmp/template/footer-es.tpl';
+        break;
+    case "en" :
+        require __DIR__.'/tmp/template/footer-en.tpl';
+        break;
+    default :
+        require __DIR__.'/tmp/template/footer.tpl';
+        break;
+}
+?>
 </body>
 </html>
 <?php

@@ -5,6 +5,7 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-body" style="padding:5px 5px;">
+
                     <table class="table">
                         <thead>
                         <tr>
@@ -13,6 +14,9 @@
                             <th scope="col"></th>
                         </tr>
                         </thead>
+                        {if }
+
+                        {/if}
                         <tbody>
                         <tr>
                             <td></td>
