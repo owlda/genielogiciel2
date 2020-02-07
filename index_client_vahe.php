@@ -39,6 +39,7 @@ session_start();
 
 ?>
 
+
 <div class="container" id="carousel">
     <?php include __DIR__ . '/tmp/template/carousel.tpl ' ?>
 </div>

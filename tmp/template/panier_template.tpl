@@ -22,7 +22,7 @@
                         <tr>
                             <td></td>
                             <td>Total - <span></span>$</td>
-                            <td><button type="button" class="btn btn-info" id="idCircuit" onclick="payer()">Supprimer</button></td>
+                            <td><button type="button" class="btn btn-info" id="idCircuit" onclick="payer()">Payer</button></td>
                         </tr>
                         </tbody>
                     </table>

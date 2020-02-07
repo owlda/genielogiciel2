@@ -147,7 +147,7 @@ function connecter($smarty, $db)
             // si le courriel existe dans la base de données, on vérifie le mot de pass
             if($motdepass_form == $ligne['motdepass']){
                 // si le mot de pass est correct, on ouvre une session
-
+                session_start();
                 $_SESSION['id'] = $ligne['idMembre'];
                 $_SESSION['sessionstatus'] = true;
                 $_SESSION['courriel'] = $ligne['courriel'];
@@ -171,8 +171,15 @@ function connecter($smarty, $db)
 // pour loader la page du client après la connexion
 function i_connecter($smarty, $db)
 {
-    global $reponse;
 
+/*    if(isset($_SESSION['sessionstatus'])){
+        if ($_SESSION['sessionstatus'] == true) {
+            $reponse['temp'] = $smarty->fetch('menu_client.tpl'); // we pass the code of menu template to vue
+        }
+    }else
+        {$reponse['temp'] = $smarty->fetch('menu_ren.tpl');}*/
+
+    global $reponse;
     $requete = "SELECT * FROM circuit limit  3"; // we select first three circuits to show on the main page
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $arrayCircuit = $db->getAll($requete);
@@ -195,7 +202,7 @@ function i_connecter($smarty, $db)
 
     $reponse['action'] = 'i_connecter'; //on traite la valeur 'i_connecter' dans la vue pour ajouter le menu du client
     $smarty->assign('courriel', $_SESSION['courriel']); // to show the e-mail of the client on the mene
-    $reponse['temp'] = $smarty->fetch('menu_client.tpl'); // we pass the code of menu template to vue
+    {$reponse['temp'] = $smarty->fetch('menu_ren.tpl');}
 
 }
 
