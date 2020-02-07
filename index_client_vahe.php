@@ -30,11 +30,21 @@
 session_start();
     if(isset($_SESSION['sessionstatus'])){
         if ($_SESSION['sessionstatus'] == true) {
-            echo('<div id="menu"></div>');
-            //include __DIR__ . '/tmp/template/menu_client.tpl ';
+            
+            switch($_COOKIE['lang']){
+                case "es":
+                    require __DIR__.'/tmp/template/menu_client-es.tpl';
+                    break;
+                case "en" :
+                    require __DIR__.'/tmp/template/menu_client-en.tpl';
+                    break;
+                default :
+                    require __DIR__.'/tmp/template/menu_client.tpl';
+                    break;
+            }
+
         }
     }
-
     else {include __DIR__ . '/tmp/template/menu-ren.tpl ';}
 
 ?>
@@ -46,6 +56,8 @@ session_start();
     <div class="card-group"  id="card1" style="padding:20px; margin-bottom: 20px;">
     </div>
 </div>
+
+<div class="container" id="circuitmodal">
 
 <div class="container" id="circuitx">
 
@@ -60,6 +72,7 @@ session_start();
 colapsable to show the details-->
 
 <div class="modal fade" id="circuit_detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+>>>>>>> 78756a17944818383bdc1ac8cfadd08088177123
 
 </div>
 
@@ -85,7 +98,17 @@ colapsable to show the details-->
     </div>
 </div>
 
-<?php include __DIR__ . '/tmp/template/footer.tpl ' ?>
+<?php switch($_COOKIE['lang']){
+    case "es":
+        require __DIR__.'/tmp/template/footer-es.tpl';
+        break;
+    case "en" :
+        require __DIR__.'/tmp/template/footer-en.tpl';
+        break;
+    default :
+        require __DIR__.'/tmp/template/footer.tpl';
+        break;
+}?>
 </body>
 <script src="ControllerVahe/requetsMembre.js"></script>
 <script src="ControllerVahe/ViewVahe.js"></script>
