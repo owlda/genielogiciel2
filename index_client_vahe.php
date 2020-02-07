@@ -27,27 +27,18 @@
 </head>
 <body onload="initclientmenue();">
 <?php
-session_start();
+/*session_start();
     if(isset($_SESSION['sessionstatus'])){
         if ($_SESSION['sessionstatus'] == true) {
-            
-            switch($_COOKIE['lang']){
-                case "es":
-                    require __DIR__.'/tmp/template/menu_client-es.tpl';
-                    break;
-                case "en" :
-                    require __DIR__.'/tmp/template/menu_client-en.tpl';
-                    break;
-                default :
-                    require __DIR__.'/tmp/template/menu_client.tpl';
-                    break;
-            }
-
+            echo('<div id="menu"></div>');
+            //include __DIR__ . '/tmp/template/menu_client.tpl ';
         }
     }
-    else {include __DIR__ . '/tmp/template/menu-ren.tpl ';}
+
+    else {include __DIR__ . '/tmp/template/menu-ren.tpl ';}*/
 
 ?>
+<div id="menu"></div>
 
 <div class="container" id="carousel">
     <?php include __DIR__ . '/tmp/template/carousel.tpl ' ?>
@@ -57,22 +48,50 @@ session_start();
     </div>
 </div>
 
-<div class="container" id="circuitmodal">
-
 <div class="container" id="circuitx">
 
-
 </div>
 
-<div id="cart_modal">
+<!--<div id="cart_modal">
+    <div class="container" id="modals_panier">
 
-</div>
+        <div class="modal fade" id="myModal_panier" role="dialog">
+            <div class="modal-dialog">
+
+                <div class="modal-content">
+                    <div class="modal-body" style="padding:5px 5px;">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Circuit</th>
+                                <th scope="col">Prix</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td><button type="button" class="btn btn-info" id="idCircuit" onclick="remove(this.id)">Supprimer</button></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Total - <span></span>$</td>
+                                <td><button type="button" class="btn btn-info" id="idCircuit" onclick="payer()">Supprimer</button></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
 
 <!--here we keep a modal in which we will show the data for the chosen circuit to show all the details, we will use bootstrap
 colapsable to show the details-->
 
 <div class="modal fade" id="circuit_detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
->>>>>>> 78756a17944818383bdc1ac8cfadd08088177123
 
 </div>
 
@@ -98,17 +117,7 @@ colapsable to show the details-->
     </div>
 </div>
 
-<?php switch($_COOKIE['lang']){
-    case "es":
-        require __DIR__.'/tmp/template/footer-es.tpl';
-        break;
-    case "en" :
-        require __DIR__.'/tmp/template/footer-en.tpl';
-        break;
-    default :
-        require __DIR__.'/tmp/template/footer.tpl';
-        break;
-}?>
+<?php include __DIR__ . '/tmp/template/footer.tpl ' ?>
 </body>
 <script src="ControllerVahe/requetsMembre.js"></script>
 <script src="ControllerVahe/ViewVahe.js"></script>
