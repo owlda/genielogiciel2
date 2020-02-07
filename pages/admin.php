@@ -19,7 +19,21 @@
 </head>
 
 <body onload="ListerCircuit();">
-<?php include __DIR__.'/../tmp/template/menu-renIvan.tpl'?>
+
+<?php
+switch($_COOKIE['lang']){
+    case "es":
+        //require __DIR__.'/../tmp/template/menu-renIvan.tpl';
+        break;
+    case "en" :
+        require __DIR__.'/../tmp/template/menu-renIvan.tpl';
+        break;
+    default :
+        require __DIR__.'/../tmp/template/menu-renIvan.tpl';
+        break;
+}
+
+?>
 
 <main>
     <div class="container" id="list-circuit"></div>
