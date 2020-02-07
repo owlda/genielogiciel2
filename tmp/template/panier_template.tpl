@@ -14,6 +14,9 @@
                             <th scope="col"></th>
                         </tr>
                         </thead>
+                        {if }
+
+                        {/if}
                         <tbody>
                         <tr>
                             <td></td>

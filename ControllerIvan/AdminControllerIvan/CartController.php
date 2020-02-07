@@ -82,7 +82,6 @@ function ShowCart($smarty, $voc, $db){
     $smarty->assign('voc', $voc);
     $smarty->assign('count_item_cart', $reponse['count_item_cart'] );
     $reponse['modal_cart'] = $smarty->fetch("panier_template.tpl");
-
 }
 
 
