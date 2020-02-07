@@ -167,7 +167,6 @@ function connecter($smarty, $db)
     }catch(Exception $e){
     }finally{
         unset($unModele);
-
     }
 
 }
@@ -225,28 +224,6 @@ function deconnect()
 
 }
 
-// add an item to panier
-/*function addpanier($smarty, $db)
-{
-    global $reponse;
-    $reponse['action'] = 'addpanier';
-    $idMembre = $_SESSION['id'];
-    $idCircuit = $_POST['idCircuit'];
-
-    $requete = "SELECT * FROM circuit WHERE idCircuit = ".$idCircuit;
-    $db->setFetchMode(ADODB_FETCH_ASSOC);
-    $arraycircuit = $db->getAll($requete);
-    $montant = $arraycircuit[0]['prix'];
-
-    //$requet = "INSERT INTO panier ($idMembre, idCircuit, montant) VALUES (?,?,?)";
-    $table = 'panier';
-    $record = array();
-    $record['idMembre'] = $idMembre;
-    $record['idCircuit'] = $idCircuit;
-    $record['prix'] = $montant;
-    $db->autoExecute($table, $record, 'INSERT');
-
-}*/
 
 echo json_encode($reponse);
 ?>
