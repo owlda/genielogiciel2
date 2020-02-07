@@ -15,7 +15,19 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="scripts/formulaires.js"></script>
 </head>
-
+<?php
+switch($_COOKIE['lang']){
+    case "es":
+        require __DIR__.'/../../voc/lb_es.php';
+        break;
+    case "en" :
+        require __DIR__.'/../../voc/lb_en.php';
+        break;
+    default :
+        require __DIR__.'/../../voc/lb_fr.php';
+        break;
+}
+?>
 <?php include __DIR__ . '/tmp/template/headerDenis.tpl ';
 
 ?>

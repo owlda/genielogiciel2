@@ -12,7 +12,6 @@
 
     <?php include __DIR__ . '/tmp/template/headerIvan.tpl' ?>
 </head>
-
 <body>
 <?php include __DIR__.'/tmp/template/menu-renIvan.tpl'?>
 <h3 style="margin-top: 5%; margin-bottom: 5%; text-align: center">Ajouter les images:</h3>
