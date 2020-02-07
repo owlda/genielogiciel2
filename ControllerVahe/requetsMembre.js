@@ -22,6 +22,7 @@ function requetEnregistrerMembre() {
 // la fonction pour faire POST par ajax pour envoyer les données de la formuler de la login vers le serveur
 function connecter()
 {
+
     var formConnexion = new FormData(document.getElementById('formConnexion'));
     formConnexion.append('action','connecter');
     $.ajax({
@@ -32,7 +33,6 @@ function connecter()
         processData : false,
         dataType : 'json',
         success : function (reponse){
-
             membreVue(reponse);
         },
         error: function (xhr, error) {
@@ -44,7 +44,6 @@ function connecter()
 
 function initclientmenue()
 {
-
     var formiConnexion = new FormData();
     formiConnexion.append('action','i_connecter');
     $.ajax({
@@ -59,7 +58,6 @@ function initclientmenue()
             membreVue(reponse);
         },
         error: function (xhr, error) {
-            alert("test");
             alert(error);
         }
     });
@@ -112,7 +110,7 @@ function showcard(id)
     });
 }
 
-function addpanier(id) {
+/*function addpanier(id) {
     alert(id);
     var formiConnexion = new FormData();
     formiConnexion.append('action','addpanier');
@@ -132,4 +130,4 @@ function addpanier(id) {
             alert(error);
         }
     });
-}
+}*/

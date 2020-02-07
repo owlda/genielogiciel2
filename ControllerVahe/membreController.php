@@ -180,7 +180,7 @@ function i_connecter($smarty, $db)
     $requete = "SELECT * FROM circuit limit  3"; // we select first three circuits to show on the main page
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $arrayCircuit = $db->getAll($requete);
-    $smarty->assign('arrayCircuit', $arrayCircuit); //arrayCircuit of the circuit
+
 
     $arrayPhoto = array();  //to put paths to photo, for each circuit one photo will be chosed
 
@@ -188,12 +188,21 @@ function i_connecter($smarty, $db)
         $idCircuit = $arrayCircuit[$key]['idCircuit'];
         $requet = "SELECT * FROM photoCircuit WHERE idCircuit = ".$idCircuit." limit 1";
         $idPhoto = $db->getAll($requet);
-        $requet2 = "SELECT * FROM photo WHERE idPhoto = ".$idPhoto[0]['idPhoto'];
-        $path = $db->getAll($requet2);
-        $str = $path[0]['imagePath'];
-        array_push($arrayPhoto, ltrim($str, '/'));
-    }
 
+        if(sizeof($idPhoto))
+        {
+            $requet2 = "SELECT * FROM photo WHERE idPhoto = ".$idPhoto[0]['idPhoto'];
+            $path = $db->getAll($requet2);
+            $str = $path[0]['imagePath'];
+            $arrayCircuit[$key]['photo'] = ltrim($str, '/');
+            array_push($arrayPhoto, ltrim($str, '/'));
+        }
+        else{
+            $arrayCircuit[$key]['photo'] = '';
+        }
+
+    }
+    $smarty->assign('arrayCircuit', $arrayCircuit); //arrayCircuit of the circuit
     $smarty->assign('arrayPhoto', $arrayPhoto);
 
     $reponse['card1'] = $smarty->fetch('cardssliderVaheContent.tpl');
@@ -261,7 +270,7 @@ function deconnect()
 }
 
 // add an item to panier
-function addpanier($smarty, $db)
+/*function addpanier($smarty, $db)
 {
     global $reponse;
     $reponse['action'] = 'addpanier';
@@ -281,7 +290,7 @@ function addpanier($smarty, $db)
     $record['prix'] = $montant;
     $db->autoExecute($table, $record, 'INSERT');
 
-}
+}*/
 
 echo json_encode($reponse);
 ?>

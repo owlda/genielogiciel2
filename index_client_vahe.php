@@ -29,7 +29,7 @@
     if(isset($_SESSION['sessionstatus'])){
         if ($_SESSION['sessionstatus'] == true) {
             echo('<div id="menu"></div>');
-            include __DIR__ . '/tmp/template/menu_client.tpl ';
+            //include __DIR__ . '/tmp/template/menu_client.tpl ';
         }
     }
 
@@ -77,6 +77,12 @@ colapsable to show the details-->
         </div>
     </div>
 </div>
+
+<!-- Modal panier-->
+<div class="modal fade" id="myPanier" role="dialog">
+
+</div>
+
 
 <?php include __DIR__ . '/tmp/template/footer.tpl ' ?>
 </body>
