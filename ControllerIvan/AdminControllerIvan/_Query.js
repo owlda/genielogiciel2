@@ -745,9 +745,12 @@ function PanierCount() {
             VueCart(reponse);
         },
         error: function (xhr, error) {
-            alert("LOL_PANIER");
+            alert("COUNT_ERROR!");
         }
     });
 }
+
+
+
 
 

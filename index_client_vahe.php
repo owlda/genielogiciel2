@@ -27,7 +27,7 @@
 </head>
 <body onload="initclientmenue();PanierCount();">
 <?php
-    session_start();
+session_start();
     if(isset($_SESSION['sessionstatus'])){
         if ($_SESSION['sessionstatus'] == true) {
             echo('<div id="menu"></div>');
