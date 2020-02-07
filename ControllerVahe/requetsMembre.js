@@ -1,3 +1,10 @@
+function GetUrlController() {
+    var loc = window.location.pathname;
+    var dir = loc.substring(0, loc.lastIndexOf('/'));
+    return dir + '/ControllerVahe/membreController.php';
+}
+
+
 
 function requetEnregistrerMembre() {
     var formDevenirMembre = new FormData(document.getElementById('formCreationCompte'));
@@ -14,6 +21,7 @@ function requetEnregistrerMembre() {
             membreVue(reponse);
         },
         error: function (xhr, error) {
+            alert("LOL7");
             alert('L\'execution du script n\'est pas reussit');
         }
     });
@@ -32,11 +40,10 @@ function connecter()
         processData : false,
         dataType : 'json',
         success : function (reponse){
-
             membreVue(reponse);
         },
         error: function (xhr, error) {
-
+            alert("LOL6");
             alert('Erreur de execution du script');
         }
     });
@@ -44,12 +51,11 @@ function connecter()
 
 function initclientmenue()
 {
-
     var formiConnexion = new FormData();
     formiConnexion.append('action','i_connecter');
     $.ajax({
         type : 'POST',
-        url : 'ControllerVahe/membreController.php',
+        url : GetUrlController(),
         data : formiConnexion,
         contentType : false,
         processData : false,
@@ -59,7 +65,9 @@ function initclientmenue()
             membreVue(reponse);
         },
         error: function (xhr, error) {
-            alert(error);
+            console.log(error);
+            console.log(xhr);
+            alert("LOL5");
         }
     });
 }
@@ -81,19 +89,21 @@ function deconnect()
             membreVue(reponse);
         },
         error: function (xhr, error) {
-            alert(error);
+            alert("LOL4");
+            console.log(error);
+            console.log(xhr);
         }
     });
 
 }
 
-// on appel cette fonction pour recevoire les données du circuit à montrer
+/*on appel cette fonction pour recevoire les données du circuit à montrer*/
 
 function showcard(id)
 {
-   /* var formiConnexion = new FormData();
+    var formiConnexion = new FormData();
     formiConnexion.append('action','showcircuit');
-    formiConnexion.append('id',id);
+    formiConnexion.append('id', id);
     $.ajax({
         type : 'POST',
         url : 'ControllerVahe/membreController.php',
@@ -106,13 +116,9 @@ function showcard(id)
             membreVue(reponse);
         },
         error: function (xhr, error) {
+            alert("LOL3");
             alert(error);
         }
-    });*/
-   alert(id);
-
+    });
 }
 
-function addpanier(id) {
-    alert(id);
-}

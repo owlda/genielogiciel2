@@ -35,7 +35,7 @@
                         <input type="button" value="&#10133; {$voc["lb_rabais"]}" class="btn btn-primary" style="display: inline" onclick="BtnAddRabais({$key.idCircuit})">
                         {else}
                         <span style="font-size: xx-large">{$key.Rabais}%</span><br>
-                        <input type="button" value="Supprimer" class="btn btn-danger" onclick="BtnDelRabais({$key.idCircuit})"><br>
+                        <input type="button" value="{$voc['btn_del']}" class="btn btn-danger" onclick="BtnDelRabais({$key.idCircuit})"><br>
                         <span class="small">{$key.DateDebut}</span><br>
                         <span>*****</span><br>
                         <span class="small">{$key.DateFin}</span><br>
@@ -63,4 +63,4 @@
     </table>
 </div>
 
-{include file="modal_add_rabais.tpl"}
+{include file="modal_add_rabais.tpl" voc=$voc}

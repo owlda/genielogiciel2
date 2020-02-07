@@ -24,17 +24,64 @@ switch ($action){
         deconnect();
         break;
     case 'showcircuit':
-        $id = $_POST['id'];
-        showcircuit($smarty, $db, $id);
+        showcircuit($smarty, $db);
+        break;
+    case 'addpanier':
+        addpanier($smarty, $db);
+        break;
     default: break;
 }
 
 // Les actions
 
 // cette fonction fait requet à la base de données pour recevoir les données de circuit avec id pour montrer au client
-function showcircuit($smarty, $db, $id)
+function showcircuit($smarty, $db)
 {
+    global $reponse;
+    $idCircuit = $_POST['id'];
+    $reponse['action'] = 'showcircuit';
+    $requet = "SELECT * FROM circuit WHERE idCircuit = ".$idCircuit;
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $circuit = $db->getAll($requet);
+    $titre = $circuit[0]['titre'];
+    $description = $circuit[0]['description'];
+    $prix = $circuit[0]['prix'];
 
+    // we find ids of the photos of the circuits after we find paths of the photo and put in the array
+    $arrayPhoto = array();
+    $requet = "SELECT * FROM photocircuit WHERE idCircuit=".$idCircuit." limit 3"; // to find photo's ids of the circuit from tablle photocircuit
+    $idPhotosCircuit = $db->getAll($requet);
+    foreach($idPhotosCircuit as $key=>$value)
+    {
+        $requet = "SELECT * FROM photo WHERE idPhoto=".$idPhotosCircuit[$key]['idPhoto']; // to find photo path by photo id from table photo
+        $path = $db->getAll($requet);
+        $str = ltrim($path[0]['imagePath'], '/');
+        array_push($arrayPhoto, $str);
+    }
+
+    // Here we need to get all the etaps for this circuit
+
+    $requet = "SELECT * FROM etape WHERE idCircuit = ".$idCircuit." ORDER BY numeroEtap ASC";
+    $arrayetap = $db->getAll($requet);
+
+    foreach($arrayetap as $key=>$value)
+    {
+        $etaptemp = $arrayetap[$key]['idEtape'];
+        $requet = "select jour.idJour, jour.description as jdesc, jour.numeroJour, hotel.idHotel as hid, hotel.titre as htitre, hotel.site as hsite, activity.titre as atitre, 
+                activity.description as adesc, activity.idActivity as aid, restaurent.idRestaurent as rid, restaurent.titre as rtitre, restaurent.site as rsite  from jour left join hotelsjour on jour.idJour = hotelsjour.idJour 
+                left join hotel on hotelsjour.idHotel = hotel.idHotel left join activity on jour.idJour = activity.idJour left join restaurentsjour on 
+                jour.idJour=restaurentsjour.idJour left join restaurent on restaurent.idRestaurent = restaurentsjour.idRestaurent where jour.idEtape =".$etaptemp;
+        $arrayjour = $db->getAll($requet);
+        $arrayetap[$key]['jour'] = $arrayjour;
+    }
+
+
+    $smarty->assign('arrayetap', $arrayetap);
+    $smarty->assign('arrayPhoto', $arrayPhoto);
+    $smarty->assign('titre', $titre);
+    $smarty->assign('description', $description);
+
+    $reponse['circuit'] = $smarty->fetch('circuit_details.tpl');
 }
 
 // Enregistre les données de la formulaire créer un compte
@@ -105,10 +152,6 @@ function connecter($smarty, $db)
                 $_SESSION['sessionstatus'] = true;
                 $_SESSION['courriel'] = $ligne['courriel'];
 
-/*                $smarty->assign('courriel', $_SESSION['courriel']);
-                $smarty->fetch('../tmp/template/menu_client.tpl');*/
-
-
             }
             else{
                 // si le mot de pass n'est pas correct on envoit un message
@@ -120,7 +163,6 @@ function connecter($smarty, $db)
     }catch(Exception $e){
     }finally{
         unset($unModele);
-
     }
 
 }
@@ -133,76 +175,26 @@ function i_connecter($smarty, $db)
     $requete = "SELECT * FROM circuit limit  3"; // we select first three circuits to show on the main page
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $arrayCircuit = $db->getAll($requete);
-    $smarty->assign('arrayCircuit', $arrayCircuit); //arrayCircuit of the circuit
-    //$arr['Photo'] = array('1'=>'11111','2'=>'22222');
-   // $arrayCircuit[0]['photo'] = $arr['Photo'];
-
-    $arrayPhoto = array();  //to put paths to photo, for each circuit one photo will be chosed
 
     foreach ($arrayCircuit as $key=>$value){
         $idCircuit = $arrayCircuit[$key]['idCircuit'];
         $requet = "SELECT * FROM photoCircuit WHERE idCircuit = ".$idCircuit." limit 1";
         $idPhoto = $db->getAll($requet);
+
         $requet2 = "SELECT * FROM photo WHERE idPhoto = ".$idPhoto[0]['idPhoto'];
         $path = $db->getAll($requet2);
         $str = $path[0]['imagePath'];
-        array_push($arrayPhoto, ltrim($str, '/'));
-    }
+        $arrayCircuit[$key]['photo'] = ltrim($str, '/');
 
-    $smarty->assign('arrayPhoto', $arrayPhoto);
+    }
+    $smarty->assign('arrayCircuit', $arrayCircuit); //arrayCircuit of the circuit
 
     $reponse['card1'] = $smarty->fetch('cardssliderVaheContent.tpl');
 
-/*    try{
-        $unModele=new membreModele($requete, $arrayCircuit);
-        $stmt=$unModele->executer();
-        $ligneCircuit = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if(!$ligneCircuit)
-        {
-            //la requete retourne false si la table est vide
-            $reponse['msg'] = 'table circuit empty';
-        }
-        else
-        {
-            // we add tha data to smarty variables
-
-                $idCircuit = $ligneCircuit['idCircuit'];
-                $titreCircuit = $ligneCircuit['titre'];
-                $descCircuit = $ligneCircuit['description'];
-                $reponse['msg'] = 'OK';
-                $smarty->assign('idCircuit1', $ligneCircuit['idCircuit']); //id of the circuit
-                $smarty->assign('titreCircuit1', $ligneCircuit['titre']); // title of the circuit
-                $smarty->assign('descCircuit1', $ligneCircuit['description']); // description of the circuit
-
-                $reponse['card1'] = $smarty->fetch('../tmp/template/cardssliderVaheContent.tpl');
-                // we fetch variables into cardssliderVahe.tpl
-        }
-    }catch(Exception $e){
-    }finally{
-        unset($unModele);
-    }*/
 
     $reponse['action'] = 'i_connecter'; //on traite la valeur 'i_connecter' dans la vue pour ajouter le menu du client
     $smarty->assign('courriel', $_SESSION['courriel']); // to show the e-mail of the client on the mene
     $reponse['temp'] = $smarty->fetch('menu_client.tpl'); // we pass the code of menu template to vue
-
-
-   /* $requete = 'SELECT * FROM circuit';
-    try{
-        $unModel = new membreModele($requete, array());
-        $stmt = $unModel->executer();
-        $ligne = $stmt->fetch(PDO::FETCH_ASSOC);
-        $reponse['id'] = $ligne['idCircuit'];
-        $smarty->assign('id', $ligne['idCircuit']);
-        $smarty->fetch('carousel_vahe.tpl');
-
-    }
-    catch(Exception $e){
-
-    }finally{
-        unset($unModele);
-    }*/
 
 }
 
@@ -214,6 +206,7 @@ function deconnect()
     session_destroy();
 
 }
+
 
 echo json_encode($reponse);
 ?>

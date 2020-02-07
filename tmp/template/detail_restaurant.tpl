@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col">
-        <input class="btn btn-success" type="button" value="Ajouter un restaurant" onclick="LoadModalAddRestaurent({$idPaysEtape}, {$idVilleJour}, {$idJour})">
-        <h3>Restaurant(s):</h3>
+        <input class="btn btn-success" type="button" value="{$voc['btn_add_restaurant']}" onclick="LoadModalAddRestaurent({$idPaysEtape}, {$idVilleJour}, {$idJour})">
+        <h3>{$voc['lb_restaurant']}</h3>
     </div>
     <div class="col"></div>
 </div>
@@ -10,11 +10,11 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-6">
-                <h4>{$restaurent.titre}</h4>
+                <h4>{$restaurent['titre'|cat:$smarty.cookies.lang]}</h4>
                 <div class="btn-toolbar">
                     <div class="btn-group" role="group">
-                        <button class="btn btn-warning" type="button">Modifier</button>
-                        <button class="btn btn-danger" type="button">Supprimer</button>
+                        <input value="{$voc['btn_edit']}" class="btn btn-warning" type="button">
+                        <input value="{$voc['btn_del']}" class="btn btn-danger" type="button">
                     </div>
                 </div>
             </div>
@@ -23,14 +23,14 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-6">
-                <div class="col"><span style="font-weight: bold">Place:</span> {$restaurent.VilleRestaurent} </div>
+                <div class="col"><span style="font-weight: bold">{$voc["lb_place"]}</span> {$restaurent.VilleRestaurent} </div>
             </div>
             <div class="col"></div>
         </div>
         <div class="row">
             <div class="col"></div>
             <div class="col-6">
-                <div class="col"><span style="font-weight: bold">Site:</span><a href="{$restaurent.site}"> {$restaurent.site}</a> </div>
+                <div class="col"><span style="font-weight: bold">{$voc['lb_site']}</span><a href="{$restaurent.site}"> {$restaurent.site}</a> </div>
             </div>
             <div class="col"></div>
         </div>
