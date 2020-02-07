@@ -27,26 +27,6 @@
 </head>
 <body onload="initclientmenue();">
 <?php
-session_start();
-    if(isset($_SESSION['sessionstatus'])){
-        if ($_SESSION['sessionstatus'] == true) {
-            
-            switch($_COOKIE['lang']){
-                case "es":
-                    require __DIR__.'/tmp/template/menu_client-es.tpl';
-                    break;
-                case "en" :
-                    require __DIR__.'/tmp/template/menu_client-en.tpl';
-                    break;
-                default :
-                    require __DIR__.'/tmp/template/menu_client.tpl';
-                    break;
-            }
-
-        }
-    }
-    else {include __DIR__ . '/tmp/template/menu-ren.tpl ';}
-
 ?>
 
 <div class="container" id="carousel">
