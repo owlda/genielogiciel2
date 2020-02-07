@@ -23,8 +23,6 @@ var VueCart=function(reponse){
         $('#cart_modal').html(reponse.modal_cart);
         $('#myModal_panier').modal('show');
         $('.modal-backdrop').css('position', 'static');
-
-        alert(reponse.res);
     }
 };
 

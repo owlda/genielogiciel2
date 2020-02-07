@@ -18,14 +18,14 @@
                             <tbody>
                             {foreach $arr_circuit_cart as  $circuit}
                                 <tr>
-                                    <td>{$circuit['titre']}</td>
+                                    <td>{$circuit['titre'|cat:$smarty.cookies.lang]}</td>
                                     <td><span style="font-weight: bold">{$circuit['prix']}<span></span></td>
                                     <td><button type="button" class="btn btn-danger" id="idCircuit" onclick="RemoveItemCart()">Supprimer</button></td>
                                 </tr>
                             {/foreach}
                             <tr>
                                 <td></td>
-                                <td>Total - <span style="font-weight: bold"></span>$</td>
+                                <td>Total - <span style="font-weight: bold; font-size: large">{$total}$</span></td>
                                 <td><button type="button" class="btn btn-success" id="idCircuit" onclick="payer()">Payer</button></td>
                             </tr>
                             </tbody>
