@@ -83,5 +83,4 @@ colapsable to show the details-->
 <script src="ControllerVahe/requetsMembre.js"></script>
 <script src="ControllerVahe/ViewVahe.js"></script>
 </html>
-<?php
 

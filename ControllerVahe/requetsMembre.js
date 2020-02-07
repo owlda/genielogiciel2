@@ -59,6 +59,7 @@ function initclientmenue()
             membreVue(reponse);
         },
         error: function (xhr, error) {
+            alert("test");
             alert(error);
         }
     });

@@ -46,23 +46,23 @@
                                             jdhkgjh ajgh kjfdhkgj hkdjfgjk
                                             <h3>{$jour.jdesc}</h3>
                                             <div style="margin-left: 10px;">
-                                                <a href="#hotel{$jour.hid}" data-toggle="collapse">Hotel</a>
+                                                <a href="#hotel{$jour.hid}" data-toggle="collapse" style="color: #afafaf">Hotel</a>
 
-                                                <div id="hotel{$jour.hid}" class="collapse">
+                                                <div id="hotel{$jour.hid}" class="collapse" style="margin-left: 10px;">
                                                     <a href="http://{$jour.hsite}">{$jour.htitre}</a>
                                                 </div>
                                             </div>
                                             <div style="margin-left: 10px;">
                                                 <a href="#act{$jour.aid}" data-toggle="collapse">Activity</a>
 
-                                                <div id="act{$jour.aid}" class="collapse" >
+                                                <div id="act{$jour.aid}" class="collapse" style="margin-left: 10px;">
                                                     <h3>{$jour.adesc}</h3>
                                                 </div>
                                             </div>
                                             <div  style="margin-left: 10px;">
                                                 <a href="#resto{$jour.rid}" data-toggle="collapse">Restaurent</a>
 
-                                                <div id="resto{$jour.rid}" class="collapse">
+                                                <div id="resto{$jour.rid}" class="collapse" style="margin-left: 10px;">
                                                     <a href="http://{$jour.rsite}">{$jour.rtitre}</a>
                                                 </div>
                                             </div>
@@ -73,8 +73,6 @@
                         </div>
                     {/foreach}
                 </div>
-
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -181,8 +181,6 @@ function i_connecter($smarty, $db)
     $db->setFetchMode(ADODB_FETCH_ASSOC);
     $arrayCircuit = $db->getAll($requete);
     $smarty->assign('arrayCircuit', $arrayCircuit); //arrayCircuit of the circuit
-    //$arr['Photo'] = array('1'=>'11111','2'=>'22222');
-   // $arrayCircuit[0]['photo'] = $arr['Photo'];
 
     $arrayPhoto = array();  //to put paths to photo, for each circuit one photo will be chosed
 
