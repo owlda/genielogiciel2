@@ -15,34 +15,80 @@ switch ($action){
         enregistrerMembre();
         break;
     case 'i_connecter':
-        i_connecter($smarty);
+        i_connecter($smarty, $db);
         break;
     case 'connecter':
-        connecter($smarty);
+        connecter($smarty, $db);
         break;
     case 'deconnect':
         deconnect();
+        break;
+    case 'showcircuit':
+        showcircuit($smarty, $db);
+        break;
+    case 'addpanier':
+        addpanier($smarty, $db);
         break;
     default: break;
 }
 
 // Les actions
 
+// cette fonction fait requet à la base de données pour recevoir les données de circuit avec id pour montrer au client
+function showcircuit($smarty, $db)
+{
+    global $reponse;
+    $idCircuit = $_POST['id'];
+    $reponse['action'] = 'showcircuit';
+    $requet = "SELECT * FROM circuit WHERE idCircuit = ".$idCircuit;
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $circuit = $db->getAll($requet);
+    $titre = $circuit[0]['titre'];
+    $description = $circuit[0]['description'];
+    $prix = $circuit[0]['prix'];
+
+    // we find ids of the photos of the circuits after we find paths of the photo and put in the array
+    $arrayPhoto = array();
+    $requet = "SELECT * FROM photocircuit WHERE idCircuit=".$idCircuit." limit 3"; // to find photo's ids of the circuit from tablle photocircuit
+    $idPhotosCircuit = $db->getAll($requet);
+    foreach($idPhotosCircuit as $key=>$value)
+    {
+        $requet = "SELECT * FROM photo WHERE idPhoto=".$idPhotosCircuit[$key]['idPhoto']; // to find photo path by photo id from table photo
+        $path = $db->getAll($requet);
+        $str = ltrim($path[0]['imagePath'], '/');
+        array_push($arrayPhoto, $str);
+    }
+
+    // Here we need to get all the etaps for this circuit
+
+    $requet = "SELECT * FROM etape WHERE idCircuit = ".$idCircuit." ORDER BY numeroEtap ASC";
+    $arrayetap = $db->getAll($requet);
+
+    foreach($arrayetap as $key=>$value)
+    {
+        $etaptemp = $arrayetap[$key]['idEtape'];
+        $requet = "select jour.idJour, jour.description as jdesc, jour.numeroJour, hotel.idHotel as hid, hotel.titre as htitre, hotel.site as hsite, activity.titre as atitre, 
+                activity.description as adesc, activity.idActivity as aid, restaurent.idRestaurent as rid, restaurent.titre as rtitre, restaurent.site as rsite  from jour left join hotelsjour on jour.idJour = hotelsjour.idJour 
+                left join hotel on hotelsjour.idHotel = hotel.idHotel left join activity on jour.idJour = activity.idJour left join restaurentsjour on 
+                jour.idJour=restaurentsjour.idJour left join restaurent on restaurent.idRestaurent = restaurentsjour.idRestaurent where jour.idEtape =".$etaptemp;
+        $arrayjour = $db->getAll($requet);
+        $arrayetap[$key]['jour'] = $arrayjour;
+    }
+
+
+    $smarty->assign('arrayetap', $arrayetap);
+    $smarty->assign('arrayPhoto', $arrayPhoto);
+    $smarty->assign('titre', $titre);
+    $smarty->assign('description', $description);
+
+    $reponse['circuit'] = $smarty->fetch('circuit_details.tpl');
+}
+
 // Enregistre les données de la formulaire créer un compte
 function enregistrerMembre()
 {
     global $reponse;
     $reponse['action']='devenirmembre';
-
-/*    $record['nomMembre'] = $_POST['txtNomNouv'];
-    $record['prenomMembre'] = $_POST['txtPrenomNouv'];
-    $record['courriel'] = $_POST['txtCourrielNouv'];
-    $record['motdepass'] = $_POST['txtMotPasseNouv'];
-    $record['telephone'] = $_POST['txtTelephone'];
-    $record['adresse'] = $_POST['txtAdresse'];
-    $record['villle'] = $_POST['txtVille'];
-    $record['pays'] = $_POST['txtPays'];
-    $record['codepostal'] = $_POST['txtCodePostal'];*/
 
     $prenom = $_POST["txtPrenomNouv"];
     $nom = $_POST["txtNomNouv"];
@@ -54,7 +100,6 @@ function enregistrerMembre()
     $ville = $_POST["txtVille"];
     $pays = $_POST["txtPays"];
     $codepostale = $_POST["txtCodePostal"];
-
 
     //On verifie si les deux mot de passe sésis sont identique
     if($_POST['txtMotPasseNouv'] != $_POST["txtMotPasseConf"])
@@ -76,7 +121,7 @@ function enregistrerMembre()
 }
 
 // cette fonction fait la login du client
-function connecter($smarty)
+function connecter($smarty, $db)
 {
     global $reponse;
     $reponse['action'] = 'connecter';
@@ -106,9 +151,6 @@ function connecter($smarty)
                 $_SESSION['id'] = $ligne['idMembre'];
                 $_SESSION['sessionstatus'] = true;
                 $_SESSION['courriel'] = $ligne['courriel'];
-/*
-                $smarty->assign('courriel', $_SESSION['courriel']);
-                $smarty->fetch('../tmp/template/menu_client.tpl');*/
 
             }
             else{
@@ -121,26 +163,50 @@ function connecter($smarty)
     }catch(Exception $e){
     }finally{
         unset($unModele);
-
     }
 
 }
 
 // pour loader la page du client après la connexion
-function i_connecter($smarty)
+function i_connecter($smarty, $db)
 {
     global $reponse;
-    $reponse['action'] = 'i_connecter';
-    $smarty->assign('courriel', $_SESSION['courriel']);
-    $reponse['temp'] = $smarty->fetch('menu_client.tpl');
+
+    $requete = "SELECT * FROM circuit limit  3"; // we select first three circuits to show on the main page
+    $db->setFetchMode(ADODB_FETCH_ASSOC);
+    $arrayCircuit = $db->getAll($requete);
+
+    foreach ($arrayCircuit as $key=>$value){
+        $idCircuit = $arrayCircuit[$key]['idCircuit'];
+        $requet = "SELECT * FROM photoCircuit WHERE idCircuit = ".$idCircuit." limit 1";
+        $idPhoto = $db->getAll($requet);
+
+        $requet2 = "SELECT * FROM photo WHERE idPhoto = ".$idPhoto[0]['idPhoto'];
+        $path = $db->getAll($requet2);
+        $str = $path[0]['imagePath'];
+        $arrayCircuit[$key]['photo'] = ltrim($str, '/');
+
+    }
+    $smarty->assign('arrayCircuit', $arrayCircuit); //arrayCircuit of the circuit
+
+    $reponse['card1'] = $smarty->fetch('cardssliderVaheContent.tpl');
+
+
+    $reponse['action'] = 'i_connecter'; //on traite la valeur 'i_connecter' dans la vue pour ajouter le menu du client
+    $smarty->assign('courriel', $_SESSION['courriel']); // to show the e-mail of the client on the mene
+    $reponse['temp'] = $smarty->fetch('menu_client.tpl'); // we pass the code of menu template to vue
 
 }
 
 // deconnect le client et destroy la session
 function deconnect()
 {
+    global $reponse;
+    $reponse['action'] = 'deconnect';
     session_destroy();
+
 }
+
 
 echo json_encode($reponse);
 ?>

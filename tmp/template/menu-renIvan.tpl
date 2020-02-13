@@ -3,21 +3,16 @@
         <div class="collapse navbar-collapse"
              id="navcol-1">
             <ul class="nav navbar-nav mr-auto">
-                <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Circuits</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#">La carte</a></li>
-                <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Profile</a>
-                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">Mon espace</a><a class="dropdown-item" role="presentation" href="#">Panier</a><a class="dropdown-item" role="presentation" href="#">Notifications</a></div>
-                </li>
-
+                <li class="nav-item" role="presentation"><a class="nav-link" href="http://localhost/files/Web3/circuit.in/www/pages/admin.php">Circuits</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="http://localhost/files/Web3/circuit.in/www/pages/stat.php">Stat</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="http://localhost/files/Web3/circuit.in/www//uploadimages.php">Images</a></li>
             </ul>
             <span class="navbar-text actions"> <a class="login" href="#">Admin</a>
 
             </span>
-            <select
-                    style="margin: 5px;">
-                <option value="12" selected="">FR</option>
-                <option value="13">EN</option>
-                <option value="14">ES</option>
+            <select id="lang" style="margin: 5px;" onchange="ChangeCokies();">
+                <option value="" selected>FR</option>
+                <option value="en">EN</option>
             </select>
         </div>
     </div>

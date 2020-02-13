@@ -105,6 +105,7 @@ function attachSignin(element) {
             document.getElementById('name').innerText = "Connecté : " + tmp;
             document.getElementById('name1').innerText = tmp;
         }, function (error) {
+            alert("LOL1");
             alert(JSON.stringify(error, undefined, 2));
         });
 }

@@ -44,11 +44,10 @@
             </ul><span class="navbar-text actions"> <a class="login" href="#" style="/*display: block;*/"><i class="icon-login"></i>&nbsp;Log In</a><a class="btn btn-light action-button" role="button" href="#">Sign Up</a></span></div>
     </div>
 </nav>
-
 <main>
     <h4 style="text-align: center; margin-bottom: 2%">Ajouter un nouveau circuit.</h4>
     <div class="container">
-        <form action="../pages/upload.php" class="dropzone" id="dropzoneFrom">
+        <form action="../upload.php" class="dropzone" id="dropzoneFrom">
         </form>
         <br />
         <br />

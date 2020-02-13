@@ -1,4 +1,4 @@
-<div class="footer-dark">
+footer.tpl<div class="footer-dark">
     <footer>
         <div class="container">
             <div class="row">
@@ -24,7 +24,7 @@
                 </div>
                 <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
             </div>
-            <p class="copyright">Voyages Merveilleux © 2019</p>
+            <p class="copyright">Voyages Merveilleux © 2020</p>
         </div>
     </footer>
 </div>
